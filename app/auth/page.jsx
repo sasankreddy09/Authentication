@@ -95,7 +95,7 @@ const handleRegister = async () => {
       setIsError(true);
     } else {
       setIsError(false);
-      setMessage("Signup successful! Please check your email.");
+      setMessage("Signup successful! Please login");
     }
   };
   const handleLogin = async () => {
