@@ -1,0 +1,101 @@
+.cardContainer{
+    border: 2px solid rgb(160, 156, 156);
+    display: flex;
+    box-shadow: 10px 10px 10px rgb(167, 150, 150);
+    border-radius: 1rem;
+    width: 80vw;
+    height: 80vh;
+    overflow: hidden;
+    background: white; 
+    background: linear-gradient(
+        to bottom right,
+        #eaf8f6,
+        #84c7d4
+    );
+    border: none;  
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+.cardContainer_left{
+    flex: 0.6;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    padding: 0.4rem;
+}
+.cardContainer_right{
+    flex: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgb(175, 174, 170);
+}
+.cardContainer_left>div:nth-child(1) {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.inputElements {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.inputRow {
+
+    gap: 1rem;
+    justify-content: center;
+}
+
+.inputs {
+    width: 70%;
+    outline: none;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid gray;
+}
+
+.button{
+    background-color: rgb(113, 113, 235);
+    color: white;
+    margin-top: 2rem;
+    padding: 0.7rem 2rem;
+    border-radius: 0.9rem;
+    font-weight: 600;
+    border: none;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.buttons{
+    background-color: white;
+    border: 1px solid black;
+    border-radius:0.5rem;
+    padding-inline:3rem;
+    padding-block:0.4rem;
+    width: 100%;
+    margin-top: 0.6rem;
+    cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+    .cardContainer{
+        flex-direction: column;
+        width: 85vw;
+        height: auto;
+    }
+    .cardContainer_left, .cardContainer_right{
+        flex: none;
+        width: 90vw;
+    }
+    .cardContainer_right{
+        padding: 2rem 0.4rem;
+    }.inputElements{
+        padding-right: 1rem ;
+        padding-top: 1rem;
+    }
+}
