@@ -20,6 +20,14 @@
     justify-content: center;
     height: 90vh;
 }
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh; /* mobile-safe viewport */
+    width: 100%;
+}
+
 .cardContainer_left{
     flex: 0.6;
     display: flex;
@@ -83,19 +91,23 @@
     cursor: pointer;
 }
 @media only screen and (max-width: 768px) {
-    .cardContainer{
+    .cardContainer {
         flex-direction: column;
-        width: 85vw;
-        height: auto;
+        width: 100%;
+        height: 100svh;
+        border-radius:1rem;
     }
-    .cardContainer_left, .cardContainer_right{
-        flex: none;
-        width: 90vw;
+
+    .cardContainer_left,
+    .cardContainer_right {
+        width: 100%;
     }
-    .cardContainer_right{
-        padding: 2rem 0.4rem;
-    }.inputElements{
-        padding-right: 1rem ;
-        padding-top: 1rem;
+
+    .cardContainer_right {
+        padding: 2rem 1rem;
+    }
+
+    .inputs {
+        width: 70%;
     }
 }
