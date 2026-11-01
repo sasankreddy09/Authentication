@@ -1,0 +1,151 @@
+{
+ "environment": "studio",
+ "version": "v1",
+ "status": "provisional",
+ "art_version": "storybook-env-procedural-1",
+ "master": [
+  2400,
+  1350
+ ],
+ "topic": "neutral explainer room",
+ "sets": {
+  "main": {
+   "layers": [
+    [
+     "studio_back",
+     0.2
+    ],
+    [
+     "@characters",
+     0.8
+    ]
+   ],
+   "lighting": {
+    "key": "soft front",
+    "tint": [
+     230,
+     238,
+     255
+    ],
+    "tint_strength": 0.08,
+    "rim": [
+     200,
+     220,
+     255
+    ],
+    "temperature": "neutral"
+   }
+  }
+ },
+ "presets": {
+  "studio_two_shot": {
+   "set": "main",
+   "crop": [
+    240,
+    120,
+    1920,
+    1080
+   ],
+   "move": "static",
+   "slots": {
+    "arjun": [
+     900,
+     1506,
+     0.75
+    ],
+    "meera": [
+     1500,
+     1506,
+     0.75
+    ]
+   }
+  },
+  "studio_closeup_arjun": {
+   "set": "main",
+   "crop": [
+    520,
+    220,
+    1300,
+    731
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "arjun": [
+     1170,
+     1325,
+     0.6
+    ],
+    "meera": [
+     1990,
+     1325,
+     0.6
+    ]
+   }
+  },
+  "studio_closeup_meera": {
+   "set": "main",
+   "crop": [
+    960,
+    220,
+    1300,
+    731
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "meera": [
+     1610,
+     1325,
+     0.6
+    ],
+    "arjun": [
+     790,
+     1325,
+     0.6
+    ]
+   }
+  }
+ },
+ "map": {
+  "studio": {
+   "*": "studio_two_shot",
+   "closeup": "studio_closeup_{subject}",
+   "reaction": "studio_closeup_{subject}"
+  },
+  "living_room": {
+   "*": "studio_two_shot",
+   "closeup": "studio_closeup_{subject}",
+   "reaction": "studio_closeup_{subject}"
+  }
+ },
+ "safe_regions": {
+  "subtitles": [
+   0,
+   0.8,
+   1.0,
+   1.0
+  ],
+  "diagram": [
+   0.08,
+   0.06,
+   0.92,
+   0.76
+  ]
+ },
+ "layers": {
+  "studio_back": {
+   "file": "layers/studio_back.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "1143818f4f9e08cdc159a6999db0f9478d289e3278131459b80997faa3343032"
+  }
+ },
+ "provenance": {
+  "method": "procedural drawing (colab/engine/lib/envfactory.py)",
+  "model": null,
+  "license": "project-original (code-drawn)",
+  "created": "2026-10-20T01:33:20",
+  "approved_by": null
+ }
+}

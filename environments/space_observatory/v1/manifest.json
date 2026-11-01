@@ -1,0 +1,160 @@
+{
+ "environment": "space_observatory",
+ "version": "v1",
+ "status": "provisional",
+ "art_version": "storybook-env-procedural-1",
+ "master": [
+  2400,
+  1350
+ ],
+ "topic": "space, black holes, gravity, stars",
+ "sets": {
+  "main": {
+   "layers": [
+    [
+     "obs_sky",
+     0.05
+    ],
+    [
+     "obs_room",
+     0.3
+    ],
+    [
+     "obs_holo",
+     0.45
+    ],
+    [
+     "@characters",
+     0.8
+    ],
+    [
+     "obs_fg",
+     1.3
+    ]
+   ],
+   "lighting": {
+    "key": "cool from the hologram",
+    "tint": [
+     170,
+     200,
+     255
+    ],
+    "tint_strength": 0.3,
+    "rim": [
+     120,
+     230,
+     255
+    ],
+    "temperature": "cool"
+   }
+  }
+ },
+ "presets": {
+  "obs_two_shot": {
+   "set": "main",
+   "crop": [
+    120,
+    80,
+    2160,
+    1215
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "arjun": [
+     760,
+     1540,
+     0.75
+    ],
+    "meera": [
+     1640,
+     1540,
+     0.75
+    ]
+   }
+  },
+  "obs_wide": {
+   "set": "main",
+   "crop": [
+    0,
+    0,
+    2400,
+    1350
+   ],
+   "move": "pan_right",
+   "slots": {
+    "arjun": [
+     700,
+     1380,
+     0.6
+    ],
+    "meera": [
+     1700,
+     1380,
+     0.6
+    ]
+   }
+  }
+ },
+ "map": {
+  "space_observatory": {
+   "*": "obs_two_shot",
+   "wide": "obs_wide",
+   "establishing": "obs_wide"
+  }
+ },
+ "safe_regions": {
+  "subtitles": [
+   0,
+   0.8,
+   1.0,
+   1.0
+  ],
+  "diagram": [
+   0.08,
+   0.06,
+   0.92,
+   0.76
+  ]
+ },
+ "layers": {
+  "obs_sky": {
+   "file": "layers/obs_sky.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "63725bf5d3101136130c942c963298b5843749ff46c71bfe389d4c74de5294f7"
+  },
+  "obs_room": {
+   "file": "layers/obs_room.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "cffb3ccbf8ff39672f23a993d93a8bbd1389eaa64902dd582691ba0e89062b16"
+  },
+  "obs_holo": {
+   "file": "layers/obs_holo.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "94bdaef93ef973632405fdbbfb84ec683b2b88ce098c2073a7f66f95b23f6ecb"
+  },
+  "obs_fg": {
+   "file": "layers/obs_fg.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "e5d91604a5e10cb177266b29998149b65b487cff6563201debffeab84c2c0673"
+  }
+ },
+ "provenance": {
+  "method": "procedural drawing (colab/engine/lib/envfactory.py)",
+  "model": null,
+  "license": "project-original (code-drawn)",
+  "created": "2026-10-20T01:33:23",
+  "approved_by": null
+ }
+}

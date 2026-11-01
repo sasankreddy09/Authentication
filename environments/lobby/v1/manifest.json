@@ -1,0 +1,183 @@
+{
+ "environment": "lobby",
+ "version": "v1",
+ "status": "provisional",
+ "art_version": "storybook-env-procedural-1",
+ "master": [
+  2400,
+  1350
+ ],
+ "topic": "after the movie, everyday places",
+ "sets": {
+  "main": {
+   "layers": [
+    [
+     "lobby_back",
+     0.2
+    ],
+    [
+     "@characters",
+     0.8
+    ],
+    [
+     "lobby_fg",
+     1.3
+    ]
+   ],
+   "lighting": {
+    "key": "warm overhead",
+    "tint": [
+     255,
+     226,
+     205
+    ],
+    "tint_strength": 0.14,
+    "rim": [
+     255,
+     210,
+     170
+    ],
+    "temperature": "warm"
+   }
+  }
+ },
+ "presets": {
+  "lobby_two_shot": {
+   "set": "main",
+   "crop": [
+    240,
+    120,
+    1920,
+    1080
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "arjun": [
+     900,
+     1506,
+     0.75
+    ],
+    "meera": [
+     1500,
+     1506,
+     0.75
+    ]
+   }
+  },
+  "lobby_wide": {
+   "set": "main",
+   "crop": [
+    0,
+    0,
+    2400,
+    1350
+   ],
+   "move": "static",
+   "slots": {
+    "arjun": [
+     950,
+     1298,
+     0.55
+    ],
+    "meera": [
+     1450,
+     1298,
+     0.55
+    ]
+   }
+  },
+  "lobby_closeup_arjun": {
+   "set": "main",
+   "crop": [
+    520,
+    220,
+    1300,
+    731
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "arjun": [
+     1170,
+     1325,
+     0.6
+    ],
+    "meera": [
+     1990,
+     1325,
+     0.6
+    ]
+   }
+  },
+  "lobby_closeup_meera": {
+   "set": "main",
+   "crop": [
+    960,
+    220,
+    1300,
+    731
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "meera": [
+     1610,
+     1325,
+     0.6
+    ],
+    "arjun": [
+     790,
+     1325,
+     0.6
+    ]
+   }
+  }
+ },
+ "map": {
+  "lobby": {
+   "two_shot": "lobby_two_shot",
+   "wide": "lobby_wide",
+   "establishing": "lobby_wide",
+   "closeup": "lobby_closeup_{subject}",
+   "reaction": "lobby_closeup_{subject}",
+   "ots": "lobby_closeup_{subject}"
+  }
+ },
+ "safe_regions": {
+  "subtitles": [
+   0,
+   0.8,
+   1.0,
+   1.0
+  ],
+  "diagram": [
+   0.08,
+   0.06,
+   0.92,
+   0.76
+  ]
+ },
+ "layers": {
+  "lobby_back": {
+   "file": "layers/lobby_back.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "c51c4aef7d74aec4cb8bf13b4a96dbef8c95f1e0d2f8f8f0aa9335d9a9cbaa83"
+  },
+  "lobby_fg": {
+   "file": "layers/lobby_fg.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "f33a9ad167a1baa1650fac3e0805f6c8677d507a68871634a21291ecd0758158"
+  }
+ },
+ "provenance": {
+  "method": "procedural drawing (colab/engine/lib/envfactory.py)",
+  "model": null,
+  "license": "project-original (code-drawn)",
+  "created": "2026-10-20T01:33:18",
+  "approved_by": null
+ }
+}

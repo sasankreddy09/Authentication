@@ -1,0 +1,318 @@
+{
+ "environment": "cinema",
+ "version": "v1",
+ "status": "provisional",
+ "art_version": "storybook-env-procedural-1",
+ "master": [
+  2400,
+  1350
+ ],
+ "topic": "movies, 3D films, light, vision",
+ "sets": {
+  "seats": {
+   "layers": [
+    [
+     "seats_back",
+     0.15
+    ],
+    [
+     "seats_rows",
+     0.35
+    ],
+    [
+     "seats_own_row",
+     0.6
+    ],
+    [
+     "@characters",
+     0.75
+    ],
+    [
+     "seats_light",
+     0.75
+    ],
+    [
+     "seats_fg",
+     1.25
+    ]
+   ],
+   "lighting": {
+    "key": "front (the screen)",
+    "tint": [
+     205,
+     215,
+     255
+    ],
+    "tint_strength": 0.15,
+    "rim": [
+     150,
+     175,
+     255
+    ],
+    "temperature": "cool"
+   }
+  },
+  "screen": {
+   "layers": [
+    [
+     "screen_back",
+     0.1
+    ],
+    [
+     "@screen",
+     0.1
+    ],
+    [
+     "screen_audience",
+     0.5
+    ],
+    [
+     "@characters",
+     0.8
+    ],
+    [
+     "screen_fg",
+     1.2
+    ]
+   ],
+   "screen_rect": [
+    360,
+    110,
+    2040,
+    900
+   ],
+   "lighting": {
+    "key": "back (the screen)",
+    "tint": [
+     150,
+     160,
+     220
+    ],
+    "tint_strength": 0.4,
+    "rim": [
+     200,
+     210,
+     255
+    ],
+    "temperature": "cool"
+   }
+  }
+ },
+ "presets": {
+  "seats_two_shot": {
+   "set": "seats",
+   "crop": [
+    180,
+    180,
+    2040,
+    1148
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "arjun": [
+     820,
+     1746,
+     0.85
+    ],
+    "meera": [
+     1580,
+     1746,
+     0.85
+    ]
+   },
+   "seated": true
+  },
+  "seats_wide": {
+   "set": "seats",
+   "crop": [
+    0,
+    0,
+    2400,
+    1350
+   ],
+   "move": "static",
+   "slots": {
+    "arjun": [
+     900,
+     1471,
+     0.7
+    ],
+    "meera": [
+     1500,
+     1471,
+     0.7
+    ]
+   },
+   "seated": true
+  },
+  "seats_closeup_arjun": {
+   "set": "seats",
+   "crop": [
+    520,
+    330,
+    1300,
+    731
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "arjun": [
+     1170,
+     1435,
+     0.6
+    ],
+    "meera": [
+     1990,
+     1435,
+     0.6
+    ]
+   },
+   "seated": true
+  },
+  "seats_closeup_meera": {
+   "set": "seats",
+   "crop": [
+    960,
+    330,
+    1300,
+    731
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "meera": [
+     1610,
+     1435,
+     0.6
+    ],
+    "arjun": [
+     790,
+     1435,
+     0.6
+    ]
+   },
+   "seated": true
+  },
+  "screen_back": {
+   "set": "screen",
+   "crop": [
+    0,
+    0,
+    2400,
+    1350
+   ],
+   "move": "slow_push_in",
+   "slots": {
+    "arjun": [
+     1020,
+     1820,
+     0.55
+    ],
+    "meera": [
+     1380,
+     1820,
+     0.55
+    ]
+   },
+   "view": "back"
+  }
+ },
+ "map": {
+  "cinema_seats": {
+   "two_shot": "seats_two_shot",
+   "wide": "seats_wide",
+   "establishing": "seats_wide",
+   "closeup": "seats_closeup_{subject}",
+   "reaction": "seats_closeup_{subject}",
+   "ots": "seats_closeup_{subject}"
+  },
+  "cinema_screen": {
+   "*": "screen_back"
+  }
+ },
+ "safe_regions": {
+  "subtitles": [
+   0,
+   0.8,
+   1.0,
+   1.0
+  ],
+  "diagram": [
+   0.08,
+   0.06,
+   0.92,
+   0.76
+  ]
+ },
+ "layers": {
+  "seats_back": {
+   "file": "layers/seats_back.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "42f025de36d12519b6e44a2a098f9b743eb021dcb904069799f2650e28471922"
+  },
+  "seats_rows": {
+   "file": "layers/seats_rows.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "9f4a5a861b09fbcdccd7a024071da206a008cdab8d40da0572f2aa624bac88d2"
+  },
+  "seats_own_row": {
+   "file": "layers/seats_own_row.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "e6013d8463de699d77e9c31cc0509d203bc1ca967a7a8720572000b35e96d7fc"
+  },
+  "seats_fg": {
+   "file": "layers/seats_fg.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "f4b1863f8c7929f6416c8e62e36908230bc737fb1f8a715e0cad937e6ce9f71f"
+  },
+  "seats_light": {
+   "file": "layers/seats_light.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "ee9b70405647b26c3c037ddee5ad3080e86a0514c0d016b7aa75d1b8b1aacc19"
+  },
+  "screen_back": {
+   "file": "layers/screen_back.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "485ed075e096e032740be17d07562c82d66b0a35391b7c5e47fdcb1e24cd20f9"
+  },
+  "screen_audience": {
+   "file": "layers/screen_audience.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "6f0eb2dd25ef1b7d492a3bb415fdabf40951a42baf02c58f6a4530266d4c1499"
+  },
+  "screen_fg": {
+   "file": "layers/screen_fg.png",
+   "size": [
+    2400,
+    1350
+   ],
+   "sha256": "4a3a5c356d6eaab5e684c5b735063fe6a8b59a646119518c07b797a8f34614c6"
+  }
+ },
+ "provenance": {
+  "method": "procedural drawing (colab/engine/lib/envfactory.py)",
+  "model": null,
+  "license": "project-original (code-drawn)",
+  "created": "2026-10-20T01:47:27",
+  "approved_by": null
+ }
+}
