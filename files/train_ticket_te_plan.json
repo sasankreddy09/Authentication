@@ -1,0 +1,1255 @@
+{
+ "plan_version": 1,
+ "project": "train_ticket_te_v1",
+ "title": "రైలు టికెట్ బుక్ చేస్తే ఏం జరుగుతుంది?",
+ "notebook": {
+  "emoji": "🚆",
+  "name": "AI Explainer Maker",
+  "length": "about 1.5–2 min"
+ },
+ "real_company": "IRCTC",
+ "logline": "Riya books a Delhi to Jaipur train ticket for her sister's wedding and gets WL 12. We follow that ticket: the waiting list moving up, the chart, the confirmed berth, and boarding with her e-ticket and ID. (Telugu narration.)",
+ "region_note": "India (Indian Railways / IRCTC). Rules change often; checked October 2026. The video avoids exact chart times, which changed twice in 2025.",
+ "style": {
+  "suffix": "3D animated explainer film style, clean stylized characters with consistent design, warm natural lighting, Indian railway setting, smooth natural animation",
+  "negative": "text, letters, words, logo, brand name, watermark, subtitles, photorealistic, deformed hands, extra fingers, extra limbs, extra heads, distorted face, blurry, low quality, frozen, flickering, character disappearing"
+ },
+ "look": {
+  "bg_top": "#10233F",
+  "bg_bottom": "#1B4060",
+  "accent": "#19C3A6",
+  "accent2": "#FF6B6B",
+  "gold": "#FFC43D",
+  "currency": "₹"
+ },
+ "characters": {
+  "narrator": {
+   "name": "కథకుడు",
+   "voice": "Prakash",
+   "speed": 1.0,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#FFFFFF",
+   "look": null,
+   "voice_style": "in a calm, warm and clear narration style at a moderate pace"
+  },
+  "riya": {
+   "name": "రియా",
+   "voice": "Lalitha",
+   "speed": 1.02,
+   "pitch": 0.3,
+   "fx": "none",
+   "color": "#FFD166",
+   "look": "a young Indian woman with shoulder-length black hair wearing a red kurta and blue jeans, carrying a small grey backpack",
+   "tag": "a young woman in a red kurta",
+   "voice_style": "in a young, cheerful and expressive voice at a moderate pace"
+  },
+  "tte": {
+   "name": "టికెట్ చెకర్",
+   "voice": "Prakash",
+   "speed": 1.0,
+   "pitch": -1.2,
+   "fx": "none",
+   "color": "#9FD3FF",
+   "look": "a friendly middle-aged Indian ticket checker with a grey moustache wearing a plain black coat over a white shirt",
+   "tag": "a man in a black coat",
+   "voice_style": "in a deeper, slightly slower, friendly and polite voice"
+  }
+ },
+ "scene_entities": {
+  "riya": {
+   "kind": "character",
+   "name": "Riya",
+   "query": "a young woman in a red kurta"
+  },
+  "tte": {
+   "kind": "character",
+   "name": "the ticket checker",
+   "query": "a man in a black coat"
+  },
+  "coach": {
+   "kind": "anchor",
+   "name": "the train coach",
+   "query": "a train coach"
+  },
+  "sofa": {
+   "kind": "anchor",
+   "name": "the sofa",
+   "query": "a sofa"
+  },
+  "seat": {
+   "kind": "anchor",
+   "name": "the train seat",
+   "query": "a train seat"
+  },
+  "phone": {
+   "kind": "prop",
+   "name": "her phone",
+   "query": "a smartphone",
+   "small": true
+  },
+  "id_card": {
+   "kind": "prop",
+   "name": "her ID card",
+   "query": "an identity card",
+   "small": true
+  }
+ },
+ "props": {
+  "phone": {
+   "look": "a smartphone in a blue case",
+   "tag": "a smartphone",
+   "path": [
+    "home",
+    "platform",
+    "train"
+   ]
+  }
+ },
+ "entities": {
+  "phone": [
+   "phone",
+   "app",
+   "ఫోన్",
+   "యాప్"
+  ],
+  "waiting list": [
+   "waiting list",
+   "wl",
+   "వెయిటింగ్ లిస్ట్"
+  ],
+  "chart": [
+   "chart",
+   "చార్ట్"
+  ],
+  "coach": [
+   "coach",
+   "platform",
+   "కోచ్",
+   "ప్లాట్‌ఫామ్"
+  ],
+  "refund": [
+   "refund",
+   "refunded",
+   "రీఫండ్"
+  ],
+  "photo id": [
+   "photo id",
+   "id card",
+   "ఫోటో id",
+   "ఫోటో ఐడీ"
+  ]
+ },
+ "glossary": {},
+ "travel": {
+  "home": [
+   "platform"
+  ],
+  "platform": [
+   "train"
+  ],
+  "train": []
+ },
+ "vocabulary": [
+  "రియా",
+  "IRCTC",
+  "ఢిల్లీ",
+  "జైపూర్",
+  "PNR",
+  "RAC",
+  "CNF",
+  "తత్కాల్",
+  "బెర్త్",
+  "B3",
+  "చార్ట్"
+ ],
+ "process": [
+  {
+   "id": "search",
+   "text": "Search trains and see availability"
+  },
+  {
+   "id": "book",
+   "text": "Enter passenger details and pay; a PNR is created"
+  },
+  {
+   "id": "status",
+   "text": "The booking is CNF, RAC or WL"
+  },
+  {
+   "id": "moves_up",
+   "text": "The waiting list moves up when booked passengers cancel",
+   "conditional": true,
+   "condition": "only for waitlisted tickets, and only if enough people cancel"
+  },
+  {
+   "id": "chart",
+   "text": "The reservation chart is prepared before departure"
+  },
+  {
+   "id": "auto_cancel",
+   "text": "Fully waitlisted e-tickets are cancelled after the chart and refunded automatically",
+   "conditional": true,
+   "condition": "only if the e-ticket is still fully waitlisted when the chart is prepared"
+  },
+  {
+   "id": "board",
+   "text": "Board with the e-ticket and an original photo ID"
+  }
+ ],
+ "claims": [
+  {
+   "id": "c1",
+   "text": "Reserved tickets can be booked up to 60 days before the journey (advance reservation period cut from 120 to 60 days from 1 November 2024).",
+   "sources": [
+    "https://www.businesstoday.in/india/story/new-train-ticket-booking-rules-top-reservation-related-changes-applicable-from-nov-1-452214-2024-11-01",
+    "https://www.outlooktraveller.com/News/irctc-makes-changes-to-its-advance-booking-period-heres-what-you-need-to-know"
+   ]
+  },
+  {
+   "id": "c2",
+   "text": "RAC passengers may board and travel in reserved coaches, sharing a berth until one is upgraded; RAC gets confirmed first, then waiting-list tickets, as booked passengers cancel.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Reservation_against_Cancellation",
+    "https://www.ixigo.com/what-does-rac-status-mean-in-indian-railways-2-story-1183627"
+   ]
+  },
+  {
+   "id": "c3",
+   "text": "Indian Railways prepares the reservation chart before departure; in 2025 the first chart moved from 4 hours to 8 hours before departure, and later earlier still for morning trains.",
+   "sources": [
+    "https://www.business-standard.com/india-news/indian-railways-passenger-reservation-chart-departure-booking-rules-125063000537_1.html",
+    "https://www.thehitavada.com/Encyc/2025/12/27/now-railway-reservation-charts-to-be-ready-one-day-in-advance.html"
+   ]
+  },
+  {
+   "id": "c4",
+   "text": "Fully waitlisted e-tickets are cancelled by Railways after chart preparation and the refund is credited automatically; those passengers are dropped from the chart and are not allowed to board.",
+   "sources": [
+    "https://www.icicibank.com/personal-banking/insta-banking/irctc-ticket-booking/terms-conditions",
+    "https://crpf.gov.in/Upload/News/File/1730_1_2239128930_eTicket.pdf"
+   ]
+  },
+  {
+   "id": "c5",
+   "text": "Passengers can travel with the e-ticket SMS or Virtual Reservation Message plus one prescribed original photo ID; only confirmed, RAC or partially confirmed e-tickets are valid for travel.",
+   "sources": [
+    "https://crpf.gov.in/Upload/News/File/1730_1_2239128930_eTicket.pdf"
+   ]
+  },
+  {
+   "id": "c6",
+   "text": "Tatkal booking opens one day before the journey: 10:00 AM for AC classes and 11:00 AM for non-AC classes; online Tatkal needs an Aadhaar-authenticated account (from July 2025).",
+   "sources": [
+    "https://www.deccanherald.com/amp/story/india/explained-all-you-need-to-know-about-the-new-rules-for-tatkal-ticket-booking-3582881",
+    "https://thesouthfirst.com/news/from-1-july-aadhaar-authentication-mandatory-for-tatkal-bookings-on-irctc-website-and-app"
+   ]
+  }
+ ],
+ "tones": {
+  "explainer": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.45,
+   "describe": "in a clear, steady explaining tone"
+  },
+  "curious": {
+   "speed": 0.96,
+   "pitch": 0.2,
+   "gain_db": 0.0,
+   "pause_after": 0.55,
+   "describe": "with a curious, engaging tone"
+  },
+  "warm": {
+   "speed": 0.95,
+   "pitch": 0.0,
+   "gain_db": -0.5,
+   "pause_after": 0.6,
+   "describe": "in a warm, gentle tone"
+  },
+  "worried": {
+   "speed": 0.97,
+   "pitch": 0.4,
+   "gain_db": -0.5,
+   "pause_after": 0.6,
+   "describe": "in a slightly worried tone"
+  },
+  "happy": {
+   "speed": 1.05,
+   "pitch": 0.6,
+   "gain_db": 1.0,
+   "pause_after": 0.4,
+   "describe": "in a happy, excited tone"
+  },
+  "friendly": {
+   "speed": 1.02,
+   "pitch": 0.0,
+   "gain_db": 0.5,
+   "pause_after": 0.4,
+   "describe": "in a friendly tone"
+  }
+ },
+ "moods": {
+  "curious": {
+   "pause_after": 0.55,
+   "grade": "cool",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.1,
+    "shimmer": 0.4
+   }
+  },
+  "calm": {
+   "pause_after": 0.5,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.4,
+    "curious": 0.8,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "busy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.2,
+    "shimmer": 0.1
+   }
+  },
+  "joy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.07,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  },
+  "reflective": {
+   "pause_after": 0.6,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  }
+ },
+ "music": {
+  "cues": [
+   {
+    "from": "sh01",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh03",
+    "track": "Easy Lemon"
+   },
+   {
+    "from": "sh07",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh09",
+    "track": "Wallpaper"
+   },
+   {
+    "from": "sh12",
+    "track": "Carefree"
+   }
+  ]
+ },
+ "shots": [
+  {
+   "shot_id": "sh01",
+   "chapter": "hook",
+   "beat": "hook",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 401,
+   "card": {
+    "icon": "question",
+    "lines": [
+     "టికెట్ బుక్ అయింది… కానీ WL 12",
+     "సీటు దొరుకుతుందా?"
+    ],
+    "bullets": false
+   },
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 0.6,
+     "dur": 0.4,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "curious",
+     "story": true,
+     "text": "మీరు ట్రైన్ టికెట్ బుక్ చేశారు. కానీ స్టేటస్ WL 12 అని చూపిస్తోంది. మరి సీటు దొరుకుతుందా?",
+     "tts": "మీరు ట్రైన్ టికెట్ బుక్ చేశారు. కానీ స్టేటస్ డబ్ల్యూ ఎల్ పన్నెండు అని చూపిస్తోంది. మరి సీటు దొరుకుతుందా?"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh02",
+   "chapter": "hook",
+   "beat": "setup",
+   "mood": "curious",
+   "seed": 402,
+   "location": "home",
+   "cast": [
+    "riya"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "home"
+   },
+   "move": "push_in",
+   "scene": "a cozy Indian living room in the evening with a sofa and warm lamp light",
+   "action": "the young woman sits on the sofa looking at her smartphone, thinking",
+   "state": {
+    "location": "home",
+    "camera": {
+     "setup": "home_medium",
+     "axis": "home_line",
+     "side": "front",
+     "size": "medium",
+     "move": "push_in"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       0.33,
+       0.12,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "sofa": {
+      "box": [
+       0.08,
+       0.5,
+       0.95,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "phone": "riya"
+    },
+    "events": [
+     {
+      "id": "think",
+      "type": "look_at",
+      "actor": "riya",
+      "obj": "phone",
+      "t": [
+       0.1,
+       0.7
+      ],
+      "critical": false,
+      "describe": "she looks at her phone, thinking"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "calendar",
+     "lines": [
+      "ఢిల్లీ నుంచి జైపూర్",
+      "అక్క పెళ్లి కోసం"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "ఈమె రియా. తన అక్క పెళ్లి కోసం ఢిల్లీ నుంచి జైపూర్ వెళ్తోంది."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh03",
+   "chapter": "book",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "calm",
+   "seed": 403,
+   "step": "search",
+   "claims": [
+    "c1"
+   ],
+   "label": "స్టెప్ 1 · ట్రైన్ వెతకడం",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Train booking app"
+      },
+      {
+       "type": "text",
+       "text": "Delhi  →  Jaipur",
+       "bold": true,
+       "size": 32
+      },
+      {
+       "type": "text",
+       "text": "Up to 60 days ahead",
+       "size": 24
+      },
+      {
+       "type": "choice",
+       "id": "trains",
+       "options": [
+        "Express · 3A · Available 4",
+        "Mail · 3A · WL 12",
+        "Superfast · 3A · WL 40"
+       ],
+       "selected": 1
+      },
+      {
+       "type": "button",
+       "id": "pick",
+       "text": "Book this train"
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.45,
+      "do": "select",
+      "target": "trains"
+     },
+     {
+      "t": 0.8,
+      "do": "tap",
+      "target": "pick"
+     }
+    ],
+    "caption": {
+     "text": "సీట్లు ఉన్నాయా, వెయిటింగ్ లిస్టా",
+     "t": 0.1
+    }
+   },
+   "sfx": [
+    {
+     "type": "click",
+     "at": 0.8,
+     "dur": 0.1,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "బుకింగ్ యాప్‌లో రియా ట్రైన్ల కోసం వెతుకుతుంది. టికెట్లు 60 రోజుల ముందు నుంచే బుక్ చేసుకోవచ్చు.",
+     "tts": "బుకింగ్ యాప్‌లో రియా ట్రైన్ల కోసం వెతుకుతుంది. టికెట్లు అరవై రోజుల ముందు నుంచే బుక్ చేసుకోవచ్చు."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh04",
+   "chapter": "book",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "calm",
+   "seed": 404,
+   "step": "book",
+   "claims": [
+    "c5"
+   ],
+   "label": "స్టెప్ 2 · పేమెంట్, PNR",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Payment"
+      },
+      {
+       "type": "product",
+       "name": "Delhi → Jaipur · 3A",
+       "detail": "1 passenger · Riya",
+       "price": "₹ 1,045",
+       "icon": "card"
+      },
+      {
+       "type": "button",
+       "id": "pay",
+       "text": "Pay now"
+      }
+     ],
+     [
+      {
+       "type": "header",
+       "text": "Booked"
+      },
+      {
+       "type": "notice",
+       "text": "PNR 4521 873 096",
+       "icon": "check"
+      },
+      {
+       "type": "status",
+       "id": "st",
+       "steps": [
+        "Booked",
+        "Status: WL 12",
+        "Chart prepared",
+        "Seat confirmed"
+       ],
+       "current": 1
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.25,
+      "do": "tap",
+      "target": "pay"
+     },
+     {
+      "t": 0.35,
+      "do": "screen",
+      "to": 1
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 1.6,
+     "dur": 0.9,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "డబ్బులు కట్టగానే రియాకి ఒక PNR వస్తుంది. అదే తన బుకింగ్ ID. తన టికెట్ స్టేటస్ WL 12.",
+     "tts": "డబ్బులు కట్టగానే రియాకి ఒక పీ ఎన్ ఆర్ నంబర్ వస్తుంది. అదే తన బుకింగ్ ఐడీ. తన టికెట్ స్టేటస్ డబ్ల్యూ ఎల్ పన్నెండు."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh05",
+   "chapter": "book",
+   "beat": "step",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 405,
+   "step": "status",
+   "claims": [
+    "c2",
+    "c4"
+   ],
+   "label": "మూడు రకాల టికెట్లు",
+   "card": {
+    "lines": [
+     "CNF, RAC లేదా WL?",
+     "CNF: మీ సొంత బెర్త్",
+     "RAC: ప్రయాణం ఓకే, బెర్త్ షేర్",
+     "WL: లైన్‌లో వెయిటింగ్"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "CNF అంటే మీకంటూ ఒక సొంత బెర్త్. RAC అంటే ప్రయాణం చేయొచ్చు, కానీ బెర్త్ ఇంకొకరితో పంచుకోవాల్సి రావొచ్చు. WL అంటే లైన్‌లో వెయిట్ చేస్తున్నారు.",
+     "tts": "సీ ఎన్ ఎఫ్ అంటే మీకంటూ ఒక సొంత బెర్త్. ఆర్ ఏ సీ అంటే ప్రయాణం చేయొచ్చు, కానీ బెర్త్ ఇంకొకరితో పంచుకోవాల్సి రావొచ్చు. డబ్ల్యూ ఎల్ అంటే లైన్‌లో వెయిట్ చేస్తున్నారు."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh06",
+   "chapter": "book",
+   "beat": "aside",
+   "recipe": "card",
+   "mood": "busy",
+   "seed": 406,
+   "step": "status",
+   "claims": [
+    "c6"
+   ],
+   "card": {
+    "icon": "clock",
+    "lines": [
+     "రేపే వెళ్లాలా?",
+     "తత్కాల్: AC ఉదయం 10 గంటలకు",
+     "నాన్-AC ఉదయం 11 గంటలకు"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "రేపే ప్రయాణమా? తత్కాల్ బుకింగ్ ఒక రోజు ముందు ఓపెన్ అవుతుంది. AC కి ఉదయం 10 గంటలకు, నాన్-AC కి 11 గంటలకు.",
+     "tts": "రేపే ప్రయాణమా? తత్కాల్ బుకింగ్ ఒక రోజు ముందు ఓపెన్ అవుతుంది. ఏసీకి ఉదయం పది గంటలకు, నాన్ ఏసీకి పదకొండు గంటలకు."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh07",
+   "chapter": "wait",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "curious",
+   "seed": 407,
+   "step": "moves_up",
+   "claims": [
+    "c2"
+   ],
+   "label": "స్టెప్ 3 · లైన్ ముందుకు కదులుతుంది",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "PNR status"
+      },
+      {
+       "type": "status",
+       "id": "q",
+       "steps": [
+        "WL 12",
+        "WL 5",
+        "RAC 3",
+        "Confirmed"
+       ],
+       "current": 0
+      },
+      {
+       "type": "notice",
+       "text": "Someone cancelled. Your position moved up.",
+       "icon": "clock"
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.2,
+      "do": "status",
+      "target": "q",
+      "from": 0,
+      "to": 1,
+      "dur": 0.2
+     },
+     {
+      "t": 0.6,
+      "do": "status",
+      "target": "q",
+      "from": 1,
+      "to": 2,
+      "dur": 0.2
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.3,
+     "dur": 0.4,
+     "gain_db": -14
+    },
+    {
+     "type": "pop",
+     "at": 3.4,
+     "dur": 0.4,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "సీటు ఉన్నవాళ్లు ఎవరైనా క్యాన్సిల్ చేసిన ప్రతిసారీ, వెయిటింగ్ లిస్ట్ ముందుకు జరగొచ్చు. WL 12, RAC 3 అవుతుంది.",
+     "tts": "సీటు ఉన్నవాళ్లు ఎవరైనా క్యాన్సిల్ చేసిన ప్రతిసారీ, వెయిటింగ్ లిస్ట్ ముందుకు జరగొచ్చు. డబ్ల్యూ ఎల్ పన్నెండు, ఆర్ ఏ సీ మూడు అవుతుంది."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh08",
+   "chapter": "wait",
+   "beat": "turn",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 408,
+   "step": "chart",
+   "claims": [
+    "c3"
+   ],
+   "label": "స్టెప్ 4 · చార్ట్",
+   "card": {
+    "icon": "calendar",
+    "lines": [
+     "ట్రైన్ బయలుదేరే ముందు",
+     "చార్ట్ తయారవుతుంది",
+     "ఎవరికి ఏ బెర్త్"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "ట్రైన్ బయలుదేరే ముందు, రైల్వే రిజర్వేషన్ చార్ట్ తయారు చేస్తుంది. ఎవరికి ఏ బెర్త్ అనేది అందులో ఉంటుంది."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh09",
+   "chapter": "chart",
+   "beat": "resolution",
+   "recipe": "ui",
+   "mood": "joy",
+   "seed": 409,
+   "step": "chart",
+   "claims": [
+    "c3"
+   ],
+   "label": "స్టెప్ 5 · కన్ఫర్మ్",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "PNR status"
+      },
+      {
+       "type": "status",
+       "id": "q",
+       "steps": [
+        "WL 12",
+        "WL 5",
+        "RAC 3",
+        "Confirmed"
+       ],
+       "current": 2
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.12,
+      "do": "status",
+      "target": "q",
+      "from": 2,
+      "to": 3,
+      "dur": 0.2
+     },
+     {
+      "t": 0.4,
+      "do": "notify",
+      "title": "Chart prepared",
+      "body": "Confirmed: coach B3, berth 42.",
+      "icon": "check",
+      "until": 1.0
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 1.6,
+     "dur": 0.9,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "చార్ట్ రెడీ అయింది. రియా టికెట్ కన్ఫర్మ్: కోచ్ B3, బెర్త్ 42.",
+     "tts": "చార్ట్ రెడీ అయింది. రియా టికెట్ కన్ఫర్మ్: కోచ్ బీ త్రీ, బెర్త్ నలభై రెండు."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh10",
+   "chapter": "chart",
+   "beat": "aside",
+   "recipe": "card",
+   "mood": "reflective",
+   "seed": 410,
+   "step": "auto_cancel",
+   "claims": [
+    "c4"
+   ],
+   "card": {
+    "icon": "money",
+    "lines": [
+     "చార్ట్ తర్వాత కూడా WL?",
+     "ఈ-టికెట్ ఆటోమేటిక్‌గా క్యాన్సిల్",
+     "డబ్బులు రీఫండ్, ప్రయాణం లేదు"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "చార్ట్ తర్వాత కూడా ఈ-టికెట్ పూర్తిగా వెయిటింగ్ లిస్ట్‌లోనే ఉంటే, అది ఆటోమేటిక్‌గా క్యాన్సిల్ అయి డబ్బులు రీఫండ్ అవుతాయి. ఆ ప్రయాణికులు ట్రైన్ ఎక్కలేరు.",
+     "tts": "చార్ట్ తర్వాత కూడా ఈ టికెట్ పూర్తిగా వెయిటింగ్ లిస్ట్‌లోనే ఉంటే, అది ఆటోమేటిక్‌గా క్యాన్సిల్ అయి డబ్బులు రీఫండ్ అవుతాయి. ఆ ప్రయాణికులు ట్రైన్ ఎక్కలేరు."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh11",
+   "chapter": "travel",
+   "beat": "step",
+   "mood": "busy",
+   "seed": 411,
+   "location": "platform",
+   "transition": "time_skip",
+   "step": "board",
+   "claims": [
+    "c5"
+   ],
+   "cast": [
+    "riya"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "platform"
+   },
+   "move": "push_in",
+   "label": "స్టెప్ 6 · మీ కోచ్ వెతకండి",
+   "scene": "a busy Indian railway platform in the morning with a blue train coach on the right side",
+   "action": "the young woman walks in from the left side of the frame along the platform towards the blue train coach on the right and stops beside its door",
+   "state": {
+    "location": "platform",
+    "transition": "time_skip",
+    "camera": {
+     "setup": "platform_wide",
+     "axis": "platform_line",
+     "side": "front",
+     "size": "wide",
+     "move": "static"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       -0.04,
+       0.22,
+       0.14,
+       0.98
+      ],
+      "facing": "right"
+     },
+     "coach": {
+      "box": [
+       0.6,
+       0.1,
+       1.0,
+       0.9
+      ]
+     }
+    },
+    "holders": {
+     "phone": "riya"
+    },
+    "events": [
+     {
+      "id": "walk",
+      "type": "enter",
+      "actor": "riya",
+      "target": "coach",
+      "t": [
+       0.05,
+       0.68
+      ],
+      "to_box": [
+       0.42,
+       0.22,
+       0.58,
+       0.98
+      ],
+      "describe": "she walks from left to right along the platform"
+     },
+     {
+      "id": "stop",
+      "type": "stop",
+      "actor": "riya",
+      "t": [
+       0.68,
+       0.76
+      ]
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "కోచ్ B3, బెర్త్ 42",
+      "మీ కోచ్ వెతకండి"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "story": true,
+     "text": "ప్రయాణం రోజున, రియా ప్లాట్‌ఫామ్ మీద కోచ్ B3 కోసం వెతుకుతుంది.",
+     "tts": "ప్రయాణం రోజున, రియా ప్లాట్‌ఫామ్ మీద కోచ్ బీ త్రీ కోసం వెతుకుతుంది."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh12",
+   "chapter": "travel",
+   "beat": "step",
+   "mood": "joy",
+   "seed": 412,
+   "location": "platform",
+   "step": "board",
+   "claims": [
+    "c5"
+   ],
+   "cast": [
+    "riya",
+    "tte"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "platform"
+   },
+   "move": "pull_out",
+   "scene": "a busy Indian railway platform in the morning beside a blue train coach",
+   "action": "the ticket checker on the right looks at the ticket on the young woman's phone and her ID card, then nods and talks with a friendly smile; the young woman stands on the left",
+   "state": {
+    "location": "platform",
+    "camera": {
+     "setup": "platform_medium",
+     "axis": "platform_line",
+     "side": "front",
+     "size": "medium",
+     "move": "static"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       0.08,
+       0.12,
+       0.46,
+       1.0
+      ],
+      "facing": "right"
+     },
+     "tte": {
+      "box": [
+       0.52,
+       0.1,
+       0.88,
+       1.0
+      ],
+      "facing": "left"
+     }
+    },
+    "holders": {
+     "phone": "riya",
+     "id_card": "riya"
+    },
+    "events": [
+     {
+      "id": "check",
+      "type": "look_at",
+      "actor": "tte",
+      "obj": "phone",
+      "target": "riya",
+      "t": [
+       0.15,
+       0.6
+      ],
+      "describe": "the ticket checker looks at the e-ticket on her phone and her ID card"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "ఫోన్‌లో ఈ-టికెట్",
+      "ఒరిజినల్ ఫోటో ID కూడా"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "tte",
+     "tone": "friendly",
+     "text": "ఈ-టికెట్, ఫోటో ID ఉన్నాయా? అంతా సరిగ్గా ఉంది. హ్యాపీ జర్నీ!",
+     "tts": "ఈ టికెట్, ఫోటో ఐడీ ఉన్నాయా? అంతా సరిగ్గా ఉంది. హ్యాపీ జర్నీ!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh13",
+   "chapter": "travel",
+   "beat": "resolution",
+   "mood": "joy",
+   "seed": 413,
+   "location": "train",
+   "transition": "cut",
+   "cast": [
+    "riya"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "train"
+   },
+   "move": "pull_out",
+   "scene": "inside a bright Indian train coach with a window seat and green fields outside",
+   "action": "the young woman sits by the window of the moving train, smiling and looking at the green fields outside",
+   "state": {
+    "location": "train",
+    "transition": "cut",
+    "camera": {
+     "setup": "train_medium",
+     "axis": "train_line",
+     "side": "front",
+     "size": "medium",
+     "move": "pull_out"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       0.3,
+       0.12,
+       0.68,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "seat": {
+      "box": [
+       0.2,
+       0.45,
+       0.8,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "phone": "riya"
+    },
+    "events": [
+     {
+      "id": "smile",
+      "type": "look_at",
+      "actor": "riya",
+      "t": [
+       0.1,
+       0.7
+      ],
+      "critical": false,
+      "describe": "she smiles and looks out of the window"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "బెర్త్ 42, ప్రయాణం మొదలు",
+      "జైపూర్‌కి"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "riya",
+     "tone": "happy",
+     "text": "బెర్త్ 42. జైపూర్, ఇదిగో వచ్చేస్తున్నా!",
+     "tts": "బెర్త్ నలభై రెండు. జైపూర్, ఇదిగో వచ్చేస్తున్నా!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh14",
+   "chapter": "travel",
+   "beat": "payoff",
+   "recipe": "card",
+   "mood": "reflective",
+   "seed": 414,
+   "claims": [
+    "c2",
+    "c3"
+   ],
+   "card": {
+    "icon": "check",
+    "lines": [
+     "WL అంటే 'నో' కాదు",
+     "అది లైన్‌లో మీ ప్లేస్",
+     "చార్ట్ నిర్ణయిస్తుంది"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "కాబట్టి, వెయిటింగ్ లిస్ట్ టికెట్ అంటే 'నో' కాదు. అది లైన్‌లో మీ ప్లేస్. చివరికి చార్ట్ నిర్ణయిస్తుంది."
+    }
+   ]
+  }
+ ],
+ "metadata": {
+  "title": "రైలు టికెట్ బుక్ చేస్తే ఏం జరుగుతుంది? WL, RAC, చార్ట్ — సింపుల్‌గా తెలుగులో",
+  "summary": "ట్రైన్ టికెట్ బుక్ చేశారు, కానీ WL 12 అని ఉంది. సీటు దొరుకుతుందా? రియా ఢిల్లీ నుంచి జైపూర్ టికెట్‌తో మొత్తం ప్రయాణం చూద్దాం: ట్రైన్ వెతకడం, పేమెంట్, PNR, CNF / RAC / WL అంటే ఏమిటి, వెయిటింగ్ లిస్ట్ ఎలా ముందుకు కదులుతుంది, రిజర్వేషన్ చార్ట్, వెయిటింగ్ లిస్ట్ ఈ-టికెట్లకు ఏమవుతుంది, ఈ-టికెట్ మరియు ఫోటో ID తో ట్రైన్ ఎక్కడం.",
+  "disclaimer": "ఇది ఇండియన్ రైల్వేస్ రిజర్వేషన్ల గురించి సులభమైన వివరణ మాత్రమే; అక్టోబర్ 2026 లో పబ్లిక్ నియమాలు, వార్తల ఆధారంగా చెక్ చేశాం. బుకింగ్ విండో, చార్ట్ సమయం, తత్కాల్ నియమాలు తరచూ మారుతాయి: ప్రస్తుత నియమాల కోసం IRCTC చూడండి. IRCTC లేదా ఇండియన్ రైల్వేస్‌తో ఎలాంటి సంబంధం లేదు. పాత్రలు, ఛార్జీలు కల్పితం. (Simplified explainer; not affiliated with IRCTC or Indian Railways.)",
+  "category": "Education",
+  "audience": "Not made for kids",
+  "tags": [
+   "రైలు టికెట్",
+   "IRCTC తెలుగు",
+   "వెయిటింగ్ లిస్ట్",
+   "RAC అంటే ఏమిటి",
+   "PNR స్టేటస్",
+   "చార్ట్ ప్రిపరేషన్",
+   "train ticket booking telugu",
+   "indian railways telugu"
+  ],
+  "language": "te"
+ },
+ "language": "te"
+}

@@ -1,0 +1,811 @@
+{
+ "title": "3D movie లో popcorn మన మీదకి ఎందుకు వస్తుంది?",
+ "topic": "Why do 3D movies look real? (Telugu–English)",
+ "language": "te",
+ "code_mix": "natural",
+ "logline": "3D movieలో popcorn మీదకొస్తుందని Arjun తల వంచేస్తాడు. Meera చెప్పిన ఒక్క-కన్ను testతో అసలు magic అతని brainలో ఉందని తెలుస్తుంది.",
+ "vocabulary": [
+  "3D",
+  "popcorn",
+  "అర్జున్",
+  "మీరా"
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereopsis",
+   "title": "Stereopsis",
+   "revid": 1377837508
+  },
+  {
+   "id": "F2",
+   "text": "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereoscopy",
+   "title": "Stereoscopy",
+   "revid": 1380706327
+  },
+  {
+   "id": "F3",
+   "text": "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F4",
+   "text": "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F7",
+   "text": "Monocular cues provide depth information even when viewing a scene with only one eye. Monocular cues include relative size (distant objects subtend smaller visual angles than near objects), texture gradient, occlusion, linear perspective, contrast differences, and motion parallax.",
+   "source_url": "https://en.wikipedia.org/wiki/Depth_perception",
+   "title": "Depth perception",
+   "revid": 1380662591
+  }
+ ],
+ "scenes": [
+  {
+   "id": "sc01",
+   "beat": "observation",
+   "world": "cinema_seats",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.15,
+     "dur": 0.9,
+     "gain_db": -16
+    },
+    {
+     "type": "rustle",
+     "at": 1.3,
+     "dur": 1.2,
+     "gain_db": -18
+    }
+   ],
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "అబ్బా! ఆ popcorn నిజంగానే నా మీద పడుతుందనుకున్నా!",
+     "kind": "observation",
+     "tone": "awe",
+     "intent": "playful_disbelief",
+     "expr": "surprised",
+     "gesture": "duck"
+    },
+    {
+     "speaker": "meera",
+     "text": "అంత scene లేదు రా. Screenలో popcorn అక్కడే ఉంది, నీ చేతిలోది మాత్రం కింద పడింది.",
+     "kind": "reaction",
+     "tone": "happy",
+     "intent": "playful_remark",
+     "expr": "smile"
+    },
+    {
+     "speaker": "arjun",
+     "text": "Seriously, అంత realగా ఎలా వచ్చింది? ఈ glassesలో చిన్న screens ఉన్నాయా?",
+     "kind": "question",
+     "tone": "curious",
+     "intent": "genuine_curiosity",
+     "expr": "confused"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "establishing",
+     "turn": 0,
+     "at": 0.0,
+     "world": "cinema_screen",
+     "screen": "clean+popcorn",
+     "description": "a popcorn bucket bursts out of the 3D screen toward the audience",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.35,
+     "subject": "arjun",
+     "screen": "clean+popcorn",
+     "description": "Arjun ducks behind his arms, his popcorn flies",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "hold": "popcorn"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v3",
+     "intent": "reaction",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "meera",
+     "screen": "clean+popcorn",
+     "description": "Meera, amused, looks at the spilled popcorn",
+     "chars": {
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "expr": "smile"
+      },
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v4",
+     "intent": "two_friend",
+     "turn": 2,
+     "at": 0.0,
+     "screen": "clean+popcorn",
+     "description": "Arjun lifts his glasses and peers at the lenses",
+     "chars": {
+      "arjun": {
+       "hold": "3d_glasses",
+       "expr": "confused"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc02",
+   "beat": "question",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "అది తర్వాత. ముందు ఒక చిన్న test చేద్దాం. ఒక్క కన్ను మూసి screen చూడు.",
+     "kind": "instruction",
+     "tone": "friendly",
+     "intent": "guiding_demo",
+     "expr": "smile"
+    },
+    {
+     "speaker": "arjun",
+     "text": "అరే! ఇప్పుడు 3D effect తగ్గిపోయింది. Popcorn screen దగ్గరే ఆగిపోయింది.",
+     "kind": "observation",
+     "tone": "awe",
+     "intent": "enthusiastic_discovery",
+     "expr": "wink"
+    },
+    {
+     "speaker": "meera",
+     "text": "కానీ పూర్తిగా flat అవ్వలేదు కదా? Size లాంటి clues వల్ల ఒక్క కన్నుకి కూడా కొంచెం depth తెలుస్తుంది.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "explaining_observation",
+     "fact_ids": [
+      "F7"
+     ],
+     "source_text": "Cues like relative size provide depth information even when viewing with only one eye."
+    },
+    {
+     "speaker": "arjun",
+     "text": "అవును, కొంచెం ఉంది. మరి రెండు కళ్లతో చూస్తే అంత ఎక్కువ ఎందుకు?",
+     "kind": "question",
+     "tone": "curious",
+     "intent": "genuine_curiosity",
+     "expr": "curious"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "screen": "clean+popcorn",
+     "description": "Meera proposes the one-eye test",
+     "chars": {
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "closeup",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "arjun",
+     "screen": "plain+popcorn",
+     "description": "Arjun, glasses on, shuts one eye",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "expr": "wink"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v3",
+     "intent": "cutaway",
+     "turn": 1,
+     "at": 0.45,
+     "world": "cinema_screen",
+     "shot": "establishing",
+     "screen": "plain+popcorn",
+     "description": "through one eye the popcorn stays on the screen: no pop-out",
+     "chars": {
+      "arjun": {},
+      "meera": {}
+     }
+    },
+    {
+     "id": "v4",
+     "intent": "two_friend",
+     "turn": 2,
+     "at": 0.0,
+     "screen": "plain+popcorn",
+     "description": "Meera points out the depth that is left",
+     "chars": {
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "expr": "wink"
+      }
+     },
+     "lines": [
+      "Size → depth"
+     ]
+    },
+    {
+     "id": "v5",
+     "intent": "reaction",
+     "turn": 3,
+     "at": 0.0,
+     "subject": "arjun",
+     "screen": "clean+popcorn",
+     "description": "Arjun opens both eyes again",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "expr": "curious"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc03",
+   "beat": "demonstration",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "నీ రెండు కళ్లూ కొంచెం వేరే వేరే angles నుంచి చూస్తాయి. అందుకే ఒక్కో కంటికి slightly different view వస్తుంది.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "explaining_observation",
+     "fact_ids": [
+      "F1"
+     ],
+     "source_text": "Your two eyes look from different but similar directions, so they see different images."
+    },
+    {
+     "speaker": "arjun",
+     "text": "అయితే ఒక కన్ను మూస్తే, ఒక view miss అయిపోతుంది కదా!",
+     "kind": "prediction",
+     "tone": "curious",
+     "intent": "thinking_aloud",
+     "expr": "thinking"
+    },
+    {
+     "speaker": "meera",
+     "text": "Exactly. Brain ఆ రెండు viewsని కలిపి ఒకే బొమ్మ చేస్తుంది. అప్పుడే ఆ 3D depth వస్తుంది.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "satisfying_revelation",
+     "fact_ids": [
+      "F2"
+     ],
+     "source_text": "Exactly. The brain combines the two views into a single picture, and that gives the perception of 3D depth."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "meera",
+     "screen": "clean+popcorn",
+     "description": "Meera starts to explain",
+     "chars": {
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "animated_illustration",
+     "turn": 0,
+     "at": 0.3,
+     "template": "eye_views",
+     "description": "two eyes see the popcorn from two angles; the two slightly different views side by side, then combined into one with depth"
+    },
+    {
+     "id": "v3",
+     "intent": "reaction",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "arjun",
+     "screen": "clean+popcorn",
+     "description": "Arjun works it out",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "expr": "thinking"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc04",
+   "beat": "correction",
+   "world": "lobby",
+   "transition": "time_skip",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "కానీ రెండూ ఒకే screen మీద ఉంటే, ఏది ఏ కంటికో ఎలా తెలుస్తుంది?",
+     "kind": "question",
+     "tone": "curious",
+     "intent": "genuine_curiosity",
+     "expr": "curious"
+    },
+    {
+     "speaker": "meera",
+     "text": "Projector రెండు picturesనీ ఒకే screen మీద వేస్తుంది, ఒక్కోదాన్ని వేరే filterతో.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "sharing_surprising_fact",
+     "fact_ids": [
+      "F3"
+     ],
+     "source_text": "The projector puts both pictures on the same screen, each through a different filter."
+    },
+    {
+     "speaker": "arjun",
+     "text": "ఆగు ఆగు... అయితే ఈ glassesలో కూడా filters ఉన్నాయా?",
+     "kind": "prediction",
+     "tone": "awe",
+     "intent": "asking_confirmation",
+     "expr": "surprised",
+     "gesture": "point"
+    },
+    {
+     "speaker": "meera",
+     "text": "Correct! ఒక్కో lensలో వేరే polarizing filter ఉంటుంది. అందుకే ఒక్కో కన్ను తన బొమ్మనే చూస్తుంది.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "reflective_explanation",
+     "fact_ids": [
+      "F4"
+     ],
+     "source_text": "Correct. The left and right lenses have different polarizing filters, so each eye sees only its own picture."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "description": "after the show in the lobby, Arjun still turns the glasses in his hand",
+     "chars": {
+      "arjun": {
+       "hold": "3d_glasses",
+       "expr": "curious"
+      },
+      "meera": {}
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "animated_illustration",
+     "turn": 1,
+     "at": 0.2,
+     "template": "projector_glasses",
+     "description": "projector, silver screen, two pictures with different filters; each lens passes only its own picture"
+    },
+    {
+     "id": "v3",
+     "intent": "reaction",
+     "turn": 2,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun points at the lenses",
+     "chars": {
+      "arjun": {
+       "hold": "3d_glasses",
+       "expr": "surprised"
+      },
+      "meera": {}
+     }
+    },
+    {
+     "id": "v4",
+     "intent": "closeup",
+     "turn": 3,
+     "at": 0.0,
+     "subject": "meera",
+     "description": "Meera taps the left and right lens",
+     "chars": {
+      "meera": {
+       "hold": "3d_glasses"
+      },
+      "arjun": {}
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc05",
+   "beat": "reveal",
+   "world": "lobby",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 0.25,
+     "dur": 0.25,
+     "gain_db": -20
+    }
+   ],
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "ఓహో! అంటే popcorn కన్నా నా brain ఎక్కువ drama చేసిందన్నమాట!",
+     "kind": "observation",
+     "tone": "happy",
+     "intent": "quiet_realization",
+     "expr": "happy"
+    },
+    {
+     "speaker": "meera",
+     "text": "అదే మరి! ఈ రోజు హీరో కన్నా నువ్వే ఎక్కువ నటించావ్.",
+     "kind": "reaction",
+     "tone": "happy",
+     "intent": "playful_remark",
+     "expr": "happy"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun gets it, grinning",
+     "chars": {
+      "arjun": {
+       "expr": "happy"
+      },
+      "meera": {}
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "two_friend",
+     "turn": 1,
+     "at": 0.0,
+     "description": "Meera laughs, Arjun shrugs",
+     "chars": {
+      "meera": {
+       "expr": "happy"
+      },
+      "arjun": {
+       "expr": "smile"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc06",
+   "beat": "closing",
+   "world": "cinema_seats",
+   "transition": "time_skip",
+   "sfx": [
+    {
+     "type": "rustle",
+     "at": 0.2,
+     "dur": 1.0,
+     "gain_db": -20
+    }
+   ],
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "ఈసారి popcornని రెండు చేతులతో పట్టుకుంటా.",
+     "kind": "reaction",
+     "tone": "friendly",
+     "intent": "playful_remark",
+     "expr": "smile"
+    },
+    {
+     "speaker": "meera",
+     "text": "లేదంటే ఒక్క కన్ను మూసుకో, అది నీ దాకా రాదు.",
+     "kind": "reaction",
+     "tone": "happy",
+     "intent": "playful_remark",
+     "expr": "wink"
+    },
+    {
+     "speaker": "arjun",
+     "text": "అమ్మో, వద్దు! Popcorn పోయినా పర్లేదు, 3D effect మాత్రం miss అవ్వను.",
+     "kind": "reaction",
+     "tone": "happy",
+     "intent": "playful_remark",
+     "expr": "happy"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "screen": "clean+popcorn",
+     "description": "the next show: Arjun hugs a fresh popcorn bucket",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "hold": "popcorn"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "reaction",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "meera",
+     "screen": "clean+popcorn",
+     "description": "Meera winks: close one eye",
+     "chars": {
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "expr": "wink"
+      },
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "hold": "popcorn"
+      }
+     }
+    },
+    {
+     "id": "v3",
+     "intent": "establishing",
+     "turn": 2,
+     "at": 0.0,
+     "world": "cinema_screen",
+     "screen": "clean+popcorn",
+     "description": "the popcorn flies out again",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v4",
+     "intent": "reaction",
+     "turn": 2,
+     "at": 0.45,
+     "subject": "arjun",
+     "screen": "clean+popcorn",
+     "description": "Arjun ducks again, both eyes wide open, grinning",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "hold": "popcorn",
+       "expr": "happy",
+       "gesture": "duck"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "tts_backend": "indic_parler",
+ "glossary": {
+  "eyes": [
+   "కళ్లు",
+   "కళ్లూ",
+   "కన్ను",
+   "కంటి",
+   "eyes"
+  ],
+  "eye": [
+   "కన్ను",
+   "కంటి",
+   "eye"
+  ],
+  "different": [
+   "వేరే",
+   "different"
+  ],
+  "view": [
+   "view",
+   "బొమ్మ"
+  ],
+  "views": [
+   "view",
+   "బొమ్మ"
+  ],
+  "picture": [
+   "picture",
+   "బొమ్మ"
+  ],
+  "pictures": [
+   "picture",
+   "బొమ్మ"
+  ],
+  "brain": [
+   "brain",
+   "మెదడు"
+  ],
+  "combines": [
+   "కలిపి",
+   "combine"
+  ],
+  "depth": [
+   "depth",
+   "లోతు"
+  ],
+  "projector": [
+   "projector",
+   "Projector",
+   "ప్రొజెక్టర్"
+  ],
+  "screen": [
+   "screen",
+   "స్క్రీన్",
+   "తెర"
+  ],
+  "filter": [
+   "filter",
+   "ఫిల్టర్"
+  ],
+  "filters": [
+   "filter",
+   "ఫిల్టర్"
+  ],
+  "polarizing": [
+   "polarizing",
+   "పోలరైజింగ్"
+  ],
+  "lenses": [
+   "lens",
+   "అద్దం",
+   "లెన్స్"
+  ],
+  "size": [
+   "size",
+   "Size",
+   "పరిమాణం"
+  ],
+  "one eye": [
+   "ఒక్క కన్ను",
+   "ఒక కన్ను",
+   "one eye"
+  ],
+  "flat": [
+   "flat",
+   "చదును"
+  ],
+  "image": [
+   "view",
+   "బొమ్మ"
+  ]
+ },
+ "strict_open_source": true,
+ "voice_policy": {
+  "asr_retake_at": 0.6,
+  "gemini_asr_repairs": false,
+  "speech_compare": "bilingual"
+ }
+}

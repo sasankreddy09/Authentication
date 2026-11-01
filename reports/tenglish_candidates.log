@@ -1,0 +1,12 @@
+2026-10-19 23:54:56,893 INFO A (light): scores {'naturalness': 0, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 0, 'science': 1.0}, required 0, natural-mode required 0
+2026-10-19 23:54:56,914 INFO B (natural): scores {'naturalness': 5, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 5, 'science': 5}, required 0, natural-mode required 0
+2026-10-19 23:54:56,937 INFO C (casual): scores {'naturalness': 0, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 0, 'science': 3.0}, required 4, natural-mode required 4
+2026-10-19 23:55:27,018 INFO A (light): scores {'naturalness': 5, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 5, 'science': 4.0}, required 0, natural-mode required 0
+2026-10-19 23:55:27,039 INFO B (natural): scores {'naturalness': 5, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 5, 'science': 5}, required 0, natural-mode required 0
+2026-10-19 23:55:27,062 INFO C (casual): scores {'naturalness': 1.0, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 0, 'science': 3.0}, required 3, natural-mode required 3
+2026-10-19 23:55:40,225 INFO A (light): scores {'naturalness': 5, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 5, 'science': 4.0}, required 0, natural-mode required 0
+2026-10-19 23:55:40,246 INFO B (natural): scores {'naturalness': 5, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 5, 'science': 5}, required 0, natural-mode required 0
+2026-10-19 23:55:40,270 INFO C (casual): scores {'naturalness': 1.0, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 0, 'science': 4.0}, required 3, natural-mode required 3
+2026-10-20 00:14:38,184 INFO A (light): scores {'naturalness': 5, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 5, 'science': 4.0}, required 0, natural-mode required 0
+2026-10-20 00:14:38,209 INFO B (natural): scores {'naturalness': 5, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 5, 'science': 5}, required 0, natural-mode required 0
+2026-10-20 00:14:38,234 INFO C (casual): scores {'naturalness': 1.0, 'clarity': 5, 'personality': 5, 'humour': 5, 'code_mixing': 0, 'science': 4.0}, required 3, natural-mode required 3

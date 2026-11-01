@@ -1,0 +1,1669 @@
+{
+ "plan_version": 4,
+ "project": "amazon_refund_v1",
+ "title": "What Really Happens When You Request a Refund on Amazon?",
+ "notebook": {
+  "emoji": "📦",
+  "name": "AI Explainer Maker",
+  "length": "about 1.5–2 min"
+ },
+ "real_company": "Amazon",
+ "logline": "Maya returns faulty earbuds. Amazon says 'refund issued', but her bank shows nothing. We follow her refund from the Return button to her bank account, and learn why 'issued' doesn't mean 'arrived'.",
+ "region_note": "Story set in the US (Amazon.com help pages). Options and timelines differ by country, seller, item and payment method; the video says so.",
+ "style": {
+  "suffix": "3D animated explainer film style, clean stylized characters with consistent design, warm natural lighting, soft colors, modern American city, smooth natural animation",
+  "negative": "text, letters, words, logo, brand name, watermark, subtitles, photorealistic, deformed hands, extra fingers, extra limbs, extra heads, distorted face, blurry, low quality, frozen, flickering, character disappearing"
+ },
+ "look": {
+  "bg_top": "#112240",
+  "bg_bottom": "#1C405C",
+  "accent": "#19C3A6",
+  "accent2": "#FF6B6B",
+  "gold": "#FFC43D"
+ },
+ "characters": {
+  "narrator": {
+   "name": "Narrator",
+   "voice": "af_heart",
+   "speed": 1.0,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#FFFFFF",
+   "look": null
+  },
+  "maya": {
+   "name": "Maya",
+   "voice": "af_jessica",
+   "speed": 1.02,
+   "pitch": 0.3,
+   "fx": "none",
+   "color": "#FFD166",
+   "look": "a young woman with curly dark hair in a ponytail wearing a teal hoodie",
+   "tag": "a young woman in a teal hoodie"
+  },
+  "clerk": {
+   "name": "Clerk",
+   "voice": "am_eric",
+   "speed": 1.04,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#9FD3FF",
+   "look": "a friendly store clerk with short grey hair wearing a plain navy polo shirt",
+   "tag": "a store clerk in a navy shirt"
+  },
+  "worker": {
+   "name": "Worker",
+   "voice": "am_adam",
+   "speed": 1.0,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#C3B1E1",
+   "look": "a returns center worker wearing a plain grey work shirt and blue gloves",
+   "tag": "a worker in a grey shirt"
+  }
+ },
+ "props": {
+  "earbuds": {
+   "look": "small white wireless earbuds in a white charging case",
+   "tag": "white wireless earbuds",
+   "path": [
+    "home",
+    "store",
+    "returns_center"
+   ]
+  }
+ },
+ "entities": {
+  "earbuds": [
+   "earbud",
+   "earbuds"
+  ],
+  "bank": [
+   "bank",
+   "bank app",
+   "banking app"
+  ],
+  "card network": [
+   "card network"
+  ],
+  "credit card": [
+   "credit card"
+  ],
+  "debit card": [
+   "debit card"
+  ],
+  "drop-off": [
+   "drop it off",
+   "drops it off",
+   "drop-off",
+   "return location",
+   "counter"
+  ]
+ },
+ "glossary": {
+  "card network": "the road between banks that card payments travel on (like Visa or Mastercard)"
+ },
+ "travel": {
+  "home": [
+   "store"
+  ],
+  "store": [
+   "home"
+  ],
+  "returns_center": [
+   "home"
+  ]
+ },
+ "vocabulary": [
+  "Amazon",
+  "Maya",
+  "earbuds",
+  "Your Orders",
+  "Return Items"
+ ],
+ "process": [
+  {
+   "id": "request",
+   "text": "The customer starts a return in Your Orders"
+  },
+  {
+   "id": "eligibility",
+   "text": "The return window and item eligibility apply"
+  },
+  {
+   "id": "return_or_not",
+   "text": "Some items are refunded without being sent back",
+   "conditional": true,
+   "condition": "only some items / third-party sellers offer a refund without a return"
+  },
+  {
+   "id": "dropoff",
+   "text": "The item is dropped off or picked up",
+   "conditional": true,
+   "condition": "only if the item must be returned"
+  },
+  {
+   "id": "early_refund",
+   "text": "Some refunds start when the carrier first scans the return",
+   "conditional": true,
+   "condition": "only for returns eligible for an advanced refund"
+  },
+  {
+   "id": "inspect",
+   "text": "Returned items are inspected against the expected item",
+   "conditional": true,
+   "condition": "only when an item is sent back"
+  },
+  {
+   "id": "issued",
+   "text": "The refund is issued to the original payment method"
+  },
+  {
+   "id": "travel",
+   "text": "A card refund travels back through the card network to the bank that issued the card"
+  },
+  {
+   "id": "bank_posts",
+   "text": "The bank posts the refund, on business days"
+  },
+  {
+   "id": "arrives",
+   "text": "The customer sees the refund in their account"
+  }
+ ],
+ "claims": [
+  {
+   "id": "c1",
+   "text": "Most items can be returned within 30 days of delivery; to start a return, go to Your Orders and click Return Items.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7"
+   ]
+  },
+  {
+   "id": "c2",
+   "text": "A refund is provided once Amazon (or the third-party seller) has received the item and determined you are eligible.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7"
+   ]
+  },
+  {
+   "id": "c3",
+   "text": "Third-party sellers who ship their own items may offer a full refund without requesting the item be returned.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7"
+   ]
+  },
+  {
+   "id": "c4",
+   "text": "Advanced refunds are issued when a carrier first scans your return, rather than when it is received and processed.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKQNFKFK5CF3C54B"
+   ]
+  },
+  {
+   "id": "c5",
+   "text": "All returns are inspected against the expected item; refunds are reduced for signs of use, damage or missing parts.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKQNFKFK5CF3C54B"
+   ]
+  },
+  {
+   "id": "c6",
+   "text": "Refund processing times: credit card 3-5 business days; debit card up to 10 business days; Amazon gift card 2-3 hours.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKQNFKFK5CF3C54B"
+   ]
+  },
+  {
+   "id": "c7",
+   "text": "Once Amazon issues your refund, it may take additional time for your financial institution to make funds available.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7"
+   ]
+  },
+  {
+   "id": "c8",
+   "text": "Card refunds are submitted to the customer's bank or card issuer and appear as a credit some business days later, depending on the bank (payment-industry documentation).",
+   "sources": [
+    "https://docs.stripe.com/refunds"
+   ]
+  },
+  {
+   "id": "c9",
+   "text": "Most returns can be dropped off for free at many locations, and most returns do not need to be boxed or labeled.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7"
+   ]
+  },
+  {
+   "id": "c10",
+   "text": "Refunds go to the refund method selected; if the original payment method can't be used, refunds go to the Amazon account balance.",
+   "sources": [
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GKQNFKFK5CF3C54B",
+    "https://www.amazon.com/gp/help/customer/display.html?nodeId=GMP8PC8KBY5FCPM2"
+   ]
+  }
+ ],
+ "tones": {
+  "explainer": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.45
+  },
+  "curious": {
+   "speed": 0.96,
+   "pitch": 0.2,
+   "gain_db": 0.0,
+   "pause_after": 0.55
+  },
+  "warm": {
+   "speed": 0.95,
+   "pitch": 0.0,
+   "gain_db": -0.5,
+   "pause_after": 0.6
+  },
+  "puzzled": {
+   "speed": 0.97,
+   "pitch": 0.4,
+   "gain_db": -0.5,
+   "pause_after": 0.6
+  },
+  "happy": {
+   "speed": 1.05,
+   "pitch": 0.6,
+   "gain_db": 1.0,
+   "pause_after": 0.4
+  },
+  "friendly": {
+   "speed": 1.03,
+   "pitch": 0.2,
+   "gain_db": 0.5,
+   "pause_after": 0.4
+  }
+ },
+ "moods": {
+  "curious": {
+   "pause_after": 0.55,
+   "grade": "cool",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.1,
+    "shimmer": 0.4
+   }
+  },
+  "calm": {
+   "pause_after": 0.5,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.4,
+    "curious": 0.8,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "busy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.2,
+    "shimmer": 0.1
+   }
+  },
+  "joy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.07,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  },
+  "reflective": {
+   "pause_after": 0.6,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  }
+ },
+ "music": {
+  "cues": [
+   {
+    "from": "sh01",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh03",
+    "track": "Easy Lemon"
+   },
+   {
+    "from": "sh11",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh13",
+    "track": "Wallpaper"
+   },
+   {
+    "from": "sh15",
+    "track": "Carefree"
+   }
+  ]
+ },
+ "shots": [
+  {
+   "shot_id": "sh01",
+   "chapter": "hook",
+   "beat": "hook",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 301,
+   "card": {
+    "icon": "question",
+    "lines": [
+     "Refund issued.",
+     "Bank account: nothing.",
+     "So where is the money?"
+    ],
+    "bullets": true
+   },
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 0.6,
+     "dur": 0.4,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "curious",
+     "story": true,
+     "text": "Amazon says your refund is issued. Your bank says nothing. So where is the money?"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh02",
+   "chapter": "hook",
+   "beat": "setup",
+   "mood": "curious",
+   "seed": 302,
+   "location": "home",
+   "cast": [
+    "maya"
+   ],
+   "props": [
+    "earbuds"
+   ],
+   "prop_state": {
+    "earbuds": "home"
+   },
+   "move": "push_in",
+   "scene": "a cozy apartment kitchen in the morning with a wooden table and a window",
+   "action": "the young woman sits at the table, holds one small white earbud to her left ear, frowns and shakes her head",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "Meet Maya. Her new earbuds arrived, but the left earbud makes no sound."
+    }
+   ],
+   "state": {
+    "location": "home",
+    "camera": {
+     "setup": "kitchen_medium",
+     "axis": "kitchen_line",
+     "side": "front",
+     "size": "medium",
+     "move": "push_in"
+    },
+    "start": {
+     "maya": {
+      "box": [
+       0.33,
+       0.12,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "kitchen_table": {
+      "box": [
+       0.1,
+       0.68,
+       0.95,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "earbuds": "maya",
+     "phone": "maya"
+    },
+    "events": [
+     {
+      "id": "listen",
+      "type": "gesture",
+      "actor": "maya",
+      "t": [
+       0.1,
+       0.7
+      ],
+      "critical": false,
+      "describe": "she holds one earbud to her left ear and frowns"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "question",
+     "lines": [
+      "Left earbud: no sound",
+      "Time to return it"
+     ]
+    }
+   }
+  },
+  {
+   "shot_id": "sh03",
+   "chapter": "request",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "calm",
+   "seed": 303,
+   "step": "request",
+   "claims": [
+    "c1"
+   ],
+   "label": "Step 1 · Ask for a return",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Your Orders"
+      },
+      {
+       "type": "product",
+       "name": "Wireless earbuds",
+       "detail": "Delivered Monday",
+       "price": "$59.99",
+       "icon": "box"
+      },
+      {
+       "type": "text",
+       "text": "Why are you returning this?",
+       "bold": true,
+       "size": 28
+      },
+      {
+       "type": "choice",
+       "id": "why",
+       "options": [
+        "Left earbud has no sound",
+        "No longer needed",
+        "Arrived late"
+       ],
+       "selected": 0
+      },
+      {
+       "type": "button",
+       "id": "go",
+       "text": "Return items"
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.35,
+      "do": "select",
+      "target": "why"
+     },
+     {
+      "t": 0.7,
+      "do": "tap",
+      "target": "go"
+     }
+    ],
+    "caption": {
+     "text": "Start in Your Orders",
+     "t": 0.1
+    }
+   },
+   "sfx": [
+    {
+     "type": "click",
+     "at": 1.0,
+     "dur": 0.1,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "She opens Your Orders on Amazon, picks a reason, and taps Return Items."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh04",
+   "chapter": "request",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "calm",
+   "seed": 304,
+   "step": "eligibility",
+   "claims": [
+    "c1"
+   ],
+   "label": "Step 2 · Can it come back?",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Return details"
+      },
+      {
+       "type": "product",
+       "name": "Wireless earbuds",
+       "detail": "Return reason: no sound",
+       "price": "$59.99",
+       "icon": "box"
+      },
+      {
+       "type": "notice",
+       "id": "win",
+       "text": "Eligible: returns accepted within 30 days of delivery.",
+       "icon": "check"
+      },
+      {
+       "type": "text",
+       "text": "How will you send it back?",
+       "bold": true,
+       "size": 28
+      },
+      {
+       "type": "choice",
+       "id": "how",
+       "options": [
+        "Drop off: no box needed",
+        "Carrier pickup"
+       ],
+       "selected": 0
+      },
+      {
+       "type": "button",
+       "id": "ok",
+       "text": "Confirm return"
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.45,
+      "do": "select",
+      "target": "how"
+     },
+     {
+      "t": 0.8,
+      "do": "tap",
+      "target": "ok"
+     }
+    ],
+    "caption": {
+     "text": "Most items: 30 days",
+     "t": 0.12
+    }
+   },
+   "sfx": [
+    {
+     "type": "click",
+     "at": 0.8,
+     "dur": 0.1,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Most items can be returned within 30 days of delivery. Her earbuds qualify."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh05",
+   "chapter": "request",
+   "beat": "step",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 305,
+   "step": "return_or_not",
+   "claims": [
+    "c3"
+   ],
+   "label": "Not every refund needs a return",
+   "card": {
+    "lines": [
+     "Send it back?",
+     "Most items: yes",
+     "Some sellers: refund, no return",
+     "Maya's earbuds: going back"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Some sellers even refund you without asking for the item back. Maya's earbuds do go back."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh06",
+   "chapter": "request",
+   "beat": "step",
+   "mood": "busy",
+   "seed": 306,
+   "location": "store",
+   "transition": "time_skip",
+   "step": "dropoff",
+   "claims": [
+    "c9"
+   ],
+   "cast": [
+    "maya"
+   ],
+   "props": [
+    "earbuds"
+   ],
+   "prop_state": {
+    "earbuds": "store"
+   },
+   "label": "Step 3 · Drop it off",
+   "move": "push_in",
+   "scene": "a bright shop return counter with shelves in the background",
+   "action": "the young woman walks in from the left side of the frame towards the return counter on the right, holding a small white earbuds case, and stops in front of the counter",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "If a return is needed, she drops it off."
+    }
+   ],
+   "state": {
+    "location": "store",
+    "camera": {
+     "setup": "store_wide",
+     "axis": "store_line",
+     "side": "front",
+     "size": "wide",
+     "move": "static"
+    },
+    "start": {
+     "maya": {
+      "box": [
+       -0.04,
+       0.22,
+       0.14,
+       0.98
+      ],
+      "facing": "right"
+     },
+     "counter": {
+      "box": [
+       0.62,
+       0.45,
+       1.0,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "earbuds": "maya",
+     "phone": "maya"
+    },
+    "events": [
+     {
+      "id": "walk",
+      "type": "enter",
+      "actor": "maya",
+      "target": "counter",
+      "t": [
+       0.05,
+       0.68
+      ],
+      "to_box": [
+       0.42,
+       0.22,
+       0.6,
+       0.98
+      ],
+      "describe": "she walks from left to right"
+     },
+     {
+      "id": "stop",
+      "type": "stop",
+      "actor": "maya",
+      "t": [
+       0.68,
+       0.76
+      ]
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "box",
+     "lines": [
+      "Drop it off",
+      "At a return location"
+     ]
+    }
+   }
+  },
+  {
+   "shot_id": "sh06b",
+   "chapter": "request",
+   "beat": "step",
+   "mood": "busy",
+   "seed": 356,
+   "location": "store",
+   "transition": "time_skip",
+   "step": "dropoff",
+   "claims": [
+    "c9"
+   ],
+   "cast": [
+    "maya"
+   ],
+   "props": [
+    "earbuds"
+   ],
+   "prop_state": {
+    "earbuds": "store"
+   },
+   "move": "pull_out",
+   "scene": "a bright shop return counter with shelves in the background",
+   "action": "the young woman, standing at the counter, puts the small white earbuds case down on the counter",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Many returns need no box or label."
+    }
+   ],
+   "state": {
+    "location": "store",
+    "camera": {
+     "setup": "store_medium",
+     "axis": "store_line",
+     "side": "front",
+     "size": "medium",
+     "move": "static"
+    },
+    "start": {
+     "maya": {
+      "box": [
+       0.14,
+       0.12,
+       0.5,
+       1.0
+      ],
+      "facing": "right"
+     },
+     "counter": {
+      "box": [
+       0.55,
+       0.5,
+       1.0,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "earbuds": "maya",
+     "phone": "maya"
+    },
+    "events": [
+     {
+      "id": "place",
+      "type": "place",
+      "actor": "maya",
+      "obj": "earbuds",
+      "target": "counter",
+      "t": [
+       0.15,
+       0.6
+      ],
+      "to_box": [
+       0.62,
+       0.42,
+       0.72,
+       0.5
+      ],
+      "describe": "she places the case on the counter and lets go"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "No box or label needed",
+      "For many returns"
+     ]
+    }
+   }
+  },
+  {
+   "shot_id": "sh07",
+   "chapter": "request",
+   "beat": "dialogue",
+   "mood": "joy",
+   "seed": 307,
+   "location": "store",
+   "cast": [
+    "clerk",
+    "maya"
+   ],
+   "props": [
+    "earbuds"
+   ],
+   "prop_state": {
+    "earbuds": "store"
+   },
+   "move": "pull_out",
+   "scene": "a bright shop return counter with shelves in the background",
+   "action": "the store clerk behind the counter on the right scans a code on the young woman's phone with a handheld scanner and talks with a friendly smile; the young woman stands on the left",
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 0.6,
+     "dur": 0.8,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "clerk",
+     "tone": "friendly",
+     "text": "All set! Your return is scanned."
+    }
+   ],
+   "state": {
+    "location": "store",
+    "camera": {
+     "setup": "store_medium",
+     "axis": "store_line",
+     "side": "front",
+     "size": "medium",
+     "move": "static"
+    },
+    "start": {
+     "maya": {
+      "box": [
+       0.06,
+       0.12,
+       0.46,
+       1.0
+      ],
+      "facing": "right"
+     },
+     "counter": {
+      "box": [
+       0.45,
+       0.55,
+       1.0,
+       1.0
+      ]
+     },
+     "clerk": {
+      "box": [
+       0.52,
+       0.08,
+       0.84,
+       0.75
+      ],
+      "facing": "left"
+     }
+    },
+    "holders": {
+     "earbuds": "counter",
+     "phone": "maya",
+     "scanner": "clerk"
+    },
+    "events": [
+     {
+      "id": "scan",
+      "type": "scan",
+      "actor": "clerk",
+      "obj": "phone",
+      "target": "maya",
+      "t": [
+       0.2,
+       0.6
+      ],
+      "describe": "the clerk scans the code on her phone"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "Scanned at the counter",
+      "Return started"
+     ]
+    }
+   }
+  },
+  {
+   "shot_id": "sh08",
+   "chapter": "request",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "calm",
+   "seed": 308,
+   "step": "early_refund",
+   "claims": [
+    "c4",
+    "c2"
+   ],
+   "label": "When does the refund start?",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Return status"
+      },
+      {
+       "type": "status",
+       "id": "st",
+       "steps": [
+        "Return requested",
+        "Dropped off",
+        "Received & checked",
+        "Refund issued"
+       ],
+       "current": 0
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.15,
+      "do": "status",
+      "target": "st",
+      "from": 0,
+      "to": 1,
+      "dur": 0.15
+     },
+     {
+      "t": 0.3,
+      "do": "notify",
+      "title": "Return dropped off",
+      "body": "Scanned at the return location.",
+      "icon": "check",
+      "until": 0.75
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.6,
+     "dur": 0.4,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "For some returns, the refund starts at that first scan. Most wait until the item arrives."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh09",
+   "chapter": "request",
+   "beat": "step",
+   "mood": "busy",
+   "seed": 309,
+   "location": "returns_center",
+   "transition": "cut",
+   "step": "inspect",
+   "claims": [
+    "c5"
+   ],
+   "cast": [
+    "worker"
+   ],
+   "props": [
+    "earbuds"
+   ],
+   "prop_state": {
+    "earbuds": "returns_center"
+   },
+   "label": "Step 4 · Checked on arrival",
+   "move": "push_in",
+   "scene": "a clean, bright returns center with shelves of parcels and a work table",
+   "action": "the worker opens the white earbuds case on the work table and checks the earbuds carefully",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "When the earbuds arrive, they're checked against what was ordered."
+    }
+   ],
+   "state": {
+    "location": "returns_center",
+    "camera": {
+     "setup": "rc_medium",
+     "axis": "rc_line",
+     "side": "front",
+     "size": "medium",
+     "move": "push_in"
+    },
+    "transition": "cut",
+    "moved_offscreen": {
+     "earbuds": "work_table"
+    },
+    "offscreen_reason": "shipped from the store to the returns centre",
+    "start": {
+     "worker": {
+      "box": [
+       0.3,
+       0.08,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "work_table": {
+      "box": [
+       0.08,
+       0.66,
+       0.95,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "earbuds": "work_table",
+     "scanner": "clerk"
+    },
+    "events": [
+     {
+      "id": "open",
+      "type": "open",
+      "actor": "worker",
+      "obj": "earbuds",
+      "target": "work_table",
+      "t": [
+       0.2,
+       0.65
+      ],
+      "describe": "the worker opens the case and checks the earbuds"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "Checked on arrival",
+      "Does it match the order?"
+     ]
+    }
+   }
+  },
+  {
+   "shot_id": "sh10",
+   "chapter": "request",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "joy",
+   "seed": 310,
+   "step": "issued",
+   "claims": [
+    "c2",
+    "c10"
+   ],
+   "label": "Step 5 · Refund issued",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Return status"
+      },
+      {
+       "type": "status",
+       "id": "st",
+       "steps": [
+        "Return requested",
+        "Dropped off",
+        "Received & checked",
+        "Refund issued"
+       ],
+       "current": 1
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.1,
+      "do": "status",
+      "target": "st",
+      "from": 1,
+      "to": 3,
+      "dur": 0.3
+     },
+     {
+      "t": 0.5,
+      "do": "notify",
+      "title": "Refund issued: $59.99",
+      "body": "Back to your credit card.",
+      "icon": "check",
+      "until": 1.0
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 2.4,
+     "dur": 0.9,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Everything matches, so the refund is issued to her credit card, the card she paid with."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh11",
+   "chapter": "mystery",
+   "beat": "turn",
+   "mood": "curious",
+   "seed": 311,
+   "location": "home",
+   "transition": "time_skip",
+   "cast": [
+    "maya"
+   ],
+   "move": "push_in",
+   "scene": "a cozy apartment kitchen in the morning with a wooden table and a window",
+   "action": "the young woman looks at the bank app on her phone, raises her eyebrows and talks, puzzled",
+   "lines": [
+    {
+     "speaker": "maya",
+     "tone": "puzzled",
+     "text": "Refund issued... so why is my bank app still empty?"
+    }
+   ],
+   "state": {
+    "location": "home",
+    "camera": {
+     "setup": "kitchen_medium",
+     "axis": "kitchen_line",
+     "side": "front",
+     "size": "medium",
+     "move": "push_in"
+    },
+    "transition": "time_skip",
+    "start": {
+     "maya": {
+      "box": [
+       0.33,
+       0.12,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "kitchen_table": {
+      "box": [
+       0.1,
+       0.68,
+       0.95,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "phone": "maya",
+     "scanner": "clerk",
+     "earbuds": "work_table"
+    },
+    "events": [
+     {
+      "id": "look",
+      "type": "look_at",
+      "actor": "maya",
+      "obj": "phone",
+      "t": [
+       0.1,
+       0.7
+      ],
+      "critical": false
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "question",
+     "lines": [
+      "Refund issued…",
+      "But the bank app is empty?"
+     ]
+    }
+   }
+  },
+  {
+   "shot_id": "sh12",
+   "chapter": "journey",
+   "beat": "explain",
+   "recipe": "journey",
+   "mood": "curious",
+   "seed": 312,
+   "step": "travel",
+   "claims": [
+    "c8"
+   ],
+   "explains": "card network",
+   "label": "Step 6 · The money travels back",
+   "journey": {
+    "path": [
+     "store",
+     "network",
+     "bank"
+    ],
+    "focus": [
+     "store",
+     "network",
+     "bank"
+    ],
+    "move": [
+     0.15,
+     0.9
+    ],
+    "caption": "The money retraces the path of the payment"
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.8,
+     "dur": 1.5,
+     "gain_db": -20
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "A card refund travels back the way the payment came: over the card network, to the bank behind the card."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh13",
+   "chapter": "journey",
+   "beat": "explain",
+   "recipe": "journey",
+   "mood": "calm",
+   "seed": 313,
+   "step": "bank_posts",
+   "claims": [
+    "c7",
+    "c8"
+   ],
+   "label": "Step 7 · The bank posts it",
+   "journey": {
+    "path": [
+     "bank"
+    ],
+    "focus": [
+     "bank"
+    ],
+    "caption": "Banks count business days",
+    "calendar": {
+     "start": "Thu",
+     "days": 7,
+     "label": "Business days",
+     "t0": 0.15,
+     "t1": 0.95
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Then her bank has to post it. Banks work in business days, so a weekend adds a wait."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh14",
+   "chapter": "journey",
+   "beat": "explain",
+   "recipe": "card",
+   "mood": "calm",
+   "seed": 314,
+   "step": "bank_posts",
+   "claims": [
+    "c6"
+   ],
+   "card": {
+    "lines": [
+     "How long does it take?",
+     "Credit card: 3–5 business days",
+     "Debit card: up to 10 business days",
+     "Amazon gift card: 2–3 hours"
+    ],
+    "bullets": true,
+    "icon": "clock"
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Amazon lists 3 to 5 business days for credit cards, and up to 10 for debit cards."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh15",
+   "chapter": "journey",
+   "beat": "resolution",
+   "recipe": "ui",
+   "mood": "joy",
+   "seed": 315,
+   "step": "arrives",
+   "claims": [
+    "c7"
+   ],
+   "label": "Step 8 · It arrives",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Card activity"
+      },
+      {
+       "type": "statement",
+       "id": "acct",
+       "title": "Recent activity",
+       "rows": [
+        {
+         "date": "Thu",
+         "text": "Coffee shop",
+         "amount": "-$4.50"
+        },
+        {
+         "date": "Wed",
+         "text": "Grocery store",
+         "amount": "-$32.10"
+        },
+        {
+         "date": "Tue",
+         "text": "Refund: Amazon",
+         "amount": "+$59.99",
+         "highlight": true
+        }
+       ]
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.35,
+      "do": "row",
+      "target": "acct",
+      "row": 2
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "coins",
+     "at": 1.4,
+     "dur": 0.6,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "text": "A few business days later, the refund shows up in her card account."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh16",
+   "chapter": "payoff",
+   "beat": "resolution",
+   "mood": "joy",
+   "seed": 316,
+   "location": "home",
+   "cast": [
+    "maya"
+   ],
+   "move": "pull_out",
+   "scene": "a cozy apartment kitchen in the morning with a wooden table and a window",
+   "action": "the young woman looks at her phone, smiles with relief and talks happily",
+   "lines": [
+    {
+     "speaker": "maya",
+     "tone": "happy",
+     "text": "There it is! It was just on its way."
+    }
+   ],
+   "state": {
+    "location": "home",
+    "camera": {
+     "setup": "kitchen_medium",
+     "axis": "kitchen_line",
+     "side": "front",
+     "size": "medium",
+     "move": "pull_out"
+    },
+    "transition": "time_skip",
+    "start": {
+     "maya": {
+      "box": [
+       0.33,
+       0.12,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "kitchen_table": {
+      "box": [
+       0.1,
+       0.68,
+       0.95,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "phone": "maya",
+     "scanner": "clerk",
+     "earbuds": "work_table"
+    },
+    "events": [
+     {
+      "id": "look",
+      "type": "look_at",
+      "actor": "maya",
+      "obj": "phone",
+      "t": [
+       0.1,
+       0.7
+      ],
+      "critical": false
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "There it is!",
+      "+$59.99 is back"
+     ]
+    }
+   }
+  },
+  {
+   "shot_id": "sh17",
+   "chapter": "payoff",
+   "beat": "payoff",
+   "recipe": "card",
+   "mood": "reflective",
+   "seed": 317,
+   "claims": [
+    "c7"
+   ],
+   "card": {
+    "lines": [
+     "\"Issued\" means sent",
+     "The money leaves the store",
+     "Your bank sets the final day"
+    ],
+    "bullets": true,
+    "icon": "check"
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "So 'refund issued' means the money has left the store. Your bank decides the day it lands."
+    }
+   ]
+  }
+ ],
+ "journey": {
+  "token": "money",
+  "stations": [
+   {
+    "id": "store",
+    "label": "Amazon",
+    "icon": "store"
+   },
+   {
+    "id": "network",
+    "label": "Card network",
+    "icon": "network"
+   },
+   {
+    "id": "bank",
+    "label": "Maya's bank",
+    "icon": "bank"
+   }
+  ]
+ },
+ "metadata": {
+  "title": "What Really Happens When You Request a Refund on Amazon?",
+  "summary": "Amazon says 'refund issued', but your bank shows nothing. Follow Maya's refund for faulty earbuds from the Return button to her bank account: return eligibility, drop-off, inspection, the refund being issued, and the trip back through the card network to her bank. Plus why 'issued' doesn't mean 'arrived'.",
+  "disclaimer": "Simplified explainer based on Amazon.com's public help pages (US, checked October 2026). Return options and refund timelines differ by country, seller, item and payment method; check Your Returns for your own refund. Not affiliated with or endorsed by Amazon. Characters are fictional.",
+  "category": "Education",
+  "audience": "Not made for kids",
+  "tags": [
+   "amazon refund",
+   "amazon return",
+   "refund issued but not received",
+   "how refunds work",
+   "credit card refund",
+   "explainer"
+  ]
+ },
+ "scene_entities": {
+  "maya": {
+   "kind": "character",
+   "name": "Maya",
+   "query": "a young woman in a teal hoodie"
+  },
+  "clerk": {
+   "kind": "character",
+   "name": "the clerk",
+   "query": "a man in a navy polo shirt"
+  },
+  "worker": {
+   "kind": "character",
+   "name": "the worker",
+   "query": "a person in a grey work shirt"
+  },
+  "counter": {
+   "kind": "anchor",
+   "name": "the return counter",
+   "query": "a shop counter"
+  },
+  "kitchen_table": {
+   "kind": "anchor",
+   "name": "the kitchen table",
+   "query": "a wooden table"
+  },
+  "work_table": {
+   "kind": "anchor",
+   "name": "the work table",
+   "query": "a work table"
+  },
+  "earbuds": {
+   "kind": "prop",
+   "name": "the white earbuds case",
+   "query": "a small white case",
+   "small": true
+  },
+  "phone": {
+   "kind": "prop",
+   "name": "her phone",
+   "query": "a smartphone",
+   "small": true
+  },
+  "scanner": {
+   "kind": "prop",
+   "name": "a handheld scanner",
+   "query": "a handheld barcode scanner",
+   "small": true
+  }
+ }
+}

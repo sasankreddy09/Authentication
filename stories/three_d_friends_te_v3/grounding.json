@@ -1,0 +1,101 @@
+{
+ "sc01_3": {
+  "text": "Seriously, \u0c05\u0c02\u0c24 real\u0c17\u0c3e \u0c0e\u0c32\u0c3e \u0c35\u0c1a\u0c4d\u0c1a\u0c3f\u0c02\u0c26\u0c3f? \u0c08 glasses\u0c32\u0c4b \u0c1a\u0c3f\u0c28\u0c4d\u0c28 screens \u0c09\u0c28\u0c4d\u0c28\u0c3e\u0c2f\u0c3e?",
+  "evidence": [],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "status": "PASS",
+  "why": "question: makes no claim; numbers and names are sourced"
+ },
+ "sc02_3": {
+  "text": "Cues like relative size provide depth information even when viewing with only one eye.",
+  "evidence": [
+   "Monocular cues provide depth information even when viewing a scene with only one eye. Monocular cues include relative size (distant objects subtend smaller visual angles than near objects), texture gradient, occlusion, linear perspective, contrast differences, and motion parallax."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.998,
+   "contradict": 0.0,
+   "neutral": 0.002
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc02_4": {
+  "text": "\u0c05\u0c35\u0c41\u0c28\u0c41, \u0c15\u0c4a\u0c02\u0c1a\u0c46\u0c02 \u0c09\u0c02\u0c26\u0c3f. \u0c2e\u0c30\u0c3f \u0c30\u0c46\u0c02\u0c21\u0c41 \u0c15\u0c33\u0c4d\u0c32\u0c24\u0c4b \u0c1a\u0c42\u0c38\u0c4d\u0c24\u0c47 \u0c05\u0c02\u0c24 \u0c0e\u0c15\u0c4d\u0c15\u0c41\u0c35 \u0c0e\u0c02\u0c26\u0c41\u0c15\u0c41?",
+  "evidence": [],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "status": "PASS",
+  "why": "question: makes no claim; numbers and names are sourced"
+ },
+ "sc03_1": {
+  "text": "Your two eyes look from different but similar directions, so they see different images.",
+  "evidence": [
+   "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.966,
+   "contradict": 0.001,
+   "neutral": 0.033
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc03_3": {
+  "text": "Exactly. The brain combines the two views into a single picture, and that gives the perception of 3D depth.",
+  "evidence": [
+   "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.994,
+   "contradict": 0.0,
+   "neutral": 0.006
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc04_1": {
+  "text": "\u0c15\u0c3e\u0c28\u0c40 \u0c30\u0c46\u0c02\u0c21\u0c42 \u0c12\u0c15\u0c47 screen \u0c2e\u0c40\u0c26 \u0c09\u0c02\u0c1f\u0c47, \u0c0f\u0c26\u0c3f \u0c0f \u0c15\u0c02\u0c1f\u0c3f\u0c15\u0c4b \u0c0e\u0c32\u0c3e \u0c24\u0c46\u0c32\u0c41\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f?",
+  "evidence": [],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "status": "PASS",
+  "why": "question: makes no claim; numbers and names are sourced"
+ },
+ "sc04_2": {
+  "text": "The projector puts both pictures on the same screen, each through a different filter.",
+  "evidence": [
+   "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.995,
+   "contradict": 0.0,
+   "neutral": 0.005
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc04_4": {
+  "text": "Correct. The left and right lenses have different polarizing filters, so each eye sees only its own picture.",
+  "evidence": [
+   "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.995,
+   "contradict": 0.0,
+   "neutral": 0.005
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ }
+}

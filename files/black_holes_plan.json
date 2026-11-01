@@ -1,0 +1,496 @@
+{
+ "schema_version": "0.3",
+ "plan_version": 4,
+ "project_id": "black_holes_v1",
+ "title": "How Black Holes Are Formed",
+ "format": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 24
+ },
+ "style": {
+  "suffix": "cinematic, photorealistic space visualization, deep black background, high dynamic range, subtle film grain, no text",
+  "negative": "text, letters, words, watermark, logo, signature, frame, border, blurry, lowres, jpeg artifacts, cartoon, oversaturated"
+ },
+ "moods": {
+  "calm": {
+   "speed": 0.92,
+   "pause_after": 0.6,
+   "music": {
+    "curious": 0.9,
+    "base": 0.3,
+    "tension": 0.0,
+    "shimmer": 0.2
+   },
+   "grade": "neutral",
+   "move_amount": 0.08
+  },
+  "wonder": {
+   "speed": 0.9,
+   "pause_after": 0.8,
+   "music": {
+    "curious": 1.0,
+    "base": 0.3,
+    "tension": 0.0,
+    "shimmer": 0.5
+   },
+   "grade": "cool",
+   "move_amount": 0.1
+  },
+  "tension": {
+   "speed": 0.96,
+   "pause_after": 0.5,
+   "music": {
+    "curious": 0.25,
+    "base": 0.7,
+    "tension": 0.7,
+    "shimmer": 0.0
+   },
+   "grade": "contrast",
+   "move_amount": 0.14
+  },
+  "climax": {
+   "speed": 0.97,
+   "pause_after": 1.2,
+   "music": {
+    "curious": 0.0,
+    "base": 1.0,
+    "tension": 1.0,
+    "shimmer": 0.0
+   },
+   "grade": "hot",
+   "move_amount": 0.18
+  },
+  "awe": {
+   "speed": 0.86,
+   "pause_after": 1.5,
+   "music": {
+    "curious": 0.0,
+    "base": 0.25,
+    "tension": 0.0,
+    "shimmer": 0.8
+   },
+   "grade": "deep",
+   "move_amount": 0.06
+  },
+  "reflective": {
+   "speed": 0.9,
+   "pause_after": 0.9,
+   "music": {
+    "curious": 0.6,
+    "base": 0.4,
+    "tension": 0.0,
+    "shimmer": 0.4
+   },
+   "grade": "neutral",
+   "move_amount": 0.08
+  }
+ },
+ "shots": [
+  {
+   "shot_id": "sh01",
+   "recipe": "video",
+   "mood": "calm",
+   "image_prompt": "A dark starfield in deep space with a faint purple and blue nebula glow, lots of empty dark space in the centre",
+   "motion_prompt": "slow forward drift through the starfield, faint nebula gas gently swirling, stars twinkling",
+   "seed": 1101,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n00",
+     "text": "What happens when a giant star dies?",
+     "pause_after": 1.0
+    }
+   ],
+   "title": "HOW BLACK HOLES ARE FORMED",
+   "pre_s": 2.0,
+   "fade_in": true,
+   "move": "push_in"
+  },
+  {
+   "shot_id": "sh02",
+   "recipe": "video",
+   "mood": "calm",
+   "image_prompt": "Inside a glowing star-forming nebula, dense clouds of red and blue hydrogen gas with newborn stars",
+   "motion_prompt": "a newborn star ignites and flares brightly inside the gas cloud, glowing gas swirls around it, slow camera push in",
+   "seed": 1202,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n01",
+     "text": "Every black hole begins its life as a star,",
+     "pause_after": 0.15
+    }
+   ],
+   "claim_ids": [
+    "c1"
+   ],
+   "move": "pan_left"
+  },
+  {
+   "shot_id": "sh03",
+   "recipe": "video",
+   "mood": "wonder",
+   "image_prompt": "A giant blue-white star shining brightly in deep space, glowing corona, lens flare",
+   "motion_prompt": "the star shines and slowly rotates, its glowing corona shimmering and flickering, camera slowly orbits around it",
+   "seed": 1303,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n01b",
+     "text": "shining for millions of years."
+    }
+   ],
+   "claim_ids": [
+    "c1"
+   ],
+   "pre_s": 0.05,
+   "move": "pan_right"
+  },
+  {
+   "shot_id": "sh04",
+   "recipe": "video",
+   "mood": "wonder",
+   "image_prompt": "Scientific visualization of a star cut open, a blazing white-hot core at the centre surrounded by glowing layers",
+   "motion_prompt": "bright waves of energy pulse outward from the blazing core through the glowing layers, rhythmic pulsing light",
+   "seed": 1404,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n02",
+     "text": "Deep in its core, nuclear fusion pushes outward,",
+     "pause_after": 0.15
+    }
+   ],
+   "claim_ids": [
+    "c1"
+   ],
+   "move": "push_in"
+  },
+  {
+   "shot_id": "sh05",
+   "recipe": "video",
+   "mood": "wonder",
+   "image_prompt": "Close view of the surface of a giant star, boiling plasma granulation and arcing prominences, black space at the edges",
+   "motion_prompt": "the plasma surface churns and boils, glowing prominences arc and fall back onto the star, camera slowly pushes in",
+   "seed": 1505,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n02b",
+     "text": "balancing the crushing pull of gravity."
+    }
+   ],
+   "claim_ids": [
+    "c1"
+   ],
+   "pre_s": 0.05,
+   "move": "tilt_down"
+  },
+  {
+   "shot_id": "sh06",
+   "recipe": "video",
+   "mood": "tension",
+   "image_prompt": "An enormous red supergiant star filling most of the frame, with a tiny yellow Sun-like star beside it for scale, deep space",
+   "motion_prompt": "slow camera pull back revealing the enormous size of the red supergiant next to the tiny yellow star, the supergiant's surface churning",
+   "seed": 1606,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n03",
+     "text": "But in a star more than about twenty times heavier than the Sun,",
+     "pause_after": 0.15
+    }
+   ],
+   "claim_ids": [
+    "c2"
+   ],
+   "move": "pull_out"
+  },
+  {
+   "shot_id": "sh07",
+   "recipe": "video",
+   "mood": "tension",
+   "image_prompt": "Scientific visualization of a dying star cut open, its core turning dull dark grey and heavy, outer layers dimming",
+   "motion_prompt": "the glow of the core fades and dims, the centre turns dark grey and heavy, flickering light dying out",
+   "seed": 1707,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n03b",
+     "text": "the fuel eventually runs out, and the core fills with iron."
+    }
+   ],
+   "claim_ids": [
+    "c3"
+   ],
+   "pre_s": 0.05,
+   "move": "pan_left",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.5,
+     "dur": 6.0,
+     "gain_db": -16
+    }
+   ]
+  },
+  {
+   "shot_id": "sh08",
+   "recipe": "video",
+   "mood": "tension",
+   "image_prompt": "The core of a massive star at the moment of collapse, layers of glowing gas falling inward toward a tiny bright centre",
+   "motion_prompt": "the star's layers rapidly implode and rush inward toward the centre, violent fast collapse, camera shaking slightly",
+   "seed": 1808,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n04",
+     "text": "With nothing left to hold it up, the core collapses in less than a second,",
+     "pause_after": 0.15
+    }
+   ],
+   "claim_ids": [
+    "c3"
+   ],
+   "move": "push_in",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.3,
+     "dur": 2.5,
+     "gain_db": -12
+    }
+   ]
+  },
+  {
+   "shot_id": "sh09",
+   "recipe": "video",
+   "mood": "climax",
+   "image_prompt": "A massive star exploding as a supernova, a brilliant flash of white light at the centre, shock waves of glowing gas",
+   "motion_prompt": "a gigantic supernova explosion bursts outward, brilliant flash, shock waves of glowing gas racing toward the camera, debris flying",
+   "seed": 1909,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n04b",
+     "text": "and the outer layers can be blasted away in a supernova."
+    }
+   ],
+   "claim_ids": [
+    "c3"
+   ],
+   "pre_s": 0.05,
+   "flash_in": true,
+   "move": "pull_out",
+   "sfx": [
+    {
+     "type": "boom",
+     "at": 0.0,
+     "dur": 5.0,
+     "gain_db": -5
+    }
+   ]
+  },
+  {
+   "shot_id": "sh10",
+   "recipe": "video",
+   "mood": "tension",
+   "image_prompt": "An expanding supernova remnant, glowing red and teal gas filaments around a tiny bright collapsing point at the centre",
+   "motion_prompt": "the glowing debris cloud expands outward while the tiny bright point at the centre shrinks and collapses, slow push in",
+   "seed": 2010,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n05",
+     "text": "If the leftover core weighs more than about three Suns, no known force can stop its collapse."
+    }
+   ],
+   "claim_ids": [
+    "c4"
+   ],
+   "move": "tilt_down",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.0,
+     "dur": 6.0,
+     "gain_db": -14
+    }
+   ]
+  },
+  {
+   "shot_id": "sh11",
+   "recipe": "video",
+   "mood": "awe",
+   "image_prompt": "A newly formed black hole in deep space, a perfectly black sphere with a thin bright ring of light around it",
+   "motion_prompt": "a glowing accretion disk begins to swirl around the black sphere, light bending around the edge, slow camera push in",
+   "seed": 2111,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n06",
+     "text": "It falls in on itself, hidden behind an event horizon,",
+     "pause_after": 0.45
+    }
+   ],
+   "claim_ids": [
+    "c5"
+   ],
+   "move": "pan_right",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.0,
+     "dur": 1.6,
+     "gain_db": -12
+    }
+   ]
+  },
+  {
+   "shot_id": "sh12",
+   "recipe": "video",
+   "mood": "awe",
+   "image_prompt": "A black hole with a bright orange accretion disk, gravitational lensing bending the light of background stars",
+   "motion_prompt": "streams of light curve and spiral into the black hole and vanish, the accretion disk slowly rotating, very slow push in",
+   "seed": 2212,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n06b",
+     "text": "a boundary from which not even light can escape."
+    }
+   ],
+   "claim_ids": [
+    "c5"
+   ],
+   "pre_s": 0.05,
+   "move": "push_in",
+   "sfx": [
+    {
+     "type": "shimmer",
+     "at": 1.0,
+     "dur": 4.0,
+     "gain_db": -22
+    }
+   ]
+  },
+  {
+   "shot_id": "sh13",
+   "recipe": "video",
+   "mood": "wonder",
+   "image_prompt": "A row of large radio telescope dishes on a high desert plateau at night under a sky full of stars and the Milky Way",
+   "motion_prompt": "time-lapse: the telescope dishes slowly turn together to point at the sky while the stars wheel overhead",
+   "seed": 2313,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n07",
+     "text": "In 2019, astronomers released the first image of a black hole's shadow, in the galaxy M87.",
+     "tts": "In twenty nineteen, astronomers released the first image of a black hole's shadow, in the galaxy M eighty-seven."
+    }
+   ],
+   "claim_ids": [
+    "c6"
+   ],
+   "move": "pan_right"
+  },
+  {
+   "shot_id": "sh14",
+   "recipe": "video",
+   "mood": "reflective",
+   "image_prompt": "A spiral galaxy seen from far away, a bright glowing core at its centre, billions of stars and dark dust lanes",
+   "motion_prompt": "slow cinematic flight toward the glowing core of the spiral galaxy, the galaxy slowly rotating",
+   "seed": 2414,
+   "factual_status": "illustrative",
+   "sentences": [
+    {
+     "id": "n08",
+     "text": "And how the giant black holes at the centres of galaxies formed is still one of astronomy's great open questions."
+    }
+   ],
+   "claim_ids": [
+    "c7"
+   ],
+   "move": "pull_out",
+   "fade_out": true
+  }
+ ],
+ "claims": [
+  {
+   "id": "c1",
+   "text": "Stars are powered by nuclear fusion in their cores; the outward pressure balances gravity.",
+   "confidence": "high",
+   "sources": [
+    "https://science.nasa.gov/universe/black-holes/"
+   ]
+  },
+  {
+   "id": "c2",
+   "text": "Stars of roughly twenty or more solar masses can end as black holes; the exact threshold depends on the star and is uncertain, so the script says 'about'.",
+   "confidence": "medium",
+   "sources": [
+    "https://science.nasa.gov/universe/black-holes/"
+   ]
+  },
+  {
+   "id": "c3",
+   "text": "Fusion stops at iron; the iron core collapses in under a second; many (not all) such collapses produce a supernova.",
+   "confidence": "high",
+   "sources": [
+    "https://science.nasa.gov/universe/black-holes/"
+   ]
+  },
+  {
+   "id": "c4",
+   "text": "A collapsed core above roughly 2-3 solar masses cannot be supported as a neutron star and becomes a black hole.",
+   "confidence": "medium",
+   "sources": [
+    "https://science.nasa.gov/universe/black-holes/"
+   ]
+  },
+  {
+   "id": "c5",
+   "text": "Nothing, including light, escapes from inside the event horizon.",
+   "confidence": "high",
+   "sources": [
+    "https://science.nasa.gov/universe/black-holes/"
+   ]
+  },
+  {
+   "id": "c6",
+   "text": "The Event Horizon Telescope released the first image of a black hole's shadow (M87*) in April 2019.",
+   "confidence": "high",
+   "sources": [
+    "https://eventhorizontelescope.org/"
+   ]
+  },
+  {
+   "id": "c7",
+   "text": "How supermassive black holes formed is an open research question.",
+   "confidence": "high",
+   "sources": [
+    "https://science.nasa.gov/universe/black-holes/"
+   ]
+  }
+ ],
+ "disclosure": {
+  "contains_synthetic_media": true,
+  "reason": "AI-generated realistic space imagery and synthetic narration"
+ },
+ "metadata": {
+  "title": "How Black Holes Are Formed: From Dying Star to Event Horizon",
+  "tags": [
+   "black holes",
+   "how black holes form",
+   "supernova",
+   "event horizon",
+   "astronomy",
+   "space",
+   "science explained"
+  ],
+  "category_id": "28",
+  "summary": "How does a star become a black hole? A short explainer.",
+  "disclaimer": "About this video: the narration is synthetic (text-to-speech) and the space imagery is AI-generated illustration, not real telescope footage."
+ }
+}

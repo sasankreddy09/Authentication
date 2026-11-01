@@ -1,0 +1,1595 @@
+{
+ "plan_version": 1,
+ "project": "three_d_friends_v2",
+ "title": "Why Do 3D Movies Look Real?",
+ "language": "en",
+ "story_mode": "two_friends_cinematic",
+ "visual_style": "stylized_2d",
+ "license_strict": true,
+ "factual_dialogue": true,
+ "logline": "A ball flies out of a 3D movie and Arjun ducks. A one-eye test in his seat breaks his theory, and Meera shows him where the ball really comes from.",
+ "notebook": {
+  "emoji": "🎬",
+  "name": "Two-Friend Explainer",
+  "length": "about 1–1.5 min"
+ },
+ "style": {
+  "suffix": "stylized 2D animation, flat colours, two original cartoon friends",
+  "negative": "text, watermark, photorealistic, deformed, blurry"
+ },
+ "look": {
+  "bg_top": "#1B2440",
+  "bg_bottom": "#28406A"
+ },
+ "characters": {
+  "arjun": {
+   "name": "Arjun",
+   "voice": "am_michael",
+   "speed": 1.0,
+   "pitch": 0.0,
+   "fx": "none",
+   "color": "#FFD166",
+   "look": "original 2D character Arjun",
+   "tag": "a young man in an orange hoodie",
+   "role": "curious",
+   "qwen_speaker": "aiden"
+  },
+  "meera": {
+   "name": "Meera",
+   "voice": "af_heart",
+   "speed": 1.0,
+   "pitch": 0.0,
+   "fx": "none",
+   "color": "#7FDBDA",
+   "look": "original 2D character Meera",
+   "tag": "a young woman in a teal jacket",
+   "role": "expert"
+  }
+ },
+ "bible": {
+  "version": 1,
+  "relationship": "Close friends of the same age who hang out often. Arjun notices things and asks; Meera loves explaining with real examples and small demonstrations. She never mocks him and never lectures for long; he asks real follow-ups, sometimes with a plausible wrong guess, never just 'Wow'.",
+  "characters": {
+   "arjun": {
+    "id": "arjun",
+    "name": "Arjun",
+    "names": {
+     "te": "అర్జున్"
+    },
+    "role": "curious",
+    "personality": "curious, observant, relatable, occasionally funny; asks the question the viewer is thinking",
+    "look": {
+     "skin": "#C68B59",
+     "hair": "#1F1A17",
+     "hair_style": "short_messy",
+     "top": "#F4A23B",
+     "top_detail": "#C97A12",
+     "eyes": "#2B1D14",
+     "glasses": false
+    },
+    "voices": {
+     "en": {
+      "backend": "kokoro",
+      "voice": "am_michael",
+      "style": "",
+      "pitch": 0.0,
+      "qwen_speaker": "aiden",
+      "emotion_control": "none",
+      "rate_range": [
+       0.95,
+       1.08
+      ],
+      "intensity_range": [
+       0.1,
+       0.5
+      ],
+      "accent": "American",
+      "baseline": "friendly, curious, a little energetic; questions rise naturally, never cartoonish",
+      "reference_sample": "",
+      "pronunciation": {}
+     },
+     "te": {
+      "backend": "parler",
+      "voice": "Prakash",
+      "style": "in a young, lively and curious voice at a moderate pace",
+      "pitch": 0.0,
+      "qwen_speaker": null,
+      "emotion_control": "description",
+      "rate_range": [
+       0.92,
+       1.08
+      ],
+      "intensity_range": [
+       0.1,
+       0.5
+      ],
+      "accent": "",
+      "baseline": "friendly and curious",
+      "reference_sample": "",
+      "pronunciation": {
+       "3D": "త్రీడీ"
+      }
+     }
+    },
+    "expressions": [
+     "neutral",
+     "smile",
+     "curious",
+     "surprised",
+     "confused",
+     "thinking",
+     "happy",
+     "listening",
+     "wink"
+    ],
+    "gestures": [
+     "idle",
+     "explain",
+     "point",
+     "think",
+     "open_hands",
+     "nod"
+    ],
+    "tag": "a young man in an orange hoodie",
+    "color": "#FFD166"
+   },
+   "meera": {
+    "id": "meera",
+    "name": "Meera",
+    "names": {
+     "te": "మీరా"
+    },
+    "role": "expert",
+    "personality": "knowledgeable, friendly, patient; simplifies with familiar examples and demonstrations",
+    "look": {
+     "skin": "#A86B4A",
+     "hair": "#2B1B14",
+     "hair_style": "long_tied",
+     "top": "#2E8C8C",
+     "top_detail": "#F2F2F2",
+     "eyes": "#2B1D14",
+     "glasses": true
+    },
+    "voices": {
+     "en": {
+      "backend": "kokoro",
+      "voice": "af_heart",
+      "style": "",
+      "pitch": 0.0,
+      "qwen_speaker": null,
+      "emotion_control": "none",
+      "rate_range": [
+       0.93,
+       1.05
+      ],
+      "intensity_range": [
+       0.1,
+       0.45
+      ],
+      "accent": "American",
+      "baseline": "warm, patient, confident; calm explanations that brighten on discoveries",
+      "reference_sample": "",
+      "pronunciation": {}
+     },
+     "te": {
+      "backend": "parler",
+      "voice": "Lalitha",
+      "style": "in a warm, clear and friendly explaining voice at a moderate pace",
+      "pitch": 0.0,
+      "qwen_speaker": null,
+      "emotion_control": "description",
+      "rate_range": [
+       0.92,
+       1.08
+      ],
+      "intensity_range": [
+       0.1,
+       0.5
+      ],
+      "accent": "",
+      "baseline": "warm and clear",
+      "reference_sample": "",
+      "pronunciation": {
+       "3D": "త్రీడీ"
+      }
+     }
+    },
+    "expressions": [
+     "neutral",
+     "smile",
+     "curious",
+     "surprised",
+     "confused",
+     "thinking",
+     "happy",
+     "listening",
+     "wink"
+    ],
+    "gestures": [
+     "idle",
+     "explain",
+     "point",
+     "think",
+     "open_hands",
+     "nod"
+    ],
+    "tag": "a young woman in a teal jacket",
+    "color": "#7FDBDA"
+   }
+  }
+ },
+ "tones": {
+  "curious": {
+   "speed": 0.98,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.45
+  },
+  "explainer": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.4
+  },
+  "warm": {
+   "speed": 0.97,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.5
+  },
+  "happy": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.4
+  },
+  "friendly": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.35
+  },
+  "awe": {
+   "speed": 0.96,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.6
+  },
+  "serious": {
+   "speed": 0.97,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.5
+  }
+ },
+ "moods": {
+  "curious": {
+   "pause_after": 0.5,
+   "grade": "neutral",
+   "move_amount": 0.04,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.1,
+    "shimmer": 0.3
+   }
+  },
+  "calm": {
+   "pause_after": 0.45,
+   "grade": "neutral",
+   "move_amount": 0.04,
+   "music": {
+    "base": 0.4,
+    "curious": 0.8,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "busy": {
+   "pause_after": 0.4,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.2,
+    "shimmer": 0.1
+   }
+  },
+  "joy": {
+   "pause_after": 0.45,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  }
+ },
+ "claims": [
+  {
+   "id": "c_f1",
+   "text": "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stereopsis"
+   ],
+   "source_revision": 1377837508
+  },
+  {
+   "id": "c_f2",
+   "text": "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stereoscopy"
+   ],
+   "source_revision": 1380706327
+  },
+  {
+   "id": "c_f3",
+   "text": "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Polarized_3D_system"
+   ],
+   "source_revision": 1377586129
+  },
+  {
+   "id": "c_f4",
+   "text": "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Polarized_3D_system"
+   ],
+   "source_revision": 1377586129
+  },
+  {
+   "id": "c_f5",
+   "text": "A ZScreen circularly polarizes the frames clockwise for the right eye and counter-clockwise for the left eye; the audience wears circularly polarized glasses with oppositely polarized lenses so each eye sees only its designated frame.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/RealD_3D"
+   ],
+   "source_revision": 1375938377
+  },
+  {
+   "id": "c_f6",
+   "text": "The advantage of circular polarization over linear polarization is that viewers are able to tilt their heads and look about the theater naturally without seeing double or darkened images.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/RealD_3D"
+   ],
+   "source_revision": 1375938377
+  }
+ ],
+ "vocabulary": [
+  "Arjun",
+  "Meera",
+  "3D"
+ ],
+ "entities": {},
+ "glossary": {},
+ "travel": {},
+ "shots": [
+  {
+   "shot_id": "sc01",
+   "recipe": "story",
+   "beat": "hook",
+   "story_beat": "observation",
+   "mood": "curious",
+   "location": "cinema_seats",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "awe",
+     "text": "Whoa! That ball came straight at me. I actually ducked!",
+     "kind": "observation",
+     "act": {
+      "expr": "surprised"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "You also threw half your popcorn.",
+     "kind": "reaction",
+     "act": {
+      "expr": "happy"
+     }
+    },
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "Without the glasses, though, everything looks doubled and blurry.",
+     "kind": "observation",
+     "act": {
+      "expr": "confused"
+     }
+    }
+   ],
+   "story": {
+    "world": "cinema_seats",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "establishing",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_screen",
+       "shot": "establishing",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ]
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "surprised",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "the ball flies out of the screen toward the two friends"
+     },
+     {
+      "id": "v2",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ],
+         "hold": "popcorn"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "subject": "arjun",
+       "screen": "clean",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "surprised",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.45
+      },
+      "description": "Arjun ducks, popcorn in hand"
+     },
+     {
+      "id": "v3",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ],
+         "hold": "popcorn"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "happy",
+           "gesture": "idle"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.7692,
+         "chars": {
+          "arjun": {
+           "expr": "confused",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.0
+      },
+      "description": "Meera laughs at the spilled popcorn"
+     },
+     {
+      "id": "v4",
+      "intent": "cutaway",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_screen",
+       "shot": "establishing",
+       "chars": {
+        "arjun": {},
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "double",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "confused",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 2,
+       "at": 0.3
+      },
+      "description": "what Arjun sees without the glasses: two overlapping pictures"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc02",
+   "recipe": "story",
+   "beat": "turn",
+   "story_beat": "question",
+   "mood": "curious",
+   "location": "cinema_seats",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [],
+   "lines": [
+    {
+     "speaker": "meera",
+     "tone": "friendly",
+     "text": "So what do you think the glasses are doing?",
+     "kind": "question",
+     "act": {
+      "expr": "smile"
+     }
+    },
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "Tiny screens inside? One for each eye?",
+     "kind": "misconception",
+     "act": {
+      "expr": "thinking",
+      "gesture": "think"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "friendly",
+     "text": "Let's test that. Glasses back on, and close one eye.",
+     "kind": "instruction",
+     "act": {
+      "expr": "smile",
+      "gesture": "point"
+     }
+    }
+   ],
+   "story": {
+    "world": "cinema_seats",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {
+         "hold": "3d_glasses"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "double",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "idle"
+          },
+          "arjun": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.5,
+         "chars": {
+          "arjun": {
+           "expr": "thinking",
+           "gesture": "think"
+          },
+          "meera": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Meera asks for his guess; Arjun holds his glasses"
+     },
+     {
+      "id": "v2",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {
+         "hold": "3d_glasses"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "subject": "meera",
+       "screen": "double",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "point"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 2,
+       "at": 0.0
+      },
+      "description": "Meera proposes the one-eye test"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc03",
+   "recipe": "story",
+   "beat": "step",
+   "story_beat": "demonstration",
+   "mood": "busy",
+   "location": "cinema_seats",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [
+    "c_f1",
+    "c_f2"
+   ],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "awe",
+     "text": "Okay... wait. The ball went flat! It's just a normal movie now.",
+     "kind": "observation",
+     "act": {
+      "expr": "wink"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "explainer",
+     "text": "Your two eyes look from different but similar directions, so they see different images.",
+     "kind": "fact",
+     "claims": [
+      "c_f1"
+     ]
+    },
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "And with an eye shut, I lose the other image?",
+     "kind": "question",
+     "act": {
+      "expr": "curious"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "explainer",
+     "text": "Right. Your brain combines the two images, and you see a single 3D view with depth.",
+     "kind": "fact",
+     "claims": [
+      "c_f2"
+     ]
+    }
+   ],
+   "story": {
+    "world": "cinema_seats",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ],
+         "expr": "wink"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "subject": "arjun",
+       "screen": "plain",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "wink",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Arjun, glasses on, closes one eye"
+     },
+     {
+      "id": "v2",
+      "intent": "cutaway",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_screen",
+       "shot": "establishing",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "screen": "plain",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "wink",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.8,
+         "chars": {
+          "meera": {
+           "gesture": "explain"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.4
+      },
+      "description": "through one eye the ball is flat: no pop-out"
+     },
+     {
+      "id": "v3",
+      "intent": "animated_illustration",
+      "medium": "animated_demo",
+      "recipe": "demo",
+      "demo": {
+       "template": "eye_views",
+       "world": "cinema_seats"
+      },
+      "start": {
+       "line": 1,
+       "at": 0.15
+      },
+      "description": "two eyes see the ball from two spots; two pictures combine into one view with depth"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc04",
+   "recipe": "story",
+   "beat": "resolution",
+   "story_beat": "correction",
+   "mood": "calm",
+   "location": "lobby",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [
+    "c_f3",
+    "c_f5"
+   ],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "So no tiny screens. My new guess: each lens blocks something.",
+     "kind": "prediction",
+     "act": {
+      "expr": "thinking",
+      "gesture": "think"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "explainer",
+     "text": "Close. The projector puts both pictures on the same screen, each through a different filter.",
+     "kind": "fact",
+     "claims": [
+      "c_f3"
+     ]
+    },
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "And each lens only lets its own picture through?",
+     "kind": "question",
+     "act": {
+      "expr": "curious"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "Exactly. The right eye's frames twist clockwise, the left eye's counter-clockwise, so each eye sees only its own frames.",
+     "kind": "fact",
+     "claims": [
+      "c_f5"
+     ],
+     "act": {
+      "expr": "happy",
+      "gesture": "open_hands"
+     }
+    }
+   ],
+   "transition": "time_skip",
+   "story": {
+    "world": "lobby",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {},
+        "meera": {
+         "hold": "3d_glasses"
+        }
+       },
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "thinking",
+           "gesture": "think"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.8,
+         "chars": {
+          "meera": {
+           "gesture": "explain"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "after the movie in the lobby, Arjun makes a new guess"
+     },
+     {
+      "id": "v2",
+      "intent": "animated_illustration",
+      "medium": "animated_demo",
+      "recipe": "demo",
+      "demo": {
+       "template": "projector_glasses",
+       "world": "lobby"
+      },
+      "start": {
+       "line": 1,
+       "at": 0.25
+      },
+      "description": "projector, silver screen, two pictures with opposite twists, each lens passes one"
+     },
+     {
+      "id": "v3",
+      "intent": "reaction",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "reaction",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "subject": "arjun",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "curious",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 2,
+       "at": 0.0
+      },
+      "description": "Arjun checks his idea"
+     },
+     {
+      "id": "v4",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {},
+        "meera": {
+         "hold": "3d_glasses"
+        }
+       },
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "happy",
+           "gesture": "open_hands"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 3,
+       "at": 0.0
+      },
+      "description": "Meera confirms, glasses in hand"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc05",
+   "recipe": "story",
+   "beat": "reveal",
+   "story_beat": "reveal",
+   "mood": "joy",
+   "location": "lobby",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [
+    "c_f6"
+   ],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "awe",
+     "text": "Wait, so the pop-out effect is my own brain at work?",
+     "kind": "question",
+     "act": {
+      "expr": "surprised"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "Yes! And that twist is circular polarization, so you can tilt your head without seeing double.",
+     "kind": "fact",
+     "claims": [
+      "c_f6"
+     ],
+     "act": {
+      "expr": "smile"
+     }
+    }
+   ],
+   "story": {
+    "world": "lobby",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "subject": "arjun",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "surprised",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Arjun puts it together"
+     },
+     {
+      "id": "v2",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {},
+        "meera": {
+         "hold": "3d_glasses"
+        }
+       },
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "explain"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.0
+      },
+      "description": "Meera, pleased, adds the head-tilt bonus"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc06",
+   "recipe": "story",
+   "beat": "payoff",
+   "story_beat": "closing",
+   "mood": "joy",
+   "location": "cinema_seats",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "happy",
+     "text": "Okay. Head tilted, both eyes open. Brain, do your thing.",
+     "kind": "reaction",
+     "act": {
+      "expr": "smile"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "And this time, hold on to the popcorn.",
+     "kind": "reaction",
+     "act": {
+      "expr": "happy"
+     }
+    },
+    {
+     "speaker": "arjun",
+     "tone": "happy",
+     "text": "No promises.",
+     "kind": "reaction",
+     "act": {
+      "expr": "happy"
+     }
+    }
+   ],
+   "transition": "time_skip",
+   "story": {
+    "world": "cinema_seats",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ],
+         "hold": "popcorn"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "smile",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.6667,
+         "chars": {
+          "meera": {
+           "expr": "happy",
+           "gesture": "idle"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "the next show, both in 3D glasses, Arjun with fresh popcorn"
+     },
+     {
+      "id": "v2",
+      "intent": "establishing",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_screen",
+       "shot": "establishing",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "happy",
+           "gesture": "idle"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.5
+      },
+      "description": "the ball flies out again"
+     },
+     {
+      "id": "v3",
+      "intent": "reaction",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "reaction",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ],
+         "hold": "popcorn",
+         "expr": "happy"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "subject": "arjun",
+       "screen": "clean",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "happy",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 2,
+       "at": 0.0
+      },
+      "description": "Arjun grins, popcorn safe (for now)"
+     }
+    ]
+   }
+  }
+ ],
+ "director": [
+  {
+   "scene": "sc01",
+   "visual": "v1",
+   "intent": "establishing",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc01",
+   "visual": "v2",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc01",
+   "visual": "v3",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc01",
+   "visual": "v4",
+   "intent": "cutaway",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc02",
+   "visual": "v1",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc02",
+   "visual": "v2",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc03",
+   "visual": "v1",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc03",
+   "visual": "v2",
+   "intent": "cutaway",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc03",
+   "visual": "v3",
+   "intent": "animated_illustration",
+   "medium": "animated_demo",
+   "recipe": "demo",
+   "trail": []
+  },
+  {
+   "scene": "sc04",
+   "visual": "v1",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc04",
+   "visual": "v2",
+   "intent": "animated_illustration",
+   "medium": "animated_demo",
+   "recipe": "demo",
+   "trail": []
+  },
+  {
+   "scene": "sc04",
+   "visual": "v3",
+   "intent": "reaction",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc04",
+   "visual": "v4",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc05",
+   "visual": "v1",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc05",
+   "visual": "v2",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc06",
+   "visual": "v1",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc06",
+   "visual": "v2",
+   "intent": "establishing",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc06",
+   "visual": "v3",
+   "intent": "reaction",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  }
+ ],
+ "music": {
+  "cues": [
+   {
+    "from": "sc01",
+    "track": "Investigations"
+   },
+   {
+    "from": "sc03",
+    "track": "Easy Lemon"
+   },
+   {
+    "from": "sc05",
+    "track": "Carefree"
+   }
+  ]
+ },
+ "metadata": {
+  "title": "Why Do 3D Movies Look Real?",
+  "summary": "A ball flies out of a 3D movie and Arjun ducks. A one-eye test in his seat breaks his theory, and Meera shows him where the ball really comes from.",
+  "disclaimer": "Simplified explainer based on Wikipedia (Polarized 3D system, RealD 3D, Stereopsis, Stereoscopy). Arjun and Meera are fictional, original animated characters; scenes marked 'Illustration' are re-enactments, not footage.",
+  "category": "Education",
+  "audience": "Not made for kids",
+  "tags": [
+   "why do 3d movies look real",
+   "science explained",
+   "explainer",
+   "3d",
+   "arjun",
+   "meera"
+  ]
+ }
+}

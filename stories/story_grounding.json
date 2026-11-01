@@ -1,0 +1,109 @@
+{
+ "sc02_1": {
+  "text": "So what do you think the glasses are doing?",
+  "evidence": [],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "status": "PASS",
+  "why": "question: makes no claim; numbers and names are sourced"
+ },
+ "sc03_2": {
+  "text": "Your two eyes look from different but similar directions, so they see different images.",
+  "evidence": [
+   "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.966,
+   "contradict": 0.001,
+   "neutral": 0.033
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc03_3": {
+  "text": "And with an eye shut, I lose the other image?",
+  "evidence": [],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "status": "PASS",
+  "why": "question: makes no claim; numbers and names are sourced"
+ },
+ "sc03_4": {
+  "text": "Right. Your brain combines the two images, and you see a single 3D view with depth.",
+  "evidence": [
+   "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.997,
+   "contradict": 0.0,
+   "neutral": 0.003
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc04_2": {
+  "text": "Close. The projector puts both pictures on the same screen, each through a different filter.",
+  "evidence": [
+   "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.988,
+   "contradict": 0.002,
+   "neutral": 0.01
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc04_3": {
+  "text": "And each lens only lets its own picture through?",
+  "evidence": [],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "status": "PASS",
+  "why": "question: makes no claim; numbers and names are sourced"
+ },
+ "sc04_4": {
+  "text": "Exactly. The right eye's frames twist clockwise, the left eye's counter-clockwise, so each eye sees only its own frames.",
+  "evidence": [
+   "A ZScreen circularly polarizes the frames clockwise for the right eye and counter-clockwise for the left eye; the audience wears circularly polarized glasses with oppositely polarized lenses so each eye sees only its designated frame."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.989,
+   "contradict": 0.001,
+   "neutral": 0.01
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ },
+ "sc05_1": {
+  "text": "Wait, so the pop-out effect is my own brain at work?",
+  "evidence": [],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "status": "PASS",
+  "why": "question: makes no claim; numbers and names are sourced"
+ },
+ "sc05_2": {
+  "text": "Yes! And that twist is circular polarization, so you can tilt your head without seeing double.",
+  "evidence": [
+   "The advantage of circular polarization over linear polarization is that viewers are able to tilt their heads and look about the theater naturally without seeing double or darkened images."
+  ],
+  "bad_numbers": [],
+  "unsupported_names": [],
+  "scores": {
+   "entail": 0.987,
+   "contradict": 0.001,
+   "neutral": 0.012
+  },
+  "status": "PASS",
+  "why": "entailed by its cited facts"
+ }
+}

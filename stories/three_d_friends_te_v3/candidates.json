@@ -1,0 +1,51 @@
+{
+ "note": "Text-only candidates for the same scenes, beats, fact ids and English source_text as story.json (= candidate B, 'natural'). A = 'light' (mostly Telugu), C = 'casual' (urban). Evaluated by colab/tenglish_candidates.py; B is the selected script, pending native-speaker review.",
+ "A": {
+  "code_mix": "light",
+  "turns": {
+   "sc01_1": "అబ్బా! ఆ popcorn నిజంగానే నా మీద పడుతుందనుకున్నా!",
+   "sc01_2": "అంత సీన్ లేదు. తెర మీది పాప్‌కార్న్ అక్కడే ఉంది, నీ చేతిలోది మాత్రం కింద పడింది.",
+   "sc01_3": "నిజంగా అంత దగ్గరికి ఎలా వచ్చింది? ఈ కళ్లద్దాల్లో చిన్న తెరలు ఉన్నాయా?",
+   "sc02_1": "అది తర్వాత. ముందు ఒక చిన్న పరీక్ష చేద్దాం. ఒక్క కన్ను మూసి తెర చూడు.",
+   "sc02_2": "అరే! ఇప్పుడు 3D తగ్గిపోయింది. పాప్‌కార్న్ తెర దగ్గరే ఆగిపోయింది.",
+   "sc02_3": "కానీ పూర్తిగా చదునుగా అవ్వలేదు కదా? పరిమాణం లాంటి సూచనల వల్ల ఒక్క కన్నుకి కూడా కొంచెం లోతు తెలుస్తుంది.",
+   "sc02_4": "అవును, కొంచెం ఉంది. మరి రెండు కళ్లతో చూస్తే అంత ఎక్కువ ఎందుకు?",
+   "sc03_1": "నీ రెండు కళ్లూ కొంచెం వేరే వేరే వైపుల నుంచి చూస్తాయి. అందుకే ఒక్కో కంటికి కొంచెం వేరే బొమ్మ కనిపిస్తుంది.",
+   "sc03_2": "అయితే ఒక కన్ను మూస్తే, ఒక బొమ్మ పోయినట్టే కదా!",
+   "sc03_3": "అవును. మెదడు ఆ రెండు బొమ్మల్నీ కలిపి ఒకే బొమ్మ చేస్తుంది. అప్పుడే లోతు ఉన్నట్టు అనిపిస్తుంది.",
+   "sc04_1": "కానీ రెండూ ఒకే తెర మీద ఉంటే, ఏది ఏ కంటికో ఎలా తెలుస్తుంది?",
+   "sc04_2": "ప్రొజెక్టర్ రెండు బొమ్మల్నీ ఒకే తెర మీద వేస్తుంది, ఒక్కోదాన్ని వేరే ఫిల్టర్‌తో.",
+   "sc04_3": "ఆగు ఆగు... అయితే ఈ కళ్లద్దాల్లో కూడా ఫిల్టర్లు ఉన్నాయా?",
+   "sc04_4": "అవును! ఒక్కో అద్దంలో వేరే పోలరైజింగ్ ఫిల్టర్ ఉంటుంది. అందుకే ఒక్కో కన్ను తన బొమ్మనే చూస్తుంది.",
+   "sc05_1": "ఓహో! అంటే పాప్‌కార్న్ కన్నా నా మెదడే ఎక్కువ హడావిడి చేసిందన్నమాట!",
+   "sc05_2": "అదే మరి! ఈ రోజు హీరో కన్నా నువ్వే ఎక్కువ నటించావ్.",
+   "sc06_1": "ఈసారి పాప్‌కార్న్‌ని రెండు చేతులతో పట్టుకుంటా.",
+   "sc06_2": "లేదంటే ఒక్క కన్ను మూసుకో, అది నీ దాకా రాదు.",
+   "sc06_3": "అమ్మో, వద్దు! పాప్‌కార్న్ పోయినా పర్లేదు, 3D మాత్రం వదులుకోను."
+  }
+ },
+ "C": {
+  "code_mix": "casual",
+  "turns": {
+   "sc01_1": "Bro! Popcorn direct నా face మీదకే వచ్చేసింది, seriously!",
+   "sc01_2": "Relax రా, అంత scene లేదు. Screen popcorn safe, నీ real popcorn మాత్రం floor మీద ఉంది.",
+   "sc01_3": "But literally అంత realగా ఎలా వచ్చింది? ఈ glassesలో mini screens ఉన్నాయా?",
+   "sc02_1": "Later చెప్తా. First ఒక quick test చేద్దాం. One eye close చేసి screen చూడు.",
+   "sc02_2": "Wait, what? ఇప్పుడు 3D effect full down అయిపోయింది. Popcorn screen దగ్గరే stuck.",
+   "sc02_3": "But fully flat కాదు కదా? Size లాంటి depth clues one eyeకి కూడా work అవుతాయి.",
+   "sc02_4": "Haan, little bit ఉంది. Then both eyes open చేస్తే why so much more?",
+   "sc03_1": "Simple. నీ two eyes slightly different angles నుంచి చూస్తాయి, so each eyeకి different view వస్తుంది.",
+   "sc03_2": "So one eye close చేస్తే one view miss అయిపోతుంది, right?",
+   "sc03_3": "Exactly. Brain ఆ two viewsని combine చేసి single 3D pictureగా perceive చేస్తుంది.",
+   "sc04_1": "OK but both views same screen మీద ఉంటే, which view which eyeకి వెళ్తుందో how it knows?",
+   "sc04_2": "Projector both picturesని same screen మీద throw చేస్తుంది, each one different filterతో.",
+   "sc04_3": "Wait wait... so glassesలో కూడా filters ఉన్నాయా?",
+   "sc04_4": "Correct! Left lens, right lensకి different polarizing filters ఉంటాయి. So each eye its own picture మాత్రమే చూస్తుంది.",
+   "sc05_1": "Bro! అంటే popcorn కన్నా my brain ఎక్కువ drama చేసిందన్నమాట!",
+   "sc05_2": "Exactly! Today hero కన్నా నువ్వే ఎక్కువ overacting చేశావ్.",
+   "sc06_1": "OK, next time popcornని both handsతో tightగా hold చేస్తా.",
+   "sc06_2": "Or one eye close చేసుకో, popcorn నీ దాకా రాదు.",
+   "sc06_3": "No way! Popcorn పోయినా OK, 3D effect మాత్రం miss చేయను."
+  }
+ }
+}

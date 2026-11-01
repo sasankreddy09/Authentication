@@ -1,0 +1,17 @@
+{
+ "en_ps": {
+  "frames": 65,
+  "agree_open_vs_closed": 0.877,
+  "agree_3class": 0.615
+ },
+ "te_ph": {
+  "frames": 85,
+  "agree_open_vs_closed": 0.812,
+  "agree_3class": 0.553
+ },
+ "te_ps": {
+  "frames": 85,
+  "agree_open_vs_closed": 0.894,
+  "agree_3class": 0.6
+ }
+}

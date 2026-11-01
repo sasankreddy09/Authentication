@@ -1,0 +1,536 @@
+{
+ "title": "3D సినిమాలు ఎందుకు నిజంగా కనిపిస్తాయి?",
+ "topic": "Why do 3D movies look real? (Telugu)",
+ "language": "te",
+ "logline": "3D సినిమాలో బంతి స్క్రీన్ లోంచి దూసుకొస్తే అర్జున్ తల వంచేస్తాడు. లాబీలో మీరా కారణం చూపిస్తుంది: రెండు కళ్లు, రెండు చిత్రాలు, వాటిని వేరు చేసే గ్లాసెస్.",
+ "vocabulary": [
+  "3D",
+  "అర్జున్",
+  "మీరా"
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereopsis",
+   "title": "Stereopsis",
+   "revid": 1377837508
+  },
+  {
+   "id": "F2",
+   "text": "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereoscopy",
+   "title": "Stereoscopy",
+   "revid": 1380706327
+  },
+  {
+   "id": "F3",
+   "text": "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F4",
+   "text": "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F5",
+   "text": "A ZScreen circularly polarizes the frames clockwise for the right eye and counter-clockwise for the left eye; the audience wears circularly polarized glasses with oppositely polarized lenses so each eye sees only its designated frame.",
+   "source_url": "https://en.wikipedia.org/wiki/RealD_3D",
+   "title": "RealD 3D",
+   "revid": 1375938377
+  },
+  {
+   "id": "F6",
+   "text": "The advantage of circular polarization over linear polarization is that viewers are able to tilt their heads and look about the theater naturally without seeing double or darkened images.",
+   "source_url": "https://en.wikipedia.org/wiki/RealD_3D",
+   "title": "RealD 3D",
+   "revid": 1375938377
+  }
+ ],
+ "scenes": [
+  {
+   "id": "sc01",
+   "beat": "observation",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "అరె! ఆ బంతి స్క్రీన్ లోంచి నేరుగా బయటకు వచ్చేసింది!",
+     "kind": "observation",
+     "tone": "awe",
+     "expr": "surprised"
+    },
+    {
+     "speaker": "meera",
+     "text": "నువ్వు తల వంచేశావు! నిజంగానే పట్టుకోగలిగేంత దగ్గరగా అనిపించింది.",
+     "kind": "reaction",
+     "tone": "happy",
+     "expr": "happy"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "establishing",
+     "turn": 0,
+     "at": 0.0,
+     "world": "cinema_screen",
+     "screen": "clean",
+     "description": "two friends from behind, watching a 3D movie, a ball coming out of the screen",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.55,
+     "screen": "clean",
+     "description": "the friends in their cinema seats wearing 3D glasses",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "hold": "popcorn"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc02",
+   "beat": "question",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "గ్లాసెస్ తీసేస్తే, అంతా రెండుగా, మసకగా కనిపిస్తోంది.",
+     "kind": "observation",
+     "tone": "curious",
+     "expr": "confused"
+    },
+    {
+     "speaker": "arjun",
+     "text": "అసలు చదునైన స్క్రీన్ బంతిని బయటకు ఎలా దూకిస్తుంది?",
+     "kind": "question",
+     "tone": "curious",
+     "expr": "curious",
+     "gesture": "open_hands",
+     "source_text": "So how does a flat screen make a ball jump out?"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "arjun",
+     "screen": "double",
+     "description": "Arjun takes off his 3D glasses",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     },
+     "changes": [
+      {
+       "t": 0.25,
+       "chars": {
+        "arjun": {
+         "wear": []
+        }
+       }
+      }
+     ]
+    },
+    {
+     "id": "v2",
+     "intent": "cutaway",
+     "turn": 0,
+     "at": 0.5,
+     "world": "cinema_screen",
+     "shot": "establishing",
+     "screen": "double",
+     "description": "what Arjun sees without glasses: two overlapping pictures of the ball on the screen",
+     "chars": {
+      "arjun": {},
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v3",
+     "intent": "two_friend",
+     "turn": 1,
+     "at": 0.0,
+     "screen": "double",
+     "description": "Arjun asks Meera, glasses in hand",
+     "chars": {
+      "arjun": {
+       "hold": "3d_glasses"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc03",
+   "beat": "demonstration",
+   "world": "lobby",
+   "transition": "time_skip",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "ముందు నీ కళ్లతోనే మొదలుపెడదాం. బొటనవేలు పైకెత్తి, ఒక కన్ను మూసి, తర్వాత ఇంకో కన్ను మూయి.",
+     "kind": "instruction",
+     "tone": "friendly",
+     "expr": "smile",
+     "gesture": "point"
+    },
+    {
+     "speaker": "arjun",
+     "text": "నా బొటనవేలు పక్కకు దూకుతోంది, కానీ వెనక గోడ దాదాపు కదలట్లేదు!",
+     "kind": "observation",
+     "tone": "awe",
+     "expr": "surprised"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "ots",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "meera",
+     "description": "after the movie in the lobby, Meera explains over Arjun's shoulder"
+    },
+    {
+     "id": "v2",
+     "intent": "object_demo",
+     "turn": 0,
+     "at": 0.5,
+     "template": "finger_test",
+     "description": "a thumb held in front of the lobby wall, seen with the left eye and then the right eye"
+    }
+   ]
+  },
+  {
+   "id": "sc04",
+   "beat": "first_answer",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "నీ రెండు కళ్లూ వేర్వేరు, కానీ దగ్గర దగ్గర దిశల నుంచి చూస్తాయి, అందుకే అవి వేర్వేరు చిత్రాలను చూస్తాయి.",
+     "kind": "fact",
+     "fact_ids": [
+      "F1"
+     ],
+     "tone": "explainer",
+     "source_text": "Your two eyes look from different but similar directions, so they see different images."
+    },
+    {
+     "speaker": "arjun",
+     "text": "మరి నాకు ఎప్పుడూ రెండు చిత్రాలు ఎందుకు కనిపించవు?",
+     "kind": "question",
+     "tone": "curious",
+     "expr": "thinking",
+     "gesture": "think",
+     "fact_ids": [
+      "F2"
+     ],
+     "source_text": "Then why don't I see two pictures all the time?"
+    },
+    {
+     "speaker": "meera",
+     "text": "నీ మెదడు ఆ రెండు చిత్రాలను కలిపేస్తుంది, అప్పుడు నీకు లోతు ఉన్న ఒకే 3D దృశ్యం కనిపిస్తుంది.",
+     "kind": "fact",
+     "fact_ids": [
+      "F2"
+     ],
+     "tone": "explainer",
+     "source_text": "Your brain combines the two images, and you see a single 3D view with depth.",
+     "tts": "నీ మెదడు ఆ రెండు చిత్రాలను కలిపేస్తుంది, అప్పుడు నీకు లోతు ఉన్న ఒకే త్రీడీ దృశ్యం కనిపిస్తుంది."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "description": "Meera explains, Arjun listens"
+    },
+    {
+     "id": "v2",
+     "intent": "animated_illustration",
+     "turn": 0,
+     "at": 0.35,
+     "template": "eye_views",
+     "description": "two eyes see a ball in front of a tree from two spots; two pictures merge into one with depth"
+    }
+   ]
+  },
+  {
+   "id": "sc05",
+   "beat": "misconception",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "అంటే ఈ గ్లాసెస్ లోపల ఒక్కో కంటికి ఒక్కో చిన్న స్క్రీన్ ఉంటుందా?",
+     "kind": "misconception",
+     "tone": "curious",
+     "expr": "curious",
+     "gesture": "point"
+    },
+    {
+     "speaker": "meera",
+     "text": "స్క్రీన్లు ఏమీ లేవు. ప్రతి లెన్స్ ఒక ఫిల్టర్, అందుకే ప్రతి కంటికి దానికోసమే ఉన్న చిత్రం మాత్రమే చేరుతుంది.",
+     "kind": "correction",
+     "fact_ids": [
+      "F4"
+     ],
+     "tone": "warm",
+     "expr": "smile",
+     "gesture": "explain",
+     "source_text": "No screens. Each lens is a filter, so each eye gets only the picture meant for it."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun guesses, pointing at the glasses",
+     "chars": {
+      "arjun": {
+       "hold": "3d_glasses"
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "closeup",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "meera",
+     "description": "Meera holds up the 3D glasses and smiles",
+     "chars": {
+      "meera": {
+       "hold": "3d_glasses"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc06",
+   "beat": "correction",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "ప్రొజెక్టర్ రెండు చిత్రాలనూ ఒకే స్క్రీన్ మీద వేస్తుంది, ఒక్కోటి వేరే ఫిల్టర్ ద్వారా.",
+     "kind": "fact",
+     "fact_ids": [
+      "F3"
+     ],
+     "tone": "explainer",
+     "source_text": "The projector puts both pictures on the same screen, each through a different filter."
+    },
+    {
+     "speaker": "arjun",
+     "text": "మరి ప్రతి లెన్స్ తన చిత్రాన్ని మాత్రమే లోపలికి పంపుతుందా?",
+     "kind": "question",
+     "tone": "curious",
+     "expr": "curious",
+     "source_text": "And each lens only lets its own picture through?"
+    },
+    {
+     "speaker": "meera",
+     "text": "అవును. కుడి కంటి ఫ్రేమ్‌లు సవ్యదిశలో, ఎడమ కంటి ఫ్రేమ్‌లు అపసవ్యదిశలో తిరుగుతాయి, అందుకే ప్రతి కంటికి దాని ఫ్రేమ్‌లే కనిపిస్తాయి.",
+     "kind": "fact",
+     "fact_ids": [
+      "F5"
+     ],
+     "tone": "happy",
+     "expr": "happy",
+     "gesture": "open_hands",
+     "source_text": "Exactly. The right eye's frames twist clockwise, the left eye's counter-clockwise, so each eye sees only its own frames."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "animated_illustration",
+     "turn": 0,
+     "at": 0.0,
+     "template": "projector_glasses",
+     "description": "projector, silver screen, two pictures with twisted light, each lens of the glasses passes only one picture"
+    },
+    {
+     "id": "v2",
+     "intent": "reaction",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun works it out"
+    },
+    {
+     "id": "v3",
+     "intent": "two_friend",
+     "turn": 2,
+     "at": 0.0,
+     "description": "Meera confirms with open hands, glasses in hand",
+     "chars": {
+      "meera": {
+       "hold": "3d_glasses"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc07",
+   "beat": "reveal",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "ఆగు, అంటే ఈ బయటకు దూకే ఎఫెక్ట్ అంతా నా మెదడు పనేనా?",
+     "kind": "question",
+     "fact_ids": [],
+     "tone": "awe",
+     "expr": "happy",
+     "gesture": "open_hands",
+     "source_text": "Wait, so the pop-out effect is my own brain at work?"
+    },
+    {
+     "speaker": "meera",
+     "text": "అవును! ఆ తిరిగే కాంతినే సర్క్యులర్ పోలరైజేషన్ అంటారు, అందుకే తల పక్కకు వంచినా రెండుగా కనిపించదు.",
+     "kind": "fact",
+     "fact_ids": [
+      "F6"
+     ],
+     "tone": "happy",
+     "expr": "smile",
+     "source_text": "Yes! And that twist is circular polarization, so you can tilt your head without seeing double."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun gets it"
+    },
+    {
+     "id": "v2",
+     "intent": "two_friend",
+     "turn": 1,
+     "at": 0.0,
+     "description": "the friends smile in the lobby"
+    }
+   ]
+  },
+  {
+   "id": "sc08",
+   "beat": "closing",
+   "world": "cinema_seats",
+   "transition": "time_skip",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "తర్వాతి సినిమాలో నేను మొత్తం తల పక్కకు వంచే చూస్తాను. సైన్స్ కోసం!",
+     "kind": "reaction",
+     "tone": "happy",
+     "expr": "happy"
+    },
+    {
+     "speaker": "meera",
+     "text": "రెండు కళ్లు, రెండు చిత్రాలు, ఒక తెలివైన జత గ్లాసెస్. సినిమా ఎంజాయ్ చెయ్యి.",
+     "kind": "observation",
+     "tone": "warm",
+     "expr": "smile"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "screen": "clean",
+     "description": "back in their seats, both wearing 3D glasses",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "establishing",
+     "turn": 1,
+     "at": 0.4,
+     "world": "cinema_screen",
+     "screen": "clean",
+     "description": "the ball flies out of the screen again",
+     "chars": {
+      "arjun": {},
+      "meera": {}
+     }
+    }
+   ]
+  }
+ ]
+}

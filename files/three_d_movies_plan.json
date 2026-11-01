@@ -1,0 +1,1047 @@
+{
+ "plan_version": 2,
+ "project": "three_d_movies_v1",
+ "title": "How Do 3D Glasses Make Movies Look 3D?",
+ "notebook": {
+  "emoji": "🕶️",
+  "name": "AI Explainer Maker",
+  "length": "about 1–1.5 min"
+ },
+ "logline": "Nina watches a dinosaur movie in 3D. We follow the two pictures: two eyes, two cameras, one screen, and the glasses that send each eye its own picture.",
+ "style": {
+  "suffix": "3D animated explainer film style, clean stylized characters with consistent design, warm cinema lighting, modern movie theater, smooth natural animation",
+  "negative": "text, letters, words, logo, brand name, watermark, subtitles, photorealistic, deformed hands, extra fingers, extra limbs, extra heads, distorted face, blurry, low quality, frozen, flickering, character disappearing"
+ },
+ "look": {
+  "bg_top": "#10233F",
+  "bg_bottom": "#1B4060",
+  "accent": "#19C3A6",
+  "accent2": "#FF6B6B",
+  "gold": "#FFC43D"
+ },
+ "characters": {
+  "narrator": {
+   "name": "Narrator",
+   "voice": "af_heart",
+   "speed": 1.0,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#FFFFFF",
+   "look": null
+  },
+  "nina": {
+   "name": "Nina",
+   "voice": "af_nova",
+   "speed": 1.0,
+   "pitch": 0.0,
+   "fx": "none",
+   "color": "#FFD166",
+   "look": "a young woman with curly brown hair wearing a yellow hoodie and dark 3D glasses",
+   "tag": "a young woman in a yellow hoodie"
+  }
+ },
+ "scene_entities": {
+  "nina": {
+   "kind": "character",
+   "name": "Nina",
+   "query": "a young woman in a yellow hoodie"
+  },
+  "seat": {
+   "kind": "anchor",
+   "name": "the cinema seat",
+   "query": "a red cinema seat"
+  }
+ },
+ "props": {
+  "glasses": {
+   "look": "dark plastic 3D glasses",
+   "tag": "3D glasses",
+   "path": [
+    "cinema"
+   ]
+  }
+ },
+ "entities": {
+  "glasses": [
+   "glasses",
+   "lens",
+   "lenses"
+  ],
+  "nina": [
+   "nina"
+  ]
+ },
+ "glossary": {},
+ "vocabulary": [
+  "Nina",
+  "RealD",
+  "3D",
+  "cyan"
+ ],
+ "travel": {
+  "cinema": []
+ },
+ "architecture": {
+  "nodes": {
+   "proj": {
+    "label": "Projector",
+    "sub": "left + right pictures",
+    "kind": "external",
+    "x": 260,
+    "y": 400
+   },
+   "screen": {
+    "label": "Screen",
+    "sub": "both pictures at once",
+    "kind": "store",
+    "x": 700,
+    "y": 400
+   },
+   "lens_l": {
+    "label": "Left lens",
+    "sub": "filter",
+    "kind": "service",
+    "x": 1140,
+    "y": 230
+   },
+   "lens_r": {
+    "label": "Right lens",
+    "sub": "filter",
+    "kind": "service",
+    "x": 1140,
+    "y": 570
+   },
+   "eye_l": {
+    "label": "Left eye",
+    "sub": "left picture only",
+    "kind": "client",
+    "x": 1600,
+    "y": 230
+   },
+   "eye_r": {
+    "label": "Right eye",
+    "sub": "right picture only",
+    "kind": "client",
+    "x": 1600,
+    "y": 570
+   },
+   "brain": {
+    "label": "Brain",
+    "sub": "builds the depth",
+    "kind": "queue",
+    "x": 1600,
+    "y": 400
+   }
+  },
+  "edges": [
+   [
+    "proj",
+    "screen"
+   ],
+   [
+    "screen",
+    "lens_l"
+   ],
+   [
+    "screen",
+    "lens_r"
+   ],
+   [
+    "lens_l",
+    "eye_l"
+   ],
+   [
+    "lens_r",
+    "eye_r"
+   ],
+   [
+    "eye_l",
+    "brain"
+   ],
+   [
+    "eye_r",
+    "brain"
+   ]
+  ]
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "text": "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stereopsis"
+   ],
+   "source_revision": 1377837508
+  },
+  {
+   "id": "c2",
+   "text": "The distance between the lenses in a typical stereo camera is about the distance between one's eyes and is about 6.35 cm.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stereo_camera"
+   ],
+   "source_revision": 1376169392
+  },
+  {
+   "id": "c3",
+   "text": "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stereoscopy"
+   ],
+   "source_revision": 1380706327
+  },
+  {
+   "id": "c4",
+   "text": "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Polarized_3D_system"
+   ],
+   "source_revision": 1377586129
+  },
+  {
+   "id": "c5",
+   "text": "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Polarized_3D_system"
+   ],
+   "source_revision": 1377586129
+  },
+  {
+   "id": "c6",
+   "text": "The RealD projector alternately projects right-eye frames and left-eye frames, switching between them 144 times per second.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/RealD_3D"
+   ],
+   "source_revision": 1375938377
+  },
+  {
+   "id": "c7",
+   "text": "A ZScreen circularly polarizes the frames clockwise for the right eye and counter-clockwise for the left eye; the audience wears circularly polarized glasses with oppositely polarized lenses so each eye sees only its designated frame.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/RealD_3D"
+   ],
+   "source_revision": 1375938377
+  },
+  {
+   "id": "c8",
+   "text": "The advantage of circular polarization over linear polarization is that viewers are able to tilt their heads and look about the theater naturally without seeing double or darkened images.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/RealD_3D"
+   ],
+   "source_revision": 1375938377
+  },
+  {
+   "id": "c9",
+   "text": "Anaglyph 3D overlays images in different colors with corresponding filters for each eye; the colors are most typically red and cyan.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Anaglyph_3D"
+   ],
+   "source_revision": 1377575293
+  },
+  {
+   "id": "c10",
+   "text": "Active shutter glasses are controlled by a timing signal that allows the glasses to alternately block one eye, and then the other, in synchronization with the refresh rate of the screen.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Active_shutter_3D_system"
+   ],
+   "source_revision": 1377573408
+  }
+ ],
+ "tones": {
+  "explainer": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.45
+  },
+  "curious": {
+   "speed": 0.96,
+   "pitch": 0.2,
+   "gain_db": 0.0,
+   "pause_after": 0.55
+  },
+  "warm": {
+   "speed": 0.95,
+   "pitch": 0.0,
+   "gain_db": -0.5,
+   "pause_after": 0.6
+  }
+ },
+ "moods": {
+  "curious": {
+   "pause_after": 0.55,
+   "grade": "cool",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.1,
+    "shimmer": 0.4
+   }
+  },
+  "calm": {
+   "pause_after": 0.5,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.4,
+    "curious": 0.8,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "busy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.2,
+    "shimmer": 0.1
+   }
+  },
+  "joy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.07,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  }
+ },
+ "music": {
+  "cues": [
+   {
+    "from": "sh01",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh03",
+    "track": "Easy Lemon"
+   },
+   {
+    "from": "sh08",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh09",
+    "track": "Wallpaper"
+   },
+   {
+    "from": "sh14",
+    "track": "Carefree"
+   }
+  ]
+ },
+ "shots": [
+  {
+   "shot_id": "sh01",
+   "chapter": "hook",
+   "beat": "hook",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 101,
+   "card": {
+    "lines": [
+     "The dinosaur jumps out of the screen…",
+     "…but only with the glasses on. Why?"
+    ],
+    "bullets": false,
+    "icon": "question"
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.4,
+     "dur": 0.6,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "curious",
+     "text": "Why does a dinosaur seem to jump out of the screen, but only when you wear those glasses?",
+     "story": true
+    }
+   ]
+  },
+  {
+   "shot_id": "sh02",
+   "chapter": "hook",
+   "beat": "setup",
+   "mood": "curious",
+   "seed": 202,
+   "location": "cinema",
+   "cast": [
+    "nina"
+   ],
+   "props": [
+    "glasses"
+   ],
+   "prop_state": {
+    "glasses": "cinema"
+   },
+   "move": "push_in",
+   "scene": "inside a dark modern cinema with rows of red seats, the glow of a big movie screen lighting the faces",
+   "action": "the young woman sits in a cinema seat wearing dark 3D glasses, looking up at the big screen with a curious smile",
+   "state": {
+    "location": "cinema",
+    "camera": {
+     "setup": "cinema_medium",
+     "axis": "cinema_line",
+     "side": "front",
+     "size": "medium",
+     "move": "push_in"
+    },
+    "start": {
+     "nina": {
+      "box": [
+       0.3,
+       0.1,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "seat": {
+      "box": [
+       0.18,
+       0.5,
+       0.82,
+       1.0
+      ]
+     }
+    },
+    "holders": {},
+    "events": [
+     {
+      "id": "watch",
+      "type": "look_at",
+      "actor": "nina",
+      "t": [
+       0.1,
+       0.8
+      ],
+      "critical": false,
+      "describe": "she watches the screen, curious"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "lines": [
+      "Nina at the cinema",
+      "3D glasses on"
+     ],
+     "bullets": false,
+     "icon": "person"
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "text": "Meet Nina. She's at the cinema, wearing 3D glasses for a dinosaur movie.",
+     "story": true
+    }
+   ]
+  },
+  {
+   "shot_id": "sh03",
+   "chapter": "eyes",
+   "beat": "step",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 303,
+   "claims": [
+    "c1"
+   ],
+   "label": "Step 1 · Two eyes",
+   "card": {
+    "lines": [
+     "Close one eye, then the other",
+     "The view shifts a little",
+     "Each eye sees its own angle"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Try closing one eye, then the other. Each eye sees the world from a slightly different angle."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh04",
+   "chapter": "eyes",
+   "beat": "step",
+   "recipe": "card",
+   "mood": "calm",
+   "seed": 404,
+   "claims": [
+    "c2"
+   ],
+   "card": {
+    "lines": [
+     "Your eyes are about 6 cm apart",
+     "Two slightly different pictures"
+    ],
+    "bullets": true,
+    "icon": "person"
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "That's because your eyes are about six centimetres apart."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh05",
+   "chapter": "eyes",
+   "beat": "step",
+   "recipe": "diagram",
+   "mood": "calm",
+   "seed": 505,
+   "claims": [
+    "c3",
+    "c1"
+   ],
+   "label": "Step 2 · The brain",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Your brain combines the two pictures into one, and their small differences become depth."
+    }
+   ],
+   "diagram": {
+    "show": [
+     "eye_l",
+     "eye_r",
+     "brain"
+    ],
+    "focus": [
+     "eye_l",
+     "eye_r",
+     "brain"
+    ],
+    "flows": [
+     {
+      "from": "eye_l",
+      "to": "brain",
+      "label": "left picture"
+     },
+     {
+      "from": "eye_r",
+      "to": "brain",
+      "label": "right picture"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sh06",
+   "chapter": "film",
+   "beat": "step",
+   "recipe": "journey",
+   "mood": "calm",
+   "seed": 606,
+   "claims": [
+    "c2"
+   ],
+   "label": "Step 3 · Two cameras",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "So a 3D movie is filmed with two cameras, side by side, about one eye-distance apart."
+    }
+   ],
+   "journey": {
+    "path": [
+     "cams",
+     "screen"
+    ],
+    "focus": [
+     "cams"
+    ],
+    "move": [
+     0.15,
+     0.9
+    ],
+    "caption": "A left picture and a right picture"
+   }
+  },
+  {
+   "shot_id": "sh07",
+   "chapter": "film",
+   "beat": "step",
+   "recipe": "journey",
+   "mood": "curious",
+   "seed": 707,
+   "claims": [
+    "c4"
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "In the cinema, both pictures are shown on the same screen at once."
+    }
+   ],
+   "journey": {
+    "path": [
+     "cams",
+     "screen"
+    ],
+    "focus": [
+     "screen"
+    ],
+    "move": [
+     0.1,
+     0.6
+    ],
+    "caption": "Both pictures, one screen, at the same time"
+   }
+  },
+  {
+   "shot_id": "sh08",
+   "chapter": "glasses",
+   "beat": "turn",
+   "mood": "curious",
+   "seed": 808,
+   "location": "cinema",
+   "cast": [
+    "nina"
+   ],
+   "props": [
+    "glasses"
+   ],
+   "prop_state": {
+    "glasses": "cinema"
+   },
+   "move": "push_in",
+   "scene": "inside a dark modern cinema with rows of red seats, the glow of a big movie screen lighting the faces",
+   "action": "the young woman in the cinema seat lifts her dark 3D glasses up onto her forehead and squints at the screen, puzzled",
+   "state": {
+    "location": "cinema",
+    "camera": {
+     "setup": "cinema_medium",
+     "axis": "cinema_line",
+     "side": "front",
+     "size": "medium",
+     "move": "push_in"
+    },
+    "start": {
+     "nina": {
+      "box": [
+       0.3,
+       0.1,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "seat": {
+      "box": [
+       0.18,
+       0.5,
+       0.82,
+       1.0
+      ]
+     }
+    },
+    "holders": {},
+    "events": [
+     {
+      "id": "lift",
+      "type": "gesture",
+      "actor": "nina",
+      "t": [
+       0.15,
+       0.6
+      ],
+      "critical": false,
+      "describe": "she lifts her 3D glasses and squints, puzzled"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "question",
+     "lines": [
+      "Left picture → left eye?",
+      "Right picture → right eye?"
+     ],
+     "bullets": false
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "curious",
+     "text": "So how does each eye get only its own picture?",
+     "story": true
+    }
+   ]
+  },
+  {
+   "shot_id": "sh09",
+   "chapter": "glasses",
+   "beat": "resolution",
+   "recipe": "diagram",
+   "mood": "joy",
+   "seed": 909,
+   "claims": [
+    "c5",
+    "c3"
+   ],
+   "label": "Step 4 · The glasses",
+   "diagram": {
+    "show": "all",
+    "focus": [
+     "proj",
+     "screen",
+     "lens_l",
+     "lens_r",
+     "eye_l",
+     "eye_r",
+     "brain"
+    ],
+    "flows": [
+     {
+      "from": "proj",
+      "to": "screen",
+      "label": "both pictures"
+     },
+     {
+      "from": "screen",
+      "to": "lens_l",
+      "label": "left picture passes"
+     },
+     {
+      "from": "screen",
+      "to": "lens_r",
+      "label": "right picture passes"
+     },
+     {
+      "from": "lens_l",
+      "to": "eye_l",
+      "label": "left eye only"
+     },
+     {
+      "from": "lens_r",
+      "to": "eye_r",
+      "label": "right eye only"
+     },
+     {
+      "from": "eye_l",
+      "to": "brain",
+      "label": "depth!"
+     }
+    ]
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "curious",
+     "text": "The glasses! Each lens is a filter: it lets its own picture through and blocks the other one."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh10",
+   "chapter": "realD",
+   "beat": "step",
+   "recipe": "card",
+   "mood": "busy",
+   "seed": 1010,
+   "claims": [
+    "c6"
+   ],
+   "label": "Step 5 · How fast",
+   "card": {
+    "lines": [
+     "Left, right, left, right…",
+     "144 switches every second"
+    ],
+    "bullets": true,
+    "icon": "clock"
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "In RealD cinemas, the projector switches between the left and right pictures 144 times every second.",
+     "tts": "In Real D cinemas, the projector switches between the left and right pictures 144 times every second."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh11",
+   "chapter": "realD",
+   "beat": "step",
+   "recipe": "diagram",
+   "mood": "busy",
+   "seed": 1111,
+   "claims": [
+    "c7"
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "A filter twists the light clockwise for the right eye and anticlockwise for the left. Each lens only lets in its own twist."
+    }
+   ],
+   "diagram": {
+    "show": [
+     "proj",
+     "screen",
+     "lens_l",
+     "lens_r",
+     "eye_l",
+     "eye_r"
+    ],
+    "focus": [
+     "proj",
+     "screen",
+     "lens_l",
+     "lens_r"
+    ],
+    "flows": [
+     {
+      "from": "proj",
+      "to": "screen",
+      "label": "twisted light"
+     },
+     {
+      "from": "screen",
+      "to": "lens_r",
+      "label": "clockwise → right"
+     },
+     {
+      "from": "screen",
+      "to": "lens_l",
+      "label": "anticlockwise → left"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sh12",
+   "chapter": "realD",
+   "beat": "aside",
+   "recipe": "card",
+   "mood": "calm",
+   "seed": 1212,
+   "claims": [
+    "c8"
+   ],
+   "card": {
+    "lines": [
+     "Tilt your head:",
+     "still no double image"
+    ],
+    "bullets": false,
+    "icon": "check"
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Because the light is twisted in circles, you can even tilt your head without seeing double."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh13",
+   "chapter": "others",
+   "beat": "aside",
+   "recipe": "card",
+   "mood": "calm",
+   "seed": 1313,
+   "claims": [
+    "c9",
+    "c10"
+   ],
+   "label": "Other 3D glasses",
+   "card": {
+    "lines": [
+     "Red and cyan: colour filters",
+     "Shutter glasses: one eye at a time"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Old red and cyan glasses use colour filters instead. Shutter glasses block one eye, then the other, in time with the screen."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh14",
+   "chapter": "payoff",
+   "beat": "resolution",
+   "mood": "joy",
+   "seed": 1414,
+   "location": "cinema",
+   "cast": [
+    "nina"
+   ],
+   "props": [
+    "glasses"
+   ],
+   "prop_state": {
+    "glasses": "cinema"
+   },
+   "move": "pull_out",
+   "scene": "inside a dark modern cinema with rows of red seats, the glow of a big movie screen lighting the faces",
+   "action": "the young woman in the cinema seat leans back in her 3D glasses, amazed and smiling at the big screen",
+   "state": {
+    "location": "cinema",
+    "camera": {
+     "setup": "cinema_medium",
+     "axis": "cinema_line",
+     "side": "front",
+     "size": "medium",
+     "move": "pull_out"
+    },
+    "start": {
+     "nina": {
+      "box": [
+       0.3,
+       0.1,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "seat": {
+      "box": [
+       0.18,
+       0.5,
+       0.82,
+       1.0
+      ]
+     }
+    },
+    "holders": {},
+    "events": [
+     {
+      "id": "watch",
+      "type": "look_at",
+      "actor": "nina",
+      "t": [
+       0.1,
+       0.8
+      ],
+      "critical": false,
+      "describe": "she smiles, amazed"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "lines": [
+      "The dinosaur leaps",
+      "right at Nina"
+     ],
+     "bullets": false,
+     "icon": "check"
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "And now, the dinosaur seems to leap right at Nina."
+    }
+   ],
+   "claims": []
+  },
+  {
+   "shot_id": "sh15",
+   "chapter": "payoff",
+   "beat": "payoff",
+   "recipe": "card",
+   "mood": "joy",
+   "seed": 1515,
+   "claims": [
+    "c5",
+    "c3"
+   ],
+   "card": {
+    "icon": "check",
+    "lines": [
+     "The glasses: one picture per eye",
+     "Nina's brain builds the depth"
+    ],
+    "bullets": false
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "text": "So the glasses don't make the 3D. They give each eye its own picture, and Nina's brain builds the depth.",
+     "story": true
+    }
+   ]
+  }
+ ],
+ "metadata": {
+  "title": "How Do 3D Glasses Work? Why the Dinosaur Jumps Out of the Screen",
+  "summary": "Why does a 3D movie only look 3D with the glasses on? Follow Nina at the cinema: your two eyes see slightly different pictures, your brain turns the difference into depth, 3D films are shot with two cameras, both pictures share one screen, and the glasses send each eye only its own picture (RealD's twisted light, plus red-cyan and shutter glasses).",
+  "disclaimer": "Simplified explainer based on Wikipedia articles (Stereopsis, Stereoscopy, Stereo camera, Polarized 3D system, RealD 3D, Anaglyph 3D, Active shutter 3D system), checked October 2026. Not affiliated with RealD or any cinema. The character is fictional.",
+  "category": "Education",
+  "audience": "Not made for kids",
+  "tags": [
+   "how 3d glasses work",
+   "3d movies explained",
+   "stereoscopic 3d",
+   "realD",
+   "polarized glasses",
+   "how do 3d movies work",
+   "science explained"
+  ]
+ },
+ "journey": {
+  "token": "card",
+  "stations": [
+   {
+    "id": "cams",
+    "label": "Two cameras",
+    "icon": "box"
+   },
+   {
+    "id": "screen",
+    "label": "One screen",
+    "icon": "network"
+   },
+   {
+    "id": "glasses",
+    "label": "3D glasses",
+    "icon": "check"
+   },
+   {
+    "id": "eyes",
+    "label": "Your eyes",
+    "icon": "person"
+   }
+  ]
+ }
+}

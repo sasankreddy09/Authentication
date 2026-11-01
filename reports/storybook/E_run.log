@@ -1,0 +1,241 @@
+2026-10-20 02:00:12 INFO  Run started | notebook story v5 (faster: frames on demand + background downloads; continuity: one continuous clip per shot, plan check + on-screen character check; disk/RAM guard; colour fix; model + edit caches; turbo AI video; full run log) | Python 3.12.3 | RAM 2.5/7.4 GB | disk free 108 GB
+2026-10-20 02:00:12 INFO  Settings: PROJECT='three_d_friends_te_v3_storybook', VOICE='am_michael', SPEED_SCALE=1.0, WER_RETRY=0.15, ASR_MODEL='tiny.en', CLIP_STEPS=25, MAX_SLOWMO=1.4, SMOOTH_MOTION='blend', SHARPEN=0.5, CONTINUITY_CHECK=True, CONTINUITY_RETRIES=1, FRAMES_ON_DEMAND=True, MUSIC_STYLE='library', BURN_SUBS=True, VIDEO_SPEED='turbo', CACHE_THRESHOLD=0.08, MODEL_CACHE_ON_DRIVE=True, MUSIC_GAIN=0.3, SFX_GAIN_DB=0.0, FPS=24, W=1280, H=720, X264_PRESET='ultrafast'
+2026-10-20 02:00:12 INFO  Logging to: /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/run_logs/run_20261020_020012.log (moves to Google Drive in step 3)
+2026-10-20 02:00:12 INFO  ===== setup =====
+2026-10-20 02:00:12 INFO  Not running in Colab: using local folders
+2026-10-20 02:00:12 INFO  Run log: /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/logs/run_20261020_020012.log
+2026-10-20 02:00:14 INFO  GPU: none | VRAM 0.0 GB | bf16 False
+2026-10-20 02:00:14 INFO  ⚠️  No GPU in this session. On the free tier this usually means today's GPU quota is used up, or the runtime
+2026-10-20 02:00:14 INFO      type is CPU. The notebook still finishes (voices, drawn scenes, music, editing), but AI video shots become
+2026-10-20 02:00:14 INFO      still pictures with a camera move. Later: Runtime → Change runtime type → T4 GPU → Run all; only the
+2026-10-20 02:00:14 INFO      missing AI shots are made, everything else is reused.
+2026-10-20 02:00:14 INFO  Image model: procedural | Video model: none
+2026-10-20 02:00:14 INFO  ❌ No usable GPU: shots will be camera moves over still images only. Use Runtime → Change runtime type → GPU.
+2026-10-20 02:00:14 INFO  System RAM: 7.4 GB  (small: the notebook loads big models straight onto the GPU to fit)
+2026-10-20 02:00:14 INFO  Project folder: /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook
+2026-10-20 02:00:14 INFO  Colab budget: RAM 7.4 GB (4.8 free) | disk 108 GB free | GPU memory 0.0 GB | Google Drive 108.3 GB free
+2026-10-20 02:00:14 INFO    Model cache (/tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/_model_cache): fonts, music
+2026-10-20 02:00:14 INFO    This notebook keeps RAM under ~6 GB (big models load straight onto the GPU) and needs ~20 GB of disk
+2026-10-20 02:00:14 INFO    in the first session (11 GB text encoder + 6 GB video model; both are deleted from disk once used).
+2026-10-20 02:00:14 INFO    ⚠️ Less than 6 GB RAM free: close other notebooks or use Runtime → Restart session.
+2026-10-20 02:00:14 INFO  Packages: torch=2.11.0+cpu, transformers=4.57.1, huggingface-hub=0.36.2, onnxruntime=1.31.0, kokoro-onnx=0.6.1, faster-whisper=1.2.1, ctranslate2=4.8.3, numpy=2.5.4
+2026-10-20 02:00:14 INFO  ffmpeg: ffmpeg version n8.0.1-48-g0592be14ff-20260116 Copyright (c) 2000-2025 the FFmpeg developers
+2026-10-20 02:00:14 INFO  ===== lib =====
+2026-10-20 02:00:14 INFO  engine library loaded from /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/_engine_lib: validate, drawkit, musiclib
+2026-10-20 02:00:14 INFO  ===== plan =====
+2026-10-20 02:00:14 INFO  Using plan.json from Drive (your edits). Delete it to restore the built-in story.
+2026-10-20 02:00:14 INFO  speech-check vocabulary: అర్జున్, మీరా, Arjun, Meera, 3D, popcorn
+2026-10-20 02:00:14 INFO  Continuity check of the plan: OK (every AI shot fits one 7.1s clip; speakers on screen; nobody vanishes; 6 drawn scenes checked; 0 validation errors, 0 warnings)
+2026-10-20 02:00:14 INFO  "3D movie లో popcorn మన మీదకి ఎందుకు వస్తుంది?": 6 shots, 19 lines, 198 words
+2026-10-20 02:00:14 INFO    అర్జున్   voice Prakash    pitch +0.0  effect none     10 lines
+2026-10-20 02:00:14 INFO    మీరా      voice Lalitha    pitch +0.0  effect none     9 lines
+2026-10-20 02:00:14 INFO  Story arc: curious → curious → busy → calm → joy → joy
+2026-10-20 02:00:14 INFO  Prompts:
+2026-10-20 02:00:14 INFO  Estimated time on a free T4: ~17 min the first time (model downloads), ~5 min in a new session once models are cached on Drive; re-runs only remake what changed. (0 AI clips, 6 drawn scenes)
+2026-10-20 02:00:14 INFO  Free tier: keep this browser tab open (idle sessions disconnect), sessions last at most ~12 h, and GPU time
+2026-10-20 02:00:14 INFO  per day is limited. If it disconnects: reconnect → Run all; finished work is saved on Drive.
+2026-10-20 02:00:14 INFO  ===== helpers =====
+2026-10-20 02:00:14 INFO  script font for 'te': Hind Guntur (ITF Hind Guntur (SIL Open Font License): Telugu + Latin, so 'PNR', 'WL 12', '₹' render too); raqm shaping available
+2026-10-20 02:00:14 INFO  Language: te | text font: Hind Guntur
+2026-10-20 02:00:14 FFMPG ffmpeg (0.0s, exit 255): ffmpeg -hide_banner -loglevel error -y -f lavfi -i testsrc2=size=1280x720:rate=24 -frames:v 24 -c:v h264_nvenc -pix_fmt yuv420p /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/nvenc_test.mp4
+2026-10-20 02:00:14 ERROR ffmpeg said: [h264_nvenc @ 0x5fb57d10e340] Cannot load libcuda.so.1
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] [enc:h264_nvenc @ 0x5fb57d10e2c0] Error while opening encoder - maybe incorrect parameters such as bit_rate, rate, width or height.
+2026-10-20 02:00:14 ERROR [vf#0:0 @ 0x5fb57d129300] Error sending frames to consumers: Operation not permitted
+2026-10-20 02:00:14 ERROR [vf#0:0 @ 0x5fb57d129300] Task finished with error code: -1 (Operation not permitted)
+2026-10-20 02:00:14 ERROR [vf#0:0 @ 0x5fb57d129300] Terminating thread with return code -1 (Operation not permitted)
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] [enc:h264_nvenc @ 0x5fb57d10e2c0] Could not open encoder before EOF
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] Task finished with error code: -22 (Invalid argument)
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] Terminating thread with return code -22 (Invalid argument)
+2026-10-20 02:00:14 ERROR [out#0/mp4 @ 0x5fb57d10d7c0] Nothing was written into output file, because at least one of its streams received no packets.
+2026-10-20 02:00:14 ERROR NVENC not available
+2026-10-20 02:00:14 ERROR Traceback (most recent call last):
+2026-10-20 02:00:14 ERROR   File "helpers", line 236, in pick_video_encoder
+2026-10-20 02:00:14 ERROR   File "helpers", line 14, in ff
+2026-10-20 02:00:14 ERROR RuntimeError: ffmpeg failed:
+2026-10-20 02:00:14 ERROR ffmpeg -hide_banner -loglevel error -y -f lavfi -i testsrc2=size=1280x720:rate=24 -frames:v 24 -c:v h264_nvenc -pix_fmt yuv420p /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/nvenc_test.mp4
+2026-10-20 02:00:14 ERROR [h264_nvenc @ 0x5fb57d10e340] Cannot load libcuda.so.1
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] [enc:h264_nvenc @ 0x5fb57d10e2c0] Error while opening encoder - maybe incorrect parameters such as bit_rate, rate, width or height.
+2026-10-20 02:00:14 ERROR [vf#0:0 @ 0x5fb57d129300] Error sending frames to consumers: Operation not permitted
+2026-10-20 02:00:14 ERROR [vf#0:0 @ 0x5fb57d129300] Task finished with error code: -1 (Operation not permitted)
+2026-10-20 02:00:14 ERROR [vf#0:0 @ 0x5fb57d129300] Terminating thread with return code -1 (Operation not permitted)
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] [enc:h264_nvenc @ 0x5fb57d10e2c0] Could not open encoder before EOF
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] Task finished with error code: -22 (Invalid argument)
+2026-10-20 02:00:14 ERROR [vost#0:0/h264_nvenc @ 0x5fb57d10dd40] Terminating thread with return code -22 (Invalid argument)
+2026-10-20 02:00:14 ERROR [out#0/mp4 @ 0x5fb57d10d7c0] Nothing was written into output file, because at least one of its streams received no packets.
+2026-10-20 02:00:14 ERROR 
+2026-10-20 02:00:14 INFO  Video encoding: CPU (x264)
+2026-10-20 02:00:14 INFO  🔒 LICENSE_STRICT: turbo LoRA refused (Kijai/WanVideo_comfy: apache-2.0 (upstream gdhe17/Self-Forcing) — LoRA extracted from the Apache-2.0 Self-Forcing weights; the repackaging repo has no licence tag of its own) → fast video mode
+2026-10-20 02:00:14 INFO  licence: turbo LoRA: refused (Kijai/WanVideo_comfy: apache-2.0 (upstream gdhe17/Self-Forcing) — LoRA extracted from the Apache-2.0 Self-Forcing weights; the repackaging repo has no licence tag of its own)
+2026-10-20 02:00:14 INFO  licence: SDXL keyframes: refused (stabilityai/stable-diffusion-xl-base-1.0: openrail++ — OpenRAIL++: commercial use allowed with use-based restrictions)
+2026-10-20 02:00:14 INFO  🔒 LICENSE_STRICT: CLIP continuity check refused (openai/clip-vit-base-patch32: mit (OpenAI CLIP repo) — no licence tag on the Hub; OpenAI's model card lists deployed use as out of scope) → check off
+2026-10-20 02:00:14 INFO  licence: CLIP continuity check: refused (openai/clip-vit-base-patch32: mit (OpenAI CLIP repo) — no licence tag on the Hub; OpenAI's model card lists deployed use as out of scope)
+2026-10-20 02:00:14 INFO  preflight: {"time": "2026-10-20 02:00:14", "python": "3.12.3", "gpu": null, "vram_gb": 0.0, "compute_capability": null, "native_bf16": false, "precision": "fp32 (CPU)", "ram_free_gb": 4.7, "disk_free_gb": 108.3, "model_cache": "/tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/_model_cache", "video_engine": null, "image_model": "procedural", "video_speed": "fast", "run_mode": "draft", "story_mode": "two_friends_cinematic", "license_strict": true, "licences": [{"model": "Kijai/WanVideo_comfy", "use": "turbo LoRA", "would_load": true, "allowed": false, "why": "Kijai/WanVideo_comfy: apache-2.0 (upstream gdhe17/Self-Forcing) \u2014 LoRA extracted from the Apache-2.0 Self-Forcing weights; the repackaging repo has no licence tag of its own"}, {"model": "stabilityai/stable-diffusion-xl-base-1.0", "use": "SDXL keyframes", "would_load": false, "allowed": false, "why": "stabilityai/stable-diffusion-xl-base-1.0: openrail++ \u2014 OpenRAIL++: commercial use allowed with use-based restrictions"}, {"model": "openai/clip-vit-base-patch32", "use": "CLIP continuity check", "would_load": true, "allowed": false, "why": "openai/clip-vit-base-patch32: mit (OpenAI CLIP repo) \u2014 no licence tag on the Hub; OpenAI's model card lists deployed use as out of scope"}], "language": "te", "cuda": false, "warnings": ["no GPU: AI video shots fall back to drawn/licensed visuals (CPU fallback)"], "torch": "2.11.0+cpu", "hf_token_present": true}
+2026-10-20 02:00:14 INFO  Preflight: gpu=None, vram_gb=0.0, precision=fp32 (CPU), ram_free_gb=4.7, disk_free_gb=108.3, story_mode=two_friends_cinematic, license_strict=True
+2026-10-20 02:00:14 INFO    ⚠️ no GPU: AI video shots fall back to drawn/licensed visuals (CPU fallback)
+2026-10-20 02:00:14 INFO  ===== prefetch =====
+2026-10-20 02:00:14 INFO  Nothing to download in the background (no GPU, or everything is cached).
+2026-10-20 02:00:14 INFO  ===== narration =====
+2026-10-20 02:00:14 INFO  language te: voices = Indic Parler-TTS, speech check = tiny (letter error, retry above 35%)
+2026-10-20 02:00:14 INFO  stage voice_direction: reused (saved 2026-10-20 01:53:43, key 2f86b35450aa9767)
+2026-10-20 02:00:14 INFO  Voice direction (two_friends, rules): playful_disbelief → playful_remark → genuine_curiosity → guiding_demo → enthusiastic_discovery* → explaining_observation → genuine_curiosity → explaining_observation → thinking_aloud → satisfying_revelation → genuine_curiosity → sharing_surprising_fact → asking_confirmation → reflective_explanation → quiet_realization → playful_remark → playful_remark → playful_remark → playful_remark
+2026-10-20 02:00:14 INFO  voice direction smoothed: sc02_2: intensity 0.5 → 0.5 (no sudden jump inside a beat)
+2026-10-20 02:00:14 INFO  voice direction smoothed: sc02_4: intensity 0.35 → 0.35 (no sudden jump inside a beat)
+2026-10-20 02:00:14 INFO  Telugu voices: local Indic Parler-TTS (STRICT_OPEN_SOURCE: Gemini is opt-in — set TELUGU_TTS_BACKEND = "gemini_free" to use it)
+2026-10-20 02:00:42 RES   RAM 2.9/7.4 GB | disk free 108 GB | RAM peak 3.0 GB in the last 30 s
+2026-10-20 02:00:44 INFO  Voice QC: sc01_1: speaking rate natural; sc01_2: speaking rate natural; sc01_3: speaking rate natural; sc02_1: speaking rate natural; sc02_2: speaking rate natural; sc02_3: speaking rate natural; sc02_4: speaking rate natural; sc03_1: speaking rate natural; sc03_2: speaking rate natural; sc03_3: speaking rate natural; sc04_1: speaking rate natural; sc04_2: speaking rate natural; sc04_3: speaking rate natural; sc04_4: speaking rate natural; sc05_1: speaking rate natural; sc05_2: speaking rate natural; sc06_1: speaking rate natural; sc06_2: speaking rate natural; sc06_3: speaking rate natural
+2026-10-20 02:00:44 ERROR inline A/B players unavailable (not in a notebook)
+2026-10-20 02:00:44 ERROR Traceback (most recent call last):
+2026-10-20 02:00:44 ERROR   File "narration", line 1284, in <module>
+2026-10-20 02:00:44 ERROR ModuleNotFoundError: No module named 'IPython'
+2026-10-20 02:00:44 INFO  Voices ready.
+2026-10-20 02:00:44 INFO     RAM 2.7/7.4 GB | disk free 108 GB
+2026-10-20 02:00:44 INFO  ===== timeline =====
+2026-10-20 02:00:44 INFO    sc01:   0.00s  +16.29s  [curious]  అర్జున్, మీరా, అర్జున్
+2026-10-20 02:00:44 INFO    sc02:  16.29s  +24.33s  [curious]  మీరా, అర్జున్, మీరా, అర్జున్
+2026-10-20 02:00:44 INFO    sc03:  40.62s  +19.88s  [busy]  మీరా, అర్జున్, మీరా
+2026-10-20 02:00:44 INFO    sc04:  60.50s  +22.83s  [calm]  అర్జున్, మీరా, అర్జున్, మీరా
+2026-10-20 02:00:44 INFO    sc05:  83.33s  +10.08s  [joy]  అర్జున్, మీరా
+2026-10-20 02:00:44 INFO    sc06:  93.42s  +14.12s  [joy]  అర్జున్, మీరా, అర్జున్
+2026-10-20 02:00:44 INFO  Total length: 107.5s, 41 subtitle cues (0/19 lines timed word by word)
+2026-10-20 02:00:44 INFO  ===== diagrams =====
+2026-10-20 02:00:44 INFO  storybook assets ready in 0.0s: {"arjun": {"version": "v1", "status": "provisional", "art_version": "storybook-procedural-1", "verify": [], "layers": 75}, "meera": {"version": "v1", "status": "provisional", "art_version": "storybook-procedural-1", "verify": [], "layers": 75}, "env:cinema": {"version": "v1", "verify": []}, "env:lobby": {"version": "v1", "verify": []}}
+2026-10-20 02:00:44 INFO  Storybook characters: arjun v1 (provisional), meera v1 (provisional), env:cinema v1 (pack), env:lobby v1 (pack)
+2026-10-20 02:00:44 INFO  drawn scenes are encoded with x264 (CPU)
+2026-10-20 02:00:44 INFO  6 drawn scenes (app screens, journeys, cards, diagrams) are being drawn in the background (no GPU needed).
+2026-10-20 02:00:44 INFO  ===== keyframes =====
+2026-10-20 02:00:44 INFO  ===== editlib =====
+2026-10-20 02:00:44 INFO  ===== logic =====
+2026-10-20 02:00:44 INFO  Logical consistency: 0 shots with a scene-state; other AI shots keep plain text-to-video (not logically verified)
+2026-10-20 02:00:44 INFO  ===== bench =====
+2026-10-20 02:00:44 INFO  ===== clips =====
+2026-10-20 02:00:44 INFO  0/0 shots have real AI video.
+2026-10-20 02:00:44 INFO  ===== music =====
+2026-10-20 02:00:44 FFMPG ffmpeg (0.1s, exit 0): ffmpeg -hide_banner -loglevel error -y -stream_loop -1 -ss 0.00 -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/_model_cache/music/Investigations.mp3 -t 41.625 -ar 48000 -ac 2 /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/m_cue0.wav
+2026-10-20 02:00:45 INFO    music    0.0s–  40.6s: "Investigations" (Humorous, Mysterious)
+2026-10-20 02:00:45 FFMPG ffmpeg (0.1s, exit 0): ffmpeg -hide_banner -loglevel error -y -stream_loop -1 -ss 0.00 -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/_model_cache/music/Easy Lemon.mp3 -t 44.708 -ar 48000 -ac 2 /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/m_cue1.wav
+2026-10-20 02:00:45 INFO    music   40.6s–  83.3s: "Easy Lemon" (Bright, Calming, Relaxed)
+2026-10-20 02:00:45 FFMPG ffmpeg (0.1s, exit 0): ffmpeg -hide_banner -loglevel error -y -stream_loop -1 -ss 0.00 -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/_model_cache/music/Carefree.mp3 -t 26.209 -ar 48000 -ac 2 /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/m_cue2.wav
+2026-10-20 02:00:45 INFO    music   83.3s– 107.5s: "Carefree" (Bouncy, Bright, Calming, Uplifting)
+2026-10-20 02:00:45 INFO  music level: voice -19.1 LUFS, bed -17.8 → -18.6 LUFS before the 0.3 gain and ducking
+2026-10-20 02:00:46 INFO  ===== sfx =====
+2026-10-20 02:00:46 FFMPG ffmpeg (0.0s, exit 0): ffmpeg -hide_banner -loglevel error -y -f lavfi -i anoisesrc=color=pink:sample_rate=48000:duration=0.900:amplitude=0.8 -filter_complex [0]highpass=f=300,lowpass=f=3500,afade=t=in:d=0.540:curve=exp,afade=t=out:st=0.540:d=0.360,pan=stereo|c0=c0|c1=c0 -ar 48000 -ac 2 -t 0.900 /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/sfx_sc01_0.wav
+2026-10-20 02:00:46 INFO    sc01: whoosh at 0.1s
+2026-10-20 02:00:46 FFMPG ffmpeg (0.0s, exit 0): ffmpeg -hide_banner -loglevel error -y -f lavfi -i anoisesrc=color=white:sample_rate=48000:duration=1.200:amplitude=0.5 -filter_complex [0]highpass=f=1800,lowpass=f=7000,tremolo=f=23:d=0.9,tremolo=f=7:d=0.6,afade=t=in:d=0.04,afade=t=out:st=0.600:d=0.600,volume=0.7,pan=stereo|c0=c0|c1=c0 -ar 48000 -ac 2 -t 1.200 /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/sfx_sc01_1.wav
+2026-10-20 02:00:46 INFO    sc01: rustle at 1.3s
+2026-10-20 02:00:46 FFMPG ffmpeg (0.0s, exit 0): ffmpeg -hide_banner -loglevel error -y -f lavfi -i sine=frequency=880:sample_rate=48000:duration=0.250 -filter_complex [0]vibrato=f=12:d=0.3,afade=t=in:d=0.01,afade=t=out:st=0.02:d=0.230:curve=exp,volume=0.6,pan=stereo|c0=c0|c1=c0 -ar 48000 -ac 2 -t 0.250 /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/sfx_sc05_0.wav
+2026-10-20 02:00:46 INFO    sc05: pop at 83.6s
+2026-10-20 02:00:46 FFMPG ffmpeg (0.0s, exit 0): ffmpeg -hide_banner -loglevel error -y -f lavfi -i anoisesrc=color=white:sample_rate=48000:duration=1.000:amplitude=0.5 -filter_complex [0]highpass=f=1800,lowpass=f=7000,tremolo=f=23:d=0.9,tremolo=f=7:d=0.6,afade=t=in:d=0.04,afade=t=out:st=0.500:d=0.500,volume=0.7,pan=stereo|c0=c0|c1=c0 -ar 48000 -ac 2 -t 1.000 /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/sfx_sc06_0.wav
+2026-10-20 02:00:46 INFO    sc06: rustle at 93.6s
+2026-10-20 02:00:46 INFO  4 sound effects placed.
+2026-10-20 02:00:46 INFO  ===== render =====
+2026-10-20 02:01:12 RES   RAM 3.7/7.4 GB | disk free 108 GB | RAM peak 3.7 GB in the last 30 s
+2026-10-20 02:01:31 INFO  sc01: story drawn in 46.2s (391 frames)
+2026-10-20 02:01:42 RES   RAM 3.8/7.4 GB | disk free 108 GB | RAM peak 3.8 GB in the last 30 s
+2026-10-20 02:02:12 RES   RAM 3.9/7.4 GB | disk free 108 GB | RAM peak 3.9 GB in the last 30 s
+2026-10-20 02:02:21 INFO  sc02: story drawn in 50.6s (584 frames)
+2026-10-20 02:02:42 RES   RAM 3.8/7.4 GB | disk free 108 GB | RAM peak 3.9 GB in the last 30 s
+2026-10-20 02:03:07 INFO  sc03: story drawn in 45.5s (477 frames)
+2026-10-20 02:03:12 RES   RAM 4.0/7.4 GB | disk free 108 GB | RAM peak 4.0 GB in the last 30 s
+2026-10-20 02:03:42 RES   RAM 4.0/7.4 GB | disk free 108 GB | RAM peak 4.1 GB in the last 30 s
+2026-10-20 02:03:58 INFO  sc04: story drawn in 51.0s (548 frames)
+2026-10-20 02:04:12 RES   RAM 4.0/7.4 GB | disk free 108 GB | RAM peak 4.1 GB in the last 30 s
+2026-10-20 02:04:19 INFO  sc05: story drawn in 20.8s (242 frames)
+2026-10-20 02:04:42 RES   RAM 4.2/7.4 GB | disk free 108 GB | RAM peak 4.2 GB in the last 30 s
+2026-10-20 02:04:49 INFO  sc06: story drawn in 30.5s (339 frames)
+2026-10-20 02:04:49 INFO  waited 243.4s for 6 diagram shots
+2026-10-20 02:04:51 FFMPG ffmpeg (1.9s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/diagrams/sc01_c83c909639f5.mp4 -filter_complex [0:v]scale=1280:720:flags=lanczos,tpad=stop_mode=clone:stop_duration=30,format=yuv420p[v] -map [v] -frames:v 391 -c:v libx264 -preset veryfast -crf 16 -pix_fmt yuv420p -r 24 -an /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/seg_sc01.mp4
+2026-10-20 02:04:51 INFO  sc01: edited (foreground) -> sc01_a2dfe245f846.mp4
+2026-10-20 02:04:51 INFO    sc01: story (drawn, no AI) [curious]
+2026-10-20 02:04:54 FFMPG ffmpeg (2.6s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/diagrams/sc02_c28374309e11.mp4 -filter_complex [0:v]scale=1280:720:flags=lanczos,tpad=stop_mode=clone:stop_duration=30,format=yuv420p[v] -map [v] -frames:v 584 -c:v libx264 -preset veryfast -crf 16 -pix_fmt yuv420p -r 24 -an /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/seg_sc02.mp4
+2026-10-20 02:04:54 INFO  sc02: edited (foreground) -> sc02_2c15977ab359.mp4
+2026-10-20 02:04:54 INFO    sc02: story (drawn, no AI) [curious]
+2026-10-20 02:04:56 FFMPG ffmpeg (2.2s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/diagrams/sc03_8f2ca7453bc6.mp4 -filter_complex [0:v]scale=1280:720:flags=lanczos,tpad=stop_mode=clone:stop_duration=30,format=yuv420p[v] -map [v] -frames:v 477 -c:v libx264 -preset veryfast -crf 16 -pix_fmt yuv420p -r 24 -an /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/seg_sc03.mp4
+2026-10-20 02:04:56 INFO  sc03: edited (foreground) -> sc03_7f3b25f3e93a.mp4
+2026-10-20 02:04:56 INFO    sc03: story (drawn, no AI) [busy]
+2026-10-20 02:04:58 FFMPG ffmpeg (2.4s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/diagrams/sc04_27a79a680d95.mp4 -filter_complex [0:v]scale=1280:720:flags=lanczos,tpad=stop_mode=clone:stop_duration=30,format=yuv420p[v] -map [v] -frames:v 548 -c:v libx264 -preset veryfast -crf 16 -pix_fmt yuv420p -r 24 -an /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/seg_sc04.mp4
+2026-10-20 02:04:58 INFO  sc04: edited (foreground) -> sc04_dbb03be48aa5.mp4
+2026-10-20 02:04:58 INFO    sc04: story (drawn, no AI) [calm]
+2026-10-20 02:05:00 FFMPG ffmpeg (1.2s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/diagrams/sc05_ff0f9bca9b81.mp4 -filter_complex [0:v]scale=1280:720:flags=lanczos,tpad=stop_mode=clone:stop_duration=30,format=yuv420p[v] -map [v] -frames:v 242 -c:v libx264 -preset veryfast -crf 16 -pix_fmt yuv420p -r 24 -an /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/seg_sc05.mp4
+2026-10-20 02:05:00 INFO  sc05: edited (foreground) -> sc05_ce9e36da542e.mp4
+2026-10-20 02:05:00 INFO    sc05: story (drawn, no AI) [joy]
+2026-10-20 02:05:01 FFMPG ffmpeg (1.7s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/diagrams/sc06_8f027b375f98.mp4 -filter_complex [0:v]scale=1280:720:flags=lanczos,tpad=stop_mode=clone:stop_duration=30,format=yuv420p[v] -map [v] -frames:v 339 -c:v libx264 -preset veryfast -crf 16 -pix_fmt yuv420p -r 24 -an /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/seg_sc06.mp4
+2026-10-20 02:05:01 INFO  sc06: edited (foreground) -> sc06_dc8535801c49.mp4
+2026-10-20 02:05:01 INFO    sc06: story (drawn, no AI) [joy]
+2026-10-20 02:05:01 INFO  0/0 video shots are real AI video, 6 drawn or licensed-image scenes. 0 shots reused from the edit cache.
+2026-10-20 02:05:01 FFMPG ffmpeg (0.1s, exit 0): ffmpeg -hide_banner -loglevel error -y -f concat -safe 0 -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/segments.txt -c copy /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/video_only.mp4
+2026-10-20 02:05:02 INFO  drawn subtitles: 41 cues, font Hind Guntur
+2026-10-20 02:05:12 RES   RAM 4.3/7.4 GB | disk free 108 GB | RAM peak 4.3 GB in the last 30 s
+2026-10-20 02:05:23 FFMPG ffmpeg (20.7s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/video_only.mp4 -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/narration_full.wav -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/music.wav -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/sfx_track.wav -f concat -safe 0 -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/subs_png/subs.txt -filter_complex [1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo,asplit=2[vo][sc];[2:a]aresample=48000,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo,volume=0.3[m];[m][sc]sidechaincompress=threshold=0.02:ratio=8:attack=20:release=500[duck];[3:a]aresample=48000,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo[fx];[vo][duck][fx]amix=inputs=3:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[a];[0:v][4:v]overlay=0:0:eof_action=pass:format=auto[v] -map [v] -map [a] -c:v libx264 -preset ultrafast -crf 18 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -movflags +faststart -shortest /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/final.mp4
+2026-10-20 02:05:23 INFO  ✅ Saved: /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/render/final.mp4
+2026-10-20 02:05:23 INFO  ===== qc =====
+2026-10-20 02:05:27 FFMPG ffmpeg (0.4s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/narration_full.wav -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/music.wav -filter_complex [0:a]aresample=48000,pan=stereo|c0=c0|c1=c0,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo[sc];[1:a]aresample=48000,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo,volume=0.3[m];[m][sc]sidechaincompress=threshold=0.02:ratio=8:attack=20:release=500[d] -map [d] /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/qc_music_ducked.wav
+2026-10-20 02:05:28 INFO  Story statistics — purpose: two_friend 31.5%, reaction 31.5%, closeup 20.0%, animated_illustration 10.1%, establishing 3.8%, cutaway 3.1%
+2026-10-20 02:05:28 INFO                     medium:  character_scene 89.9%, animated_demo 10.1%
+2026-10-20 02:05:28 INFO  Where each step ran:
+2026-10-20 02:05:28 INFO    shot + final video encoding: CPU (x264)
+2026-10-20 02:05:28 INFO    speaker identity check (ECAPA): CPU
+2026-10-20 02:05:28 INFO    storybook characters + environments: CPU (Pillow), assets cached on Drive
+2026-10-20 02:05:28 INFO    drawn scenes: drawing (Pillow): CPU (Pillow has no GPU path)
+2026-10-20 02:05:28 INFO    drawn scenes: encoding: CPU (x264)
+2026-10-20 02:05:28 INFO    peak system RAM 4.34 GB | peak GPU memory 0.0 GB (all processes)
+2026-10-20 02:05:28 INFO  qc: {"playable H.264/AAC stream, right size and fps": "PASS", "no duration drift (video vs timeline)": "PASS", "ending not cut off (audio covers the video, last line ends in time)": "PASS", "no unplanned black frames": "PASS", "no frozen frames inside AI-video shots": "PASS", "loudness on target": "PASS", "no clipping (true peak)": "PASS", "no unintended silence": "PASS", "music ducks under the voice": "PASS", "narration complete and heard correctly": "UNKNOWN", "every video shot is verified AI video (no unchecked stand-ins)": "PASS", "no frozen last frames (clip shorter than its shot)": "PASS", "characters stay on screen": "PASS", "music licensed and credited": "PASS", "nothing flagged for review": "PASS", "every scene-state shot verified or approved": "PASS", "plan validation: no errors": "PASS", "AI shots without logical verification (information)": "PASS", "dialogue: turns in script order, no two friends talking at once": "PASS", "every factual dialogue line cites a sourced fact": "PASS", "presentation graphics at most 20% of screen time": "PASS", "re-enactments are labelled 'Illustration' (never shown as real footage)": "PASS", "story complete: question, answer, closing": "PASS", "visual variety: no single visual longer than 12 s (information)": "PASS", "holistic review by a person: contact sheet + dialogue/shot timeline (information)": "UNKNOWN", "conversation timing: no dead air, overlaps, mechanical gaps or level jumps (diagnostic)": "PASS", "video no longer than 120 s": "PASS", "storybook assets: exact versions present, every layer unchanged": "PASS", "character artwork approved by a person (not provisional)": "UNKNOWN", "lip sync: only the speaker's mouth moves, and it moves while speaking": "PASS", "Telugu factual lines keep the verified claims (numbers, names, key terms)": "PASS"}
+2026-10-20 02:05:28 INFO  Final checks:
+2026-10-20 02:05:28 INFO    ✅ playable H.264/AAC stream, right size and fps
+2026-10-20 02:05:28 INFO    ✅ no duration drift (video vs timeline)
+2026-10-20 02:05:28 INFO    ✅ ending not cut off (audio covers the video, last line ends in time)
+2026-10-20 02:05:28 INFO    ✅ no unplanned black frames
+2026-10-20 02:05:28 INFO    ✅ no frozen frames inside AI-video shots
+2026-10-20 02:05:28 INFO    ✅ loudness on target
+2026-10-20 02:05:28 INFO    ✅ no clipping (true peak)
+2026-10-20 02:05:28 INFO    ✅ no unintended silence
+2026-10-20 02:05:28 INFO    ✅ music ducks under the voice
+2026-10-20 02:05:28 INFO    ❔ narration complete and heard correctly
+2026-10-20 02:05:28 INFO    ✅ every video shot is verified AI video (no unchecked stand-ins)
+2026-10-20 02:05:28 INFO    ✅ no frozen last frames (clip shorter than its shot)
+2026-10-20 02:05:28 INFO    ✅ characters stay on screen
+2026-10-20 02:05:28 INFO    ✅ music licensed and credited
+2026-10-20 02:05:28 INFO    ✅ nothing flagged for review
+2026-10-20 02:05:28 INFO    ✅ every scene-state shot verified or approved
+2026-10-20 02:05:28 INFO    ✅ plan validation: no errors
+2026-10-20 02:05:28 INFO    ✅ AI shots without logical verification (information) (info)
+2026-10-20 02:05:28 INFO    ✅ dialogue: turns in script order, no two friends talking at once
+2026-10-20 02:05:28 INFO    ✅ every factual dialogue line cites a sourced fact
+2026-10-20 02:05:28 INFO    ✅ presentation graphics at most 20% of screen time
+2026-10-20 02:05:28 INFO    ✅ re-enactments are labelled 'Illustration' (never shown as real footage)
+2026-10-20 02:05:28 INFO    ✅ story complete: question, answer, closing
+2026-10-20 02:05:28 INFO    ✅ visual variety: no single visual longer than 12 s (information) (info)
+2026-10-20 02:05:28 INFO    ❔ holistic review by a person: contact sheet + dialogue/shot timeline (information) (info)
+2026-10-20 02:05:28 INFO    ✅ conversation timing: no dead air, overlaps, mechanical gaps or level jumps (diagnostic) (info)
+2026-10-20 02:05:28 INFO    ✅ video no longer than 120 s
+2026-10-20 02:05:28 INFO    ✅ storybook assets: exact versions present, every layer unchanged
+2026-10-20 02:05:28 INFO    ❔ character artwork approved by a person (not provisional)  → arjun, meera
+2026-10-20 02:05:28 INFO    ✅ lip sync: only the speaker's mouth moves, and it moves while speaking
+2026-10-20 02:05:28 INFO    ✅ Telugu factual lines keep the verified claims (numbers, names, key terms)
+2026-10-20 02:05:28 INFO  NOT APPROVED ⚠️ fix or review the ❌/❔ items | report: render/qc_report.json | contact sheet: render/contact_sheet.jpg
+2026-10-20 02:05:28 INFO  ===== metadata =====
+2026-10-20 02:05:28 INFO  TITLE:
+2026-10-20 02:05:28 INFO  3D movie లో popcorn మన మీదకి ఎందుకు వస్తుంది?
+2026-10-20 02:05:28 INFO  DESCRIPTION:
+2026-10-20 02:05:28 INFO  3D movieలో popcorn మీదకొస్తుందని Arjun తల వంచేస్తాడు. Meera చెప్పిన ఒక్క-కన్ను testతో అసలు magic అతని brainలో ఉందని తెలుస్తుంది.
+2026-10-20 02:05:28 INFO  Sources:
+2026-10-20 02:05:28 INFO  https://en.wikipedia.org/wiki/Depth_perception
+2026-10-20 02:05:28 INFO  https://en.wikipedia.org/wiki/Polarized_3D_system
+2026-10-20 02:05:28 INFO  https://en.wikipedia.org/wiki/Stereopsis
+2026-10-20 02:05:28 INFO  https://en.wikipedia.org/wiki/Stereoscopy
+2026-10-20 02:05:28 INFO  వికీపీడియా (Depth perception, Polarized 3D system, Stereopsis, Stereoscopy) ఆధారంగా సరళంగా వివరించిన వీడియో. అర్జున్ మరియు మీరా కల్పిత, సొంతంగా గీసిన యానిమేషన్ పాత్రలు; 'దృష్టాంతం' అని ఉన్న దృశ్యాలు పునర్నిర్మాణాలు, నిజమైన ఫుటేజ్ కాదు.
+2026-10-20 02:05:28 INFO  Simplified explainer based on Wikipedia (Depth perception, Polarized 3D system, Stereopsis, Stereoscopy). Arjun and Meera are fictional, original animated characters; scenes marked 'Illustration' are re-enactments, not footage.
+2026-10-20 02:05:28 INFO  Voices: Kokoro text-to-speech stock voices: అర్జున్ (Prakash), మీరా (Lalitha).
+2026-10-20 02:05:28 INFO  About this video: the voices are AI-generated (synthetic) and so is the animation. No real people or voices were imitated.
+2026-10-20 02:05:28 INFO  Music:
+2026-10-20 02:05:28 INFO  "Investigations" Kevin MacLeod (incompetech.com)
+2026-10-20 02:05:28 INFO  Licensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/
+2026-10-20 02:05:28 INFO  "Easy Lemon" Kevin MacLeod (incompetech.com)
+2026-10-20 02:05:28 INFO  Licensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/
+2026-10-20 02:05:28 INFO  "Carefree" Kevin MacLeod (incompetech.com)
+2026-10-20 02:05:28 INFO  Licensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/
+2026-10-20 02:05:28 INFO  TAGS:
+2026-10-20 02:05:28 INFO  why do 3d movies look real? (telugu–english), science explained, explainer, 3d, popcorn, అర్జున్, మీరా
+2026-10-20 02:05:28 INFO  Upload as PRIVATE, answer YES to 'Altered or synthetic content'. Audience: Not made for kids.
+2026-10-20 02:05:28 INFO  ===== preview =====
+2026-10-20 02:05:39 FFMPG ffmpeg (10.8s, exit 0): ffmpeg -hide_banner -loglevel error -y -i /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/render/final.mp4 -vf scale=854:-2 -c:v libx264 -crf 28 -preset veryfast -c:a aac -b:a 96k /tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/work/three_d_friends_te_v3_storybook/preview.mp4
+2026-10-20 02:05:39 INFO  preview ok 2481401

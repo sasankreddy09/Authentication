@@ -1,0 +1,525 @@
+{
+ "title": "Why Do 3D Movies Look Real?",
+ "topic": "Why do 3D movies look real?",
+ "language": "en",
+ "logline": "Arjun ducks when a ball flies out of a 3D movie. In the lobby, Meera shows him why: two eyes, two pictures, and glasses that sort them.",
+ "vocabulary": [
+  "3D",
+  "Arjun",
+  "Meera"
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereopsis",
+   "title": "Stereopsis",
+   "revid": 1377837508
+  },
+  {
+   "id": "F2",
+   "text": "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereoscopy",
+   "title": "Stereoscopy",
+   "revid": 1380706327
+  },
+  {
+   "id": "F3",
+   "text": "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F4",
+   "text": "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F5",
+   "text": "A ZScreen circularly polarizes the frames clockwise for the right eye and counter-clockwise for the left eye; the audience wears circularly polarized glasses with oppositely polarized lenses so each eye sees only its designated frame.",
+   "source_url": "https://en.wikipedia.org/wiki/RealD_3D",
+   "title": "RealD 3D",
+   "revid": 1375938377
+  },
+  {
+   "id": "F6",
+   "text": "The advantage of circular polarization over linear polarization is that viewers are able to tilt their heads and look about the theater naturally without seeing double or darkened images.",
+   "source_url": "https://en.wikipedia.org/wiki/RealD_3D",
+   "title": "RealD 3D",
+   "revid": 1375938377
+  }
+ ],
+ "scenes": [
+  {
+   "id": "sc01",
+   "beat": "observation",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "Whoa! That ball flew right out of the screen!",
+     "kind": "observation",
+     "tone": "awe",
+     "expr": "surprised"
+    },
+    {
+     "speaker": "meera",
+     "text": "You ducked! It looked close enough to catch.",
+     "kind": "reaction",
+     "tone": "happy",
+     "expr": "happy"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "establishing",
+     "turn": 0,
+     "at": 0.0,
+     "world": "cinema_screen",
+     "screen": "clean",
+     "description": "two friends from behind, watching a 3D movie, a ball coming out of the screen",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.55,
+     "screen": "clean",
+     "description": "the friends in their cinema seats wearing 3D glasses",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "hold": "popcorn"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc02",
+   "beat": "question",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "Without the glasses, everything looks doubled and blurry.",
+     "kind": "observation",
+     "tone": "curious",
+     "expr": "confused"
+    },
+    {
+     "speaker": "arjun",
+     "text": "So how does a flat screen make a ball jump out?",
+     "kind": "question",
+     "tone": "curious",
+     "expr": "curious",
+     "gesture": "open_hands"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "arjun",
+     "screen": "double",
+     "description": "Arjun takes off his 3D glasses",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     },
+     "changes": [
+      {
+       "t": 0.25,
+       "chars": {
+        "arjun": {
+         "wear": []
+        }
+       }
+      }
+     ]
+    },
+    {
+     "id": "v2",
+     "intent": "cutaway",
+     "turn": 0,
+     "at": 0.5,
+     "world": "cinema_screen",
+     "shot": "establishing",
+     "screen": "double",
+     "description": "what Arjun sees without glasses: two overlapping pictures of the ball on the screen",
+     "chars": {
+      "arjun": {},
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v3",
+     "intent": "two_friend",
+     "turn": 1,
+     "at": 0.0,
+     "screen": "double",
+     "description": "Arjun asks Meera, glasses in hand",
+     "chars": {
+      "arjun": {
+       "hold": "3d_glasses"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc03",
+   "beat": "demonstration",
+   "world": "lobby",
+   "transition": "time_skip",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "Start with your eyes. Hold up your thumb and close one eye, then the other.",
+     "kind": "instruction",
+     "tone": "friendly",
+     "expr": "smile",
+     "gesture": "point"
+    },
+    {
+     "speaker": "arjun",
+     "text": "My thumb jumps, but the wall behind it barely moves!",
+     "kind": "observation",
+     "tone": "awe",
+     "expr": "surprised"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "ots",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "meera",
+     "description": "after the movie in the lobby, Meera explains over Arjun's shoulder"
+    },
+    {
+     "id": "v2",
+     "intent": "object_demo",
+     "turn": 0,
+     "at": 0.5,
+     "template": "finger_test",
+     "description": "a thumb held in front of the lobby wall, seen with the left eye and then the right eye"
+    }
+   ]
+  },
+  {
+   "id": "sc04",
+   "beat": "first_answer",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "Your two eyes look from different but similar directions, so they see different images.",
+     "kind": "fact",
+     "fact_ids": [
+      "F1"
+     ],
+     "tone": "explainer"
+    },
+    {
+     "speaker": "arjun",
+     "text": "Then why don't I see two pictures all the time?",
+     "kind": "question",
+     "tone": "curious",
+     "expr": "thinking",
+     "gesture": "think",
+     "fact_ids": [
+      "F2"
+     ]
+    },
+    {
+     "speaker": "meera",
+     "text": "Your brain combines the two images, and you see a single 3D view with depth.",
+     "kind": "fact",
+     "fact_ids": [
+      "F2"
+     ],
+     "tone": "explainer"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "description": "Meera explains, Arjun listens"
+    },
+    {
+     "id": "v2",
+     "intent": "animated_illustration",
+     "turn": 0,
+     "at": 0.35,
+     "template": "eye_views",
+     "description": "two eyes see a ball in front of a tree from two spots; two pictures merge into one with depth"
+    }
+   ]
+  },
+  {
+   "id": "sc05",
+   "beat": "misconception",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "So the glasses have tiny screens inside, one for each eye?",
+     "kind": "misconception",
+     "tone": "curious",
+     "expr": "curious",
+     "gesture": "point"
+    },
+    {
+     "speaker": "meera",
+     "text": "No screens. Each lens is a filter, so each eye gets only the picture meant for it.",
+     "kind": "correction",
+     "fact_ids": [
+      "F4"
+     ],
+     "tone": "warm",
+     "expr": "smile",
+     "gesture": "explain"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun guesses, pointing at the glasses",
+     "chars": {
+      "arjun": {
+       "hold": "3d_glasses"
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "closeup",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "meera",
+     "description": "Meera holds up the 3D glasses and smiles",
+     "chars": {
+      "meera": {
+       "hold": "3d_glasses"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc06",
+   "beat": "correction",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "The projector puts both pictures on the same screen, each through a different filter.",
+     "kind": "fact",
+     "fact_ids": [
+      "F3"
+     ],
+     "tone": "explainer"
+    },
+    {
+     "speaker": "arjun",
+     "text": "And each lens only lets its own picture through?",
+     "kind": "question",
+     "tone": "curious",
+     "expr": "curious"
+    },
+    {
+     "speaker": "meera",
+     "text": "Exactly. The right eye's frames twist clockwise, the left eye's counter-clockwise, so each eye sees only its own frames.",
+     "kind": "fact",
+     "fact_ids": [
+      "F5"
+     ],
+     "tone": "happy",
+     "expr": "happy",
+     "gesture": "open_hands"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "animated_illustration",
+     "turn": 0,
+     "at": 0.0,
+     "template": "projector_glasses",
+     "description": "projector, silver screen, two pictures with twisted light, each lens of the glasses passes only one picture"
+    },
+    {
+     "id": "v2",
+     "intent": "reaction",
+     "turn": 1,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun works it out"
+    },
+    {
+     "id": "v3",
+     "intent": "two_friend",
+     "turn": 2,
+     "at": 0.0,
+     "description": "Meera confirms with open hands, glasses in hand",
+     "chars": {
+      "meera": {
+       "hold": "3d_glasses"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sc07",
+   "beat": "reveal",
+   "world": "lobby",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "Wait, so the pop-out effect is my own brain at work?",
+     "kind": "question",
+     "fact_ids": [],
+     "tone": "awe",
+     "expr": "happy",
+     "gesture": "open_hands"
+    },
+    {
+     "speaker": "meera",
+     "text": "Yes! And that twist is circular polarization, so you can tilt your head without seeing double.",
+     "kind": "fact",
+     "fact_ids": [
+      "F6"
+     ],
+     "tone": "happy",
+     "expr": "smile"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "arjun",
+     "description": "Arjun gets it"
+    },
+    {
+     "id": "v2",
+     "intent": "two_friend",
+     "turn": 1,
+     "at": 0.0,
+     "description": "the friends smile in the lobby"
+    }
+   ]
+  },
+  {
+   "id": "sc08",
+   "beat": "closing",
+   "world": "cinema_seats",
+   "transition": "time_skip",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "Next movie, I'm tilting my head the whole time. For science.",
+     "kind": "reaction",
+     "tone": "happy",
+     "expr": "happy"
+    },
+    {
+     "speaker": "meera",
+     "text": "Two eyes, two pictures, one clever pair of glasses. Enjoy the show.",
+     "kind": "observation",
+     "tone": "warm",
+     "expr": "smile"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "screen": "clean",
+     "description": "back in their seats, both wearing 3D glasses",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "establishing",
+     "turn": 1,
+     "at": 0.4,
+     "world": "cinema_screen",
+     "screen": "clean",
+     "description": "the ball flies out of the screen again",
+     "chars": {
+      "arjun": {},
+      "meera": {}
+     }
+    }
+   ]
+  }
+ ]
+}

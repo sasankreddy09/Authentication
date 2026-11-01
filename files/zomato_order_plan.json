@@ -1,0 +1,597 @@
+{
+ "plan_version": 4,
+ "project": "zomato_order_v1",
+ "title": "What Happens When You Order on Zomato?",
+ "notebook": {
+  "emoji": "🛵",
+  "name": "AI Explainer Maker",
+  "length": "about 1 min"
+ },
+ "logline": "From the tap on 'Place Order' to the knock on the door: payment, restaurant, rider matching, cooking, pickup, live tracking, delivery and payouts.",
+ "style": {
+  "suffix": "3D animated explainer film style, clean stylized characters with consistent design, bright warm colors, modern Indian city, soft cinematic lighting, smooth natural animation",
+  "negative": "text, letters, words, logo, brand name, watermark, subtitles, photorealistic, deformed hands, extra fingers, extra limbs, extra heads, distorted face, blurry, low quality, frozen, flickering, character disappearing"
+ },
+ "characters": {
+  "narrator": {
+   "name": "Narrator",
+   "voice": "af_heart",
+   "speed": 1.0,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#FFFFFF",
+   "look": null
+  },
+  "ananya": {
+   "name": "Ananya",
+   "voice": "af_bella",
+   "speed": 1.03,
+   "pitch": 0.5,
+   "fx": "none",
+   "color": "#FFD166",
+   "look": "a young Indian woman with a long black braid wearing a mustard-yellow kurta",
+   "tag": "a young woman in a yellow kurta"
+  },
+  "raju": {
+   "name": "Chef Raju",
+   "voice": "am_adam",
+   "speed": 1.0,
+   "pitch": -1.0,
+   "fx": "none",
+   "color": "#9FD3FF",
+   "look": "a cheerful Indian chef with a thick black moustache, a tall white chef hat and a white chef coat",
+   "tag": "a chef in a white chef hat"
+  },
+  "arjun": {
+   "name": "Arjun",
+   "voice": "am_liam",
+   "speed": 1.05,
+   "pitch": 0.3,
+   "fx": "none",
+   "color": "#FF8A80",
+   "look": "a young delivery rider in a plain red jacket with no logos and a red helmet, with a red scooter carrying a square red delivery box",
+   "tag": "a delivery rider in a red jacket and red helmet"
+  }
+ },
+ "tones": {
+  "explainer": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.45
+  },
+  "curious": {
+   "speed": 0.96,
+   "pitch": 0.2,
+   "gain_db": 0.0,
+   "pause_after": 0.5
+  },
+  "warm": {
+   "speed": 0.94,
+   "pitch": 0.0,
+   "gain_db": -0.5,
+   "pause_after": 0.6
+  },
+  "happy": {
+   "speed": 1.05,
+   "pitch": 0.6,
+   "gain_db": 1.0,
+   "pause_after": 0.4
+  },
+  "excited": {
+   "speed": 1.1,
+   "pitch": 0.9,
+   "gain_db": 1.5,
+   "pause_after": 0.35
+  },
+  "determined": {
+   "speed": 1.04,
+   "pitch": -0.2,
+   "gain_db": 1.0,
+   "pause_after": 0.4
+  }
+ },
+ "moods": {
+  "calm": {
+   "pause_after": 0.5,
+   "grade": "neutral",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.4,
+    "curious": 0.8,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "curious": {
+   "pause_after": 0.5,
+   "grade": "cool",
+   "move_amount": 0.07,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.1,
+    "shimmer": 0.5
+   }
+  },
+  "busy": {
+   "pause_after": 0.4,
+   "grade": "contrast",
+   "move_amount": 0.07,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.4,
+    "shimmer": 0.1
+   }
+  },
+  "joy": {
+   "pause_after": 0.4,
+   "grade": "contrast",
+   "move_amount": 0.08,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  },
+  "reflective": {
+   "pause_after": 0.6,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  }
+ },
+ "shots": [
+  {
+   "shot_id": "sh01",
+   "mood": "curious",
+   "seed": 201,
+   "location": "home",
+   "title": "What Happens When You Order Food on Zomato?",
+   "fade_in": true,
+   "move": "push_in",
+   "cast": [
+    "ananya"
+   ],
+   "scene": "a cozy modern Indian living room in the evening, warm lamp light, a sofa with cushions",
+   "action": "the young woman sits on the sofa holding her smartphone and taps the screen with a smile, slow camera push in",
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 1.0,
+     "dur": 0.9,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "curious",
+     "text": "Ananya is hungry. She opens Zomato and orders a chicken biryani.",
+     "tts": "Ananya is hungry. She opens Zo-maato and orders a chicken biryani."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh02",
+   "mood": "curious",
+   "seed": 202,
+   "location": "payment",
+   "label": "Step 1 · You pay",
+   "move": "push_in",
+   "cast": [],
+   "scene": "a glowing golden padlock floating above streams of bright digital light lines on a deep blue background",
+   "action": "golden coins flow along the light lines into the padlock, which clicks shut with a soft sparkle",
+   "sfx": [
+    {
+     "type": "shimmer",
+     "at": 0.6,
+     "dur": 2.0,
+     "gain_db": -20
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "She pays online. The payment is checked and approved in a few seconds."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh03",
+   "mood": "busy",
+   "seed": 203,
+   "location": "kitchen",
+   "label": "Step 2 · Restaurant gets the order",
+   "move": "push_in",
+   "cast": [
+    "raju"
+   ],
+   "scene": "a busy, clean restaurant kitchen with steel counters, steaming pots and a tablet on a stand",
+   "action": "the chef turns toward the tablet on the counter, reads it and taps it with one finger, nodding",
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 0.4,
+     "dur": 0.9,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Zomato sends her order to the restaurant, Raju's Kitchen, on their tablet.",
+     "tts": "Zo-maato sends her order to the restaurant, Raju's Kitchen, on their tablet."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh04",
+   "mood": "joy",
+   "seed": 204,
+   "location": "kitchen",
+   "move": "pull_out",
+   "cast": [
+    "raju"
+   ],
+   "scene": "a busy, clean restaurant kitchen with steel counters and steaming pots",
+   "action": "the chef smiles at the camera, gives a big thumbs up and talks cheerfully",
+   "lines": [
+    {
+     "speaker": "raju",
+     "tone": "happy",
+     "text": "One chicken biryani! Accepted. Ready in fifteen minutes!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh05",
+   "mood": "curious",
+   "seed": 205,
+   "location": "map",
+   "label": "Step 3 · Zomato finds a rider",
+   "move": "pull_out",
+   "cast": [],
+   "scene": "a stylized top-down animated map of an Indian city at dusk with roads glowing softly",
+   "action": "glowing rings ripple outward from one bright restaurant marker and reach several small glowing scooter dots",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.5,
+     "dur": 1.6,
+     "gain_db": -20
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Now Zomato looks for a delivery rider near the restaurant.",
+     "tts": "Now Zo-maato looks for a delivery rider near the restaurant."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh06",
+   "mood": "curious",
+   "seed": 206,
+   "location": "map",
+   "move": "push_in",
+   "cast": [],
+   "scene": "a stylized top-down animated map of an Indian city at dusk with roads glowing softly",
+   "action": "one glowing scooter dot lights up brighter and a glowing path draws itself from it to the restaurant marker",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "It picks one based on distance, traffic and cooking time."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh07",
+   "mood": "busy",
+   "seed": 207,
+   "location": "street",
+   "move": "push_in",
+   "cast": [
+    "arjun"
+   ],
+   "scene": "a busy Indian city street in the evening with shops and warm street lights",
+   "action": "the delivery rider sits on his parked scooter, looks at the phone mounted on the handlebar and taps it",
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 0.6,
+     "dur": 0.9,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Arjun, a nearby rider, gets the order. He'll reach just as the food is ready."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh08",
+   "mood": "joy",
+   "seed": 208,
+   "location": "street",
+   "move": "pull_out",
+   "cast": [
+    "arjun"
+   ],
+   "scene": "a busy Indian city street in the evening with shops and warm street lights",
+   "action": "the delivery rider smiles, pulls down his helmet visor and starts the scooter, talking",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 1.2,
+     "dur": 1.5,
+     "gain_db": -18
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "determined",
+     "text": "Okay! Heading to the restaurant now!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh09",
+   "mood": "busy",
+   "seed": 209,
+   "location": "kitchen",
+   "label": "Step 4 · Food is cooked",
+   "move": "push_in",
+   "cast": [
+    "raju"
+   ],
+   "scene": "a busy, clean restaurant kitchen with steel counters and a big pot of biryani",
+   "action": "the chef stirs the big pot of biryani with steam rising, then spoons it into a takeaway box and seals it",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Meanwhile, Chef Raju cooks the biryani, packs it and seals the box."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh10",
+   "mood": "busy",
+   "seed": 210,
+   "location": "counter",
+   "label": "Step 5 · Rider picks up the food",
+   "move": "pan_right",
+   "cast": [
+    "raju",
+    "arjun"
+   ],
+   "scene": "a restaurant pickup counter with warm lights",
+   "action": "the chef hands a sealed paper bag across the counter to the delivery rider, both smile and nod",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Arjun picks up the food and taps 'Picked up' in his app."
+    }
+   ],
+   "transition": "cut"
+  },
+  {
+   "shot_id": "sh11",
+   "mood": "busy",
+   "seed": 211,
+   "location": "road",
+   "label": "Step 6 · Live tracking",
+   "move": "pan_left",
+   "cast": [
+    "arjun"
+   ],
+   "scene": "an evening city road with warm street lights and light traffic",
+   "action": "the delivery rider rides his red scooter smoothly along the road, camera tracking alongside him",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 1.0,
+     "dur": 1.5,
+     "gain_db": -20
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "As he rides, his phone shares his location with Zomato.",
+     "tts": "As he rides, his phone shares his location with Zo-maato."
+    }
+   ],
+   "transition": "cut"
+  },
+  {
+   "shot_id": "sh12",
+   "mood": "calm",
+   "seed": 212,
+   "location": "home",
+   "move": "push_in",
+   "cast": [
+    "ananya"
+   ],
+   "scene": "a cozy modern Indian living room in the evening, warm lamp light, a sofa with cushions",
+   "action": "the young woman on the sofa looks at her smartphone and smiles, the screen glowing on her face",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "So Ananya can watch him coming on a live map, with the arrival time."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh13",
+   "mood": "joy",
+   "seed": 213,
+   "location": "doorstep",
+   "label": "Step 7 · Food delivered",
+   "move": "push_in",
+   "cast": [
+    "arjun"
+   ],
+   "scene": "the front door of an apartment in a bright, clean corridor",
+   "action": "the delivery rider stands at the apartment door holding a paper bag, rings the bell and talks with a friendly smile",
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 0.5,
+     "dur": 1.0,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "happy",
+     "text": "Hello! Your biryani from Raju's Kitchen."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh14",
+   "mood": "joy",
+   "seed": 214,
+   "location": "doorstep",
+   "move": "pull_out",
+   "cast": [
+    "ananya",
+    "arjun"
+   ],
+   "scene": "the open front door of an apartment in a bright, clean corridor",
+   "action": "the young woman at the open door takes the paper bag from the delivery rider, both smile, she talks happily",
+   "lines": [
+    {
+     "speaker": "ananya",
+     "tone": "excited",
+     "text": "Perfect timing! Thank you so much!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh15",
+   "mood": "reflective",
+   "seed": 215,
+   "location": "payout",
+   "label": "Step 8 · Rating and payment",
+   "move": "pull_out",
+   "cast": [],
+   "scene": "glowing golden coins floating above a soft blue background with three glowing streams",
+   "action": "the coins split into three glowing streams that float gently in different directions",
+   "sfx": [
+    {
+     "type": "shimmer",
+     "at": 0.4,
+     "dur": 2.5,
+     "gain_db": -20
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "text": "Then Ananya rates her food. Her money is shared between the restaurant, Arjun and Zomato.",
+     "tts": "Then Ananya rates her food. Her money is shared between the restaurant, Arjun and Zo-maato."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh16",
+   "mood": "reflective",
+   "seed": 216,
+   "location": "home",
+   "fade_out": true,
+   "move": "pull_out",
+   "cast": [
+    "ananya"
+   ],
+   "scene": "a cozy modern Indian living room in the evening, warm lamp light, a sofa with cushions",
+   "action": "the young woman sits on the sofa happily eating biryani from a takeaway box, slow camera pull out",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "text": "And that's what happens every time you order food on Zomato!",
+     "tts": "And that's what happens every time you order food on Zo-maato!"
+    }
+   ]
+  }
+ ],
+ "claims": [
+  {
+   "id": "c1",
+   "text": "Restaurants receive and accept orders in a restaurant partner app, which shows preparation and delivery times.",
+   "sources": [
+    "https://www.registerkaro.in/guides/how-to-sell-food-on-zomato",
+    "https://apps.apple.com/in/app/id1515073489"
+   ]
+  },
+  {
+   "id": "c2",
+   "text": "Rider assignment is largely algorithmic and weighs distance, preparation time, traffic and rider availability.",
+   "sources": [
+    "https://www.restaurantindia.in/article/zomato-delivery-model-explained-who-controls-what.16393"
+   ]
+  },
+  {
+   "id": "c3",
+   "text": "Delivery platforms time rider assignment around food preparation time so riders don't wait (industry practice).",
+   "sources": [
+    "https://www.grab.com/inside-grab/stories/cutting-down-wait-times-delivery-drivers/"
+   ]
+  },
+  {
+   "id": "c4",
+   "text": "Customers can follow order status and, for many orders, the rider's live location on a map.",
+   "sources": [
+    "https://partnerwithscphealth-jitsi.bluetext.com/blog/order-food-on-zomato-a"
+   ]
+  }
+ ],
+ "metadata": {
+  "title": "What Happens When You Order Food on Zomato? (Explained Simply)",
+  "summary": "From the tap on 'Place Order' to the knock on your door: payment, the restaurant's partner app, how a delivery partner gets matched, cooking and packing, pickup, live tracking, delivery and payouts. A simplified, animated explainer.",
+  "disclaimer": "Simplified illustration of how food delivery apps generally work. Not affiliated with, sponsored or endorsed by Zomato. The characters and the restaurant are fictional.",
+  "category": "Education",
+  "audience": "Not made for kids",
+  "tags": [
+   "zomato",
+   "food delivery",
+   "how it works",
+   "explainer",
+   "order tracking",
+   "delivery partner",
+   "animated explainer"
+  ]
+ },
+ "vocabulary": [
+  "Zomato",
+  "Ananya",
+  "Arjun",
+  "Chef Raju",
+  "Raju's Kitchen",
+  "biryani"
+ ]
+}

@@ -1,0 +1,570 @@
+{
+ "plan_version": 1,
+ "project": "pip_fallen_star_v1",
+ "title": "Pip and the Fallen Star",
+ "logline": "A little fox finds a fallen star in the ferns and, with a wise old owl and the fireflies of Willow Wood, wishes it home.",
+ "style": {
+  "suffix": "3D animated family movie style, cute stylized characters with expressive faces, soft cinematic lighting, rich warm colors, detailed storybook forest, smooth high quality animation",
+  "negative": "photorealistic, live action, real animal photo, deformed, extra limbs, extra heads, bad anatomy, blurry, low quality, text, watermark, logo, subtitles, creepy"
+ },
+ "characters": {
+  "narrator": {
+   "name": "Narrator",
+   "voice": "bm_fable",
+   "speed": 0.95,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#FFFFFF",
+   "look": null
+  },
+  "pip": {
+   "name": "Pip",
+   "voice": "af_sky",
+   "speed": 1.05,
+   "pitch": 1.5,
+   "fx": "none",
+   "color": "#FFB347",
+   "look": "a small red fox cub with big amber eyes, a fluffy white-tipped tail and a little green scarf"
+  },
+  "ollo": {
+   "name": "Ollo",
+   "voice": "bm_george",
+   "speed": 0.92,
+   "pitch": -2.0,
+   "fx": "old",
+   "color": "#9FD3FF",
+   "look": "a wise old grey owl with round golden spectacles and fluffy silver feathers"
+  },
+  "lumi": {
+   "name": "Lumi",
+   "voice": "af_nicole",
+   "speed": 0.95,
+   "pitch": 3.0,
+   "fx": "sparkle",
+   "color": "#FFF27A",
+   "look": "a tiny glowing golden star creature with five soft rounded points and a sweet little face"
+  }
+ },
+ "tones": {
+  "storyteller": {
+   "speed": 0.94,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.6
+  },
+  "hushed": {
+   "speed": 0.88,
+   "pitch": -0.3,
+   "gain_db": -2.0,
+   "pause_after": 0.7
+  },
+  "awe": {
+   "speed": 0.84,
+   "pitch": 0.0,
+   "gain_db": -1.0,
+   "pause_after": 0.9
+  },
+  "excited": {
+   "speed": 1.12,
+   "pitch": 1.0,
+   "gain_db": 1.5,
+   "pause_after": 0.35
+  },
+  "happy": {
+   "speed": 1.05,
+   "pitch": 0.7,
+   "gain_db": 1.0,
+   "pause_after": 0.45
+  },
+  "gentle": {
+   "speed": 0.95,
+   "pitch": 0.3,
+   "gain_db": -1.5,
+   "pause_after": 0.5
+  },
+  "shy": {
+   "speed": 0.92,
+   "pitch": 0.4,
+   "gain_db": -3.0,
+   "pause_after": 0.6
+  },
+  "sad": {
+   "speed": 0.86,
+   "pitch": -0.8,
+   "gain_db": -3.0,
+   "pause_after": 0.75,
+   "fx": "shaky"
+  },
+  "worried": {
+   "speed": 0.97,
+   "pitch": 0.6,
+   "gain_db": -2.0,
+   "pause_after": 0.55
+  },
+  "determined": {
+   "speed": 1.02,
+   "pitch": -0.3,
+   "gain_db": 1.5,
+   "pause_after": 0.45
+  },
+  "wise": {
+   "speed": 0.86,
+   "pitch": -0.5,
+   "gain_db": 0.0,
+   "pause_after": 0.75
+  }
+ },
+ "moods": {
+  "calm": {
+   "pause_after": 0.6,
+   "grade": "neutral",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "wonder": {
+   "pause_after": 0.7,
+   "grade": "cool",
+   "move_amount": 0.08,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.0,
+    "shimmer": 0.7
+   }
+  },
+  "joy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.08,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  },
+  "tension": {
+   "pause_after": 0.6,
+   "grade": "deep",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.7,
+    "curious": 0.15,
+    "tension": 0.6,
+    "shimmer": 0.0
+   }
+  },
+  "sad": {
+   "pause_after": 0.75,
+   "grade": "deep",
+   "move_amount": 0.04,
+   "music": {
+    "base": 0.8,
+    "curious": 0.1,
+    "tension": 0.2,
+    "shimmer": 0.2
+   }
+  },
+  "awe": {
+   "pause_after": 0.9,
+   "grade": "contrast",
+   "move_amount": 0.1,
+   "music": {
+    "base": 0.6,
+    "curious": 0.3,
+    "tension": 0.0,
+    "shimmer": 1.0
+   }
+  },
+  "reflective": {
+   "pause_after": 0.8,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.6,
+    "curious": 0.5,
+    "tension": 0.0,
+    "shimmer": 0.3
+   }
+  }
+ },
+ "shots": [
+  {
+   "shot_id": "sh01",
+   "mood": "calm",
+   "seed": 101,
+   "title": "Pip and the Fallen Star",
+   "fade_in": true,
+   "move": "push_in",
+   "cast": [
+    "pip"
+   ],
+   "scene": "a cozy moonlit forest at the edge of a calm river, tall willow trees, fireflies drifting",
+   "action": "the fox cub sits on a mossy rock by the river gazing up at the starry sky, slow camera push in",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "storyteller",
+     "text": "At the edge of Willow Wood, where the river hums at night, lived a little fox named Pip."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh02",
+   "mood": "wonder",
+   "seed": 102,
+   "move": "tilt_down",
+   "cast": [
+    "pip"
+   ],
+   "scene": "the night sky above a dark forest, a bright falling star streaking down into the ferns",
+   "action": "a glowing star falls from the sky trailing golden sparks, the fox cub's ears perk up in surprise",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 1.0,
+     "dur": 2.2,
+     "gain_db": -14
+    },
+    {
+     "type": "boom",
+     "at": 3.4,
+     "dur": 1.5,
+     "gain_db": -20
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "storyteller",
+     "text": "One evening, something strange happened. A light tumbled from the sky... and landed in the ferns."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh03",
+   "mood": "joy",
+   "seed": 103,
+   "move": "push_in",
+   "cast": [
+    "pip"
+   ],
+   "scene": "a moonlit forest clearing with glowing ferns in the distance",
+   "action": "the fox cub jumps up excitedly and points a paw toward the glowing ferns, talking with wide happy eyes",
+   "lines": [
+    {
+     "speaker": "pip",
+     "tone": "excited",
+     "text": "Whoa! Did you see that? A real shooting star, right here in our wood!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh04",
+   "mood": "tension",
+   "seed": 104,
+   "move": "push_in",
+   "cast": [
+    "pip"
+   ],
+   "scene": "dark tall ferns glowing softly from within, moonlight, mist",
+   "action": "the fox cub tiptoes carefully through the tall ferns and slowly pushes the leaves aside, curious and cautious",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "hushed",
+     "text": "Pip crept closer. Deep in the ferns, something tiny was glowing... and sniffling."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh05",
+   "mood": "sad",
+   "seed": 105,
+   "move": "push_in",
+   "cast": [
+    "lumi"
+   ],
+   "scene": "inside a nest of green ferns at night, soft golden glow",
+   "action": "the tiny star creature sits curled up with tears in its eyes, flickering dimly, talking softly",
+   "lines": [
+    {
+     "speaker": "lumi",
+     "tone": "sad",
+     "text": "Please don't hurt me. I fell... and now I can't get home."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh06",
+   "mood": "calm",
+   "seed": 106,
+   "move": "pan_right",
+   "cast": [
+    "pip",
+    "lumi"
+   ],
+   "scene": "green ferns at night lit by warm golden light",
+   "action": "the fox cub lies down gently and smiles kindly at the tiny star creature, talking softly",
+   "lines": [
+    {
+     "speaker": "pip",
+     "tone": "gentle",
+     "text": "Hurt you? Never! I'm Pip. What's your name?"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh07",
+   "mood": "wonder",
+   "seed": 107,
+   "move": "push_in",
+   "cast": [
+    "lumi"
+   ],
+   "scene": "green ferns at night lit by warm golden light",
+   "action": "the tiny star creature looks up shyly and glows a little brighter, talking",
+   "lines": [
+    {
+     "speaker": "lumi",
+     "tone": "shy",
+     "text": "I'm Lumi. Every night I shine above the river. But tonight... I slipped.",
+     "tts": "I'm Loomee. Every night I shine above the river. But tonight... I slipped."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh08",
+   "mood": "joy",
+   "seed": 108,
+   "move": "pull_out",
+   "cast": [
+    "pip",
+    "lumi"
+   ],
+   "scene": "a moonlit forest clearing",
+   "action": "the fox cub stands up proudly with a determined smile while the tiny star creature sits on its head, talking",
+   "lines": [
+    {
+     "speaker": "pip",
+     "tone": "determined",
+     "text": "Then we'll get you back home. And I know exactly who can help!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh09",
+   "mood": "calm",
+   "seed": 109,
+   "move": "pan_left",
+   "cast": [
+    "pip",
+    "lumi"
+   ],
+   "scene": "a moonlit forest path winding up a hill to a huge ancient oak tree",
+   "action": "the fox cub runs along the path carrying the glowing star creature toward the giant oak tree, camera tracking alongside",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "storyteller",
+     "text": "Pip carried Lumi through the wood, to the oldest oak, where Ollo the owl kept watch.",
+     "tts": "Pip carried Loomee through the wood, to the oldest oak, where Ollo the owl kept watch."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh10",
+   "mood": "reflective",
+   "seed": 110,
+   "move": "push_in",
+   "cast": [
+    "ollo"
+   ],
+   "scene": "a cozy hollow in a giant old oak tree, moonlight and a small lantern glowing",
+   "action": "the old owl leans forward, adjusts its spectacles with a wing and blinks slowly, talking",
+   "lines": [
+    {
+     "speaker": "ollo",
+     "tone": "wise",
+     "text": "Well now... a fallen star. That hasn't happened in a hundred years."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh11",
+   "mood": "wonder",
+   "seed": 111,
+   "move": "tilt_up",
+   "cast": [
+    "ollo",
+    "pip",
+    "lumi"
+   ],
+   "scene": "a branch of a giant old oak tree under a sky full of stars",
+   "action": "the old owl spreads one wing toward the sky while speaking, the fox cub and the glowing star creature listen closely",
+   "lines": [
+    {
+     "speaker": "ollo",
+     "tone": "wise",
+     "text": "Stars rise on wishes, little one. The more hearts that wish... the higher they fly."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh12",
+   "mood": "tension",
+   "seed": 112,
+   "move": "push_in",
+   "cast": [
+    "pip",
+    "lumi"
+   ],
+   "scene": "under a giant oak tree at night, dark forest all around",
+   "action": "the fox cub looks down worriedly at the glowing star creature in its paws, ears drooping, talking quietly",
+   "lines": [
+    {
+     "speaker": "pip",
+     "tone": "worried",
+     "text": "But it's only us. Is two enough?"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh13",
+   "mood": "wonder",
+   "seed": 113,
+   "move": "pull_out",
+   "cast": [
+    "pip",
+    "lumi"
+   ],
+   "scene": "a vast dark forest at night seen from a hilltop",
+   "action": "hundreds of fireflies light up one by one across the dark forest while the fox cub looks around in amazement",
+   "sfx": [
+    {
+     "type": "shimmer",
+     "at": 0.5,
+     "dur": 4.0,
+     "gain_db": -18
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "storyteller",
+     "text": "Just then, one by one, the fireflies of Willow Wood began to glow."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh14",
+   "mood": "joy",
+   "seed": 114,
+   "move": "push_in",
+   "cast": [
+    "pip",
+    "lumi"
+   ],
+   "scene": "a hilltop clearing full of swirling glowing fireflies under the stars",
+   "action": "the fox cub raises the glowing star creature high above its head and shouts joyfully, fireflies swirling around them",
+   "lines": [
+    {
+     "speaker": "pip",
+     "tone": "excited",
+     "text": "Everyone! Wish with us! Wish Lumi home!",
+     "tts": "Everyone! Wish with us! Wish Loomee home!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh15",
+   "mood": "awe",
+   "seed": 115,
+   "move": "tilt_up",
+   "flash_in": true,
+   "cast": [
+    "lumi",
+    "pip"
+   ],
+   "scene": "a hilltop under a starry night sky, fireflies everywhere",
+   "action": "the tiny star creature glows brighter and brighter and floats up into the night sky leaving a golden trail, the fox cub watches from below",
+   "sfx": [
+    {
+     "type": "shimmer",
+     "at": 0.3,
+     "dur": 5.0,
+     "gain_db": -16
+    },
+    {
+     "type": "whoosh",
+     "at": 2.5,
+     "dur": 2.0,
+     "gain_db": -18
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "awe",
+     "text": "Lumi glowed brighter... and brighter... and rose up, into the night sky.",
+     "tts": "Loomee glowed brighter... and brighter... and rose up, into the night sky."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh16",
+   "mood": "joy",
+   "seed": 116,
+   "move": "push_in",
+   "cast": [
+    "lumi"
+   ],
+   "scene": "the starry night sky high above a river",
+   "action": "the tiny star creature waves happily from high in the sky, sparkling, talking",
+   "lines": [
+    {
+     "speaker": "lumi",
+     "tone": "happy",
+     "text": "Thank you, Pip! Look for me above the river!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh17",
+   "mood": "reflective",
+   "seed": 117,
+   "move": "pull_out",
+   "fade_out": true,
+   "cast": [
+    "pip"
+   ],
+   "scene": "a calm river reflecting a starry sky, willow trees",
+   "action": "the fox cub sits by the river smiling up at one star that twinkles brighter than all the others, slow camera pull out",
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "storyteller",
+     "text": "And every night since, the brightest star over Willow Wood twinkles... just for Pip."
+    }
+   ]
+  }
+ ],
+ "metadata": {
+  "title": "Pip and the Fallen Star | A Bedtime Story (AI animated)",
+  "summary": "A little fox finds a fallen star in the ferns. With the help of Ollo the owl and the fireflies of Willow Wood, Pip wishes Lumi back into the sky.",
+  "tags": [
+   "bedtime story",
+   "kids story",
+   "animated story",
+   "fox",
+   "fallen star",
+   "short story",
+   "AI animation"
+  ]
+ }
+}

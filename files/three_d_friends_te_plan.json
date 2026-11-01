@@ -1,0 +1,1498 @@
+{
+ "plan_version": 1,
+ "project": "three_d_friends_te_v1",
+ "title": "3D సినిమాలు ఎందుకు నిజంగా కనిపిస్తాయి?",
+ "language": "te",
+ "story_mode": "two_friends_cinematic",
+ "visual_style": "stylized_2d",
+ "license_strict": true,
+ "factual_dialogue": true,
+ "logline": "3D సినిమాలో బంతి స్క్రీన్ లోంచి దూసుకొస్తే అర్జున్ తల వంచేస్తాడు. లాబీలో మీరా కారణం చూపిస్తుంది: రెండు కళ్లు, రెండు చిత్రాలు, వాటిని వేరు చేసే గ్లాసెస్.",
+ "notebook": {
+  "emoji": "🎬",
+  "name": "Two-Friend Explainer",
+  "length": "about 1–1.5 min"
+ },
+ "style": {
+  "suffix": "stylized 2D animation, flat colours, two original cartoon friends",
+  "negative": "text, watermark, photorealistic, deformed, blurry"
+ },
+ "look": {
+  "bg_top": "#1B2440",
+  "bg_bottom": "#28406A"
+ },
+ "characters": {
+  "arjun": {
+   "name": "అర్జున్",
+   "voice": "Prakash",
+   "speed": 1.0,
+   "pitch": 0.0,
+   "fx": "none",
+   "color": "#FFD166",
+   "look": "original 2D character Arjun",
+   "tag": "a young man in an orange hoodie",
+   "role": "curious",
+   "voice_style": "in a young, lively and curious voice at a moderate pace"
+  },
+  "meera": {
+   "name": "మీరా",
+   "voice": "Lalitha",
+   "speed": 1.0,
+   "pitch": 0.0,
+   "fx": "none",
+   "color": "#7FDBDA",
+   "look": "original 2D character Meera",
+   "tag": "a young woman in a teal jacket",
+   "role": "expert",
+   "voice_style": "in a warm, clear and friendly explaining voice at a moderate pace"
+  }
+ },
+ "bible": {
+  "version": 1,
+  "relationship": "Close friends of the same age who hang out often. Arjun notices things and asks; Meera loves explaining with real examples and small demonstrations. She never mocks him and never lectures for long; he asks real follow-ups, sometimes with a plausible wrong guess, never just 'Wow'.",
+  "characters": {
+   "arjun": {
+    "id": "arjun",
+    "name": "Arjun",
+    "names": {
+     "te": "అర్జున్"
+    },
+    "role": "curious",
+    "personality": "curious, observant, relatable, occasionally funny; asks the question the viewer is thinking",
+    "look": {
+     "skin": "#C68B59",
+     "hair": "#1F1A17",
+     "hair_style": "short_messy",
+     "top": "#F4A23B",
+     "top_detail": "#C97A12",
+     "eyes": "#2B1D14",
+     "glasses": false
+    },
+    "voices": {
+     "en": {
+      "backend": "kokoro",
+      "voice": "am_michael",
+      "style": "",
+      "pitch": 0.0
+     },
+     "te": {
+      "backend": "parler",
+      "voice": "Prakash",
+      "style": "in a young, lively and curious voice at a moderate pace",
+      "pitch": 0.0
+     }
+    },
+    "expressions": [
+     "neutral",
+     "smile",
+     "curious",
+     "surprised",
+     "confused",
+     "thinking",
+     "happy",
+     "listening"
+    ],
+    "gestures": [
+     "idle",
+     "explain",
+     "point",
+     "think",
+     "open_hands",
+     "nod"
+    ],
+    "tag": "a young man in an orange hoodie",
+    "color": "#FFD166"
+   },
+   "meera": {
+    "id": "meera",
+    "name": "Meera",
+    "names": {
+     "te": "మీరా"
+    },
+    "role": "expert",
+    "personality": "knowledgeable, friendly, patient; simplifies with familiar examples and demonstrations",
+    "look": {
+     "skin": "#A86B4A",
+     "hair": "#2B1B14",
+     "hair_style": "long_tied",
+     "top": "#2E8C8C",
+     "top_detail": "#F2F2F2",
+     "eyes": "#2B1D14",
+     "glasses": true
+    },
+    "voices": {
+     "en": {
+      "backend": "kokoro",
+      "voice": "af_heart",
+      "style": "",
+      "pitch": 0.0
+     },
+     "te": {
+      "backend": "parler",
+      "voice": "Lalitha",
+      "style": "in a warm, clear and friendly explaining voice at a moderate pace",
+      "pitch": 0.0
+     }
+    },
+    "expressions": [
+     "neutral",
+     "smile",
+     "curious",
+     "surprised",
+     "confused",
+     "thinking",
+     "happy",
+     "listening"
+    ],
+    "gestures": [
+     "idle",
+     "explain",
+     "point",
+     "think",
+     "open_hands",
+     "nod"
+    ],
+    "tag": "a young woman in a teal jacket",
+    "color": "#7FDBDA"
+   }
+  }
+ },
+ "tones": {
+  "curious": {
+   "speed": 0.98,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.45
+  },
+  "explainer": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.4
+  },
+  "warm": {
+   "speed": 0.97,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.5
+  },
+  "happy": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.4
+  },
+  "friendly": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.35
+  },
+  "awe": {
+   "speed": 0.96,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.6
+  },
+  "serious": {
+   "speed": 0.97,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.5
+  }
+ },
+ "moods": {
+  "curious": {
+   "pause_after": 0.5,
+   "grade": "neutral",
+   "move_amount": 0.04,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.1,
+    "shimmer": 0.3
+   }
+  },
+  "calm": {
+   "pause_after": 0.45,
+   "grade": "neutral",
+   "move_amount": 0.04,
+   "music": {
+    "base": 0.4,
+    "curious": 0.8,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "busy": {
+   "pause_after": 0.4,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.2,
+    "shimmer": 0.1
+   }
+  },
+  "joy": {
+   "pause_after": 0.45,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  }
+ },
+ "claims": [
+  {
+   "id": "c_f1",
+   "text": "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stereopsis"
+   ],
+   "source_revision": 1377837508
+  },
+  {
+   "id": "c_f2",
+   "text": "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stereoscopy"
+   ],
+   "source_revision": 1380706327
+  },
+  {
+   "id": "c_f3",
+   "text": "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Polarized_3D_system"
+   ],
+   "source_revision": 1377586129
+  },
+  {
+   "id": "c_f4",
+   "text": "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Polarized_3D_system"
+   ],
+   "source_revision": 1377586129
+  },
+  {
+   "id": "c_f5",
+   "text": "A ZScreen circularly polarizes the frames clockwise for the right eye and counter-clockwise for the left eye; the audience wears circularly polarized glasses with oppositely polarized lenses so each eye sees only its designated frame.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/RealD_3D"
+   ],
+   "source_revision": 1375938377
+  },
+  {
+   "id": "c_f6",
+   "text": "The advantage of circular polarization over linear polarization is that viewers are able to tilt their heads and look about the theater naturally without seeing double or darkened images.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/RealD_3D"
+   ],
+   "source_revision": 1375938377
+  }
+ ],
+ "vocabulary": [
+  "Arjun",
+  "Meera",
+  "3D",
+  "అర్జున్",
+  "మీరా"
+ ],
+ "entities": {},
+ "glossary": {},
+ "travel": {},
+ "shots": [
+  {
+   "shot_id": "sc01",
+   "recipe": "story",
+   "beat": "hook",
+   "story_beat": "observation",
+   "mood": "curious",
+   "location": "cinema_seats",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "awe",
+     "text": "అరె! ఆ బంతి స్క్రీన్ లోంచి నేరుగా బయటకు వచ్చేసింది!",
+     "kind": "observation",
+     "act": {
+      "expr": "surprised"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "నువ్వు తల వంచేశావు! నిజంగానే పట్టుకోగలిగేంత దగ్గరగా అనిపించింది.",
+     "kind": "reaction",
+     "act": {
+      "expr": "happy"
+     }
+    }
+   ],
+   "story": {
+    "world": "cinema_seats",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "establishing",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_screen",
+       "shot": "establishing",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ]
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "surprised",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "two friends from behind, watching a 3D movie, a ball coming out of the screen"
+     },
+     {
+      "id": "v2",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ],
+         "hold": "popcorn"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "surprised",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.3103,
+         "chars": {
+          "meera": {
+           "expr": "happy",
+           "gesture": "idle"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.55
+      },
+      "description": "the friends in their cinema seats wearing 3D glasses"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc02",
+   "recipe": "story",
+   "beat": "turn",
+   "story_beat": "question",
+   "mood": "curious",
+   "location": "cinema_seats",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "గ్లాసెస్ తీసేస్తే, అంతా రెండుగా, మసకగా కనిపిస్తోంది.",
+     "kind": "observation",
+     "act": {
+      "expr": "confused"
+     }
+    },
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "అసలు చదునైన స్క్రీన్ బంతిని బయటకు ఎలా దూకిస్తుంది?",
+     "kind": "question",
+     "act": {
+      "expr": "curious",
+      "gesture": "open_hands"
+     }
+    }
+   ],
+   "story": {
+    "world": "cinema_seats",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ]
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "subject": "arjun",
+       "screen": "double",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "confused",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.25,
+         "chars": {
+          "arjun": {
+           "wear": []
+          }
+         }
+        }
+       ],
+       "push": true
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Arjun takes off his 3D glasses"
+     },
+     {
+      "id": "v2",
+      "intent": "cutaway",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_screen",
+       "shot": "establishing",
+       "chars": {
+        "arjun": {},
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "double",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "confused",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.5
+      },
+      "description": "what Arjun sees without glasses: two overlapping pictures of the ball on the screen"
+     },
+     {
+      "id": "v3",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {
+         "hold": "3d_glasses"
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "double",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "curious",
+           "gesture": "open_hands"
+          },
+          "meera": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.0
+      },
+      "description": "Arjun asks Meera, glasses in hand"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc03",
+   "recipe": "story",
+   "beat": "step",
+   "story_beat": "demonstration",
+   "mood": "busy",
+   "location": "lobby",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [],
+   "lines": [
+    {
+     "speaker": "meera",
+     "tone": "friendly",
+     "text": "ముందు నీ కళ్లతోనే మొదలుపెడదాం. బొటనవేలు పైకెత్తి, ఒక కన్ను మూసి, తర్వాత ఇంకో కన్ను మూయి.",
+     "kind": "instruction",
+     "act": {
+      "expr": "smile",
+      "gesture": "point"
+     }
+    },
+    {
+     "speaker": "arjun",
+     "tone": "awe",
+     "text": "నా బొటనవేలు పక్కకు దూకుతోంది, కానీ వెనక గోడ దాదాపు కదలట్లేదు!",
+     "kind": "observation",
+     "act": {
+      "expr": "surprised"
+     }
+    }
+   ],
+   "transition": "time_skip",
+   "story": {
+    "world": "lobby",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "ots",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "ots",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "subject": "meera",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "point"
+          },
+          "arjun": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "after the movie in the lobby, Meera explains over Arjun's shoulder"
+     },
+     {
+      "id": "v2",
+      "intent": "object_demo",
+      "medium": "animated_demo",
+      "recipe": "demo",
+      "demo": {
+       "template": "finger_test",
+       "world": "lobby"
+      },
+      "start": {
+       "line": 0,
+       "at": 0.5
+      },
+      "description": "a thumb held in front of the lobby wall, seen with the left eye and then the right eye"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc04",
+   "recipe": "story",
+   "beat": "setup",
+   "story_beat": "first_answer",
+   "mood": "calm",
+   "location": "lobby",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [
+    "c_f1",
+    "c_f2"
+   ],
+   "lines": [
+    {
+     "speaker": "meera",
+     "tone": "explainer",
+     "text": "నీ రెండు కళ్లూ వేర్వేరు, కానీ దగ్గర దగ్గర దిశల నుంచి చూస్తాయి, అందుకే అవి వేర్వేరు చిత్రాలను చూస్తాయి.",
+     "kind": "fact",
+     "claims": [
+      "c_f1"
+     ]
+    },
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "మరి నాకు ఎప్పుడూ రెండు చిత్రాలు ఎందుకు కనిపించవు?",
+     "kind": "question",
+     "claims": [
+      "c_f2"
+     ],
+     "act": {
+      "expr": "thinking",
+      "gesture": "think"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "explainer",
+     "text": "నీ మెదడు ఆ రెండు చిత్రాలను కలిపేస్తుంది, అప్పుడు నీకు లోతు ఉన్న ఒకే 3D దృశ్యం కనిపిస్తుంది.",
+     "kind": "fact",
+     "tts": "నీ మెదడు ఆ రెండు చిత్రాలను కలిపేస్తుంది, అప్పుడు నీకు లోతు ఉన్న ఒకే త్రీడీ దృశ్యం కనిపిస్తుంది.",
+     "claims": [
+      "c_f2"
+     ]
+    }
+   ],
+   "story": {
+    "world": "lobby",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "gesture": "explain"
+          },
+          "arjun": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Meera explains, Arjun listens"
+     },
+     {
+      "id": "v2",
+      "intent": "animated_illustration",
+      "medium": "animated_demo",
+      "recipe": "demo",
+      "demo": {
+       "template": "eye_views",
+       "world": "lobby"
+      },
+      "start": {
+       "line": 0,
+       "at": 0.35
+      },
+      "description": "two eyes see a ball in front of a tree from two spots; two pictures merge into one with depth"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc05",
+   "recipe": "story",
+   "beat": "turn",
+   "story_beat": "misconception",
+   "mood": "curious",
+   "location": "lobby",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [
+    "c_f4"
+   ],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "అంటే ఈ గ్లాసెస్ లోపల ఒక్కో కంటికి ఒక్కో చిన్న స్క్రీన్ ఉంటుందా?",
+     "kind": "misconception",
+     "act": {
+      "expr": "curious",
+      "gesture": "point"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "warm",
+     "text": "స్క్రీన్లు ఏమీ లేవు. ప్రతి లెన్స్ ఒక ఫిల్టర్, అందుకే ప్రతి కంటికి దానికోసమే ఉన్న చిత్రం మాత్రమే చేరుతుంది.",
+     "kind": "correction",
+     "claims": [
+      "c_f4"
+     ],
+     "act": {
+      "expr": "smile",
+      "gesture": "explain"
+     }
+    }
+   ],
+   "story": {
+    "world": "lobby",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {
+         "hold": "3d_glasses"
+        },
+        "meera": {}
+       },
+       "subject": "arjun",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "curious",
+           "gesture": "point"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Arjun guesses, pointing at the glasses"
+     },
+     {
+      "id": "v2",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {},
+        "meera": {
+         "hold": "3d_glasses"
+        }
+       },
+       "subject": "meera",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "explain"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.0
+      },
+      "description": "Meera holds up the 3D glasses and smiles"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc06",
+   "recipe": "story",
+   "beat": "resolution",
+   "story_beat": "correction",
+   "mood": "calm",
+   "location": "lobby",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [
+    "c_f3",
+    "c_f5"
+   ],
+   "lines": [
+    {
+     "speaker": "meera",
+     "tone": "explainer",
+     "text": "ప్రొజెక్టర్ రెండు చిత్రాలనూ ఒకే స్క్రీన్ మీద వేస్తుంది, ఒక్కోటి వేరే ఫిల్టర్ ద్వారా.",
+     "kind": "fact",
+     "claims": [
+      "c_f3"
+     ]
+    },
+    {
+     "speaker": "arjun",
+     "tone": "curious",
+     "text": "మరి ప్రతి లెన్స్ తన చిత్రాన్ని మాత్రమే లోపలికి పంపుతుందా?",
+     "kind": "question",
+     "act": {
+      "expr": "curious"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "అవును. కుడి కంటి ఫ్రేమ్‌లు సవ్యదిశలో, ఎడమ కంటి ఫ్రేమ్‌లు అపసవ్యదిశలో తిరుగుతాయి, అందుకే ప్రతి కంటికి దాని ఫ్రేమ్‌లే కనిపిస్తాయి.",
+     "kind": "fact",
+     "claims": [
+      "c_f5"
+     ],
+     "act": {
+      "expr": "happy",
+      "gesture": "open_hands"
+     }
+    }
+   ],
+   "story": {
+    "world": "lobby",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "animated_illustration",
+      "medium": "animated_demo",
+      "recipe": "demo",
+      "demo": {
+       "template": "projector_glasses",
+       "world": "lobby"
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "projector, silver screen, two pictures with twisted light, each lens of the glasses passes only one picture"
+     },
+     {
+      "id": "v2",
+      "intent": "reaction",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "reaction",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "subject": "arjun",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "curious",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.0
+      },
+      "description": "Arjun works it out"
+     },
+     {
+      "id": "v3",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {},
+        "meera": {
+         "hold": "3d_glasses"
+        }
+       },
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "happy",
+           "gesture": "open_hands"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 2,
+       "at": 0.0
+      },
+      "description": "Meera confirms with open hands, glasses in hand"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc07",
+   "recipe": "story",
+   "beat": "reveal",
+   "story_beat": "reveal",
+   "mood": "joy",
+   "location": "lobby",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [
+    "c_f6"
+   ],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "awe",
+     "text": "ఆగు, అంటే ఈ బయటకు దూకే ఎఫెక్ట్ అంతా నా మెదడు పనేనా?",
+     "kind": "question",
+     "act": {
+      "expr": "happy",
+      "gesture": "open_hands"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "అవును! ఆ తిరిగే కాంతినే సర్క్యులర్ పోలరైజేషన్ అంటారు, అందుకే తల పక్కకు వంచినా రెండుగా కనిపించదు.",
+     "kind": "fact",
+     "claims": [
+      "c_f6"
+     ],
+     "act": {
+      "expr": "smile"
+     }
+    }
+   ],
+   "story": {
+    "world": "lobby",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "closeup",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "closeup",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "subject": "arjun",
+       "push": true,
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "happy",
+           "gesture": "open_hands"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Arjun gets it"
+     },
+     {
+      "id": "v2",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "lobby",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "explain"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.0
+      },
+      "description": "the friends smile in the lobby"
+     }
+    ]
+   }
+  },
+  {
+   "shot_id": "sc08",
+   "recipe": "story",
+   "beat": "payoff",
+   "story_beat": "closing",
+   "mood": "joy",
+   "location": "cinema_seats",
+   "cast": [
+    "arjun",
+    "meera"
+   ],
+   "claims": [],
+   "lines": [
+    {
+     "speaker": "arjun",
+     "tone": "happy",
+     "text": "తర్వాతి సినిమాలో నేను మొత్తం తల పక్కకు వంచే చూస్తాను. సైన్స్ కోసం!",
+     "kind": "reaction",
+     "act": {
+      "expr": "happy"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "warm",
+     "text": "రెండు కళ్లు, రెండు చిత్రాలు, ఒక తెలివైన జత గ్లాసెస్. సినిమా ఎంజాయ్ చెయ్యి.",
+     "kind": "observation",
+     "act": {
+      "expr": "smile"
+     }
+    }
+   ],
+   "transition": "time_skip",
+   "story": {
+    "world": "cinema_seats",
+    "visuals": [
+     {
+      "id": "v1",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ]
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "arjun": {
+           "expr": "happy",
+           "gesture": "idle"
+          },
+          "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        },
+        {
+         "t": 0.7143,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "idle"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "back in their seats, both wearing 3D glasses"
+     },
+     {
+      "id": "v2",
+      "intent": "establishing",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_screen",
+       "shot": "establishing",
+       "chars": {
+        "arjun": {},
+        "meera": {}
+       },
+       "screen": "clean",
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "expr": "smile",
+           "gesture": "idle"
+          },
+          "arjun": {
+           "gesture": "nod",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 1,
+       "at": 0.4
+      },
+      "description": "the ball flies out of the screen again"
+     }
+    ]
+   }
+  }
+ ],
+ "director": [
+  {
+   "scene": "sc01",
+   "visual": "v1",
+   "intent": "establishing",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc01",
+   "visual": "v2",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc02",
+   "visual": "v1",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc02",
+   "visual": "v2",
+   "intent": "cutaway",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc02",
+   "visual": "v3",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc03",
+   "visual": "v1",
+   "intent": "ots",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc03",
+   "visual": "v2",
+   "intent": "object_demo",
+   "medium": "animated_demo",
+   "recipe": "demo",
+   "trail": []
+  },
+  {
+   "scene": "sc04",
+   "visual": "v1",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc04",
+   "visual": "v2",
+   "intent": "animated_illustration",
+   "medium": "animated_demo",
+   "recipe": "demo",
+   "trail": []
+  },
+  {
+   "scene": "sc05",
+   "visual": "v1",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc05",
+   "visual": "v2",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc06",
+   "visual": "v1",
+   "intent": "animated_illustration",
+   "medium": "animated_demo",
+   "recipe": "demo",
+   "trail": []
+  },
+  {
+   "scene": "sc06",
+   "visual": "v2",
+   "intent": "reaction",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc06",
+   "visual": "v3",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc07",
+   "visual": "v1",
+   "intent": "closeup",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc07",
+   "visual": "v2",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc08",
+   "visual": "v1",
+   "intent": "two_friend",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  },
+  {
+   "scene": "sc08",
+   "visual": "v2",
+   "intent": "establishing",
+   "medium": "character_scene",
+   "recipe": "character",
+   "trail": []
+  }
+ ],
+ "music": {
+  "cues": [
+   {
+    "from": "sc01",
+    "track": "Investigations"
+   },
+   {
+    "from": "sc03",
+    "track": "Easy Lemon"
+   },
+   {
+    "from": "sc07",
+    "track": "Carefree"
+   }
+  ]
+ },
+ "metadata": {
+  "title": "3D సినిమాలు ఎందుకు నిజంగా కనిపిస్తాయి?",
+  "summary": "3D సినిమాలో బంతి స్క్రీన్ లోంచి దూసుకొస్తే అర్జున్ తల వంచేస్తాడు. లాబీలో మీరా కారణం చూపిస్తుంది: రెండు కళ్లు, రెండు చిత్రాలు, వాటిని వేరు చేసే గ్లాసెస్.",
+  "disclaimer": "వికీపీడియా (Polarized 3D system, RealD 3D, Stereopsis, Stereoscopy) ఆధారంగా సరళంగా వివరించిన వీడియో. అర్జున్ మరియు మీరా కల్పిత, సొంతంగా గీసిన యానిమేషన్ పాత్రలు; 'దృష్టాంతం' అని ఉన్న దృశ్యాలు పునర్నిర్మాణాలు, నిజమైన ఫుటేజ్ కాదు.\nSimplified explainer based on Wikipedia (Polarized 3D system, RealD 3D, Stereopsis, Stereoscopy). Arjun and Meera are fictional, original animated characters; scenes marked 'Illustration' are re-enactments, not footage.",
+  "category": "Education",
+  "audience": "Not made for kids",
+  "tags": [
+   "why do 3d movies look real? (telugu)",
+   "science explained",
+   "explainer",
+   "3d",
+   "అర్జున్",
+   "మీరా"
+  ]
+ }
+}

@@ -1,0 +1,1220 @@
+{
+ "plan_version": 1,
+ "project": "train_ticket_v1",
+ "title": "What Happens When You Book a Train Ticket?",
+ "notebook": {
+  "emoji": "🚆",
+  "name": "AI Explainer Maker",
+  "length": "about 1.5–2 min"
+ },
+ "real_company": "IRCTC",
+ "logline": "Riya books a Delhi to Jaipur train ticket for her sister's wedding and gets WL 12. We follow that ticket: the waiting list moving up, the chart, the confirmed berth, and boarding with her e-ticket and ID.",
+ "region_note": "India (Indian Railways / IRCTC). Rules change often; checked October 2026. The video avoids exact chart times, which changed twice in 2025.",
+ "style": {
+  "suffix": "3D animated explainer film style, clean stylized characters with consistent design, warm natural lighting, Indian railway setting, smooth natural animation",
+  "negative": "text, letters, words, logo, brand name, watermark, subtitles, photorealistic, deformed hands, extra fingers, extra limbs, extra heads, distorted face, blurry, low quality, frozen, flickering, character disappearing"
+ },
+ "look": {
+  "bg_top": "#10233F",
+  "bg_bottom": "#1B4060",
+  "accent": "#19C3A6",
+  "accent2": "#FF6B6B",
+  "gold": "#FFC43D",
+  "currency": "₹"
+ },
+ "characters": {
+  "narrator": {
+   "name": "Narrator",
+   "voice": "af_heart",
+   "speed": 1.0,
+   "pitch": 0,
+   "fx": "none",
+   "color": "#FFFFFF",
+   "look": null
+  },
+  "riya": {
+   "name": "Riya",
+   "voice": "af_nova",
+   "speed": 1.02,
+   "pitch": 0.3,
+   "fx": "none",
+   "color": "#FFD166",
+   "look": "a young Indian woman with shoulder-length black hair wearing a red kurta and blue jeans, carrying a small grey backpack",
+   "tag": "a young woman in a red kurta"
+  },
+  "tte": {
+   "name": "Ticket checker",
+   "voice": "am_eric",
+   "speed": 1.0,
+   "pitch": -0.5,
+   "fx": "none",
+   "color": "#9FD3FF",
+   "look": "a friendly middle-aged Indian ticket checker with a grey moustache wearing a plain black coat over a white shirt",
+   "tag": "a man in a black coat"
+  }
+ },
+ "scene_entities": {
+  "riya": {
+   "kind": "character",
+   "name": "Riya",
+   "query": "a young woman in a red kurta"
+  },
+  "tte": {
+   "kind": "character",
+   "name": "the ticket checker",
+   "query": "a man in a black coat"
+  },
+  "coach": {
+   "kind": "anchor",
+   "name": "the train coach",
+   "query": "a train coach"
+  },
+  "sofa": {
+   "kind": "anchor",
+   "name": "the sofa",
+   "query": "a sofa"
+  },
+  "seat": {
+   "kind": "anchor",
+   "name": "the train seat",
+   "query": "a train seat"
+  },
+  "phone": {
+   "kind": "prop",
+   "name": "her phone",
+   "query": "a smartphone",
+   "small": true
+  },
+  "id_card": {
+   "kind": "prop",
+   "name": "her ID card",
+   "query": "an identity card",
+   "small": true
+  }
+ },
+ "props": {
+  "phone": {
+   "look": "a smartphone in a blue case",
+   "tag": "a smartphone",
+   "path": [
+    "home",
+    "platform",
+    "train"
+   ]
+  }
+ },
+ "entities": {
+  "phone": [
+   "phone",
+   "app"
+  ],
+  "waiting list": [
+   "waiting list",
+   "wl"
+  ],
+  "chart": [
+   "chart"
+  ],
+  "coach": [
+   "coach",
+   "platform"
+  ],
+  "refund": [
+   "refund",
+   "refunded"
+  ],
+  "photo id": [
+   "photo id",
+   "id card"
+  ]
+ },
+ "glossary": {},
+ "travel": {
+  "home": [
+   "platform"
+  ],
+  "platform": [
+   "train"
+  ],
+  "train": []
+ },
+ "vocabulary": [
+  "Riya",
+  "IRCTC",
+  "Jaipur",
+  "PNR",
+  "RAC",
+  "Tatkal",
+  "berth",
+  "B3"
+ ],
+ "process": [
+  {
+   "id": "search",
+   "text": "Search trains and see availability"
+  },
+  {
+   "id": "book",
+   "text": "Enter passenger details and pay; a PNR is created"
+  },
+  {
+   "id": "status",
+   "text": "The booking is CNF, RAC or WL"
+  },
+  {
+   "id": "moves_up",
+   "text": "The waiting list moves up when booked passengers cancel",
+   "conditional": true,
+   "condition": "only for waitlisted tickets, and only if enough people cancel"
+  },
+  {
+   "id": "chart",
+   "text": "The reservation chart is prepared before departure"
+  },
+  {
+   "id": "auto_cancel",
+   "text": "Fully waitlisted e-tickets are cancelled after the chart and refunded automatically",
+   "conditional": true,
+   "condition": "only if the e-ticket is still fully waitlisted when the chart is prepared"
+  },
+  {
+   "id": "board",
+   "text": "Board with the e-ticket and an original photo ID"
+  }
+ ],
+ "claims": [
+  {
+   "id": "c1",
+   "text": "Reserved tickets can be booked up to 60 days before the journey (advance reservation period cut from 120 to 60 days from 1 November 2024).",
+   "sources": [
+    "https://www.businesstoday.in/india/story/new-train-ticket-booking-rules-top-reservation-related-changes-applicable-from-nov-1-452214-2024-11-01",
+    "https://www.outlooktraveller.com/News/irctc-makes-changes-to-its-advance-booking-period-heres-what-you-need-to-know"
+   ]
+  },
+  {
+   "id": "c2",
+   "text": "RAC passengers may board and travel in reserved coaches, sharing a berth until one is upgraded; RAC gets confirmed first, then waiting-list tickets, as booked passengers cancel.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Reservation_against_Cancellation",
+    "https://www.ixigo.com/what-does-rac-status-mean-in-indian-railways-2-story-1183627"
+   ]
+  },
+  {
+   "id": "c3",
+   "text": "Indian Railways prepares the reservation chart before departure; in 2025 the first chart moved from 4 hours to 8 hours before departure, and later earlier still for morning trains.",
+   "sources": [
+    "https://www.business-standard.com/india-news/indian-railways-passenger-reservation-chart-departure-booking-rules-125063000537_1.html",
+    "https://www.thehitavada.com/Encyc/2025/12/27/now-railway-reservation-charts-to-be-ready-one-day-in-advance.html"
+   ]
+  },
+  {
+   "id": "c4",
+   "text": "Fully waitlisted e-tickets are cancelled by Railways after chart preparation and the refund is credited automatically; those passengers are dropped from the chart and are not allowed to board.",
+   "sources": [
+    "https://www.icicibank.com/personal-banking/insta-banking/irctc-ticket-booking/terms-conditions",
+    "https://crpf.gov.in/Upload/News/File/1730_1_2239128930_eTicket.pdf"
+   ]
+  },
+  {
+   "id": "c5",
+   "text": "Passengers can travel with the e-ticket SMS or Virtual Reservation Message plus one prescribed original photo ID; only confirmed, RAC or partially confirmed e-tickets are valid for travel.",
+   "sources": [
+    "https://crpf.gov.in/Upload/News/File/1730_1_2239128930_eTicket.pdf"
+   ]
+  },
+  {
+   "id": "c6",
+   "text": "Tatkal booking opens one day before the journey: 10:00 AM for AC classes and 11:00 AM for non-AC classes; online Tatkal needs an Aadhaar-authenticated account (from July 2025).",
+   "sources": [
+    "https://www.deccanherald.com/amp/story/india/explained-all-you-need-to-know-about-the-new-rules-for-tatkal-ticket-booking-3582881",
+    "https://thesouthfirst.com/news/from-1-july-aadhaar-authentication-mandatory-for-tatkal-bookings-on-irctc-website-and-app"
+   ]
+  }
+ ],
+ "tones": {
+  "explainer": {
+   "speed": 1.0,
+   "pitch": 0.0,
+   "gain_db": 0.0,
+   "pause_after": 0.45
+  },
+  "curious": {
+   "speed": 0.96,
+   "pitch": 0.2,
+   "gain_db": 0.0,
+   "pause_after": 0.55
+  },
+  "warm": {
+   "speed": 0.95,
+   "pitch": 0.0,
+   "gain_db": -0.5,
+   "pause_after": 0.6
+  },
+  "worried": {
+   "speed": 0.97,
+   "pitch": 0.4,
+   "gain_db": -0.5,
+   "pause_after": 0.6
+  },
+  "happy": {
+   "speed": 1.05,
+   "pitch": 0.6,
+   "gain_db": 1.0,
+   "pause_after": 0.4
+  },
+  "friendly": {
+   "speed": 1.02,
+   "pitch": 0.0,
+   "gain_db": 0.5,
+   "pause_after": 0.4
+  }
+ },
+ "moods": {
+  "curious": {
+   "pause_after": 0.55,
+   "grade": "cool",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.7,
+    "tension": 0.1,
+    "shimmer": 0.4
+   }
+  },
+  "calm": {
+   "pause_after": 0.5,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.4,
+    "curious": 0.8,
+    "tension": 0.0,
+    "shimmer": 0.2
+   }
+  },
+  "busy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.06,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.2,
+    "shimmer": 0.1
+   }
+  },
+  "joy": {
+   "pause_after": 0.45,
+   "grade": "contrast",
+   "move_amount": 0.07,
+   "music": {
+    "base": 0.3,
+    "curious": 1.0,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  },
+  "reflective": {
+   "pause_after": 0.6,
+   "grade": "neutral",
+   "move_amount": 0.05,
+   "music": {
+    "base": 0.5,
+    "curious": 0.6,
+    "tension": 0.0,
+    "shimmer": 0.4
+   }
+  }
+ },
+ "music": {
+  "cues": [
+   {
+    "from": "sh01",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh03",
+    "track": "Easy Lemon"
+   },
+   {
+    "from": "sh07",
+    "track": "Investigations"
+   },
+   {
+    "from": "sh09",
+    "track": "Wallpaper"
+   },
+   {
+    "from": "sh12",
+    "track": "Carefree"
+   }
+  ]
+ },
+ "shots": [
+  {
+   "shot_id": "sh01",
+   "chapter": "hook",
+   "beat": "hook",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 401,
+   "card": {
+    "icon": "question",
+    "lines": [
+     "Ticket booked… but it says WL 12",
+     "Will you get a seat?"
+    ],
+    "bullets": false
+   },
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 0.6,
+     "dur": 0.4,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "curious",
+     "story": true,
+     "text": "You booked a train ticket, but it says WL 12. Will you get a seat?"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh02",
+   "chapter": "hook",
+   "beat": "setup",
+   "mood": "curious",
+   "seed": 402,
+   "location": "home",
+   "cast": [
+    "riya"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "home"
+   },
+   "move": "push_in",
+   "scene": "a cozy Indian living room in the evening with a sofa and warm lamp light",
+   "action": "the young woman sits on the sofa looking at her smartphone, thinking",
+   "state": {
+    "location": "home",
+    "camera": {
+     "setup": "home_medium",
+     "axis": "home_line",
+     "side": "front",
+     "size": "medium",
+     "move": "push_in"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       0.33,
+       0.12,
+       0.7,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "sofa": {
+      "box": [
+       0.08,
+       0.5,
+       0.95,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "phone": "riya"
+    },
+    "events": [
+     {
+      "id": "think",
+      "type": "look_at",
+      "actor": "riya",
+      "obj": "phone",
+      "t": [
+       0.1,
+       0.7
+      ],
+      "critical": false,
+      "describe": "she looks at her phone, thinking"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "calendar",
+     "lines": [
+      "Delhi to Jaipur",
+      "For her sister's wedding"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "Meet Riya. She's going from Delhi to Jaipur for her sister's wedding."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh03",
+   "chapter": "book",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "calm",
+   "seed": 403,
+   "step": "search",
+   "claims": [
+    "c1"
+   ],
+   "label": "Step 1 · Search trains",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Train booking app"
+      },
+      {
+       "type": "text",
+       "text": "Delhi  →  Jaipur",
+       "bold": true,
+       "size": 32
+      },
+      {
+       "type": "text",
+       "text": "Up to 60 days ahead",
+       "size": 24
+      },
+      {
+       "type": "choice",
+       "id": "trains",
+       "options": [
+        "Express · 3A · Available 4",
+        "Mail · 3A · WL 12",
+        "Superfast · 3A · WL 40"
+       ],
+       "selected": 1
+      },
+      {
+       "type": "button",
+       "id": "pick",
+       "text": "Book this train"
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.45,
+      "do": "select",
+      "target": "trains"
+     },
+     {
+      "t": 0.8,
+      "do": "tap",
+      "target": "pick"
+     }
+    ],
+    "caption": {
+     "text": "Seats or waiting list",
+     "t": 0.1
+    }
+   },
+   "sfx": [
+    {
+     "type": "click",
+     "at": 0.8,
+     "dur": 0.1,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "In the booking app, she searches trains. Tickets open up to 60 days ahead."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh04",
+   "chapter": "book",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "calm",
+   "seed": 404,
+   "step": "book",
+   "claims": [
+    "c5"
+   ],
+   "label": "Step 2 · Pay, get a PNR",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "Payment"
+      },
+      {
+       "type": "product",
+       "name": "Delhi → Jaipur · 3A",
+       "detail": "1 passenger · Riya",
+       "price": "₹ 1,045",
+       "icon": "card"
+      },
+      {
+       "type": "button",
+       "id": "pay",
+       "text": "Pay now"
+      }
+     ],
+     [
+      {
+       "type": "header",
+       "text": "Booked"
+      },
+      {
+       "type": "notice",
+       "text": "PNR 4521 873 096",
+       "icon": "check"
+      },
+      {
+       "type": "status",
+       "id": "st",
+       "steps": [
+        "Booked",
+        "Status: WL 12",
+        "Chart prepared",
+        "Seat confirmed"
+       ],
+       "current": 1
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.25,
+      "do": "tap",
+      "target": "pay"
+     },
+     {
+      "t": 0.35,
+      "do": "screen",
+      "to": 1
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 1.6,
+     "dur": 0.9,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "She pays, and gets a PNR: her booking's ID. Her ticket says WL 12."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh05",
+   "chapter": "book",
+   "beat": "step",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 405,
+   "step": "status",
+   "claims": [
+    "c2",
+    "c4"
+   ],
+   "label": "Three kinds of ticket",
+   "card": {
+    "lines": [
+     "CNF, RAC or WL?",
+     "CNF: your own berth",
+     "RAC: travel, maybe share a berth",
+     "WL: waiting in line"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "CNF means a berth of your own. RAC lets you travel, maybe sharing a berth. WL means waiting in line."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh06",
+   "chapter": "book",
+   "beat": "aside",
+   "recipe": "card",
+   "mood": "busy",
+   "seed": 406,
+   "step": "status",
+   "claims": [
+    "c6"
+   ],
+   "card": {
+    "icon": "clock",
+    "lines": [
+     "Need to go tomorrow?",
+     "Tatkal: AC at 10 AM",
+     "Non-AC at 11 AM"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Travelling tomorrow? Tatkal booking opens the day before: 10 AM for AC, 11 AM for non-AC."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh07",
+   "chapter": "wait",
+   "beat": "step",
+   "recipe": "ui",
+   "mood": "curious",
+   "seed": 407,
+   "step": "moves_up",
+   "claims": [
+    "c2"
+   ],
+   "label": "Step 3 · The line moves",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "PNR status"
+      },
+      {
+       "type": "status",
+       "id": "q",
+       "steps": [
+        "WL 12",
+        "WL 5",
+        "RAC 3",
+        "Confirmed"
+       ],
+       "current": 0
+      },
+      {
+       "type": "notice",
+       "text": "Someone cancelled. Your position moved up.",
+       "icon": "clock"
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.2,
+      "do": "status",
+      "target": "q",
+      "from": 0,
+      "to": 1,
+      "dur": 0.2
+     },
+     {
+      "t": 0.6,
+      "do": "status",
+      "target": "q",
+      "from": 1,
+      "to": 2,
+      "dur": 0.2
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.3,
+     "dur": 0.4,
+     "gain_db": -14
+    },
+    {
+     "type": "pop",
+     "at": 3.4,
+     "dur": 0.4,
+     "gain_db": -14
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Each time someone with a seat cancels, the waiting list can move up. WL 12 becomes RAC 3."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh08",
+   "chapter": "wait",
+   "beat": "turn",
+   "recipe": "card",
+   "mood": "curious",
+   "seed": 408,
+   "step": "chart",
+   "claims": [
+    "c3"
+   ],
+   "label": "Step 4 · The chart",
+   "card": {
+    "icon": "calendar",
+    "lines": [
+     "Before the train leaves",
+     "The chart is prepared",
+     "Who gets which berth"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "Before the train leaves, the railway prepares the reservation chart: who gets which berth."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh09",
+   "chapter": "chart",
+   "beat": "resolution",
+   "recipe": "ui",
+   "mood": "joy",
+   "seed": 409,
+   "step": "chart",
+   "claims": [
+    "c3"
+   ],
+   "label": "Step 5 · Confirmed",
+   "ui": {
+    "screens": [
+     [
+      {
+       "type": "header",
+       "text": "PNR status"
+      },
+      {
+       "type": "status",
+       "id": "q",
+       "steps": [
+        "WL 12",
+        "WL 5",
+        "RAC 3",
+        "Confirmed"
+       ],
+       "current": 2
+      }
+     ]
+    ],
+    "events": [
+     {
+      "t": 0.12,
+      "do": "status",
+      "target": "q",
+      "from": 2,
+      "to": 3,
+      "dur": 0.2
+     },
+     {
+      "t": 0.4,
+      "do": "notify",
+      "title": "Chart prepared",
+      "body": "Confirmed: coach B3, berth 42.",
+      "icon": "check",
+      "until": 1.0
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "type": "ding",
+     "at": 1.6,
+     "dur": 0.9,
+     "gain_db": -12
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "The chart is ready. Riya is confirmed: coach B3, berth 42."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh10",
+   "chapter": "chart",
+   "beat": "aside",
+   "recipe": "card",
+   "mood": "reflective",
+   "seed": 410,
+   "step": "auto_cancel",
+   "claims": [
+    "c4"
+   ],
+   "card": {
+    "icon": "money",
+    "lines": [
+     "Still WL after the chart?",
+     "E-ticket cancelled automatically",
+     "Money refunded, no boarding"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "text": "If an e-ticket is still fully waitlisted after the chart, it's cancelled and refunded automatically. That passenger can't board."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh11",
+   "chapter": "travel",
+   "beat": "step",
+   "mood": "busy",
+   "seed": 411,
+   "location": "platform",
+   "transition": "time_skip",
+   "step": "board",
+   "claims": [
+    "c5"
+   ],
+   "cast": [
+    "riya"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "platform"
+   },
+   "move": "push_in",
+   "label": "Step 6 · Find your coach",
+   "scene": "a busy Indian railway platform in the morning with a blue train coach on the right side",
+   "action": "the young woman walks in from the left side of the frame along the platform towards the blue train coach on the right and stops beside its door",
+   "state": {
+    "location": "platform",
+    "transition": "time_skip",
+    "camera": {
+     "setup": "platform_wide",
+     "axis": "platform_line",
+     "side": "front",
+     "size": "wide",
+     "move": "static"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       -0.04,
+       0.22,
+       0.14,
+       0.98
+      ],
+      "facing": "right"
+     },
+     "coach": {
+      "box": [
+       0.6,
+       0.1,
+       1.0,
+       0.9
+      ]
+     }
+    },
+    "holders": {
+     "phone": "riya"
+    },
+    "events": [
+     {
+      "id": "walk",
+      "type": "enter",
+      "actor": "riya",
+      "target": "coach",
+      "t": [
+       0.05,
+       0.68
+      ],
+      "to_box": [
+       0.42,
+       0.22,
+       0.58,
+       0.98
+      ],
+      "describe": "she walks from left to right along the platform"
+     },
+     {
+      "id": "stop",
+      "type": "stop",
+      "actor": "riya",
+      "t": [
+       0.68,
+       0.76
+      ]
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "Coach B3, berth 42",
+      "Find your coach"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "explainer",
+     "story": true,
+     "text": "On the day, Riya finds coach B3 on the platform."
+    }
+   ]
+  },
+  {
+   "shot_id": "sh12",
+   "chapter": "travel",
+   "beat": "step",
+   "mood": "joy",
+   "seed": 412,
+   "location": "platform",
+   "step": "board",
+   "claims": [
+    "c5"
+   ],
+   "cast": [
+    "riya",
+    "tte"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "platform"
+   },
+   "move": "pull_out",
+   "scene": "a busy Indian railway platform in the morning beside a blue train coach",
+   "action": "the ticket checker on the right looks at the ticket on the young woman's phone and her ID card, then nods and talks with a friendly smile; the young woman stands on the left",
+   "state": {
+    "location": "platform",
+    "camera": {
+     "setup": "platform_medium",
+     "axis": "platform_line",
+     "side": "front",
+     "size": "medium",
+     "move": "static"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       0.08,
+       0.12,
+       0.46,
+       1.0
+      ],
+      "facing": "right"
+     },
+     "tte": {
+      "box": [
+       0.52,
+       0.1,
+       0.88,
+       1.0
+      ],
+      "facing": "left"
+     }
+    },
+    "holders": {
+     "phone": "riya",
+     "id_card": "riya"
+    },
+    "events": [
+     {
+      "id": "check",
+      "type": "look_at",
+      "actor": "tte",
+      "obj": "phone",
+      "target": "riya",
+      "t": [
+       0.15,
+       0.6
+      ],
+      "describe": "the ticket checker looks at the e-ticket on her phone and her ID card"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "E-ticket on your phone",
+      "Plus an original photo ID"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "tte",
+     "tone": "friendly",
+     "text": "E-ticket and photo ID? All good. Have a nice trip!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh13",
+   "chapter": "travel",
+   "beat": "resolution",
+   "mood": "joy",
+   "seed": 413,
+   "location": "train",
+   "transition": "cut",
+   "cast": [
+    "riya"
+   ],
+   "props": [
+    "phone"
+   ],
+   "prop_state": {
+    "phone": "train"
+   },
+   "move": "pull_out",
+   "scene": "inside a bright Indian train coach with a window seat and green fields outside",
+   "action": "the young woman sits by the window of the moving train, smiling and looking at the green fields outside",
+   "state": {
+    "location": "train",
+    "transition": "cut",
+    "camera": {
+     "setup": "train_medium",
+     "axis": "train_line",
+     "side": "front",
+     "size": "medium",
+     "move": "pull_out"
+    },
+    "start": {
+     "riya": {
+      "box": [
+       0.3,
+       0.12,
+       0.68,
+       1.0
+      ],
+      "facing": "camera"
+     },
+     "seat": {
+      "box": [
+       0.2,
+       0.45,
+       0.8,
+       1.0
+      ]
+     }
+    },
+    "holders": {
+     "phone": "riya"
+    },
+    "events": [
+     {
+      "id": "smile",
+      "type": "look_at",
+      "actor": "riya",
+      "t": [
+       0.1,
+       0.7
+      ],
+      "critical": false,
+      "describe": "she smiles and looks out of the window"
+     }
+    ]
+   },
+   "fallback": {
+    "recipe": "card",
+    "card": {
+     "icon": "check",
+     "lines": [
+      "Berth 42, on her way",
+      "To Jaipur"
+     ]
+    }
+   },
+   "lines": [
+    {
+     "speaker": "riya",
+     "tone": "happy",
+     "text": "Berth 42. Jaipur, here I come!"
+    }
+   ]
+  },
+  {
+   "shot_id": "sh14",
+   "chapter": "travel",
+   "beat": "payoff",
+   "recipe": "card",
+   "mood": "reflective",
+   "seed": 414,
+   "claims": [
+    "c2",
+    "c3"
+   ],
+   "card": {
+    "icon": "check",
+    "lines": [
+     "WL isn't a no",
+     "It's a place in line",
+     "The chart decides"
+    ],
+    "bullets": true
+   },
+   "lines": [
+    {
+     "speaker": "narrator",
+     "tone": "warm",
+     "story": true,
+     "text": "So a waiting-list ticket isn't a no. It's a place in line, and the chart decides."
+    }
+   ]
+  }
+ ],
+ "metadata": {
+  "title": "What Happens When You Book a Train Ticket? (WL, RAC and the Chart, Explained)",
+  "summary": "You booked a train ticket and it says WL 12. Will you get a seat? Follow Riya's Delhi to Jaipur ticket: searching and paying, the PNR, what CNF, RAC and WL mean, how the waiting list moves up, the reservation chart, what happens to waitlisted e-tickets, and boarding with an e-ticket and photo ID.",
+  "disclaimer": "Simplified explainer for Indian Railways reservations, based on public rules and news reports checked in October 2026. Rules (booking window, chart timing, Tatkal) change often: check IRCTC for the current rules. Not affiliated with or endorsed by IRCTC or Indian Railways. Characters and fares are fictional examples.",
+  "category": "Education",
+  "audience": "Not made for kids",
+  "tags": [
+   "train ticket booking",
+   "irctc",
+   "waiting list",
+   "rac",
+   "pnr status",
+   "chart preparation",
+   "indian railways explained"
+  ]
+ }
+}

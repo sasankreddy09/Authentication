@@ -1,0 +1,680 @@
+{
+  "shots": {
+    "sc01": "story (drawn, no AI) [curious]",
+    "sc02": "story (drawn, no AI) [curious]",
+    "sc03": "story (drawn, no AI) [busy]",
+    "sc04": "story (drawn, no AI) [calm]",
+    "sc05": "story (drawn, no AI) [joy]",
+    "sc06": "story (drawn, no AI) [joy]"
+  },
+  "ai_video_shots": "0/0",
+  "expected_s": 107.54,
+  "story_arc": [
+    "curious",
+    "curious",
+    "busy",
+    "calm",
+    "joy",
+    "joy"
+  ],
+  "speech_check": {
+    "sc01_1": null,
+    "sc01_2": null,
+    "sc01_3": null,
+    "sc02_1": null,
+    "sc02_2": null,
+    "sc02_3": null,
+    "sc02_4": null,
+    "sc03_1": null,
+    "sc03_2": null,
+    "sc03_3": null,
+    "sc04_1": null,
+    "sc04_2": null,
+    "sc04_3": null,
+    "sc04_4": null,
+    "sc05_1": null,
+    "sc05_2": null,
+    "sc06_1": null,
+    "sc06_2": null,
+    "sc06_3": null
+  },
+  "lines_to_listen_to": [],
+  "frozen_last_frame_s": {},
+  "continuity": {},
+  "continuity_warnings": {},
+  "validation": {
+    "errors": 0,
+    "warnings": []
+  },
+  "review": {},
+  "music": {
+    "source": "library",
+    "cues": [
+      {
+        "track": "Investigations",
+        "start": 0.0,
+        "gain_db": 0.0,
+        "offset": 0.0,
+        "end": 40.625
+      },
+      {
+        "track": "Easy Lemon",
+        "start": 40.625,
+        "gain_db": 0.0,
+        "offset": 0.0,
+        "end": 83.333
+      },
+      {
+        "track": "Carefree",
+        "start": 83.333,
+        "gain_db": 0.0,
+        "offset": 0.0,
+        "end": 107.54166666666666
+      }
+    ],
+    "credits": "\"Investigations\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/\n\"Easy Lemon\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/\n\"Carefree\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/"
+  },
+  "logic": {},
+  "not_logically_verified": [],
+  "subtitles_word_timed": "0/19",
+  "probe": {
+    "duration": 107.541667,
+    "video": {
+      "codec": "h264",
+      "width": 1280,
+      "height": 720,
+      "fps": 24.0,
+      "pix_fmt": "yuv420p",
+      "duration": 107.541667
+    },
+    "audio": {
+      "codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "duration": 107.535
+    }
+  },
+  "black_segments": [],
+  "freezes": [
+    [
+      0.333333,
+      1.708333
+    ],
+    [
+      12.0,
+      12.875
+    ],
+    [
+      13.833333,
+      14.833333
+    ],
+    [
+      16.875,
+      17.916667
+    ],
+    [
+      18.875,
+      19.833333
+    ],
+    [
+      22.0,
+      22.875
+    ],
+    [
+      25.833333,
+      28.416667
+    ],
+    [
+      29.458333,
+      30.375
+    ],
+    [
+      31.5,
+      32.791667
+    ],
+    [
+      33.25,
+      34.291667
+    ],
+    [
+      35.0,
+      35.833333
+    ],
+    [
+      44.0,
+      45.208333
+    ],
+    [
+      48.083333,
+      49.0
+    ],
+    [
+      58.666667,
+      59.583333
+    ],
+    [
+      62.25,
+      63.125
+    ],
+    [
+      69.583333,
+      71.875
+    ],
+    [
+      94.333333,
+      95.208333
+    ],
+    [
+      100.958333,
+      103.208333
+    ]
+  ],
+  "audio": {
+    "integrated_lufs": -14.2,
+    "true_peak_dbtp": -1.3,
+    "silences": []
+  },
+  "loudness_lufs": -14.2,
+  "ducking": {
+    "reduction_db": 5.1,
+    "speech_s": 93.8,
+    "pause_s": 8.2
+  },
+  "contact_sheet": "/tmp/claude-1000/-home-sasank-Documents-automation/3325c414-f4d1-487c-8d3b-d3290dfaf4f8/scratchpad/tv3s/drive/three_d_friends_te_v3_storybook/render/contact_sheet.jpg",
+  "story_statistics": {
+    "total_s": 107.53,
+    "narrative_purpose_pct": {
+      "two_friend": 31.5,
+      "reaction": 31.5,
+      "closeup": 20.0,
+      "animated_illustration": 10.1,
+      "establishing": 3.8,
+      "cutaway": 3.1
+    },
+    "rendering_medium_pct": {
+      "character_scene": 89.9,
+      "animated_demo": 10.1
+    },
+    "presentation_graphics_pct": 0.0
+  },
+  "conversation_timing": {
+    "n_gaps": 18,
+    "issues": [],
+    "gap_mean_s": 0.372,
+    "gap_sd_s": 0.183,
+    "gap_min_s": 0.124,
+    "gap_max_s": 0.889,
+    "gap_cv": 0.494
+  },
+  "devices": {
+    "shot + final video encoding": "CPU (x264)",
+    "speaker identity check (ECAPA)": "CPU",
+    "storybook characters + environments": "CPU (Pillow), assets cached on Drive",
+    "drawn scenes: drawing (Pillow)": "CPU (Pillow has no GPU path)",
+    "drawn scenes: encoding": "CPU (x264)"
+  },
+  "peaks": {
+    "ram_gb": 4.34,
+    "gpu_gb": 0.0
+  },
+  "checks": {
+    "playable H.264/AAC stream, right size and fps": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "video": {
+          "codec": "h264",
+          "width": 1280,
+          "height": 720,
+          "fps": 24.0,
+          "pix_fmt": "yuv420p",
+          "duration": 107.541667
+        },
+        "audio": {
+          "codec": "aac",
+          "sample_rate": 48000,
+          "channels": 2,
+          "duration": 107.535
+        }
+      },
+      "shots": [],
+      "fix": "expected h264 yuv420p 1280x720 @ 24 fps + AAC"
+    },
+    "no duration drift (video vs timeline)": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "file_s": 107.54,
+        "timeline_s": 107.54
+      },
+      "shots": [],
+      "fix": "re-run the render cell"
+    },
+    "ending not cut off (audio covers the video, last line ends in time)": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "audio_s": 107.535,
+        "video_s": 107.541667,
+        "last_line_end_s": 106.06
+      },
+      "shots": [],
+      "fix": ""
+    },
+    "no unplanned black frames": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": [],
+      "shots": [],
+      "fix": ""
+    },
+    "no frozen frames inside AI-video shots": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": [
+        [
+          0.333333,
+          1.708333
+        ],
+        [
+          12.0,
+          12.875
+        ],
+        [
+          13.833333,
+          14.833333
+        ],
+        [
+          16.875,
+          17.916667
+        ],
+        [
+          18.875,
+          19.833333
+        ],
+        [
+          22.0,
+          22.875
+        ],
+        [
+          25.833333,
+          28.416667
+        ],
+        [
+          29.458333,
+          30.375
+        ],
+        [
+          31.5,
+          32.791667
+        ],
+        [
+          33.25,
+          34.291667
+        ],
+        [
+          35.0,
+          35.833333
+        ],
+        [
+          44.0,
+          45.208333
+        ],
+        [
+          48.083333,
+          49.0
+        ],
+        [
+          58.666667,
+          59.583333
+        ],
+        [
+          62.25,
+          63.125
+        ],
+        [
+          69.583333,
+          71.875
+        ],
+        [
+          94.333333,
+          95.208333
+        ],
+        [
+          100.958333,
+          103.208333
+        ]
+      ],
+      "shots": [],
+      "fix": "regenerate those clips or use their fallback"
+    },
+    "loudness on target": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "integrated_lufs": -14.2,
+        "target": -14.0
+      },
+      "shots": [],
+      "fix": ""
+    },
+    "no clipping (true peak)": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "true_peak_dbtp": -1.3,
+        "max": -1.0
+      },
+      "shots": [],
+      "fix": ""
+    },
+    "no unintended silence": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": [],
+      "shots": [],
+      "fix": "a gap in narration and music: check the timeline and music cues"
+    },
+    "music ducks under the voice": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "reduction_db": 5.1,
+        "speech_s": 93.8,
+        "pause_s": 8.2
+      },
+      "shots": [],
+      "fix": "raise DUCK ratio or lower DUCK threshold"
+    },
+    "narration complete and heard correctly": {
+      "status": "UNKNOWN",
+      "mandatory": true,
+      "evidence": {
+        "sc01_1": null,
+        "sc01_2": null,
+        "sc01_3": null,
+        "sc02_1": null,
+        "sc02_2": null,
+        "sc02_3": null,
+        "sc02_4": null,
+        "sc03_1": null,
+        "sc03_2": null,
+        "sc03_3": null,
+        "sc04_1": null,
+        "sc04_2": null,
+        "sc04_3": null,
+        "sc04_4": null,
+        "sc05_1": null,
+        "sc05_2": null,
+        "sc06_1": null,
+        "sc06_2": null,
+        "sc06_3": null
+      },
+      "shots": [],
+      "fix": "listen to these lines; re-run the narration cell"
+    },
+    "every video shot is verified AI video (no unchecked stand-ins)": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "sc01": "story (drawn, no AI) [curious]",
+        "sc02": "story (drawn, no AI) [curious]",
+        "sc03": "story (drawn, no AI) [busy]",
+        "sc04": "story (drawn, no AI) [calm]",
+        "sc05": "story (drawn, no AI) [joy]",
+        "sc06": "story (drawn, no AI) [joy]"
+      },
+      "shots": [],
+      "fix": ""
+    },
+    "no frozen last frames (clip shorter than its shot)": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {},
+      "shots": [],
+      "fix": ""
+    },
+    "characters stay on screen": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {},
+      "shots": [],
+      "fix": ""
+    },
+    "music licensed and credited": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": "\"Investigations\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/\n\"Easy Lemon\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/\n\"Carefree\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/",
+      "shots": [],
+      "fix": ""
+    },
+    "nothing flagged for review": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {},
+      "shots": [],
+      "fix": "look at render/review/ and approve or fix"
+    },
+    "every scene-state shot verified or approved": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {},
+      "shots": [],
+      "fix": ""
+    },
+    "plan validation: no errors": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "errors": 0,
+        "warnings": []
+      },
+      "shots": [],
+      "fix": ""
+    },
+    "AI shots without logical verification (information)": {
+      "status": "PASS",
+      "mandatory": false,
+      "evidence": null,
+      "shots": [],
+      "fix": ""
+    },
+    "dialogue: turns in script order, no two friends talking at once": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "overlaps": [],
+        "in_order": true
+      },
+      "shots": [],
+      "fix": ""
+    },
+    "every factual dialogue line cites a sourced fact": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "factual_lines": 5
+      },
+      "shots": [],
+      "fix": "cite a claim with a source URL or rephrase"
+    },
+    "presentation graphics at most 20% of screen time": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "character_scene": 89.9,
+        "animated_demo": 10.1
+      },
+      "shots": [],
+      "fix": "replace cards/diagrams with the friends, objects or a demonstration"
+    },
+    "re-enactments are labelled 'Illustration' (never shown as real footage)": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": null,
+      "shots": [],
+      "fix": ""
+    },
+    "story complete: question, answer, closing": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "beats": [
+          "observation",
+          "question",
+          "demonstration",
+          "correction",
+          "reveal",
+          "closing"
+        ],
+        "missing": [],
+        "answered": true
+      },
+      "shots": [],
+      "fix": ""
+    },
+    "visual variety: no single visual longer than 12 s (information)": {
+      "status": "PASS",
+      "mandatory": false,
+      "evidence": null,
+      "shots": [],
+      "fix": ""
+    },
+    "holistic review by a person: contact sheet + dialogue/shot timeline (information)": {
+      "status": "UNKNOWN",
+      "mandatory": false,
+      "evidence": "render/contact_sheet.jpg, render/dialogue_shot_timeline.md",
+      "shots": [],
+      "fix": ""
+    },
+    "conversation timing: no dead air, overlaps, mechanical gaps or level jumps (diagnostic)": {
+      "status": "PASS",
+      "mandatory": false,
+      "evidence": {
+        "n_gaps": 18,
+        "issues": [],
+        "gap_mean_s": 0.372,
+        "gap_sd_s": 0.183,
+        "gap_min_s": 0.124,
+        "gap_max_s": 0.889,
+        "gap_cv": 0.494
+      },
+      "shots": [],
+      "fix": "listen to these places; a person decides whether it sounds like a real conversation"
+    },
+    "video no longer than 120 s": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "duration_s": 107.54
+      },
+      "shots": [],
+      "fix": "shorten the script with a fact-preserving revision (never speed up the voices or cut the ending)"
+    },
+    "storybook assets: exact versions present, every layer unchanged": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "arjun": {
+          "version": "v1",
+          "status": "provisional",
+          "art_version": "storybook-procedural-1",
+          "verify": [],
+          "layers": 75
+        },
+        "meera": {
+          "version": "v1",
+          "status": "provisional",
+          "art_version": "storybook-procedural-1",
+          "verify": [],
+          "layers": 75
+        },
+        "env:cinema": {
+          "version": "v1",
+          "verify": []
+        },
+        "env:lobby": {
+          "version": "v1",
+          "verify": []
+        }
+      },
+      "shots": [],
+      "fix": "restore the asset version folder on Drive"
+    },
+    "character artwork approved by a person (not provisional)": {
+      "status": "UNKNOWN",
+      "mandatory": true,
+      "evidence": {
+        "arjun": "provisional",
+        "meera": "provisional"
+      },
+      "shots": [
+        "arjun",
+        "meera"
+      ],
+      "fix": "MANUAL_REVIEW_REQUIRED: approve a Character Studio version (colab/approve_character.py), then pin it"
+    },
+    "lip sync: only the speaker's mouth moves, and it moves while speaking": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "speech_frames": 2174,
+        "open_mouth_in_speech": 2067,
+        "open_in_silence": {}
+      },
+      "shots": [],
+      "fix": "check the viseme track (storybook.visemes_from_audio) for these scenes"
+    },
+    "Telugu factual lines keep the verified claims (numbers, names, key terms)": {
+      "status": "PASS",
+      "mandatory": true,
+      "evidence": {
+        "sc02_3": {
+          "status": "PASS",
+          "missing_terms": [],
+          "numbers_lost": [],
+          "numbers_added": []
+        },
+        "sc03_1": {
+          "status": "PASS",
+          "missing_terms": [],
+          "numbers_lost": [],
+          "numbers_added": []
+        },
+        "sc03_3": {
+          "status": "PASS",
+          "missing_terms": [],
+          "numbers_lost": [],
+          "numbers_added": []
+        },
+        "sc04_2": {
+          "status": "PASS",
+          "missing_terms": [],
+          "numbers_lost": [],
+          "numbers_added": []
+        },
+        "sc04_4": {
+          "status": "PASS",
+          "missing_terms": [],
+          "numbers_lost": [],
+          "numbers_added": []
+        }
+      },
+      "shots": [],
+      "fix": "MANUAL_REVIEW_REQUIRED: a Telugu speaker compares these lines with their source_text"
+    }
+  },
+  "approved": false,
+  "thresholds": {
+    "true_peak_max_dbtp": -1.0,
+    "loudness_target_lufs": -14.0,
+    "loudness_tolerance_lu": 1.5,
+    "silence_db": -45.0,
+    "silence_min_s": 1.5,
+    "black_min_s": 0.5,
+    "freeze_noise": 0.003,
+    "freeze_min_s": 0.8,
+    "duration_drift_s": 0.5,
+    "duck_min_db": 4.0
+  }
+}

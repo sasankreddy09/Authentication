@@ -1,0 +1,16 @@
+2026-10-20 01:34:08,661 INFO test A: comparison + character sheets in 6.1s
+2026-10-20 01:34:08,667 INFO test A done in 6.1s
+2026-10-20 01:34:53,868 INFO B_animation.mp4: 288 frames in 45.1s (0.156 s/frame)
+2026-10-20 01:34:53,868 INFO test B done in 45.2s
+2026-10-20 01:35:28,354 INFO C_environment.mp4: 192 frames in 34.4s (0.179 s/frame)
+2026-10-20 01:35:28,354 INFO test C done in 34.5s
+2026-10-20 01:37:01,569 INFO D_educational.mp4: 720 frames in 93.0s (0.129 s/frame)
+2026-10-20 01:37:01,569 INFO test D done in 93.2s
+2026-10-20 01:49:59,050 INFO test A: comparison + character sheets in 5.7s
+2026-10-20 01:49:59,054 INFO test A done in 5.7s
+2026-10-20 01:50:34,202 INFO B_animation.mp4: 288 frames in 35.0s (0.122 s/frame)
+2026-10-20 01:50:34,202 INFO test B done in 35.1s
+2026-10-20 01:51:03,558 INFO C_environment.mp4: 192 frames in 29.3s (0.153 s/frame)
+2026-10-20 01:51:03,558 INFO test C done in 29.4s
+2026-10-20 01:52:25,582 INFO D_educational.mp4: 720 frames in 81.8s (0.114 s/frame)
+2026-10-20 01:52:25,582 INFO test D done in 82.0s

@@ -1,0 +1,193 @@
+{
+ "plan_version": 1,
+ "project": "food_order_backend_v1",
+ "title": "Behind the Tap: The Backend of a Food Order",
+ "notebook": {"emoji": "🗄️", "name": "AI System-Design Explainer", "length": "about 2 min"},
+ "logline": "A high-level system-design tour of a food delivery order, from the API request to the ledger: services, transactions, events, geospatial search and live tracking.",
+ "style": {
+  "suffix": "3D animated explainer film style, clean stylized characters with consistent design, bright warm colors, modern Indian city, soft cinematic lighting, smooth natural animation",
+  "negative": "text, letters, words, logo, brand name, watermark, subtitles, photorealistic, deformed hands, extra fingers, extra limbs, extra heads, distorted face, blurry, low quality, frozen, flickering, character disappearing"
+ },
+ "characters": {
+  "narrator": {"name": "Narrator", "voice": "am_michael", "speed": 1.0, "pitch": 0, "fx": "none", "color": "#FFFFFF", "look": null},
+  "riya":  {"name": "Riya", "voice": "af_bella", "speed": 1.03, "pitch": 0.5, "fx": "none", "color": "#FFD166",
+            "look": "a young Indian woman with a long black braid wearing a mustard-yellow kurta",
+            "tag": "a young woman in a yellow kurta"},
+  "raju":  {"name": "Chef Raju", "voice": "am_adam", "speed": 1.0, "pitch": -1.0, "fx": "none", "color": "#9FD3FF",
+            "look": "a cheerful Indian chef with a thick black moustache, a tall white chef hat and a white chef coat",
+            "tag": "a chef in a white chef hat"},
+  "arjun": {"name": "Arjun", "voice": "am_liam", "speed": 1.05, "pitch": 0.3, "fx": "none", "color": "#FF8A80",
+            "look": "a young delivery rider in a plain red jacket with no logos and a red helmet, with a red scooter carrying a square red delivery box",
+            "tag": "a delivery rider in a red jacket and red helmet"}
+ },
+ "tones": {
+  "explainer": {"speed": 1.0,  "pitch": 0.0, "gain_db": 0.0,  "pause_after": 0.5},
+  "curious":   {"speed": 0.96, "pitch": 0.2, "gain_db": 0.0,  "pause_after": 0.5},
+  "warm":      {"speed": 0.94, "pitch": 0.0, "gain_db": -0.5, "pause_after": 0.7},
+  "happy":     {"speed": 1.05, "pitch": 0.6, "gain_db": 1.0,  "pause_after": 0.4},
+  "excited":   {"speed": 1.1,  "pitch": 0.9, "gain_db": 1.5,  "pause_after": 0.4}
+ },
+ "moods": {
+  "calm":       {"pause_after": 0.5, "grade": "neutral",  "move_amount": 0.06, "music": {"base": 0.4, "curious": 0.8, "tension": 0.0, "shimmer": 0.2}},
+  "curious":    {"pause_after": 0.5, "grade": "cool",     "move_amount": 0.07, "music": {"base": 0.5, "curious": 0.7, "tension": 0.1, "shimmer": 0.5}},
+  "busy":       {"pause_after": 0.4, "grade": "contrast", "move_amount": 0.07, "music": {"base": 0.5, "curious": 0.6, "tension": 0.4, "shimmer": 0.1}},
+  "joy":        {"pause_after": 0.4, "grade": "contrast", "move_amount": 0.08, "music": {"base": 0.3, "curious": 1.0, "tension": 0.0, "shimmer": 0.4}},
+  "reflective": {"pause_after": 0.6, "grade": "neutral",  "move_amount": 0.05, "music": {"base": 0.5, "curious": 0.6, "tension": 0.0, "shimmer": 0.4}}
+ },
+ "architecture": {
+  "nodes": {
+   "app":      {"label": "Customer App",    "sub": "Android / iOS",      "kind": "client",   "x": 165,  "y": 230},
+   "gw":       {"label": "API Gateway",     "sub": "auth · rate limits", "kind": "service",  "x": 475,  "y": 230},
+   "order":    {"label": "Order Service",   "sub": "state machine",      "kind": "service",  "x": 785,  "y": 230},
+   "odb":      {"label": "Orders DB",       "sub": "SQL · ACID",         "kind": "store",    "x": 1095, "y": 230},
+   "track":    {"label": "Tracking",        "sub": "WebSocket",          "kind": "service",  "x": 165,  "y": 400},
+   "pay":      {"label": "Payment Service", "sub": "charges · refunds",  "kind": "service",  "x": 475,  "y": 400},
+   "bus":      {"label": "Event Bus",       "sub": "Kafka topics",       "kind": "queue",    "x": 785,  "y": 400},
+   "notify":   {"label": "Notifications",   "sub": "push · SMS",         "kind": "service",  "x": 1095, "y": 400},
+   "pgw":      {"label": "Payment Gateway", "sub": "UPI · cards",        "kind": "external", "x": 165,  "y": 570},
+   "rest":     {"label": "Restaurant Svc",  "sub": "partner orders",     "kind": "service",  "x": 475,  "y": 570},
+   "dispatch": {"label": "Dispatch",        "sub": "rider matching",     "kind": "service",  "x": 785,  "y": 570},
+   "geo":      {"label": "Location Store",  "sub": "Redis GEO",          "kind": "cache",    "x": 1095, "y": 570},
+   "rapp":     {"label": "Restaurant App",  "sub": "partner tablet",     "kind": "client",   "x": 165,  "y": 740},
+   "rider":    {"label": "Rider App",       "sub": "GPS pings",          "kind": "client",   "x": 475,  "y": 740},
+   "payout":   {"label": "Payouts",         "sub": "restaurant · rider", "kind": "service",  "x": 785,  "y": 740},
+   "ledger":   {"label": "Ledger DB",       "sub": "double-entry",       "kind": "store",    "x": 1095, "y": 740}
+  },
+  "edges": [["app", "gw"], ["gw", "order"], ["order", "odb"], ["order", "pay"], ["pay", "pgw"], ["odb", "bus"],
+            ["bus", "rest"], ["rest", "rapp"], ["rest", "order"], ["bus", "dispatch"], ["dispatch", "geo"],
+            ["dispatch", "rider"], ["rider", "geo"], ["geo", "track"], ["track", "app"], ["bus", "notify"],
+            ["notify", "app"], ["bus", "ledger"], ["ledger", "payout"]]
+ },
+ "shots": [
+  {"shot_id": "sh01", "mood": "curious", "seed": 301, "location": "home", "title": "Behind the Tap", "fade_in": true, "move": "push_in",
+   "cast": ["riya"], "scene": "a cozy modern Indian living room in the evening, warm lamp light, a sofa with cushions",
+   "action": "the young woman sits on the sofa holding her smartphone and taps the screen with a smile, slow camera push in",
+   "sfx": [{"type": "ding", "at": 1.0, "dur": 0.9, "gain_db": -14}],
+   "lines": [{"speaker": "narrator", "tone": "curious", "text": "You tap 'Place Order'. Here's what the backend does next."}]},
+
+  {"shot_id": "sh02", "mood": "curious", "seed": 302, "location": "backend", "recipe": "diagram", "label": "The architecture",
+   "diagram": {"show": "all", "reveal": true},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "A platform like Zomato or Swiggy splits the work into small services, each with its own job and its own data."}]},
+
+  {"shot_id": "sh03", "mood": "busy", "seed": 303, "location": "backend", "recipe": "diagram", "label": "Step 1 · The request",
+   "diagram": {"focus": ["app", "gw", "order"],
+               "flows": [{"from": "app", "to": "gw", "label": "POST /orders"}, {"from": "gw", "to": "order", "label": "create order"}],
+               "note": ["POST /orders", "Idempotency-Key: 9f2c-41ab", "{ items: [biryani x1], total: 349 }"]},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "The app sends the order to an API gateway. An idempotency key makes sure a retry never creates a second order."}]},
+
+  {"shot_id": "sh04", "mood": "busy", "seed": 304, "location": "backend", "recipe": "diagram", "label": "Step 2 · One transaction",
+   "diagram": {"focus": ["order", "odb"],
+               "flows": [{"from": "order", "to": "odb", "label": "BEGIN ... COMMIT"}],
+               "table": {"name": "orders", "columns": ["order_id", "status", "amount"], "rows": [["48213", "-", "Rs 349"]],
+                         "changes": [{"row": 0, "col": "status", "value": "CREATED"}]},
+               "note": ["BEGIN;", "INSERT INTO orders (...);", "INSERT INTO order_items (...);", "INSERT INTO outbox (...);", "COMMIT;"]},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "The order service saves the order, its items and an outbox event in one ACID transaction. All of it is saved, or none of it."}]},
+
+  {"shot_id": "sh05", "mood": "busy", "seed": 305, "location": "backend", "recipe": "diagram", "label": "Step 3 · Payment",
+   "diagram": {"focus": ["order", "pay", "pgw"],
+               "flows": [{"from": "order", "to": "pay", "label": "charge 349"}, {"from": "pay", "to": "pgw", "label": "payment request"},
+                         {"from": "pgw", "to": "pay", "label": "webhook: success"}, {"from": "pay", "to": "order", "label": "paid"}],
+               "table": {"name": "orders", "columns": ["order_id", "status", "amount"], "rows": [["48213", "CREATED", "Rs 349"]],
+                         "changes": [{"row": 0, "col": "status", "value": "PAID", "at": 6.2}]}},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "The payment service charges you through a payment gateway, which confirms with a webhook. Now the order is paid."}]},
+
+  {"shot_id": "sh06", "mood": "curious", "seed": 306, "location": "backend", "recipe": "diagram", "label": "Step 4 · Events",
+   "diagram": {"focus": ["odb", "bus"],
+               "flows": [{"from": "odb", "to": "bus", "label": "OrderPlaced"}],
+               "note": ["-- outbox relay", "SELECT * FROM outbox WHERE sent = false;", "publish -> topic order-events", "UPDATE outbox SET sent = true;"]},
+   "sfx": [{"type": "whoosh", "at": 1.2, "dur": 1.4, "gain_db": -20}],
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "A relay reads the outbox and publishes an 'order placed' event to a message broker like Kafka. Other services simply listen."}]},
+
+  {"shot_id": "sh07", "mood": "busy", "seed": 307, "location": "backend", "recipe": "diagram", "label": "Step 5 · Restaurant",
+   "diagram": {"focus": ["bus", "rest", "rapp"],
+               "flows": [{"from": "bus", "to": "rest", "label": "OrderPlaced"}, {"from": "rest", "to": "rapp", "label": "new order (push)"}]},
+   "sfx": [{"type": "ding", "at": 4.0, "dur": 0.9, "gain_db": -14}],
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "The restaurant service consumes that event and pushes the order to the restaurant's tablet."}]},
+
+  {"shot_id": "sh08", "mood": "joy", "seed": 308, "location": "kitchen", "move": "pull_out",
+   "cast": ["raju"], "scene": "a busy, clean restaurant kitchen with steel counters, steaming pots and a tablet on a stand",
+   "action": "the chef taps the tablet on the counter, then smiles at the camera, gives a thumbs up and talks cheerfully",
+   "lines": [{"speaker": "raju", "tone": "happy", "text": "Accepted! Ready in fifteen minutes."}]},
+
+  {"shot_id": "sh09", "mood": "busy", "seed": 309, "location": "backend", "recipe": "diagram", "label": "Step 6 · State machine",
+   "diagram": {"focus": ["rest", "order", "odb", "bus"],
+               "flows": [{"from": "rest", "to": "order", "label": "accept, prep 15 min"}, {"from": "order", "to": "odb", "label": "UPDATE"},
+                         {"from": "odb", "to": "bus", "label": "OrderAccepted"}],
+               "table": {"name": "orders", "columns": ["order_id", "status", "amount"], "rows": [["48213", "PAID", "Rs 349"]],
+                         "changes": [{"row": 0, "col": "status", "value": "ACCEPTED", "at": 3.2}]},
+               "note": ["UPDATE orders", "SET status = 'ACCEPTED'", "WHERE id = 48213", "  AND status = 'PAID';"]},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "Each order is a state machine. The update only works from the expected state, so two conflicting updates can't both win."}]},
+
+  {"shot_id": "sh10", "mood": "curious", "seed": 310, "location": "backend", "recipe": "diagram", "label": "Step 7 · Finding a rider",
+   "diagram": {"focus": ["bus", "dispatch", "geo"],
+               "flows": [{"from": "bus", "to": "dispatch", "label": "OrderAccepted"}, {"from": "dispatch", "to": "geo", "label": "riders within 3 km?"},
+                         {"from": "geo", "to": "dispatch", "label": "12 riders"}],
+               "note": ["GEOSEARCH riders:live", "  FROMLONLAT 77.59 12.97", "  BYRADIUS 3 km ASC"]},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "The dispatch service asks a geospatial index, often kept in memory in Redis, for riders near the restaurant."}]},
+
+  {"shot_id": "sh11", "mood": "busy", "seed": 311, "location": "backend", "recipe": "diagram", "label": "Step 8 · Assignment",
+   "diagram": {"focus": ["dispatch", "rider"],
+               "flows": [{"from": "dispatch", "to": "rider", "label": "job offer"}, {"from": "rider", "to": "dispatch", "label": "accept"}],
+               "table": {"name": "deliveries", "columns": ["order_id", "rider", "status"], "rows": [["48213", "-", "SEARCHING"]],
+                         "changes": [{"row": 0, "col": "rider", "value": "R-7781"}, {"row": 0, "col": "status", "value": "ASSIGNED"}]}},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "It scores riders on distance, current load and when the food will be ready, then offers the job. The rider accepts."}]},
+
+  {"shot_id": "sh12", "mood": "busy", "seed": 312, "location": "road", "move": "pan_left",
+   "cast": ["arjun"], "scene": "an evening city road with warm street lights and light traffic",
+   "action": "the delivery rider rides his red scooter smoothly along the road, camera tracking alongside him",
+   "sfx": [{"type": "whoosh", "at": 1.0, "dur": 1.5, "gain_db": -20}],
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "On the way, the rider app sends a GPS ping every few seconds."}]},
+
+  {"shot_id": "sh13", "mood": "curious", "seed": 313, "location": "backend", "recipe": "diagram", "label": "Step 9 · Live tracking",
+   "diagram": {"focus": ["rider", "geo", "track", "app"],
+               "flows": [{"from": "rider", "to": "geo", "label": "lat, lng"}, {"from": "geo", "to": "track", "label": "position"},
+                         {"from": "track", "to": "app", "label": "ETA 12 min"}]},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "Those pings go to a fast location store, not the main database. A tracking service streams them to your app over a WebSocket."}]},
+
+  {"shot_id": "sh14", "mood": "joy", "seed": 314, "location": "backend", "recipe": "diagram", "label": "Step 10 · Delivered",
+   "diagram": {"focus": ["order", "odb", "bus", "notify", "app"],
+               "flows": [{"from": "order", "to": "odb", "label": "UPDATE"}, {"from": "odb", "to": "bus", "label": "OrderDelivered"},
+                         {"from": "bus", "to": "notify", "label": "OrderDelivered"}, {"from": "notify", "to": "app", "label": "Delivered!"}],
+               "table": {"name": "orders", "columns": ["order_id", "status", "amount"], "rows": [["48213", "ACCEPTED", "Rs 349"]],
+                         "changes": [{"row": 0, "col": "status", "value": "PICKED_UP", "at": 1.0}, {"row": 0, "col": "status", "value": "DELIVERED", "at": 3.4}]}},
+   "lines": [{"speaker": "narrator", "tone": "explainer", "text": "Picked up, then delivered. Each is another state change: saved, published, and turned into a notification."}]},
+
+  {"shot_id": "sh15", "mood": "joy", "seed": 315, "location": "doorstep", "move": "pull_out",
+   "cast": ["riya", "arjun"], "scene": "the open front door of an apartment in a bright, clean corridor",
+   "action": "the young woman at the open door takes a paper bag from the delivery rider, both smile, she talks happily",
+   "lines": [{"speaker": "riya", "tone": "excited", "text": "That was quick. Thank you!"}]},
+
+  {"shot_id": "sh16", "mood": "reflective", "seed": 316, "location": "backend", "recipe": "diagram", "label": "Step 11 · Settlement",
+   "diagram": {"focus": ["bus", "ledger", "payout"],
+               "flows": [{"from": "bus", "to": "ledger", "label": "OrderDelivered"}, {"from": "ledger", "to": "payout", "label": "settle"}],
+               "table": {"name": "ledger_entries", "columns": ["account", "debit", "credit"],
+                         "rows": [["customer", "-", "-"], ["restaurant", "-", "-"], ["rider", "-", "-"], ["platform", "-", "-"]],
+                         "changes": [{"row": 0, "col": "debit", "value": "349"}, {"row": 1, "col": "credit", "value": "280"},
+                                     {"row": 2, "col": "credit", "value": "45"}, {"row": 3, "col": "credit", "value": "24"}]}},
+   "lines": [{"speaker": "narrator", "tone": "warm", "text": "Finally, a ledger records the money with double-entry bookkeeping. Every debit has matching credits, so the books always balance."}]},
+
+  {"shot_id": "sh17", "mood": "reflective", "seed": 317, "location": "backend", "recipe": "diagram", "fade_out": true,
+   "diagram": {"show": "all",
+               "flows": [{"from": "app", "to": "gw"}, {"from": "odb", "to": "bus"}, {"from": "dispatch", "to": "geo"}, {"from": "track", "to": "app"}]},
+   "sfx": [{"type": "shimmer", "at": 0.5, "dur": 3.0, "gain_db": -20}],
+   "lines": [{"speaker": "narrator", "tone": "warm", "text": "One tap: a transaction, a stream of events, a geospatial search and a live connection, all working together."}]}
+ ],
+ "claims": [
+  {"id": "c1", "text": "Transactional outbox: write the change and an outbox row in one transaction; a relay publishes the event.",
+   "sources": ["https://oneuptime.com/blog/post/2026-03-31-redis-outbox-pattern/view", "https://blog.adamfurmanek.pl/2022/12/10/distributed-designs-part-1/"]},
+  {"id": "c2", "text": "Idempotency keys make retried API requests safe (no duplicate orders).",
+   "sources": ["https://gravitee.io/corpus/gen-1019/online-transaction-processing/idempotency-keys-and-exactly-once-semantics-for-online-transaction-processing-apis.html"]},
+  {"id": "c3", "text": "Food-ordering system designs commonly use an order state machine with events on Kafka and a SQL store for transactional data.",
+   "sources": ["https://github.com/Anshul619/HLD-System-Designs/blob/main/0_HLDUseCasesProblems/FoodOrderingZomatoSwiggy/Readme.md"]},
+  {"id": "c4", "text": "Redis geospatial indexes answer 'members within a radius' queries (GEOSEARCH).",
+   "sources": ["https://redis.io/docs/latest/commands/geosearch/"]}
+ ],
+ "metadata": {
+  "title": "What Happens in the Backend When You Order on Zomato or Swiggy? (System Design, Explained)",
+  "summary": "A high-level system-design walkthrough of a food delivery order: API gateway and idempotency keys, an ACID transaction with the outbox pattern, payment webhooks, Kafka events, the order state machine, geospatial rider search, assignment, live tracking over WebSockets, and double-entry settlement.",
+  "disclaimer": "A simplified, typical architecture for learning. It is not the actual internal design of Zomato or Swiggy, and this video is not affiliated with, sponsored or endorsed by either company. Characters and the restaurant are fictional.",
+  "category": "Science & Technology",
+  "audience": "Not made for kids",
+  "tags": ["system design", "backend", "database", "zomato", "swiggy", "kafka", "outbox pattern", "microservices", "food delivery"]
+ }
+}
