@@ -32,12 +32,32 @@ ANIMATION_APPROVED = False
 PACK_APPROVED = False
 NEW_VERSION = 'cinematic-v2'
 ''')
-    add('''# Install only the image-stage dependencies; do not replace Colab's torch.
-# GPU compatibility must be measured on the allocated runtime.
-import subprocess, sys, importlib.util
-packages = ['diffusers>=0.36,<0.42', 'transformers>=4.57,<6', 'accelerate>=1.2,<2',
-            'bitsandbytes>=0.45,<1', 'safetensors', 'Pillow', 'numpy', 'psutil', 'pydantic>=2.7,<3', 'einops', 'timm']
-subprocess.run([sys.executable, '-m', 'pip', 'install', *packages], check=True)
+    add('''# Stable, idempotent Colab setup. Do not downgrade the environment's Diffusers on every run.
+# Keep Colab's GPU-enabled torch installation unchanged.
+import subprocess, sys, importlib.metadata as metadata
+requirements = ['diffusers>=0.42,<0.43', 'transformers>=4.57,<6',
+                'accelerate>=1.2,<2', 'bitsandbytes>=0.45,<1',
+                'safetensors', 'Pillow', 'numpy', 'psutil',
+                'pydantic>=2.7,<3', 'einops', 'timm']
+subprocess.run([sys.executable, '-m', 'pip', 'install', *requirements], check=True)
+# Diffusers/torchao imports must agree. Reinstall only when the required public API is missing.
+probe = subprocess.run([sys.executable, '-c',
+    'from torchao.quantization import FqnToConfig; from diffusers import Flux2KleinPipeline'],
+    capture_output=True, text=True)
+if probe.returncode:
+    print('Import check failed:', (probe.stderr or '')[-2500:])
+    print('Installing a matching torchao version without replacing torch/CUDA ...')
+    subprocess.run([sys.executable, '-m', 'pip', 'install', '--no-deps',
+                    'torchao==0.17.0'], check=True)
+    probe = subprocess.run([sys.executable, '-c',
+        'from torchao.quantization import FqnToConfig; from diffusers import Flux2KleinPipeline'],
+        capture_output=True, text=True)
+    if probe.returncode:
+        raise RuntimeError('FLUX import still fails. Restart the Colab session once and re-run setup. '
+                           + (probe.stderr or '')[-1600:])
+for package in ('torch', 'torchao', 'diffusers', 'transformers'):
+    print(package, metadata.version(package))
+print('FLUX imports verified. Continue to preflight.')
 ''')
     add('''# Existing engine, with character-only overlays. No repository checkout needed.
 import json, sys, os
