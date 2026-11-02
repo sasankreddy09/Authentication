@@ -1,3 +1,5 @@
+> Historical research plan (2026-10-11). For implemented behavior, use [Current architecture](02_ARCHITECTURE.md) and [Colab setup](GOOGLE_COLAB.md).
+
 # AI Video Automation: Master Plan
 
 **Date:** 2026-10-11 · **Phase:** 1 complete (research and architecture). No code, credentials, cloud resources or model downloads yet.

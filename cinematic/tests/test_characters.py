@@ -26,7 +26,7 @@ from preview import render_review
 from deliver import build_video
 
 
-def fixture(root, cid, version='test-v2', approved=True):
+def fixture(root, cid, version='test-v2', approved=True, story=False):
     src = root / ('source-' + cid + version); src.mkdir()
     # A colorful texture makes it possible to detect source-image survival and pose changes.
     arr = np.zeros((180,100,4),dtype=np.uint8)
@@ -43,6 +43,14 @@ def fixture(root, cid, version='test-v2', approved=True):
                   'blink':{'file':'blink.png','box':[30,10,70,30]},
                   'visemes':{v:{'file':'mouth.png','box':[30,30,70,60]} for v in SB.VISEMES if v!='rest'},
                   'expressions':{'surprised':{'file':'blink.png','box':[30,10,70,30]}}}}
+    if story:
+        # Synthetic coverage for the production story's glasses, popcorn and rear views.
+        spec['face']['wear'] = {'3d_glasses': {'file':'blink.png','box':[30,10,70,30]}}
+        for view in ('front', 'back'):
+            for hold in (None, 'popcorn', '3d_glasses'):
+                pose = copy.deepcopy(spec['poses']['idle'])
+                pose.update(view=view, hold=hold, base='hold' if hold else 'idle')
+                spec['poses'][f'{view}-{hold}'] = pose
     d=SA.import_atlas(src,root,cid,version,spec,{'model':studio.FLUX_MODEL,'test_fixture':True},log=lambda *a:None)
     (d/'previews').mkdir();(d/'previews/fixture.txt').write_text('test only')
     if approved: SB.approve(d,'automated test fixture, not human production approval')
@@ -141,13 +149,14 @@ class CharacterTests(unittest.TestCase):
         for i,c in enumerate(build()['cells']):
             if c['cell_type']=='code':compile(''.join(c['source']),f'cell {i}','exec')
     def test_video_builder_changes_only_characters(self):
-        self.pair();template=ROOT/'files/colab_three_d_friends_te_v3_storybook.ipynb'
-        plan=json.loads((ROOT/'files/three_d_friends_te_v3_storybook_plan.json').read_text())
+        self.pair();template=ROOT/'colab/notebooks/colab_three_d_friends_te_v3_storybook.ipynb'
+        plan=json.loads((ROOT/'colab/plans/three_d_friends_te_v3_storybook_plan.json').read_text())
         out=self.root/'new.ipynb';bound=build_video(template,plan,self.root,{c:'test-v2' for c in ['arjun','meera']},out)
         self.assertEqual(bound['shots'],plan['shots'])
         before=json.loads(template.read_text());after=json.loads(out.read_text())
         changed=[i for i,(a,b) in enumerate(zip(before['cells'],after['cells'])) if a['source']!=b['source']]
-        self.assertEqual(changed,[5,6])
+        self.assertEqual([after['cells'][i]['metadata']['tags'][0] for i in changed], ['settings', 'plan'])
+        # The target already embeds the canonical character modules; only selected versions and plan binding change.
         for i in changed:compile(''.join(after['cells'][i]['source']),f'video cell {i}','exec')
     def test_actual_encoded_movie_and_reuse(self):
         self.pair();audio=[]

@@ -184,6 +184,6 @@ print('Next: bind approved versions and build a new video notebook with cinemati
 
 
 if __name__ == "__main__":
-    path = ROOT / "files/colab_cinematic_characters_v2.ipynb"
+    path = ROOT / "colab/notebooks/colab_cinematic_characters_v2.ipynb"
     path.write_text(json.dumps(build(), indent=1, ensure_ascii=False) + "\n")
     print(path)

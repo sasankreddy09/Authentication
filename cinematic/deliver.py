@@ -23,9 +23,15 @@ def build_video(template, plan, root, versions, output):
                 modules[name] = sources()[name]
             src = src[:match.start(1)] + json.dumps(modules) + src[match.end(1):]
             lib_count += 1
+        if 'CHARACTER_VERSIONS = ' in src:
+            src = re.sub(r'^CHARACTER_VERSIONS = .*$', 'CHARACTER_VERSIONS = ' + repr(versions), src, flags=re.M)
         if "PLAN_EMBEDDED = json.loads" in src:
             match = re.search(r'PLAN_EMBEDDED = json.loads\(r?"""(.*?)"""\)', src, re.S)
             src = src[:match.start(1)] + json.dumps(bound, ensure_ascii=False) + src[match.end(1):]
+            if '# BEGIN RUNTIME CHARACTER BINDING' in src:
+                start = src.index('# BEGIN RUNTIME CHARACTER BINDING')
+                end = src.index('# END RUNTIME CHARACTER BINDING') + len('# END RUNTIME CHARACTER BINDING')
+                src = src[:start] + src[end:]
             # A retained Drive plan must not silently reactivate provisional art.
             guard = '\nif PLAN.get("character_assets") != PLAN_EMBEDDED["character_assets"] or not PLAN.get("cinematic_characters"):\n    raise RuntimeError("Drive plan selects different artwork. Save the newly pinned plan to this project before running.")\nimport cinematic_workflow as CW\nos.environ.setdefault("STORYBOOK_ASSETS", str(Path(DRIVE_ROOT) / "_assets"))\nCW.validate_plan(PLAN, __import__("storybook").library_root())\n'
             anchor = 'STYLE, NEG ='

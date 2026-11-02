@@ -1,6 +1,6 @@
 # Cinematic character upgrade v2
 
-This is a focused extension to the existing Storybook pipeline. It reuses the engine embedded in `files/colab_three_d_friends_te_v3_storybook.ipynb`; it does not reorganize the repository or alter its website, stories, TTS, music or publishing.
+The character tools now use the canonical Python engine in `colab/engine/lib/`. The repository has been reorganized for video automation and the website removed. Only the latest Telugu 3D video notebook uses the new cinematic assets; other notebooks retain their previous contents. See [Colab setup](../docs/GOOGLE_COLAB.md) and [current architecture](../docs/02_ARCHITECTURE.md).
 
 ## Status and evidence
 
@@ -20,7 +20,7 @@ The attached images were visible in chat but were not exposed as local image fil
 | Automatic three-quarter atlas selection bypassed front-only patches | Speaking/blinking could disappear | Front view for conversation; explicit back view remains; per-view facial patches are a future extension |
 | Source `engine/` and test tree are missing from this checkout | Original builders cannot reproduce notebooks from these paths | `bootstrap.py` extracts unchanged embedded dependencies and overlays only character modules |
 
-The four recovered character source files came from the committed Character Studio notebook. Their source remains reviewable under `cinematic/lib/`. The production engine's other modules are read unchanged from the existing video notebook. Studio code is excluded from normal render exports.
+The character sources and recovered production modules are reviewable under `colab/engine/lib/`. Studio-only code is excluded from normal render exports. The existing Character Studio notebook is preserved as a self-contained snapshot; rebuilding it is an explicit separate action.
 
 ## Models and licensing
 
@@ -41,11 +41,11 @@ python3 -m unittest discover -s cinematic/tests -v
 python3 cinematic/build_notebook.py
 ```
 
-Tests cover reference/approval contracts, dimensions, resume, hashes, identity/version selection, missing-asset rejection, pose/facial patches, prototype isolation, legacy opt-out, Rhubarb mapping, notebook structure, and two actual encoded scenes without image-model imports. Existing documented `colab/tests` suites were not present and could not be rerun. Tests do not infer image quality from synthetic fixtures.
+Tests cover reference/approval contracts, dimensions, resume, hashes, identity/version selection, missing-asset rejection, pose/facial patches, prototype isolation, legacy opt-out, Rhubarb mapping, notebook structure, and two actual encoded scenes without image-model imports. The previously documented historical suites were absent; the new `colab/tests` suite checks the current Telugu target. Tests do not infer image quality from synthetic fixtures.
 
 ## Colab: generate a small proof of concept
 
-1. Open `files/colab_cinematic_characters_v2.ipynb` from this branch in Colab, select an allocated T4 GPU and mount Drive.
+1. Open `colab/notebooks/colab_cinematic_characters_v2.ipynb` from this branch in Colab, select an allocated T4 GPU and mount Drive.
 2. Upload the actual attached images to:
    - `MyDrive/ai-video/references/arjun.png`
    - `MyDrive/ai-video/references/meera.png`
@@ -75,7 +75,7 @@ python3 /content/Authentication/cinematic/preview.py \
   --output /content/drive/MyDrive/ai-video/_assets/studio/reference-v2-candidate-01/preview
 ```
 
-The prototype explicitly substitutes idle for ungenerated poses. It is provisional and cannot be approved as a production pack. Review `animation.mp4`, `frame-*.png`, subtitle text and `render-evidence.json`. Compare with the old layered-rig preview in `reports/storybook/`. This uses the existing drawkit → character dispatch → Storybook/Pillow path and FFmpeg, with supplied existing audio; it is a character integration preview, not a rerun of all research/TTS/QC stages.
+The prototype explicitly substitutes idle for ungenerated poses. It is provisional and cannot be approved as a production pack. Review `animation.mp4`, `frame-*.png`, subtitle text and `render-evidence.json`. Compare with the old layered-rig preview in `colab/reports/storybook/`. This uses the existing drawkit → character dispatch → Storybook/Pillow path and FFmpeg, with supplied existing audio; it is a character integration preview, not a rerun of all research/TTS/QC stages.
 
 Copy the reviewed preview to `reference-v2-candidate-01/animation-review.mp4`. Only then set `ANIMATION_APPROVED` and run the full-atlas cells. Approval records bind master and preview hashes. A changed/deleted reviewed input invalidates approval. Keep that candidate directory on Drive.
 
@@ -93,8 +93,8 @@ From the checkout, with Drive assets available, build a NEW notebook:
 
 ```bash
 python3 cinematic/deliver.py \
-  --template files/colab_three_d_friends_te_v3_storybook.ipynb \
-  --plan files/three_d_friends_te_v3_storybook_plan.json \
+  --template colab/notebooks/colab_three_d_friends_te_v3_storybook.ipynb \
+  --plan colab/plans/three_d_friends_te_v3_storybook_plan.json \
   --assets /content/drive/MyDrive/ai-video/_assets \
   --version cinematic-v2 \
   --output /content/colab_cinematic_video.ipynb
@@ -128,14 +128,20 @@ cinematic/README.md
 cinematic/bootstrap.py
 cinematic/build_notebook.py
 cinematic/deliver.py
-cinematic/lib/cinematic_workflow.py
-cinematic/lib/storybook.py
-cinematic/lib/storybook_scene.py
-cinematic/lib/studio.py
-cinematic/lib/studio_run.py
+colab/engine/lib/cinematic_workflow.py
+colab/engine/lib/storybook.py
+colab/engine/lib/storybook_scene.py
+colab/engine/lib/studio.py
+colab/engine/lib/studio_run.py
 cinematic/preview.py
 cinematic/tests/test_characters.py
-files/colab_cinematic_characters_v2.ipynb
+colab/notebooks/colab_cinematic_characters_v2.ipynb
 ```
 
 Feature branch: `feat/cinematic-storybook-characters-v2`, based on `4f25ceb579b3a584362ba1d28dbc8c6f7558472e`.
+
+## Current Telugu target
+
+The updated `colab/notebooks/colab_three_d_friends_te_v3_storybook.ipynb` binds approved Drive packs at runtime. You do not need to run `deliver.py` for this target. Set `CHARACTER_VERSIONS` to the approved versions (default `cinematic-v2` for both), supply the cinema/lobby folders and run it as described in [the Drive guide](../docs/GOOGLE_COLAB.md). The full atlas must support front/back views, worn 3D glasses, held glasses, popcorn and the gestures the story uses; plan validation checks this before speech. The two-pose prototype is insufficient.
+
+`deliver.py` remains an advanced export tool for making a separately pinned notebook from a template. The current video notebook, its default settings and the canonical source tree are maintained with `python colab/build_telugu.py`. Do not rebuild the unchanged Studio or historical video notebooks as part of that command.

@@ -1,0 +1,7 @@
+numpy>=1.26,<3
+Pillow>=10,<14
+pydantic>=2.7,<3
+nbformat>=5.10,<6
+soundfile>=0.12,<1
+scipy>=1.11,<2
+librosa>=0.10,<2

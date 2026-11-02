@@ -43,7 +43,7 @@ def render_review(assets, version, audio, text, output, approved=False, fps=24, 
         CW.validate_plan(plan, assets)
     if not (assets / 'environments/cinema/v1/manifest.json').is_file():
         # Retain the existing environment artwork, not a new generated background.
-        SB.install_pack((ROOT / 'files/storybook_assets_b9347befa279.tar.gz').read_bytes(), assets)
+        SB.install_pack((ROOT / 'colab/assets/packs/storybook_assets_b9347befa279.tar.gz').read_bytes(), assets)
     wavs=[]; durations=[]; samples=[]; sr=None
     for p in audio:
         with wave.open(str(p)) as f:
