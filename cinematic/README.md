@@ -145,3 +145,24 @@ Feature branch: `feat/cinematic-storybook-characters-v2`, based on `4f25ceb579b3
 The updated `colab/notebooks/colab_three_d_friends_te_v3_storybook.ipynb` binds approved Drive packs at runtime. You do not need to run `deliver.py` for this target. Set `CHARACTER_VERSIONS` to the approved versions (default `cinematic-v2` for both), supply the cinema/lobby folders and run it as described in [the Drive guide](../docs/GOOGLE_COLAB.md). The full atlas must support front/back views, worn 3D glasses, held glasses, popcorn and the gestures the story uses; plan validation checks this before speech. The two-pose prototype is insufficient.
 
 `deliver.py` remains an advanced export tool for making a separately pinned notebook from a template. The current video notebook, its default settings and the canonical source tree are maintained with `python colab/build_telugu.py`. Do not rebuild the unchanged Studio or historical video notebooks as part of that command.
+
+## Inline image-to-video demo
+
+The cinematic v2 notebook now generates a reference-conditioned `view_back.png`
+for each character during the initial PoC. Rerun the image cell in the same candidate
+to retain matching completed jobs and generate the new rear views. Changed inputs
+still require a new candidate directory. Rear-view details remain inferred artwork.
+
+Run **Quick video demo** immediately after image generation to encode front,
+three-quarter and rear views into `image-motion-demo.mp4` on Drive and play it inline.
+It uses Pillow and FFmpeg on CPU, H.264/yuv420p and faststart, without speech or a
+second generative model. Optional download has its own cell. After reconnecting,
+Drive settings and the demo cell suffice when the images and FFmpeg are available.
+This is a camera-motion preview of still images, not articulated character animation;
+it does not satisfy the separate production rig animation review.
+
+The implementation follows FFmpeg rawvideo input and IPython Video embedding APIs.
+CPU tests encode and decode synthetic inputs, verify frame count/codec and preserve
+existing output on missing input. GPU inference and visual quality require Colab
+validation with real references. Existing design/animation/pack review stops are
+intentional; Run all still pauses at those production gates.

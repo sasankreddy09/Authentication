@@ -42,6 +42,10 @@ VIEW = ("Using the reference image as the identity reference, show the exact sam
         "three-quarter view, turned slightly to the viewer's right, full body head to shoes, plain light warm-grey "
         "background. Preserve the same face, hairstyle, clothing, colour palette, body proportions and accessories, "
         "and the same sculpted 3D-style look and lighting. Do not introduce a different face or hairstyle.")
+BACK = ("Using the full-body reference, show the exact same character directly from behind, "
+        "head and torso facing away, no face or eyes visible, arms relaxed, full body including shoes. "
+        "Preserve hair colour and silhouette, ponytail or hood, outfit colours, proportions, lighting "
+        "and plain warm-grey background. Infer only unseen rear clothing details; no mirrored front view.")
 REF_NOTE = " The supplied image is the character identity reference. Preserve its face, hairstyle and wardrobe; use dimensional cinematic rendering, not flat outlines."
 # proof of concept (claude.md 5.1–5.2): name, prompt builder, own reference job (identity), size, seed
 POC_JOBS = [
@@ -49,6 +53,7 @@ POC_JOBS = [
     ("full_body_master", lambda c: FULL + DESIGN[c] + " " + STYLE, "portrait", (640, 832), 21),
     ("expression_surprise", lambda c: EXPR, "portrait", (640, 640), 31),
     ("view_three_quarter", lambda c: VIEW, "full_body_master", (640, 832), 41),
+    ("view_back", lambda c: BACK, "full_body_master", (640, 832), 51),
 ]
 
 
@@ -174,7 +179,7 @@ def run_job(gen, out_png, prompt, refs, size, seed, meta_extra, log=print):
 
 
 def run_poc(gen, out, characters=("arjun", "meera"), steps=("portrait", "full_body_master", "expression_surprise",
-                                                             "view_three_quarter"), style_refs=None, log=print):
+                                                             "view_three_quarter", "view_back"), style_refs=None, log=print):
     """The proof-of-concept set (5.2). style_refs: {cid: [paths]} art-direction references for the first images."""
     out = Path(out)
     for cid in characters:

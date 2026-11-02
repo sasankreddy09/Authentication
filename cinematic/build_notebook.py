@@ -38,6 +38,10 @@ import subprocess, sys, importlib.util
 packages = ['diffusers>=0.36,<0.42', 'transformers>=4.57,<6', 'accelerate>=1.2,<2',
             'bitsandbytes>=0.45,<1', 'safetensors', 'Pillow', 'numpy', 'psutil', 'pydantic>=2.7,<3', 'einops', 'timm']
 subprocess.run([sys.executable, '-m', 'pip', 'install', *packages], check=True)
+import shutil
+if not shutil.which('ffmpeg'):
+    subprocess.run(['apt-get', 'update', '-qq'], check=True)
+    subprocess.run(['apt-get', 'install', '-y', '-qq', 'ffmpeg'], check=True)
 ''')
     add('''# Existing engine, with character-only overlays. No repository checkout needed.
 import json, sys, os
@@ -77,6 +81,44 @@ for cid in REFERENCES:
     items.extend((cid + ' ' + p.stem, Image.open(p)) for p in sorted((POC / cid).glob('*.png')))
 studio.contact_sheet(items, STUDIO / 'reference-comparison.png', cols=5, cell=320)
 display(Image.open(STUDIO / 'reference-comparison.png'))
+''')
+    add("""## Quick video demo — run after the image cell
+The initial image set now includes `view_back.png`, conditioned on each full-body master.
+Unseen rear details are inferred and need visual review; a front image cannot specify them exactly.
+The next cell makes a silent 12-second MP4 from front, three-quarter and rear images for both characters,
+with gentle camera zoom, and plays it here. It needs no extra GPU model, audio, segmentation or approval.
+This is a still-image motion demo, not walking, talking or continuous 3D rotation. It does not replace
+`animation-review.mp4` or approve the production rig. To reuse existing images after reconnecting,
+run the Drive settings cell and this demo cell (plus installation only if FFmpeg/Pillow are missing).
+
+Implementation references: [FLUX.2 single-reference editing](https://github.com/black-forest-labs/flux2),
+[FFmpeg rawvideo input](https://ffmpeg.org/ffmpeg-formats.html#rawvideo),
+[IPython embedded video](https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.Video).
+The CPU path keeps video generation separate from the memory-heavy image model.
+""", "markdown")
+    add((ROOT / 'cinematic/image_video_demo.py').read_text() + '\n' + '''
+from IPython.display import Video, display
+POC = STUDIO / 'poc'
+demo_images = [(f'{cid} - {view}', POC / cid / f'{view}.png')
+               for cid in REFERENCES
+               for view in ('full_body_master', 'view_three_quarter', 'view_back')]
+missing = [str(path) for _, path in demo_images if not path.is_file()]
+if missing:
+    print('Generate the missing views with the image cell, then rerun this demo:', *missing, sep='\\n')
+else:
+    DEMO_VIDEO = render_image_demo(demo_images, STUDIO / 'image-motion-demo.mp4')
+    print('Saved to Drive:', DEMO_VIDEO)
+    display(Video(str(DEMO_VIDEO), embed=True, mimetype='video/mp4'))
+''')
+    add('''# Optional download: set True and run this cell to download the saved MP4.
+DOWNLOAD_DEMO = False
+if DOWNLOAD_DEMO:
+    from google.colab import files
+    video_path = STUDIO / 'image-motion-demo.mp4'
+    if video_path.is_file():
+        files.download(str(video_path))
+    else:
+        print('Run the quick video demo first.')
 ''')
     add('''# STOP: review faces, clothing, hair, shared style, full-body anatomy and alternate-view identity.
 import shutil
