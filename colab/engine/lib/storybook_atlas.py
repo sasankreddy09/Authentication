@@ -127,7 +127,11 @@ class AtlasPainter:
         F = self.ch.man.get("face", {})
         im = self.ch.img(P["file"])
         patches = []
-        if F and P.get("face") and P.get("view", "front") == "front":
+        # Face edits are sampled from the idle master, not the current pose. Applying them
+        # to independently generated pose faces causes double eyes/mouths and wandering overlays.
+        # Until per-pose facial registration has been explicitly reviewed, fail closed.
+        if (F and pid == F.get("anchor_pose") and P.get("face")
+                and P.get("view", "front") == "front"):
             # order: expression (whole face) → blink (eyes) → worn items (eyes) → mouth shape (mouth)
             expr = face.get("expr")
             if expr and expr in F.get("expressions", {}):
@@ -148,13 +152,16 @@ class AtlasPainter:
         out = im.copy()
         ax0, ay0, ax1, ay1 = F["box"]
         bx0, by0, bx1, by1 = P["face"]["box"]
-        k = (bx1 - bx0) / (ax1 - ax0)                   # anchor face box → this pose's face box (similarity)
+        if ax1 <= ax0 or ay1 <= ay0 or bx1 <= bx0 or by1 <= by0:
+            raise ValueError("invalid atlas face box; correct the reviewed atlas spec")
+        kx = (bx1 - bx0) / (ax1 - ax0)
+        ky = (by1 - by0) / (ay1 - ay0)
         for ent in patches:
             rel, pb = (ent["file"], ent["box"]) if isinstance(ent, dict) else (ent, F["box"])
             p = self.ch.img(rel)
-            if abs(k - 1) > 1e-3:
-                p = p.resize((max(1, int(p.width * k)), max(1, int(p.height * k))), Image.LANCZOS)
-            out.alpha_composite(p, (int(round(bx0 + (pb[0] - ax0) * k)), int(round(by0 + (pb[1] - ay0) * k))))
+            if abs(kx - 1) > 1e-3 or abs(ky - 1) > 1e-3:
+                p = p.resize((max(1, int(p.width * kx)), max(1, int(p.height * ky))), Image.LANCZOS)
+            out.alpha_composite(p, (int(round(bx0 + (pb[0] - ax0) * kx)), int(round(by0 + (pb[1] - ay0) * ky))))
         self._cache[key] = out
         if len(self._cache) > 64:
             self._cache.popitem(last=False)
