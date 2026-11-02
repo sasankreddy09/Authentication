@@ -83,6 +83,13 @@ if not hasattr(diffusers, 'Flux2KleinPipeline'):
 ''')
     add('''# Small PoC only. Source image -> portrait -> full-body master -> alternate view.
 POC = STUDIO / 'poc'
+# Fail early when Colab has too little free RAM/VRAM to attempt large model loading.
+import psutil, torch
+ram_gb = psutil.virtual_memory().available / (2**30)
+vram_gb = torch.cuda.mem_get_info()[0] / (2**30) if torch.cuda.is_available() else 0
+print(f"Before FLUX: available RAM {ram_gb:.2f} GiB, free GPU VRAM {vram_gb:.2f} GiB")
+if ram_gb < 4 or vram_gb < 4:
+    raise MemoryError("Insufficient free memory for a FLUX attempt. Restart Colab and release other models.")
 gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
 try:
     results = studio_run.run_poc(gen, POC, style_refs={k: [v] for k,v in REFERENCES.items()})
