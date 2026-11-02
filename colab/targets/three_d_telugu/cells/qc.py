@@ -267,6 +267,9 @@ for k_, v_ in DEVICE_REPORT.items():
 print(f"  peak system RAM {RUN_PEAKS['ram_gb']} GB | peak GPU memory {RUN_PEAKS['gpu_gb']} GB (all processes)")
 checks['Speaker identity (manual listening needed)'] = C(
     'UNKNOWN', mandatory=False, evidence='ECAPA and its extra retakes are omitted from the free-tier preset.')
+if PLAN.get('story_revision') == 'three_d_friends_te_v4':
+    checks['Revised Telugu script and pronunciation reviewed'] = C(
+        'UNKNOWN', evidence='New v4 dialogue needs fluent-speaker listening and factual review; old approvals do not apply.')
 qc["checks"] = checks
 qc["approved"] = qclib.approved(checks)
 qc["thresholds"] = TH

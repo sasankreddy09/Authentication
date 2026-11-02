@@ -46,10 +46,25 @@ class TargetTests(unittest.TestCase):
         plan['shots'][0]['recipe'] = 'video'
         with self.assertRaises(ValueError): colab_budget.validate_target(plan)
 
-    def test_original_dialogue_and_shots_preserved(self):
+    def test_v4_rejects_unexplained_location_and_props(self):
         plan = json.loads((ROOT / 'colab/plans/three_d_friends_te_v3_storybook_plan.json').read_text())
-        expected = (Path(__file__).parent / 'original_telugu_shots.sha256').read_text().strip()
-        self.assertEqual(hashlib.sha256(json.dumps(plan['shots'], sort_keys=True).encode()).hexdigest(), expected)
+        colab_budget.validate_v4_continuity(plan)
+        broken = copy.deepcopy(plan)
+        broken['shots'][0]['location'] = 'lobby'
+        with self.assertRaises(ValueError): colab_budget.validate_v4_continuity(broken)
+        broken = copy.deepcopy(plan)
+        visual = next(v for v in broken['shots'][0]['story']['visuals'] if v['recipe'] == 'character')
+        visual['character']['chars']['arjun']['hold'] = 'popcorn'
+        with self.assertRaises(ValueError): colab_budget.validate_v4_continuity(broken)
+
+    def test_revised_dialogue_matches_source(self):
+        plan = json.loads((ROOT / 'colab/plans/three_d_friends_te_v3_storybook_plan.json').read_text())
+        source = json.loads((ROOT / 'colab/stories/three_d_friends_te_v4/story.json').read_text())
+        self.assertEqual(plan['story_revision'], 'three_d_friends_te_v4')
+        self.assertEqual([[l['text'] for l in sh['lines']] for sh in plan['shots']],
+                         [[t['text'] for t in sc['turns']] for sc in source['scenes']])
+        self.assertEqual(plan['project'], 'three_d_friends_te_v4_cinematic')
+        self.assertEqual(plan['script_review_status'], 'pending')
 
     def test_offline_cached_audio_render(self):
         """Execute actual target cells with fixture audio/art, no GPU or model downloads."""
