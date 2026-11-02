@@ -35,6 +35,10 @@ NEW_VERSION = 'cinematic-v2'
     add('''# Install only the image-stage dependencies; do not replace Colab's torch.
 # GPU compatibility must be measured on the allocated runtime.
 import subprocess, sys, importlib.util
+# This workflow uses bitsandbytes, not torchao. An incompatible preinstalled
+# torchao can break Diffusers' optional LoRA imports (missing FqnToConfig).
+restart_needed = any(name in sys.modules for name in ('diffusers', 'transformers', 'torchao'))
+subprocess.run([sys.executable, '-m', 'pip', 'uninstall', '-y', 'torchao'], check=True)
 packages = ['diffusers>=0.36,<0.42', 'transformers>=4.57,<6', 'accelerate>=1.2,<2',
             'bitsandbytes>=0.45,<1', 'safetensors', 'Pillow', 'numpy', 'psutil', 'pydantic>=2.7,<3', 'einops', 'timm']
 subprocess.run([sys.executable, '-m', 'pip', 'install', *packages], check=True)
@@ -42,6 +46,15 @@ import shutil
 if not shutil.which('ffmpeg'):
     subprocess.run(['apt-get', 'update', '-qq'], check=True)
     subprocess.run(['apt-get', 'install', '-y', '-qq', 'ffmpeg'], check=True)
+# Test the real lazy imports in a clean process, before downloading any weights.
+subprocess.run([sys.executable, '-c',
+    'from diffusers import Flux2KleinPipeline, PipelineQuantizationConfig; '
+    'import bitsandbytes; print("Image pipeline imports passed")'], check=True)
+if restart_needed:
+    print('Setup complete. Use Runtime > Restart session, then rerun from the Drive cell. '
+          'Previously imported packages are cached in this session.')
+else:
+    print('Setup complete. Continue to the engine and preflight cells.')
 ''')
     add('''# Existing engine, with character-only overlays. No repository checkout needed.
 import json, sys, os
