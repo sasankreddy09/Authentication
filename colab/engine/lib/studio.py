@@ -269,8 +269,12 @@ def align_patch(master, edited, box, search=8):
     from PIL import ImageFilter
     m = np.asarray(master.convert("RGB")).astype(np.float32)
     e = np.asarray(edited.convert("RGB").resize(master.size, Image.LANCZOS)).astype(np.float32)
-    x0, y0, x1, y1 = [int(v) for v in box]
-    pad = 24
+    x0, y0, x1, y1 = [int(round(v)) for v in box]
+    if not (0 <= x0 < x1 <= master.width and 0 <= y0 < y1 <= master.height):
+        raise ValueError("facial patch box outside master canvas; fix the atlas spec")
+    pad = min(24, x0, y0, master.width - x1, master.height - y1)
+    if pad < 2:
+        raise ValueError("facial patch has no safe alignment margin")
     ring = np.ones((y1 - y0 + 2 * pad, x1 - x0 + 2 * pad), bool)
     ring[pad:-pad, pad:-pad] = False                     # compare the surroundings, not the changed face
     best, bd = (0, 0), None
@@ -286,10 +290,14 @@ def align_patch(master, edited, box, search=8):
             d = float(np.abs(ref - cand)[ring].mean())
             if bd is None or d < bd:
                 bd, best = d, (dx, dy)
+    if bd is None:
+        raise ValueError("no valid facial alignment candidate; review the edited frame")
     dx, dy = best
     patch = Image.fromarray(e[y0 + dy:y1 + dy, x0 + dx:x1 + dx].astype(np.uint8)).convert("RGBA")
     mask = Image.new("L", patch.size, 0)
-    f = max(4, min(patch.size) // 8)
+    f = max(2, min(patch.width, patch.height) // 12)
+    if patch.width <= 2 * f or patch.height <= 2 * f:
+        raise ValueError("facial patch too small to feather safely")
     mask.paste(255, (f, f, patch.width - f, patch.height - f))
     patch.putalpha(mask.filter(ImageFilter.GaussianBlur(f / 2)))
     return patch, {"shift": [dx, dy], "surround_diff": round(bd or 0.0, 2)}
