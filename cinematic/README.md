@@ -161,3 +161,9 @@ Open a fresh copy of the updated GitHub notebook: an existing Drive copy does no
 - No traceback with runtime variables/files lost: possible kernel termination or runtime reclamation. If variables survive reconnection, investigate the client connection rather than assuming a model crash.
 
 The event file is a stage snapshot, not a continuous peak-memory profiler. Missing later entries cannot establish OOM by themselves. Do not repeatedly retry a hard crash; supply the runtime GPU type, last event and Colab system message. If this preset still cannot fit, prepare approved assets in a separately suitable runtime or import already-prepared packs; the ordinary Telugu video renderer does not load FLUX.
+
+### `FqnToConfig` import error in setup
+
+The former setup incorrectly required `torchao.quantization.FqnToConfig` and attempted to pin TorchAO even though Studio uses bitsandbytes. An optional TorchAO installed in Colab can also break Diffusers import if it does not match the current libraries. The corrected setup removes that unused optional package and probes the actual FLUX/pipeline-quantization/bitsandbytes imports in a fresh Python subprocess. It preserves Colab's torch/CUDA packages. This change is scoped to a dedicated Studio runtime; other notebooks that need TorchAO should use separate runtimes.
+
+Open the updated repository notebook rather than an older Drive copy. If setup replaces a library already imported by the kernel, it explicitly requests **Runtime → Restart session** once. Start again from cell 01 after that restart. The old “Installing a matching torchao version” line does not itself prove the repair failed; it was a recovery attempt, but that hard-coded repair is now removed. A remaining subprocess traceback should be inspected directly; an import fix does not establish that image-model inference fits in free Colab memory.

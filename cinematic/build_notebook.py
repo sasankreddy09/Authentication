@@ -39,32 +39,45 @@ ANIMATION_APPROVED = False
 PACK_APPROVED = False
 NEW_VERSION = 'cinematic-v2'
 ''')
-    add('''# Stable, idempotent Colab setup. Do not downgrade the environment's Diffusers on every run.
-# Keep Colab's GPU-enabled torch installation unchanged.
+    add('''# Setup for bitsandbytes quantization; preserve Colab's torch/CUDA installation.
 import subprocess, sys, importlib.metadata as metadata
+
+def installed_version(name):
+    try:
+        return metadata.version(name)
+    except metadata.PackageNotFoundError:
+        return None
+
+tracked = ('diffusers', 'transformers', 'accelerate', 'bitsandbytes')
+before = {name: installed_version(name) for name in tracked}
+ao_present = installed_version('torchao') is not None
+# An incompatible optional TorchAO can break Diffusers import even when using bitsandbytes.
+# Studio does not use TorchAO. Remove it instead of pinning it against an unknown Colab torch.
+if ao_present:
+    subprocess.run([sys.executable, '-m', 'pip', 'uninstall', '-y', 'torchao'], check=True)
 requirements = ['diffusers>=0.42,<0.43', 'transformers>=4.57,<6',
                 'accelerate>=1.2,<2', 'bitsandbytes>=0.45,<1',
                 'safetensors', 'Pillow', 'numpy', 'psutil',
                 'pydantic>=2.7,<3', 'einops', 'timm']
 subprocess.run([sys.executable, '-m', 'pip', 'install', *requirements], check=True)
-# Diffusers/torchao imports must agree. Reinstall only when the required public API is missing.
 probe = subprocess.run([sys.executable, '-c',
-    'from torchao.quantization import FqnToConfig; from diffusers import Flux2KleinPipeline'],
-    capture_output=True, text=True)
+    'import torch, bitsandbytes; from diffusers import Flux2KleinPipeline, PipelineQuantizationConfig; '
+    'from transformers import AutoTokenizer; '
+    'PipelineQuantizationConfig(quant_backend="bitsandbytes_4bit", '
+    'quant_kwargs={"load_in_4bit": True}, components_to_quantize=["transformer", "text_encoder"]); '
+    'print("Studio bitsandbytes imports verified")'], capture_output=True, text=True)
 if probe.returncode:
-    print('Import check failed:', (probe.stderr or '')[-2500:])
-    print('Installing a matching torchao version without replacing torch/CUDA ...')
-    subprocess.run([sys.executable, '-m', 'pip', 'install', '--no-deps',
-                    'torchao==0.17.0'], check=True)
-    probe = subprocess.run([sys.executable, '-c',
-        'from torchao.quantization import FqnToConfig; from diffusers import Flux2KleinPipeline'],
-        capture_output=True, text=True)
-    if probe.returncode:
-        raise RuntimeError('FLUX import still fails. Restart the Colab session once and re-run setup. '
-                           + (probe.stderr or '')[-1600:])
-for package in ('torch', 'torchao', 'diffusers', 'transformers'):
-    print(package, metadata.version(package))
-print('FLUX imports verified. Continue to preflight.')
+    raise RuntimeError('Studio import check failed; no weights were loaded. Paste the following traceback: '
+                       + (probe.stderr or '')[-4000:])
+print(probe.stdout.strip())
+for package in ('torch', *tracked):
+    print(package, installed_version(package))
+changed_loaded = [name for name in tracked
+                  if name in sys.modules and before[name] != installed_version(name)]
+if (ao_present and 'torchao' in sys.modules) or changed_loaded:
+    raise RuntimeError('Setup changed a library already loaded in this kernel. Choose Runtime → Restart session '
+                       'once, then run from the first cell. Do not delete your Drive outputs.')
+print('Setup complete. Continue to preflight.')
 ''')
     add('''# Existing engine, with character-only overlays. No repository checkout needed.
 import json, sys, os

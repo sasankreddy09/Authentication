@@ -166,6 +166,30 @@ class CharacterTests(unittest.TestCase):
                 studio.load_flux('test-revision')
         fake_diffusers.Flux2KleinPipeline.from_pretrained.assert_not_called()
 
+    def test_setup_removes_optional_torchao_and_checks_actual_backend(self):
+        from build_notebook import build
+        import importlib.metadata as metadata
+        src = ''.join(build()['cells'][2]['source'])
+        def version(name): return '0.16' if name == 'torchao' else 'test-version'
+        with patch('importlib.metadata.version', side_effect=version), \
+             patch('subprocess.run', return_value=MagicMock(returncode=0, stdout='ok', stderr='')) as run:
+            exec(compile(src, 'studio setup', 'exec'), {})
+        commands = [c.args[0] for c in run.call_args_list]
+        self.assertTrue(any('uninstall' in cmd and 'torchao' in cmd for cmd in commands))
+        self.assertFalse(any('torchao==0.17.0' in cmd for cmd in commands))
+        probe = next(cmd[-1] for cmd in commands if '-c' in cmd)
+        self.assertIn('bitsandbytes', probe)
+        self.assertNotIn('FqnToConfig', probe)
+
+    def test_setup_requests_restart_after_removing_loaded_torchao(self):
+        from build_notebook import build
+        src = ''.join(build()['cells'][2]['source'])
+        with patch('importlib.metadata.version', return_value='test-version'), \
+             patch('subprocess.run', return_value=MagicMock(returncode=0, stdout='ok', stderr='')), \
+             patch.dict(sys.modules, {'torchao': MagicMock()}):
+            with self.assertRaisesRegex(RuntimeError, 'Restart session'):
+                exec(compile(src, 'studio setup', 'exec'), {})
+
     def test_generated_notebook_syntax(self):
         from build_notebook import build
         self.assertEqual(json.loads((ROOT / 'colab/notebooks/colab_cinematic_characters_v2.ipynb').read_text()), build())
