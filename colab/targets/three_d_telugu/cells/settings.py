@@ -1,7 +1,7 @@
 # ==== 1. Settings (you can edit these) ====
 NOTEBOOK_VERSION = "Telugu 3D cinematic characters — Colab Free preset v1"
 print("Notebook version:", NOTEBOOK_VERSION)
-PROJECT = "three_d_friends_te_v3_cinematic"
+PROJECT = "three_d_friends_te_v5_cinematic"
 DRIVE_ROOT  = "/content/drive/MyDrive/ai-video"
 VOICE       = "am_michael"                    # only used to test the voice model; each character's voice is in the plan
 SPEED_SCALE = 1.0                            # multiplies every line's speed (0.95 = a bit slower overall)
@@ -53,7 +53,7 @@ BENCHMARK = False                            # True: time ONE scene-state shot u
                                              # render/benchmark.md, then stop (no video is made). Takes ~15–40 min.
 BENCH_SHOT = "sh11"                          # the shot to benchmark (a VACE walking scene is representative)
 BENCH_CONFIGS = ["optimized", "turbo_tiled", "baseline"]   # baseline = the old fast mode, 25 steps (~25 min alone)
-MUSIC_STYLE = "library"                      # "library": licensed tracks per chapter (credited in the description);
+MUSIC_STYLE = "curious"                      # "library": licensed tracks per chapter (credited in the description);
                                              # "curious" / "ambient": music generated in the notebook (offline fallback)
 MUSIC_UNDER_VOICE_DB = 10                    # music bed this many dB under the voice (ducking adds ~6–10 dB while someone speaks)
 BURN_SUBS   = True                           # burn coloured subtitles into the video (an .srt is saved either way)

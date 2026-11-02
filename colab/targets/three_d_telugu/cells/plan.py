@@ -8,6 +8,7 @@ os.environ['STORYBOOK_ASSETS'] = str(ASSETS)
 PLAN = CW.bind_plan(PLAN_EMBEDDED, ASSETS, CHARACTER_VERSIONS)
 # END RUNTIME CHARACTER BINDING
 colab_budget.validate_target(PLAN)
+colab_budget.validate_v4_continuity(PLAN)
 plan_path = PROJ / 'plan.json'
 if plan_path.exists() and json.loads(plan_path.read_text()) != PLAN:
     raise RuntimeError('Saved plan differs from this story or these character hashes. Keep the previous project '

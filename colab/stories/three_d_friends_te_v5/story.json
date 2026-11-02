@@ -1,0 +1,583 @@
+{
+ "title": "త్రీడీ సినిమాలో బొమ్మ మన దగ్గరికి వచ్చినట్టు ఎందుకు కనిపిస్తుంది?",
+ "topic": "Why do 3D movies look real? (Telugu–English)",
+ "language": "te",
+ "code_mix": "natural",
+ "logline": "Popcorn దగ్గరికి వచ్చినట్టు ఎందుకు కనిపించిందన్న ప్రశ్నకు, రెండు కళ్ల చూపు మరియు పోలరైజ్డ్ అద్దాల పని ద్వారా సమాధానం; చివరలో చిన్న నవ్వు.",
+ "vocabulary": [
+  "3D",
+  "popcorn",
+  "అర్జున్",
+  "మీరా"
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "In binocular depth vision, the sensation arises from processing differences in retinal images resulting from the two eyes looking from different, but similar, directions.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereopsis",
+   "title": "Stereopsis",
+   "revid": 1377837508
+  },
+  {
+   "id": "F2",
+   "text": "The two images are combined in the brain to give the perception of stereopsis; when viewed, the human brain perceives the images as a single 3D view, giving the viewer the perception of 3D depth.",
+   "source_url": "https://en.wikipedia.org/wiki/Stereoscopy",
+   "title": "Stereoscopy",
+   "revid": 1380706327
+  },
+  {
+   "id": "F3",
+   "text": "To present stereoscopic images and films, two images are projected superimposed onto the same screen or displayed through different polarizing filters.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F4",
+   "text": "The viewer wears low-cost eyeglasses with a polarizing filter for each eye. The left and right filters have different polarizations, so each eye receives only the image with the matching polarization.",
+   "source_url": "https://en.wikipedia.org/wiki/Polarized_3D_system",
+   "title": "Polarized 3D system",
+   "revid": 1377586129
+  },
+  {
+   "id": "F7",
+   "text": "Monocular cues provide depth information even when viewing a scene with only one eye. Monocular cues include relative size (distant objects subtend smaller visual angles than near objects), texture gradient, occlusion, linear perspective, contrast differences, and motion parallax.",
+   "source_url": "https://en.wikipedia.org/wiki/Depth_perception",
+   "title": "Depth perception",
+   "revid": 1380662591
+  }
+ ],
+ "scenes": [
+  {
+   "id": "sc01",
+   "beat": "observation",
+   "world": "cinema_seats",
+   "sfx": [],
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "అమ్మో! తెర మీద popcorn నా మీదకి వచ్చినట్టు ఎలా కనిపించింది?",
+     "kind": "question",
+     "tone": "awe",
+     "tts": "అమ్మో! తెర మీద పాప్‌కార్న్ నా మీదకి వచ్చినట్టు ఎలా కనిపించింది?",
+     "expr": "surprised",
+     "gesture": "duck"
+    },
+    {
+     "speaker": "meera",
+     "text": "అది తెలుసుకోవాలంటే… తెరనే కాదు, నీ రెండు కళ్లనీ గమనించాలి.",
+     "kind": "instruction",
+     "tone": "curious",
+     "tts": "అది తెలుసుకోవాలంటే… తెరనే కాదు, నీ రెండు కళ్లనీ గమనించాలి."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "establishing",
+     "turn": 0,
+     "at": 0.0,
+     "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "gesture": "duck",
+       "expr": "surprised"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     },
+     "screen": "clean+popcorn"
+    },
+    {
+     "id": "v2",
+     "intent": "closeup",
+     "turn": 1,
+     "at": 0.0,
+     "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     },
+     "subject": "meera"
+    }
+   ]
+  },
+  {
+   "id": "sc02",
+   "beat": "question",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "రెండు కళ్లతో చూసేది ఒకే బొమ్మ కాదా?",
+     "kind": "question",
+     "tone": "curious",
+     "tts": "రెండు కళ్లతో చూసేది ఒకే బొమ్మ కాదా?"
+    },
+    {
+     "speaker": "meera",
+     "text": "రెండు చూపుల్ని పక్కపక్కన చూస్తే తేడా తెలుస్తుంది. చూడు.",
+     "kind": "instruction",
+     "tone": "friendly",
+     "tts": "రెండు చూపుల్ని పక్కపక్కన చూస్తే తేడా తెలుస్తుంది. చూడు."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "reaction",
+     "turn": 0,
+     "at": 0.0,
+     "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     },
+     "subject": "arjun"
+    },
+    {
+     "id": "v2",
+     "intent": "two_friend",
+     "turn": 1,
+     "at": 0.0,
+     "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "id": "sc03",
+   "beat": "demonstration",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "రెండు కళ్లూ కొంచెం వేర్వేరు స్థానాల్లో ఉంటాయి కదా. అందుకే ఒక్కో కంటికి కొంచెం వేరే బొమ్మ కనిపిస్తుంది.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "explaining_observation",
+     "fact_ids": [
+      "F1"
+     ],
+     "source_text": "The two eyes view from different but similar directions and receive different images.",
+     "tts": "రెండు కళ్లూ కొంచెం వేర్వేరు స్థానాల్లో ఉంటాయి కదా. అందుకే ఒక్కో కంటికి కొంచెం వేరే బొమ్మ కనిపిస్తుంది."
+    },
+    {
+     "speaker": "arjun",
+     "text": "అంటే ఒక కన్ను మూస్తే, ఆ రెండో చూపు ఉండదన్నమాట?",
+     "kind": "prediction",
+     "tone": "curious",
+     "intent": "thinking_aloud",
+     "expr": "thinking",
+     "tts": "అంటే ఒక కన్ను మూస్తే, ఆ రెండో చూపు ఉండదన్నమాట?"
+    },
+    {
+     "speaker": "meera",
+     "text": "అవును. మెదడు రెండు కళ్ల బొమ్మల్లోని తేడాలను ఉపయోగించి లోతును గుర్తిస్తుంది.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "satisfying_revelation",
+     "fact_ids": [
+      "F2"
+     ],
+     "source_text": "The brain uses differences between the two eye images to perceive binocular depth.",
+     "tts": "అవును. మెదడు రెండు కళ్ల బొమ్మల్లోని తేడాలను ఉపయోగించి లోతును గుర్తిస్తుంది."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "closeup",
+     "turn": 0,
+     "at": 0.0,
+     "subject": "meera",
+     "screen": "clean+popcorn",
+     "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "animated_illustration",
+     "turn": 0,
+     "at": 0.3,
+     "template": "eye_views",
+     "description": "Labelled left-eye and right-eye view diagram, followed by a depth-perception illustration. Not real footage. Keep this diagram visible through the final explanatory turn; no reaction cutaway until the next scene.",
+     "chars": {}
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "id": "sc04",
+   "beat": "correction",
+   "world": "cinema_seats",
+   "turns": [
+    {
+     "speaker": "arjun",
+     "text": "మరి ఒకే తెర నుంచి ఒక్కో కంటికి వేరే బొమ్మ ఎలా వస్తుంది?",
+     "kind": "question",
+     "tone": "curious",
+     "intent": "genuine_curiosity",
+     "expr": "curious",
+     "tts": "మరి ఒకే తెర నుంచి ఒక్కో కంటికి వేరే బొమ్మ ఎలా వస్తుంది?"
+    },
+    {
+     "speaker": "meera",
+     "text": "పోలరైజ్డ్ త్రీడీ పద్ధతిలో, రెండు బొమ్మలు వేర్వేరు పోలరైజేషన్‌తో ఒకే తెరపై పడతాయి.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "sharing_surprising_fact",
+     "fact_ids": [
+      "F3"
+     ],
+     "source_text": "In a polarized 3D system, two images with different polarizations are projected onto the same screen.",
+     "tts": "పోలరైజ్డ్ త్రీడీ పద్ధతిలో, రెండు బొమ్మలు వేర్వేరు పోలరైజేషన్‌తో ఒకే తెరపై పడతాయి."
+    },
+    {
+     "speaker": "arjun",
+     "text": "అంటే ఈ అద్దాలు ఏ బొమ్మ ఏ కంటికి వెళ్లాలో వేరు చేస్తాయా?",
+     "kind": "prediction",
+     "tone": "awe",
+     "intent": "asking_confirmation",
+     "expr": "surprised",
+     "tts": "అంటే ఈ అద్దాలు ఏ బొమ్మ ఏ కంటికి వెళ్లాలో వేరు చేస్తాయా?"
+    },
+    {
+     "speaker": "meera",
+     "text": "అవును. ఒక్కో లెన్స్‌లోని ఫిల్టర్ దానికి సరిపోయే బొమ్మను ఆ కంటికి అందిస్తుంది.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "reflective_explanation",
+     "fact_ids": [
+      "F4"
+     ],
+     "source_text": "Each lens has a polarizing filter so each eye receives the matching image.",
+     "tts": "అవును. ఒక్కో లెన్స్‌లోని ఫిల్టర్ దానికి సరిపోయే బొమ్మను ఆ కంటికి అందిస్తుంది."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "animated_illustration",
+     "turn": 1,
+     "at": 0.2,
+     "template": "projector_glasses",
+     "description": "Schematic of a polarized 3D system; consistently label the two image channels and matching eye filters. Do not imply every 3D system works this way. Keep this diagram visible through the final explanatory turn; no reaction cutaway until the next scene.",
+     "chars": {}
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "id": "sc05",
+   "beat": "reveal",
+   "world": "cinema_seats",
+   "sfx": [],
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "అద్దాలు అలాగే ఉంచు. ఒక్క కన్ను మూసి చూడు.",
+     "kind": "instruction",
+     "tone": "friendly",
+     "intent": "guiding_demo",
+     "expr": "smile",
+     "tts": "అద్దాలు అలాగే ఉంచు. ఒక్క కన్ను మూసి చూడు."
+    },
+    {
+     "speaker": "arjun",
+     "text": "నాకు దగ్గరికి వస్తున్నట్టు అనిపించడం తగ్గింది. కానీ బొమ్మలో ఇంకా కొంత లోతు కనిపిస్తోంది.",
+     "kind": "observation",
+     "tone": "awe",
+     "intent": "enthusiastic_discovery",
+     "expr": "curious",
+     "tts": "నాకు దగ్గరికి వస్తున్నట్టు అనిపించడం తగ్గింది. కానీ బొమ్మలో ఇంకా కొంత లోతు కనిపిస్తోంది."
+    },
+    {
+     "speaker": "meera",
+     "text": "అవును. వస్తువుల పరిమాణం లాంటి సూచనలతో ఒక్క కన్నుతోనూ లోతును అంచనా వేయగలం.",
+     "kind": "fact",
+     "tone": "explainer",
+     "intent": "explaining_observation",
+     "fact_ids": [
+      "F7"
+     ],
+     "source_text": "Relative size provides depth information even when viewing with one eye.",
+     "tts": "అవును. వస్తువుల పరిమాణం లాంటి సూచనలతో ఒక్క కన్నుతోనూ లోతును అంచనా వేయగలం."
+    },
+    {
+     "speaker": "arjun",
+     "text": "ఓహో! బొమ్మ బయటికి రాలేదు. లోతు ఉన్నట్టు నాకు అనిపించింది!",
+     "kind": "observation",
+     "tone": "happy",
+     "intent": "quiet_realization",
+     "expr": "happy",
+     "tts": "ఓహో! బొమ్మ బయటికి రాలేదు. లోతు ఉన్నట్టు నాకు అనిపించింది!",
+     "fact_ids": [
+      "F2"
+     ],
+     "source_text": "In this fictional scene the picture does not physically leave the screen; the viewer perceives depth."
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "animated_illustration",
+     "turn": 1,
+     "at": 0.0,
+     "template": "eye_views",
+     "description": "Hold the explanatory eye-view illustration through the monocular-depth qualification and final answer. This is a schematic, not a stereoscopic phone display."
+    }
+   ]
+  },
+  {
+   "id": "sc06",
+   "beat": "closing",
+   "world": "cinema_seats",
+   "sfx": [],
+   "turns": [
+    {
+     "speaker": "meera",
+     "text": "ఇప్పుడు సినిమా చూస్తావా, popcornకి దారి ఇస్తావా?",
+     "kind": "reaction",
+     "tone": "happy",
+     "tts": "ఇప్పుడు సినిమా చూస్తావా, పాప్‌కార్న్కి దారి ఇస్తావా?",
+     "intent": "playful_remark",
+     "expr": "smile"
+    },
+    {
+     "speaker": "arjun",
+     "text": "విషయం అర్థమైంది… కానీ తల మాత్రం వినట్లేదు!",
+     "kind": "reaction",
+     "tone": "happy",
+     "tts": "విషయం అర్థమైంది… కానీ తల మాత్రం వినట్లేదు!",
+     "intent": "playful_remark",
+     "expr": "smile",
+     "gesture": "duck"
+    }
+   ],
+   "visuals": [
+    {
+     "id": "v1",
+     "intent": "two_friend",
+     "turn": 0,
+     "at": 0.0,
+     "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ]
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    },
+    {
+     "id": "v2",
+     "intent": "two_friend",
+     "turn": 1,
+     "at": 0.0,
+     "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces.",
+     "chars": {
+      "arjun": {
+       "wear": [
+        "3d_glasses"
+       ],
+       "gesture": "duck",
+       "expr": "smile"
+      },
+      "meera": {
+       "wear": [
+        "3d_glasses"
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "tts_backend": "indic_parler",
+ "glossary": {
+  "eyes": [
+   "కళ్లు",
+   "కళ్లూ",
+   "కన్ను",
+   "కంటి",
+   "eyes"
+  ],
+  "eye": [
+   "కన్ను",
+   "కంటి",
+   "eye"
+  ],
+  "different": [
+   "వేరే",
+   "different"
+  ],
+  "view": [
+   "view",
+   "బొమ్మ"
+  ],
+  "views": [
+   "view",
+   "బొమ్మ"
+  ],
+  "picture": [
+   "picture",
+   "బొమ్మ"
+  ],
+  "pictures": [
+   "picture",
+   "బొమ్మ"
+  ],
+  "brain": [
+   "brain",
+   "మెదడు"
+  ],
+  "combines": [
+   "కలిపి",
+   "combine"
+  ],
+  "depth": [
+   "depth",
+   "లోతు"
+  ],
+  "projector": [
+   "projector",
+   "Projector",
+   "ప్రొజెక్టర్"
+  ],
+  "screen": [
+   "screen",
+   "స్క్రీన్",
+   "తెర"
+  ],
+  "filter": [
+   "filter",
+   "ఫిల్టర్"
+  ],
+  "filters": [
+   "filter",
+   "ఫిల్టర్"
+  ],
+  "polarizing": [
+   "polarizing",
+   "పోలరైజింగ్"
+  ],
+  "lenses": [
+   "lens",
+   "అద్దం",
+   "లెన్స్"
+  ],
+  "size": [
+   "size",
+   "Size",
+   "పరిమాణం"
+  ],
+  "one eye": [
+   "ఒక్క కన్ను",
+   "ఒక కన్ను",
+   "one eye"
+  ],
+  "flat": [
+   "flat",
+   "చదును"
+  ],
+  "image": [
+   "view",
+   "బొమ్మ"
+  ]
+ },
+ "strict_open_source": true,
+ "voice_policy": {
+  "asr_retake_at": 0.6,
+  "gemini_asr_repairs": false,
+  "speech_compare": "bilingual"
+ }
+}

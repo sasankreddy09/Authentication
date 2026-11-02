@@ -1,0 +1,7 @@
+{
+  "status": "DRAFT_REVIEW_REQUIRED",
+  "structural_checks": [],
+  "grounding": "Inherited source passages; new wording has not received a fresh NLI or human factual approval.",
+  "audio": "Naturalness and real duration require Telugu listening and synthesis.",
+  "retention": "Editing hypothesis; no audience analytics or measured retention improvement."
+}

@@ -1,0 +1,7 @@
+{
+  "status": "DRAFT_REVIEW_REQUIRED",
+  "structural_checks": [],
+  "grounding": "Not rerun; inherited source excerpts require verification against current sources. No old PASS results reused.",
+  "telugu_listening": "Pending native-speaker review and timed synthesis.",
+  "runtime": "Compiled into the current Telugu notebook; synthetic CPU render tested. Real voice and approved-art render still pending."
+}

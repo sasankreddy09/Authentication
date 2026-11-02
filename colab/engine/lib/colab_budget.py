@@ -42,3 +42,28 @@ def validate_target(plan):
         for v in s.get('story', {}).get('visuals', []):
             if v.get('recipe') not in {'character', 'demo', 'diagram', 'card'}:
                 raise ValueError('Nested story visuals must also be drawn; no generated video.')
+
+
+def validate_v4_continuity(plan):
+    """Deterministic constraints for this specific seated-cinema script, not general semantic proof."""
+    if plan.get('story_revision') not in ('three_d_friends_te_v4', 'three_d_friends_te_v5'):
+        return
+    claims = {c['id'] for c in plan.get('claims', [])}
+    for shot in plan['shots']:
+        if shot.get('location') != 'cinema_seats':
+            raise ValueError('v4 stays in one cinema: an unexplained location change is forbidden.')
+        for line in shot['lines']:
+            if set(line.get('claims', [])) - claims:
+                raise ValueError('Unknown factual claim reference.')
+            if line.get('kind') in ('fact', 'correction') and not line.get('claims'):
+                raise ValueError('Factual dialogue needs cited claims.')
+        for visual in shot['story']['visuals']:
+            if visual.get('recipe') == 'character':
+                spec = visual['character']
+                states = [spec.get('chars', {})] + [c.get('chars', {}) for c in spec.get('changes', [])]
+                for state in states:
+                    for char in state.values():
+                        if char.get('hold'):
+                            raise ValueError('v4 has no held props or handoffs.')
+                        if 'wear' in char and char['wear'] != ['3d_glasses']:
+                            raise ValueError('v4 glasses stay worn throughout.')

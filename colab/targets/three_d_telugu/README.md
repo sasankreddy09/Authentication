@@ -15,3 +15,11 @@ Output: `MyDrive/ai-video/three_d_friends_te_v3_cinematic/render/final.mp4`, sub
 If disconnected, reconnect and Run all; completed matching narration and render segments are reused. CPU-only rendering is available with `RENDER_CACHED_AUDIO_ONLY=True` once this project has all matching narration WAVs **and their JSON sidecars**. A missing/stale line stops instead of starting a large CPU speech model.
 
 Read `docs/GOOGLE_COLAB.md` in the repository for the Drive folder tree and first-time artwork workflow. Inspect the rendered characters and listen to the Telugu audio before sharing. CPU integration tests do not certify reference fidelity or Colab CUDA compatibility.
+
+### Current script revision: v4
+
+The notebook now embeds `colab/stories/three_d_friends_te_v4/story.json` via its updated plan. Default output is `MyDrive/ai-video/three_d_friends_te_v4_cinematic/`. Only cinema/v1 is required; the earlier lobby instruction applies to v3. The new script stays in the cinema, uses original Telugu humor, and selects CPU-generated curiosity music. Review the new dialogue/audio before sharing; previous script approvals do not apply.
+
+### Current script revision: v5 (retention edit)
+
+The notebook now uses the v5 story and writes to `MyDrive/ai-video/three_d_friends_te_v5_cinematic/`. The main question opens the video; the eye and glasses diagrams remain visible through their explanations; the one-eye qualification follows the mechanism; a two-line joke closes the video. This supersedes the v4 output-path note above. Character packs, cinema background and local Parler requirements remain the same. Actual speech duration, naturalness and audience retention still need verification.

@@ -14,7 +14,7 @@ for cid, version in CHARACTER_VERSIONS.items():
     info = json.loads(manifest.read_text())
     if info.get('status') != 'approved' or info.get('asset_type') != 'atlas_v1':
         raise ValueError(f'{cid}/{version} is not an approved cinematic atlas.')
-for env in ('cinema', 'lobby'):
+for env in ('cinema',):
     if not (ASSETS / 'environments' / env / 'v1/manifest.json').is_file():
         raise FileNotFoundError(f'Copy colab/assets/environments/{env}/v1 to {ASSETS}/environments/{env}/v1.')
 if shutil.disk_usage('/content').free < 15 * 2**30:
