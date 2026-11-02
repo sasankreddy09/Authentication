@@ -211,3 +211,123 @@ Retrieved official GitHub documents during this review:
 - [Piper](https://github.com/OHF-Voice/piper1-gpl): local speech engine; a suitable Telugu voice was not established by this source.
 
 Attempted but blocked by network policy: [Indic Parler model card](https://huggingface.co/ai4bharat/indic-parler-tts), [Qwen3-4B-Instruct-2507 card](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507), [MusicGen-small card](https://huggingface.co/facebook/musicgen-small), and [Colab FAQ](https://research.google.com/colaboratory/faq.html). Recheck their live terms and limitations before implementation. Documentation fetched from a repository's default branch can change; pin the selected implementation/model revisions in the eventual build. No claim in this addendum relies on an unperformed T4 benchmark.
+
+---
+
+## Retention audit and improvement plan — 2026-11-02
+
+**Scope:** documentation-only review of the existing videos and current v4 plan. No script, notebook, renderer or asset is changed by this section. Recommendations below are hypotheses to test, not promises that every viewer will watch to the end.
+
+### What was actually reviewed
+
+- Current `colab/stories/three_d_friends_te_v4/script.md`, `story.json` and its compiled production plan: six scenes, 19 dialogue turns and 22 visual segments. Three of those segments are explanatory diagrams. Segment counts do **not** measure screen time; actual duration depends on synthesized speech.
+- Visually inspected `colab/reports/storybook/E_contact_sheet.jpg`. It shows historical procedural character artwork, repeated cinema seating compositions, two diagram treatments and lobby/closing shots. It is not a preview of approved cinematic-v2 artwork or the finished v4 video. A contact sheet cannot establish motion quality or audio naturalness.
+- Historical `E_qc_report.json`: expected duration 107.54 seconds, overall approval false, with narration correctness, human holistic review and character-art approval unresolved. These are old evidence, not measured v4 results.
+- Current target settings and visual start positions. The code supports technically valid output, but its passing tests do not measure engagement, comprehension or Telugu delivery quality.
+
+There is no current audience-retention curve, traffic-source breakdown, finished v4 production render or native-speaker voice rating available in this review. The user's report that AI Studio sounds more natural is meaningful qualitative feedback, but not a controlled comparison. Claims about exact audience drop-off times would therefore be speculation.
+
+### Main drawbacks, with evidence and practical remedies
+
+| Priority | Observed evidence | Likely effect to test | Recommended change |
+|---|---|---|---|
+| P0 | In sc03, `eye_views` starts at turn 0 / fraction 0.3, then `v3` switches to Arjun at turn 1. Meera's brain/depth explanation is turn 2. | Viewers hear the central mechanism while the explanatory picture is no longer visible. | Keep the eye diagram through the explanation; progressively highlight the two views and their differences. Use Arjun's reaction briefly after the mechanism lands, or as a small inset only if legible. |
+| P0 | In sc04, `projector_glasses` starts during turn 1, then cuts to a reaction at turn 2 and Meera's closeup at turn 3, when she explains the filters. | The hardest idea has to be understood from speech alone. | Keep the channel/filter diagram visible through turn 3. Highlight one image-to-eye path at a time, using labels as well as color; camera left/right must not reverse the explanation. |
+| P0 | Naturalness remains unverified and the user reports the local voice sounds worse than AI Studio. | Stilted rhythm can make even a good script feel narrated rather than conversational. | Prioritize blind Telugu listening auditions, pronunciation and pause repair before adding heavier visuals. Preserve one identity per speaker and avoid exaggerated pitch manipulation. |
+| P1 | sc01 contains a startled reaction, a joke and only then the main question. | The premise may take too long to become clear, particularly when pauses or TTS timing stretch the exchange. | Show the surprising screen event immediately and state the mystery in the first exchange. Keep the joke only if the measured opening remains clear and brisk. |
+| P1 | sc02 introduces the one-eye test and the monocular-depth qualification before the main two-view mechanism. | A valuable nuance may distract from the central question before viewers have a simple mental model. | Test a version that first establishes two slightly different views, then uses the one-eye test as confirmation. Preserve the qualification that one eye still gives depth cues; do not simplify it into a false claim. |
+| P1 | sc05 says “అర్థమైంది కదా! ఇప్పుడు సినిమా చూద్దామా?” before sc06 adds three more turns. | It signals completion early and can make the final exchange feel optional. | Remove the premature goodbye in a future script edit. Place one short comprehension/payoff moment immediately before the closing visual callback, then finish. |
+| P1 | The historical sheet repeats similar seated character compositions; v4 intentionally stays in one cinema. | The location is coherent, but repeated composition without new information may feel static. | Retain the location and vary the *purpose* of shots: screen event, reaction, demonstration, diagram, payoff. Do not introduce unrelated locations just to create novelty. |
+| P1 | v4 safely removes spills, handoffs and changing locations, but many visual descriptions now repeat a generic same-seated-friends instruction. | Continuity is improved, yet the descriptions offer little specific direction about what each shot teaches. | Give each shot one explicit information goal and a visible change that supports it. Avoid merely repeating dialogue in visual metadata. |
+| P2 | Historical diagrams contain small labels and the contact sheet shows subtitles competing with dense seat patterns. | Phone viewers may have difficulty separating the important information from decoration. This requires full-size testing; the thumbnail sheet is not conclusive. | Review full-resolution output at phone size. Enlarge key labels, simplify diagram regions and keep the subtitle area quiet with a consistent contrast treatment. |
+| P2 | The current procedural score follows broad scene moods; precise speech-aligned musical cues are not implemented. | Music may remain generic or miss the intended reveal. No listening assessment was performed here. | Start with subtle curiosity music, lower it under explanation, and reserve one change or brief silence for the real reveal. Do not add suspense stingers to every line. |
+| P2 | The hook promises a “pop-out” experience, but the end mainly repeats Arjun's duck. | A joke alone may not demonstrate that the viewer understood the original mystery. | Before the callback, resolve the promise explicitly: the image stays on the screen; two eye-specific views contribute to perceived depth. Keep that final explanation concise and sourced. |
+
+The highest-value change is **better timing between narration and evidence**, not more character-detail generation. Attractive backgrounds help presentation, but cannot compensate for a diagram disappearing during the explanation.
+
+### Research principles and their limits
+
+These principles draw on established educational-video and curiosity research. Attempts to retrieve the official articles and YouTube help pages during this session were blocked by the network policy, so their current full text and wording were not independently rechecked here. Treat the references below as a reading trail; this is not a fresh systematic review or a quantified prediction for Telugu YouTube videos.
+
+1. **Make the information gap specific.** Curiosity research links the desire to know an answer with attention and memory in controlled tasks. Use a question viewers can understand and care about, then deliver the answer. This does not justify repeatedly withholding a simple fact or inventing danger.
+2. **Signal what matters.** Research on educational video and cognitive load supports reducing irrelevant material, organizing information into manageable segments, and guiding attention to the relevant visual. Progressive diagram highlights are a better fit here than constant unrelated cuts.
+3. **Make viewers think briefly.** A short prediction or mental experiment can make an explanation active. Ask a concrete question, allow a small pause, then demonstrate and answer. Do not force a long quiz into a short video.
+4. **Use duration efficiently.** Research on MOOC viewing found associations between production choices, length and engagement. Those observational results do not establish a universal ideal duration or prove that every short entertainment video should follow the same pacing.
+5. **Read retention curves as evidence, not verdicts.** YouTube's retention tools distinguish parts where viewers continue, skip, leave or revisit. A spike can indicate interest, sharing or confusion; a dip can reflect skipping as well as leaving. Inspect the relevant frames/audio before choosing a remedy.
+
+There is no defensible universal “eight-second attention span,” mandatory cut every two seconds, guaranteed retention percentage, or promise that a particular meme will prevent drop-off. Avoid those rules in future automated prompts.
+
+### Suggested attention arc for this 3D explainer
+
+This is a future editing blueprint, not the current measured timeline. The suggested windows are an initial experiment for a roughly 60–90 second cut; narration and comprehension decide the final timings.
+
+| Approximate position | Viewer question | What earns continued attention |
+|---|---|---|
+| First 0–5 seconds | “Why did that look as if it came toward him?” | Show the startled reaction and screen cause together. Establish the concrete mystery without a logo sequence or lengthy introduction. |
+| About 5–15 seconds | “Is the picture moving, or is my perception changing?” | Offer a simple prediction/observation with an immediate partial answer. Make it clear the illustration is not a physical object leaving the screen. |
+| About 15–35 seconds | “What do two eyes add?” | Keep the two-view diagram visible, highlighting one eye/view at a time and then the difference. A brief character reaction follows the useful information. |
+| About 35–55 seconds | “How does one screen send different views to each eye?” | Introduce the polarized-system qualifier, then retain the glasses diagram through the filter explanation. Avoid a lecture on polarization physics beyond this video's scope. |
+| Final section | “Can I now explain the trick?” | Resolve the original mystery, briefly retain the one-eye-depth qualification if not already established, and pay off the opening with one short visual callback. End immediately after it. |
+
+Do not promise that viewers can experience stereoscopic depth from an ordinary 2D phone upload. Label screen diagrams as explanations, not a functional 3D display. The existing one-eye test is a fictional cinema observation; do not instruct viewers to reproduce that exact cinema effect on a normal phone. If a future version proposes a finger/alternating-eye demonstration, first ensure the action can be represented accurately and does not require unsupported atlas poses.
+
+### New planning contract for retention — proposed, not implemented
+
+Extend each future story beat with the following editorial fields, separate from the renderer's actual executable schema:
+
+- `viewer_question`: the specific uncertainty this beat addresses.
+- `new_information`: the new fact, observation or consequence introduced here.
+- `evidence_on_screen`: the diagram/object/state that must remain visible during the relevant words.
+- `spoken_span`: turn IDs, later resolved to measured audio timestamps.
+- `payoff_of`: the earlier question or setup being answered; required before closing an information gap.
+- `attention_change`: a meaningful change such as a revealed diagram channel, reaction, brief silence or corrected prediction. “Random zoom” is not a sufficient reason.
+- `comprehension_risk`: difficult terminology, competing visuals or a likely misconception, with a mitigation.
+- `review_status`: evidence of factual, timing and human review rather than a model's engagement score.
+
+Add an editorial report that detects unanswered setup questions, repeated explanations, early closing phrases, diagrams missing during their referenced speech, and stretches without new information. Thresholds should be tuned using actual recordings; automatic warnings should not force a cut into every quiet or important moment. Review all suggested edits against the existing causality, factual and asset-feasibility gates.
+
+Maintain a clear distinction between **release correctness** and **engagement hypotheses**. Unsupported claims and impossible actions block release. A suggested shorter hook or faster transition is an editorial experiment, not a scientific correctness rule. An LLM-generated “retention score” must not be presented as a measured viewer outcome.
+
+### Voice, humor, visuals and sound as one edit
+
+- **Dialogue:** give Arjun a plausible thought or prediction rather than using every turn as a cue for Meera's next lecture. Reduce repeated confirmations when the animation already makes the answer clear. Preserve enough pause for comprehension, and trim only accidental dead air.
+- **Humor:** keep the existing original opening reaction and ending callback if listening confirms they work. Do not add more memes solely to increase stimulation. Place humor after comprehension or as a setup, never across an important claim or diagram label.
+- **Visual rhythm:** use wide shots for context, closeups for genuine reactions and diagrams for mechanisms. Stay on the useful diagram as long as needed. An approved character atlas does not require the character to fill every frame.
+- **Backgrounds:** the cinema is relevant to this topic. Improve focal hierarchy and visual contrast inside that environment before spending GPU time on additional scenery. Beautiful scenery should support the question, not compete with it.
+- **Subtitles:** retain accurate Telugu shaping, natural phrase boundaries and clear speaker differentiation. Avoid simultaneous dense captions, labels and decorative motion. Check text on a phone, not only a desktop preview.
+- **Music:** use mild mystery rather than horror for this science explanation. Increase tension only while a genuine question is open; resolve it when the explanation resolves. A short silence may work better than another sound effect. Always listen for masking of consonants and technical words.
+
+### How to measure whether the changes work
+
+Before publishing, test a small rough cut with several Telugu-speaking viewers who did not help write it. Ask them to mark confusing/slow moments and explain the answer in their own words. A small convenience sample is directional feedback, not statistical proof. Include phone viewing and ordinary speakers or earphones. Check that viewers understand the distinction between physical movement and perceived depth, and the limited scope of the polarized-system explanation.
+
+Once real audience data exist, record:
+
+- Video length and format (Shorts versus standard video), publish date, language, topic, traffic sources and sample size.
+- Average view duration, average percentage viewed, retention at available comparable positions, and end-of-video retention. Report uncertainty for small samples.
+- The exact dialogue, visuals and music at large dips or spikes, plus whether the pattern persists with more viewers.
+- Title/thumbnail impressions and click-through rate where applicable. For Shorts, use the relevant feed engagement metrics; do not compare them directly with standard-video thumbnail CTR.
+- Comprehension or satisfaction feedback. Completion without understanding is not success for an educational video.
+
+Test one major variable at a time: first hook clarity, then diagram timing, then voice delivery, then optional music/humor variations. Compare similar duration/topic/traffic cohorts; differences between two unrelated uploads are not causal evidence. Keep a version log linking each edit to its hypothesis and outcome. A shorter cut can mechanically improve completion while reducing useful viewing time, so assess both retention and delivery of the explanation.
+
+### Practical priority order under Colab Free
+
+1. Fix diagram-to-speech alignment and eliminate the premature ending cue. These are low-cost editing changes with strong relevance to the observed plan.
+2. Listen to the opening and hardest explanatory turns; repair pronunciation and rhythm. Run the previously specified backend audition before replacing the TTS model.
+3. Tighten the first exchange and move nuance to the point where it helps understanding. Preserve factual qualifications.
+4. Verify phone-size captions/diagrams and improve background contrast without generating new assets.
+5. Tune the score around the real reveal, then test whether the single joke/callback improves or disrupts the experience.
+6. Use audience feedback to decide whether additional animation or model generation is worthwhile. Do not exhaust a free session rendering unused alternate backgrounds or many speculative takes.
+
+For edit experiments, reuse approved art and narration caches, render short low-resolution previews of the changed section, and produce the final 720p cut only after review. Low-resolution previews assess timing/composition; verify text legibility and audio quality again at delivery resolution. Keep model stages sequential and respect the existing resource limits.
+
+### References and access limitations
+
+- YouTube Help, [Measure key moments for audience retention](https://support.google.com/youtube/answer/9314415?hl=en). Official analytics guidance; retrieval blocked in this session.
+- YouTube Help, [Understand your YouTube video reach](https://support.google.com/youtube/answer/9314486?hl=en). Context for separating packaging/reach from in-video retention; retrieval blocked.
+- Brame, C. J. (2016), [Effective Educational Videos: Principles and Guidelines for Maximizing Student Learning from Video Content](https://pmc.ncbi.nlm.nih.gov/articles/PMC5132380/). Review of cognitive load, engagement and active learning; retrieval blocked. Educational design guidance is not a guaranteed social-video retention formula.
+- Guo, P. J., Kim, J., and Rubin, R. (2014), [How Video Production Affects Student Engagement: An Empirical Study of MOOC Videos](https://groups.csail.mit.edu/uid/other-pubs/las2014-pguo-engagement.pdf). Observational educational-video research; retrieval blocked. Do not transfer effect sizes or length recommendations directly to this audience.
+- Gruber, M. J., Gelman, B. D., and Ranganath, C. (2014), [States of Curiosity Modulate Hippocampus-Dependent Learning via the Dopaminergic Circuit](https://pmc.ncbi.nlm.nih.gov/articles/PMC4252494/). Controlled learning/memory research; retrieval blocked. It supports investigating curiosity, not a claim that a cliffhanger guarantees watch time.
+
+**Conclusion for the current project:** the most concrete weaknesses are explanation/visual misalignment, an opening that delays its main question, an early ending signal, and unverified speech naturalness. The historical material also suggests repetitive framing and a need for phone-legibility review. Actual audience losses remain unmeasured. Improve the clarity and payoff of the current story before adding more models or more memes.
