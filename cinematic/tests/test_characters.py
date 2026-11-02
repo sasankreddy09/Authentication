@@ -115,6 +115,30 @@ class CharacterTests(unittest.TestCase):
         self.assertFalse(np.array_equal(a,blink));self.assertFalse(np.array_equal(a,mouth))
         self.assertTrue(np.array_equal(a,np.asarray(p._pose_image('idle',{'speaking':False,'viseme':'wide'}))))
         self.assertIsNone(ch.atlas_pose('point',view='back'))
+    def test_pose_switch_has_no_double_face_or_unregistered_patch(self):
+        fixture(self.root, 'arjun')
+        ch = SB.load('arjun', 'test-v2', self.root)
+        painter = SA.AtlasPainter(ch, .3)
+        face = {'blink': True, 'speaking': True, 'viseme': 'wide'}
+        # Patches from the idle master must never overlay a separately generated pose.
+        self.assertTrue(np.array_equal(np.asarray(painter._pose_image('point', face)),
+                                       np.asarray(painter._pose_image('point', {}))))
+        previous = Image.new('RGBA', (640, 640))
+        switched = Image.new('RGBA', (640, 640))
+        painter.draw(previous, (100, 100), 'point', face, pid_prev='idle', u=.25)
+        painter.draw(switched, (100, 100), 'point', face, pid_prev='idle', u=.75)
+        idle = Image.new('RGBA', (640, 640))
+        point = Image.new('RGBA', (640, 640))
+        painter.draw(idle, (100, 100), 'idle', face)
+        painter.draw(point, (100, 100), 'point', face)
+        self.assertEqual(previous.tobytes(), idle.tobytes())
+        self.assertEqual(switched.tobytes(), point.tobytes())
+
+    def test_patch_alignment_rejects_out_of_bounds(self):
+        master = Image.new('RGB', (64, 64), 'white')
+        with self.assertRaises(ValueError):
+            studio.align_patch(master, master, [-2, 3, 30, 30])
+
     def test_content_hash_survives_approval(self):
         d=fixture(self.root,'arjun',approved=False);m=json.loads((d/'manifest.json').read_text());h=SB.content_fingerprint(m)
         before=SB.manifest_sha(d/'manifest.json');after=SB.approve(d,'test reviewer')
