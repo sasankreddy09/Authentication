@@ -17,13 +17,25 @@ Boy reference: red jacket, yellow striped shirt, teal trousers. The overalls des
 Girl reference: auburn ponytail, teal tie, cream floral shirt. Older hoodie/butterfly defaults are superseded.
 This notebook stops for design and animation reviews. GPU inference and visual quality remain unverified until you run it.
 Keep new candidate folders for changed inputs; approved assets are immutable.
+
+### RAM recovery
+Start with **Runtime > Disconnect and delete runtime**, reconnect to a T4 GPU, then run setup.
+The low-memory loader quantizes both the transformer and text encoder to NF4, loads weights only
+for uncached jobs, and uses VAE tiling/slicing. CPU offload still uses host RAM; this is not a
+promise that every free Colab allocation can fit the model. If loading still exhausts RAM,
+use a High-RAM GPU runtime if available. Keep the last cell output to identify the failing stage.
+This version uses a new `reference-v2-lowram-01` candidate because quantization changed;
+your previous Drive images remain untouched. For a video from already completed images only,
+set STUDIO to your old candidate and run Quick video demo directly after Drive settings.
+Do not rerun generation into that old candidate: its request fingerprints differ.
+
 """, "markdown")
     add('''from pathlib import Path
 from google.colab import drive
 drive.mount('/content/drive')
 ROOT = Path('/content/drive/MyDrive/ai-video')
 ASSETS = ROOT / '_assets'
-STUDIO = ASSETS / 'studio/reference-v2-candidate-01'
+STUDIO = ASSETS / 'studio/reference-v2-lowram-01'
 STUDIO.mkdir(parents=True, exist_ok=True)
 REFERENCES = {'arjun': str(ROOT / 'references/arjun.png'), 'meera': str(ROOT / 'references/meera.png')}
 REVIEWER = ''
@@ -78,11 +90,13 @@ import diffusers
 if not hasattr(diffusers, 'Flux2KleinPipeline'):
     raise RuntimeError('Installed Diffusers lacks Flux2KleinPipeline; see cinematic/README.md.')
 ''')
-    add('''# Small PoC only. Source image -> portrait -> full-body master -> alternate view.
+    add('''# Small PoC only. Process one character at a time to bound work per run.
+# Change this to ['meera'] and rerun after Arjun finishes (or use both).
+POC_CHARACTERS = ['arjun']
 POC = STUDIO / 'poc'
 gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
 try:
-    results = studio_run.run_poc(gen, POC, style_refs={k: [v] for k,v in REFERENCES.items()})
+    results = studio_run.run_poc(gen, POC, characters=POC_CHARACTERS, style_refs={k: [v] for k,v in REFERENCES.items()})
 finally:
     gen.unload()
 print(results)
@@ -90,10 +104,22 @@ if any(v not in ('made', 'skipped') for v in results.values()):
     raise RuntimeError('Some PoC jobs failed; review logs before continuing.')
 items = []
 for cid in REFERENCES:
-    items.append((cid + ' supplied reference', Image.open(REFERENCES[cid])))
-    items.extend((cid + ' ' + p.stem, Image.open(p)) for p in sorted((POC / cid).glob('*.png')))
-studio.contact_sheet(items, STUDIO / 'reference-comparison.png', cols=5, cell=320)
-display(Image.open(STUDIO / 'reference-comparison.png'))
+    paths = [(cid + ' supplied reference', Path(REFERENCES[cid]))]
+    paths += [(cid + ' ' + p.stem, p) for p in sorted((POC / cid).glob('*.png'))]
+    for label, path in paths:
+        with Image.open(path) as source:
+            thumb = source.convert('RGB')
+            thumb.thumbnail((320, 320))
+            items.append((label, thumb))
+try:
+    studio.contact_sheet(items, STUDIO / 'reference-comparison.png', cols=5, cell=320)
+finally:
+    for _, thumb in items:
+        thumb.close()
+    del items
+with Image.open(STUDIO / 'reference-comparison.png') as sheet:
+    display(sheet)
+print('Before the demo/design cells, run this cell for both arjun and meera.')
 ''')
     add("""## Quick video demo — run after the image cell
 The initial image set now includes `view_back.png`, conditioned on each full-body master.

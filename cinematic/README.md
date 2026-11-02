@@ -166,3 +166,22 @@ CPU tests encode and decode synthetic inputs, verify frame count/codec and prese
 existing output on missing input. GPU inference and visual quality require Colab
 validation with real references. Existing design/animation/pack review stops are
 intentional; Run all still pauses at those production gates.
+
+## Colab host-RAM recovery
+
+The current cinematic notebook quantizes both the FLUX transformer and text encoder
+with bitsandbytes NF4/double quantization, requests low-CPU-memory loading and enables
+VAE tiling/slicing. LocalGen loads weights lazily so cached jobs do not load a model.
+Segmentation cleanup now runs on both success and failure. These reduce memory
+pressure; CPU offloading still retains weights in host RAM and no Colab RAM benchmark
+has been performed here.
+
+After a RAM crash, delete/reconnect the runtime and choose a T4 GPU. The new default
+candidate is `reference-v2-lowram-01`; the backend fingerprint changed to prevent
+silently mixing quantization configurations. Existing Drive candidates are preserved.
+Run the PoC cell for `POC_CHARACTERS = ['arjun']`, then change it to `['meera']` and
+rerun. Processing one character per run limits work, but the model's peak footprint
+is reduced by quantization, not by the character count. Matching jobs resume.
+If loading still exceeds available host RAM, use a High-RAM GPU allocation if available.
+For already generated images, skip model cells and run the CPU video demo against
+the original candidate path.

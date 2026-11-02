@@ -91,19 +91,28 @@ class HostedGen:
 
 
 class LocalGen:
-    name = "local"
+    name = "local-nf4-both-v1"
 
     def __init__(self, revision, log=print):
         import torch, studio
         self.torch, self.log, self.revision = torch, log, revision
+        # Defer weights until an uncached job actually requests inference.
+        self.load_s = None
+
+    def _ensure_loaded(self):
+        if hasattr(self, "pipe"):
+            return
+        import studio
+        self.free_cache()
         t0 = time.time()
-        self.pipe, self.dtype = studio.load_flux(revision, log)
+        self.pipe, self.dtype = studio.load_flux(self.revision, self.log)
         self.load_s = round(time.time() - t0, 1)
-        log(f"model load: {self.load_s}s ({self.dtype})")
+        self.log(f"model load: {self.load_s}s ({self.dtype}); transformer + text encoder NF4")
 
     def __call__(self, prompt, refs, size, seed):
         import studio
         from PIL import Image
+        self._ensure_loaded()
         t = self.torch
         if t.cuda.is_available():
             t.cuda.reset_peak_memory_stats()
@@ -127,6 +136,8 @@ class LocalGen:
 
     def unload(self):
         if hasattr(self, "pipe"):
+            if hasattr(self.pipe, "maybe_free_model_hooks"):
+                self.pipe.maybe_free_model_hooks()
             del self.pipe
         self.free_cache()
 

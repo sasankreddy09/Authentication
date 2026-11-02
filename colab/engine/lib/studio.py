@@ -73,7 +73,7 @@ def gpu_report():
 
 
 def load_flux(revision, log=print):
-    """FLUX.2 [klein] 4B for a T4: transformer fp16 on the GPU, text encoder 4-bit (bitsandbytes), model offload.
+    """FLUX.2 [klein] 4B for a T4: transformer and text encoder 4-bit (bitsandbytes), model offload.
     bf16 only on GPUs that support it natively. Raises with a clear message if this diffusers has no pipeline."""
     import torch
     try:
@@ -90,11 +90,15 @@ def load_flux(revision, log=print):
         from diffusers import PipelineQuantizationConfig
         kw["quantization_config"] = PipelineQuantizationConfig(quant_backend="bitsandbytes_4bit",
                                                                quant_kwargs={"load_in_4bit": True,
-                                                                             "bnb_4bit_compute_dtype": dtype},
-                                                               components_to_quantize=["text_encoder"])
+                                                                             "bnb_4bit_compute_dtype": dtype,
+                                                                             "bnb_4bit_quant_type": "nf4",
+                                                                             "bnb_4bit_use_double_quant": True},
+                                                               components_to_quantize=["transformer", "text_encoder"])
     except Exception as e:
-        raise RuntimeError("4-bit text encoder unavailable; fix the Studio dependencies before loading weights") from e
-    pipe = Flux2KleinPipeline.from_pretrained(FLUX_MODEL, revision=revision, torch_dtype=dtype, **kw)
+        raise RuntimeError("4-bit transformer/text encoder unavailable; fix the Studio dependencies before loading weights") from e
+    pipe = Flux2KleinPipeline.from_pretrained(FLUX_MODEL, revision=revision, torch_dtype=dtype, low_cpu_mem_usage=True, **kw)
+    pipe.enable_vae_tiling()
+    pipe.enable_vae_slicing()
     pipe.enable_model_cpu_offload()
     log(f"FLUX.2 klein 4B loaded ({dtype}, {rep})")
     return pipe, dtype
@@ -135,37 +139,43 @@ def remove_background(images, revision, device="cuda"):
     from PIL import ImageFilter
     from torchvision import transforms
     from transformers import AutoModelForImageSegmentation
-    m = AutoModelForImageSegmentation.from_pretrained(SEG_MODEL, revision=revision, trust_remote_code=True)
-    m.to(device).eval()
-    tf = transforms.Compose([transforms.Resize((1024, 1024)), transforms.ToTensor(),
-                             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
-    out = []
-    with torch.no_grad():
-        for im in images:
-            x = tf(im.convert("RGB")).unsqueeze(0).to(device)
-            pred = m(x)[-1].sigmoid().cpu()[0, 0]
-            # Shrink the predicted matte slightly before a soft edge. This removes
-            # the bright pixels of the studio backdrop that BiRefNet often retains.
-            mask = transforms.ToPILImage()(pred).resize(im.size, Image.Resampling.BILINEAR)
-            mask = mask.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.7))
-            rgb = np.asarray(im.convert("RGB"), dtype=np.float32)
-            alpha = np.asarray(mask, dtype=np.float32) / 255.0
-            # Unmix the estimated uniform backdrop on semitransparent edges.
-            # Use image corners only: no generated foreground pixel is modified
-            # except partially transparent cutout boundaries.
-            corners = np.concatenate((rgb[:8, :8].reshape(-1, 3),
-                                      rgb[:8, -8:].reshape(-1, 3),
-                                      rgb[-8:, :8].reshape(-1, 3),
-                                      rgb[-8:, -8:].reshape(-1, 3)))
-            backdrop = np.median(corners, axis=0)
-            edge = (alpha > 0.02) & (alpha < 0.98)
-            safe_alpha = np.maximum(alpha[edge, None], 0.08)
-            rgb[edge] = np.clip((rgb[edge] - (1 - alpha[edge, None]) * backdrop)
-                                / safe_alpha, 0, 255)
-            rgba = np.dstack((np.uint8(np.round(rgb)), np.uint8(np.round(alpha * 255))))
-            out.append(Image.fromarray(rgba, "RGBA"))
-    del m
-    torch.cuda.empty_cache()
+    m = AutoModelForImageSegmentation.from_pretrained(SEG_MODEL, revision=revision, trust_remote_code=True, low_cpu_mem_usage=True)
+    x = pred = None
+    try:
+        m.to(device).eval()
+        tf = transforms.Compose([transforms.Resize((1024, 1024)), transforms.ToTensor(),
+                                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
+        out = []
+        with torch.no_grad():
+            for im in images:
+                x = tf(im.convert("RGB")).unsqueeze(0).to(device)
+                pred = m(x)[-1].sigmoid().cpu()[0, 0]
+                # Shrink the predicted matte slightly before a soft edge. This removes
+                # the bright pixels of the studio backdrop that BiRefNet often retains.
+                mask = transforms.ToPILImage()(pred).resize(im.size, Image.Resampling.BILINEAR)
+                mask = mask.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.7))
+                rgb = np.asarray(im.convert("RGB"), dtype=np.float32)
+                alpha = np.asarray(mask, dtype=np.float32) / 255.0
+                # Unmix the estimated uniform backdrop on semitransparent edges.
+                # Use image corners only: no generated foreground pixel is modified
+                # except partially transparent cutout boundaries.
+                corners = np.concatenate((rgb[:8, :8].reshape(-1, 3),
+                                          rgb[:8, -8:].reshape(-1, 3),
+                                          rgb[-8:, :8].reshape(-1, 3),
+                                          rgb[-8:, -8:].reshape(-1, 3)))
+                backdrop = np.median(corners, axis=0)
+                edge = (alpha > 0.02) & (alpha < 0.98)
+                safe_alpha = np.maximum(alpha[edge, None], 0.08)
+                rgb[edge] = np.clip((rgb[edge] - (1 - alpha[edge, None]) * backdrop)
+                                    / safe_alpha, 0, 255)
+                rgba = np.dstack((np.uint8(np.round(rgb)), np.uint8(np.round(alpha * 255))))
+                out.append(Image.fromarray(rgba, "RGBA"))
+    finally:
+        del m, x, pred
+        import gc
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
     return out
 
 
