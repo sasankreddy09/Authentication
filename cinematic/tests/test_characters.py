@@ -144,8 +144,31 @@ class CharacterTests(unittest.TestCase):
     def test_rhubarb_mapping_and_silence(self):
         self.assertEqual(CW.rhubarb_visemes([{'start':.1,'end':.3,'value':'D'}],10,5),['rest','wide','wide','rest','rest'])
         with self.assertRaises(ValueError):CW.rhubarb_visemes([{'start':0,'end':1,'value':'?'}],10,10)
+    def test_studio_quantizes_both_large_components(self):
+        fake_diffusers = MagicMock(); fake_torch = MagicMock()
+        with patch.dict(sys.modules, {'diffusers': fake_diffusers, 'torch': fake_torch}), \
+             patch.object(studio, 'gpu_report', return_value={'cuda': True, 'native_bf16': False}), \
+             patch.object(studio, 'memory_snapshot', return_value={'ram_available_gib': 8, 'vram_free_gib': 14}):
+            pipe, dtype = studio.load_flux('test-revision', log=lambda *a: None)
+        cfg = fake_diffusers.PipelineQuantizationConfig.call_args.kwargs
+        self.assertEqual(cfg['components_to_quantize'], ['transformer', 'text_encoder'])
+        self.assertTrue(cfg['quant_kwargs']['load_in_4bit'])
+        self.assertTrue(fake_diffusers.Flux2KleinPipeline.from_pretrained.call_args.kwargs['low_cpu_mem_usage'])
+        pipe.enable_model_cpu_offload.assert_called_once()
+        pipe.vae.enable_tiling.assert_called_once()
+
+    def test_studio_stops_before_loading_with_insufficient_memory(self):
+        fake_diffusers = MagicMock()
+        with patch.dict(sys.modules, {'diffusers': fake_diffusers, 'torch': MagicMock()}), \
+             patch.object(studio, 'gpu_report', return_value={'cuda': True}), \
+             patch.object(studio, 'memory_snapshot', return_value={'ram_available_gib': 2, 'vram_free_gib': 14}):
+            with self.assertRaisesRegex(RuntimeError, 'fresh GPU runtime'):
+                studio.load_flux('test-revision')
+        fake_diffusers.Flux2KleinPipeline.from_pretrained.assert_not_called()
+
     def test_generated_notebook_syntax(self):
         from build_notebook import build
+        self.assertEqual(json.loads((ROOT / 'colab/notebooks/colab_cinematic_characters_v2.ipynb').read_text()), build())
         for i,c in enumerate(build()['cells']):
             if c['cell_type']=='code':compile(''.join(c['source']),f'cell {i}','exec')
     def test_video_builder_changes_only_characters(self):

@@ -17,14 +17,21 @@ Boy reference: red jacket, yellow striped shirt, teal trousers. The overalls des
 Girl reference: auburn ponytail, teal tie, cream floral shirt. Older hoodie/butterfly defaults are superseded.
 This notebook stops for design and animation reviews. GPU inference and visual quality remain unverified until you run it.
 Keep new candidate folders for changed inputs; approved assets are immutable.
+Low-memory revision: both transformer and text encoder use 4-bit weights, with low-memory loading and VAE tiling.
+This reduces memory pressure but is not a verified Colab Free fit. Run cells individually from a fresh T4 runtime.
+If the runtime fails during the Drive-mount cell (01), no image model has loaded: check session allocation,
+Drive authorization and connectivity first. If it fails in cell 05, inspect the last memory-events.jsonl entry.
+Do not repeatedly rerun a crashing cell. Preserve the logs and completed outputs on Drive.
 """, "markdown")
     add('''from pathlib import Path
+import os
 from google.colab import drive
 drive.mount('/content/drive')
 ROOT = Path('/content/drive/MyDrive/ai-video')
 ASSETS = ROOT / '_assets'
-STUDIO = ASSETS / 'studio/reference-v2-candidate-01'
+STUDIO = ASSETS / 'studio/reference-v2-lowmem-01'
 STUDIO.mkdir(parents=True, exist_ok=True)
+os.environ['STUDIO_MEMORY_LOG'] = str(STUDIO / 'memory-events.jsonl')
 REFERENCES = {'arjun': str(ROOT / 'references/arjun.png'), 'meera': str(ROOT / 'references/meera.png')}
 REVIEWER = ''
 DESIGN_APPROVED = False
@@ -83,18 +90,14 @@ if not hasattr(diffusers, 'Flux2KleinPipeline'):
 ''')
     add('''# Small PoC only. Source image -> portrait -> full-body master -> alternate view.
 POC = STUDIO / 'poc'
-# Fail early when Colab has too little free RAM/VRAM to attempt large model loading.
-import psutil, torch
-ram_gb = psutil.virtual_memory().available / (2**30)
-vram_gb = torch.cuda.mem_get_info()[0] / (2**30) if torch.cuda.is_available() else 0
-print(f"Before FLUX: available RAM {ram_gb:.2f} GiB, free GPU VRAM {vram_gb:.2f} GiB")
-if ram_gb < 4 or vram_gb < 4:
-    raise MemoryError("Insufficient free memory for a FLUX attempt. Restart Colab and release other models.")
-gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
+gen = None
 try:
+    gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
+    studio.memory_snapshot('before_poc_inference')
     results = studio_run.run_poc(gen, POC, style_refs={k: [v] for k,v in REFERENCES.items()})
+    studio.memory_snapshot('poc_complete')
 finally:
-    gen.unload()
+    if gen is not None: gen.unload()
 print(results)
 if any(v not in ('made', 'skipped') for v in results.values()):
     raise RuntimeError('Some PoC jobs failed; review logs before continuing.')
@@ -122,8 +125,9 @@ for cid in REFERENCES:
     add('''# Minimal animation assets first; no full pose library yet.
 PROTOTYPE_JOBS = {'point_front', 'blink', 'mouth_closed', 'mouth_small', 'mouth_wide',
                   'mouth_round', 'mouth_teeth', 'mouth_smile_talk', 'expr_surprised'}
-gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
+gen = None
 try:
+    gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
     for cid in REFERENCES:
         master = STUDIO / cid / 'atlas/idle_front.png'
         CW.require_review(STUDIO / cid / 'design_approval.json', [master], 'design')
@@ -133,7 +137,7 @@ try:
                     (640, 832), 2000, {'character': cid, 'stage': 'animation-prototype'})
                 if status not in ('made', 'skipped'): raise RuntimeError(name + ': ' + status)
 finally:
-    gen.unload()
+    if gen is not None: gen.unload()
 ''')
     add('''# Segmentation is separate from image generation. Manually prepared RGBA cut-outs are accepted.
 for cid in REFERENCES:
@@ -163,14 +167,15 @@ for cid in REFERENCES:
     CW.record_review(STUDIO / cid / 'animation_approval.json', [master, ANIMATION_VIDEO],
                      'animation', REVIEWER, True)
 # New output names already made at prototype dimensions/seeds must retain identical requests.
-gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
+gen = None
 try:
+    gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
     for cid in REFERENCES:
         remaining = [j[0] for j in studio.ATLAS_JOBS if j[0] not in PROTOTYPE_JOBS]
         result = studio_run.run_atlas(gen, STUDIO, cid, size=(640,832), only=remaining)
         if any(v not in ('made','skipped') for v in result.values()): raise RuntimeError(result)
 finally:
-    gen.unload()
+    if gen is not None: gen.unload()
 ''')
     add('''# Finish cut-outs and prepare reviewed source specs. Reusing a candidate keeps completed images.
 for cid in REFERENCES:

@@ -145,3 +145,19 @@ Feature branch: `feat/cinematic-storybook-characters-v2`, based on `4f25ceb579b3
 The updated `colab/notebooks/colab_three_d_friends_te_v3_storybook.ipynb` binds approved Drive packs at runtime. You do not need to run `deliver.py` for this target. Set `CHARACTER_VERSIONS` to the approved versions (default `cinematic-v2` for both), supply the cinema/lobby folders and run it as described in [the Drive guide](../docs/GOOGLE_COLAB.md). The full atlas must support front/back views, worn 3D glasses, held glasses, popcorn and the gestures the story uses; plan validation checks this before speech. The two-pose prototype is insufficient.
 
 `deliver.py` remains an advanced export tool for making a separately pinned notebook from a template. The current video notebook, its default settings and the canonical source tree are maintained with `python colab/build_telugu.py`. Do not rebuild the unchanged Studio or historical video notebooks as part of that command.
+
+## Runtime reconnects: low-memory Studio revision
+
+The original `cinematic-v2-05` path quantized only the text encoder; the approximately 4B-parameter transformer was still loaded at 16-bit precision (roughly 8 GB of weight data before other components/overheads), and CPU offload was enabled only after loading. This is a credible host-RAM/VRAM pressure risk on a free Colab machine, not a confirmed diagnosis of an individual disconnected session.
+
+The updated Studio notebook requests NF4/double quantization for both `transformer` and `text_encoder`, `low_cpu_mem_usage=True`, model CPU offload and VAE tiling. It checks available host RAM and VRAM before loading and records stage/resource readings to `MyDrive/ai-video/_assets/studio/reference-v2-lowmem-01/memory-events.jsonl`. The 5 GiB host / 10 GiB GPU admission thresholds are conservative heuristics, not a measured guarantee. No full-precision fallback is attempted when quantization configuration fails. GPU loading/quality remain unverified on an actual T4; CPU contract tests cannot certify CUDA compatibility.
+
+Open a fresh copy of the updated GitHub notebook: an existing Drive copy does not automatically receive repository changes. Save current outputs, disconnect/delete the old runtime, choose an available T4 GPU, then run cells individually. Use the new candidate directory so older generated images are not treated as outputs of the new quantization settings. Reviewed/approved packs remain immutable.
+
+- Failure at **cell 01**: only Drive mounting/configuration runs there. Check GPU allocation, Drive authorization and browser/session connectivity; model memory is not yet involved.
+- Last event **before_model_load**, followed by kernel reset: loading or a session interruption is implicated; host OOM is possible, not proven. Retain the last console lines, RAM graph and Colab runtime logs.
+- Last event **weights_loaded/model_ready**: weights loaded; investigate offload setup or inference next. A CUDA OOM traceback identifies a different failure mode from a browser reconnect.
+- Last event **before_poc_inference**: investigate inference peaks and reference-image workload. Smaller image dimensions may reduce inference memory but cannot solve an oversized model-load peak.
+- No traceback with runtime variables/files lost: possible kernel termination or runtime reclamation. If variables survive reconnection, investigate the client connection rather than assuming a model crash.
+
+The event file is a stage snapshot, not a continuous peak-memory profiler. Missing later entries cannot establish OOM by themselves. Do not repeatedly retry a hard crash; supply the runtime GPU type, last event and Colab system message. If this preset still cannot fit, prepare approved assets in a separately suitable runtime or import already-prepared packs; the ordinary Telugu video renderer does not load FLUX.
