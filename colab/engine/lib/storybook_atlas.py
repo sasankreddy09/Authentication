@@ -180,10 +180,11 @@ class AtlasPainter:
         P = self.ch.man["poses"][pid]
         k = self._place(P)[0]
         ims = [(self._pose_image(pid, face), P, 1.0)]
-        if pid_prev and pid_prev != pid and u < 1.0:
+        if pid_prev and pid_prev != pid and u < 0.5:
+            # Two complete AI-rendered poses cannot be alpha-blended without showing
+            # two heads/faces. Use a single registered pose per frame instead.
             Pp = self.ch.man["poses"][pid_prev]
-            e = SB.ease(u)
-            ims = [(self._pose_image(pid_prev, face), Pp, 1 - e), (ims[0][0], P, e)]
+            ims = [(self._pose_image(pid_prev, face), Pp, 1.0)]
         sway, breathe = motion
         sway_q, breathe_q = round(sway * 10) / 10, round(breathe * 2000) / 2000      # quantized: frames reuse sprites
         sprites = []
