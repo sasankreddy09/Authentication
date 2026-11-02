@@ -1,13 +1,13 @@
 {
- "plan_version": 4,
- "project": "three_d_friends_te_v4_cinematic",
+ "plan_version": 5,
+ "project": "three_d_friends_te_v5_cinematic",
  "title": "త్రీడీ సినిమాలో బొమ్మ మన దగ్గరికి వచ్చినట్టు ఎందుకు కనిపిస్తుంది?",
  "language": "te",
  "story_mode": "two_friends_cinematic",
  "visual_style": "cinematic_atlas",
  "license_strict": true,
  "factual_dialogue": true,
- "logline": "సినిమా చూస్తూ తల వంచిన అర్జున్‌కు, మీరా రెండు కళ్ల చూపు మరియు పోలరైజ్డ్ త్రీడీ అద్దాల పని వివరిస్తుంది.",
+ "logline": "Popcorn దగ్గరికి వచ్చినట్టు ఎందుకు కనిపించిందన్న ప్రశ్నకు, రెండు కళ్ల చూపు మరియు పోలరైజ్డ్ అద్దాల పని ద్వారా సమాధానం; చివరలో చిన్న నవ్వు.",
  "notebook": {
   "emoji": "🎬",
   "name": "Two-Friend Explainer",
@@ -481,10 +481,9 @@
     {
      "speaker": "arjun",
      "tone": "awe",
-     "text": "అమ్మో! ఆ popcorn నా మీద పడుతుందనుకున్నా!",
-     "kind": "observation",
-     "tts": "అమ్మో! ఆ పాప్‌కార్న్ నా మీద పడుతుందనుకున్నా!",
-     "intent": "playful_disbelief",
+     "text": "అమ్మో! తెర మీద popcorn నా మీదకి వచ్చినట్టు ఎలా కనిపించింది?",
+     "kind": "question",
+     "tts": "అమ్మో! తెర మీద పాప్‌కార్న్ నా మీదకి వచ్చినట్టు ఎలా కనిపించింది?",
      "act": {
       "expr": "surprised",
       "gesture": "duck"
@@ -492,25 +491,10 @@
     },
     {
      "speaker": "meera",
-     "tone": "happy",
-     "text": "సినిమా చూస్తున్నావా, popcornకి దారి ఇస్తున్నావా?",
-     "kind": "reaction",
-     "tts": "సినిమా చూస్తున్నావా, పాప్‌కార్న్కి దారి ఇస్తున్నావా?",
-     "intent": "playful_remark",
-     "act": {
-      "expr": "smile"
-     }
-    },
-    {
-     "speaker": "arjun",
      "tone": "curious",
-     "text": "నవ్వకు! తెర మీద బొమ్మ నా దగ్గరికి వచ్చినట్టు ఎలా కనిపించింది?",
-     "kind": "question",
-     "tts": "నవ్వకు! తెర మీద బొమ్మ నా దగ్గరికి వచ్చినట్టు ఎలా కనిపించింది?",
-     "intent": "genuine_curiosity",
-     "act": {
-      "expr": "confused"
-     }
+     "text": "అది తెలుసుకోవాలంటే… తెరనే కాదు, నీ రెండు కళ్లనీ గమనించాలి.",
+     "kind": "instruction",
+     "tts": "అది తెలుసుకోవాలంటే… తెరనే కాదు, నీ రెండు కళ్లనీ గమనించాలి."
     }
    ],
    "story": {
@@ -528,7 +512,9 @@
         "arjun": {
          "wear": [
           "3d_glasses"
-         ]
+         ],
+         "gesture": "duck",
+         "expr": "surprised"
         },
         "meera": {
          "wear": [
@@ -557,7 +543,7 @@
        "line": 0,
        "at": 0.0
       },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces."
      },
      {
       "id": "v2",
@@ -571,53 +557,6 @@
         "arjun": {
          "wear": [
           "3d_glasses"
-         ],
-         "gesture": "duck",
-         "expr": "surprised"
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "subject": "arjun",
-       "screen": "clean+popcorn",
-       "push": true,
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "arjun": {
-           "expr": "surprised",
-           "gesture": "duck"
-          },
-          "meera": {
-           "gesture": "idle",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 0,
-       "at": 0.35
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v3",
-      "intent": "reaction",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "reaction",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
          ]
         },
         "meera": {
@@ -627,15 +566,13 @@
         }
        },
        "subject": "meera",
-       "screen": "clean+popcorn",
        "push": true,
        "changes": [
         {
          "t": 0.0,
          "chars": {
           "meera": {
-           "expr": "smile",
-           "gesture": "idle"
+           "gesture": "point"
           },
           "arjun": {
            "gesture": "nod",
@@ -649,50 +586,7 @@
        "line": 1,
        "at": 0.0
       },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v4",
-      "intent": "two_friend",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "two_shot",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "screen": "clean+popcorn",
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "arjun": {
-           "expr": "confused",
-           "gesture": "idle"
-          },
-          "meera": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 2,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces."
      }
     ]
    }
@@ -708,53 +602,21 @@
     "arjun",
     "meera"
    ],
-   "claims": [
-    "c_f7"
-   ],
+   "claims": [],
    "lines": [
-    {
-     "speaker": "meera",
-     "tone": "friendly",
-     "text": "అద్దాలు అలాగే ఉంచు. ఒక్క కన్ను మూసి చూడు.",
-     "kind": "instruction",
-     "tts": "అద్దాలు అలాగే ఉంచు. ఒక్క కన్ను మూసి చూడు.",
-     "intent": "guiding_demo",
-     "act": {
-      "expr": "smile"
-     }
-    },
-    {
-     "speaker": "arjun",
-     "tone": "awe",
-     "text": "నాకు దగ్గరికి వస్తున్నట్టు అనిపించడం తగ్గింది. కానీ బొమ్మలో ఇంకా కొంత లోతు కనిపిస్తోంది.",
-     "kind": "observation",
-     "tts": "నాకు దగ్గరికి వస్తున్నట్టు అనిపించడం తగ్గింది. కానీ బొమ్మలో ఇంకా కొంత లోతు కనిపిస్తోంది.",
-     "intent": "enthusiastic_discovery",
-     "act": {
-      "expr": "curious"
-     }
-    },
-    {
-     "speaker": "meera",
-     "tone": "explainer",
-     "text": "అవును. వస్తువుల పరిమాణం లాంటి సూచనలతో ఒక్క కన్నుతోనూ లోతును అంచనా వేయగలం.",
-     "kind": "fact",
-     "tts": "అవును. వస్తువుల పరిమాణం లాంటి సూచనలతో ఒక్క కన్నుతోనూ లోతును అంచనా వేయగలం.",
-     "intent": "explaining_observation",
-     "claims": [
-      "c_f7"
-     ]
-    },
     {
      "speaker": "arjun",
      "tone": "curious",
-     "text": "అయితే రెండు కళ్లతో చూస్తే ఇంకేం మారుతుంది?",
+     "text": "రెండు కళ్లతో చూసేది ఒకే బొమ్మ కాదా?",
      "kind": "question",
-     "tts": "అయితే రెండు కళ్లతో చూస్తే ఇంకేం మారుతుంది?",
-     "intent": "genuine_curiosity",
-     "act": {
-      "expr": "curious"
-     }
+     "tts": "రెండు కళ్లతో చూసేది ఒకే బొమ్మ కాదా?"
+    },
+    {
+     "speaker": "meera",
+     "tone": "friendly",
+     "text": "రెండు చూపుల్ని పక్కపక్కన చూస్తే తేడా తెలుస్తుంది. చూడు.",
+     "kind": "instruction",
+     "tts": "రెండు చూపుల్ని పక్కపక్కన చూస్తే తేడా తెలుస్తుంది. చూడు."
     }
    ],
    "story": {
@@ -762,151 +624,6 @@
     "visuals": [
      {
       "id": "v1",
-      "intent": "two_friend",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "two_shot",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "screen": "clean+popcorn",
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "meera": {
-           "expr": "smile",
-           "gesture": "point"
-          },
-          "arjun": {
-           "gesture": "idle",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 0,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v2",
-      "intent": "closeup",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "closeup",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "subject": "arjun",
-       "screen": "clean+popcorn",
-       "push": true,
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "arjun": {
-           "expr": "curious",
-           "gesture": "idle"
-          },
-          "meera": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 1,
-       "at": 0.0
-      },
-      "description": "Arjun describes his subjective one-eye observation; do not claim the wink is visible through dark glasses."
-     },
-     {
-      "id": "v3",
-      "intent": "animated_illustration",
-      "medium": "animated_demo",
-      "recipe": "demo",
-      "demo": {
-       "template": "eye_views",
-       "world": "cinema_seats"
-      },
-      "start": {
-       "line": 1,
-       "at": 0.45
-      },
-      "description": "Explanatory eye-view diagram; retain monocular depth cues. Do not flatten the physical screen or promise everyone sees the same effect."
-     },
-     {
-      "id": "v4",
-      "intent": "two_friend",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "two_shot",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "screen": "clean+popcorn",
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "meera": {
-           "gesture": "explain"
-          },
-          "arjun": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 2,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v5",
       "intent": "reaction",
       "medium": "character_scene",
       "recipe": "character",
@@ -926,17 +643,56 @@
         }
        },
        "subject": "arjun",
-       "screen": "clean+popcorn",
        "push": true,
        "changes": [
         {
          "t": 0.0,
          "chars": {
           "arjun": {
-           "expr": "curious",
            "gesture": "idle"
           },
           "meera": {
+           "gesture": "idle",
+           "expr": "listening"
+          }
+         }
+        }
+       ]
+      },
+      "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces."
+     },
+     {
+      "id": "v2",
+      "intent": "two_friend",
+      "medium": "character_scene",
+      "recipe": "character",
+      "character": {
+       "world": "cinema_seats",
+       "shot": "two_shot",
+       "chars": {
+        "arjun": {
+         "wear": [
+          "3d_glasses"
+         ]
+        },
+        "meera": {
+         "wear": [
+          "3d_glasses"
+         ]
+        }
+       },
+       "changes": [
+        {
+         "t": 0.0,
+         "chars": {
+          "meera": {
+           "gesture": "point"
+          },
+          "arjun": {
            "gesture": "nod",
            "expr": "listening"
           }
@@ -945,10 +701,10 @@
        ]
       },
       "start": {
-       "line": 3,
+       "line": 1,
        "at": 0.0
       },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces."
      }
     ]
    }
@@ -1063,64 +819,7 @@
        "line": 0,
        "at": 0.3
       },
-      "description": "Labelled left-eye and right-eye view diagram, followed by a depth-perception illustration. Not real footage."
-     },
-     {
-      "id": "v3",
-      "intent": "reaction",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "reaction",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "subject": "arjun",
-       "screen": "clean+popcorn",
-       "push": true,
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "arjun": {
-           "expr": "thinking",
-           "gesture": "idle"
-          },
-          "meera": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        },
-        {
-         "t": 0.5,
-         "chars": {
-          "meera": {
-           "gesture": "explain"
-          },
-          "arjun": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 1,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Labelled left-eye and right-eye view diagram, followed by a depth-perception illustration. Not real footage. Keep this diagram visible through the final explanatory turn; no reaction cutaway until the next scene."
      }
     ]
    }
@@ -1256,94 +955,7 @@
        "line": 1,
        "at": 0.2
       },
-      "description": "Schematic of a polarized 3D system; consistently label the two image channels and matching eye filters. Do not imply every 3D system works this way."
-     },
-     {
-      "id": "v3",
-      "intent": "reaction",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "reaction",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "subject": "arjun",
-       "push": true,
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "arjun": {
-           "expr": "surprised",
-           "gesture": "idle"
-          },
-          "meera": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 2,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v4",
-      "intent": "closeup",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "closeup",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "subject": "meera",
-       "push": true,
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "meera": {
-           "gesture": "explain"
-          },
-          "arjun": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 3,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Schematic of a polarized 3D system; consistently label the two image channels and matching eye filters. Do not imply every 3D system works this way. Keep this diagram visible through the final explanatory turn; no reaction cutaway until the next scene."
      }
     ]
    }
@@ -1360,9 +972,43 @@
     "meera"
    ],
    "claims": [
+    "c_f7",
     "c_f2"
    ],
    "lines": [
+    {
+     "speaker": "meera",
+     "tone": "friendly",
+     "text": "అద్దాలు అలాగే ఉంచు. ఒక్క కన్ను మూసి చూడు.",
+     "kind": "instruction",
+     "tts": "అద్దాలు అలాగే ఉంచు. ఒక్క కన్ను మూసి చూడు.",
+     "intent": "guiding_demo",
+     "act": {
+      "expr": "smile"
+     }
+    },
+    {
+     "speaker": "arjun",
+     "tone": "awe",
+     "text": "నాకు దగ్గరికి వస్తున్నట్టు అనిపించడం తగ్గింది. కానీ బొమ్మలో ఇంకా కొంత లోతు కనిపిస్తోంది.",
+     "kind": "observation",
+     "tts": "నాకు దగ్గరికి వస్తున్నట్టు అనిపించడం తగ్గింది. కానీ బొమ్మలో ఇంకా కొంత లోతు కనిపిస్తోంది.",
+     "intent": "enthusiastic_discovery",
+     "act": {
+      "expr": "curious"
+     }
+    },
+    {
+     "speaker": "meera",
+     "tone": "explainer",
+     "text": "అవును. వస్తువుల పరిమాణం లాంటి సూచనలతో ఒక్క కన్నుతోనూ లోతును అంచనా వేయగలం.",
+     "kind": "fact",
+     "tts": "అవును. వస్తువుల పరిమాణం లాంటి సూచనలతో ఒక్క కన్నుతోనూ లోతును అంచనా వేయగలం.",
+     "intent": "explaining_observation",
+     "claims": [
+      "c_f7"
+     ]
+    },
     {
      "speaker": "arjun",
      "tone": "happy",
@@ -1376,17 +1022,6 @@
      "act": {
       "expr": "happy"
      }
-    },
-    {
-     "speaker": "meera",
-     "tone": "happy",
-     "text": "అర్థమైంది కదా! ఇప్పుడు సినిమా చూద్దామా?",
-     "kind": "reaction",
-     "tts": "అర్థమైంది కదా! ఇప్పుడు సినిమా చూద్దామా?",
-     "intent": "playful_remark",
-     "act": {
-      "expr": "happy"
-     }
     }
    ],
    "story": {
@@ -1394,50 +1029,6 @@
     "visuals": [
      {
       "id": "v1",
-      "intent": "closeup",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "closeup",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "subject": "arjun",
-       "push": true,
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "arjun": {
-           "expr": "happy",
-           "gesture": "idle"
-          },
-          "meera": {
-           "gesture": "idle",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 0,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v2",
       "intent": "two_friend",
       "medium": "character_scene",
       "recipe": "character",
@@ -1461,11 +1052,11 @@
          "t": 0.0,
          "chars": {
           "meera": {
-           "expr": "happy",
-           "gesture": "idle"
+           "expr": "smile",
+           "gesture": "point"
           },
           "arjun": {
-           "gesture": "nod",
+           "gesture": "idle",
            "expr": "listening"
           }
          }
@@ -1473,10 +1064,25 @@
        ]
       },
       "start": {
+       "line": 0,
+       "at": 0.0
+      },
+      "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces."
+     },
+     {
+      "id": "v2",
+      "intent": "animated_illustration",
+      "medium": "animated_demo",
+      "recipe": "demo",
+      "demo": {
+       "template": "eye_views",
+       "world": "cinema_seats"
+      },
+      "start": {
        "line": 1,
        "at": 0.0
       },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Hold the explanatory eye-view illustration through the monocular-depth qualification and final answer. This is a schematic, not a stereoscopic phone display."
      }
     ]
    }
@@ -1495,36 +1101,26 @@
    "claims": [],
    "lines": [
     {
-     "speaker": "arjun",
-     "tone": "friendly",
-     "text": "ఈసారి మాత్రం తల వంచను.",
+     "speaker": "meera",
+     "tone": "happy",
+     "text": "ఇప్పుడు సినిమా చూస్తావా, popcornకి దారి ఇస్తావా?",
      "kind": "reaction",
-     "tts": "ఈసారి మాత్రం తల వంచను.",
+     "tts": "ఇప్పుడు సినిమా చూస్తావా, పాప్‌కార్న్కి దారి ఇస్తావా?",
      "intent": "playful_remark",
      "act": {
       "expr": "smile"
      }
     },
     {
-     "speaker": "meera",
-     "tone": "happy",
-     "text": "సరే, నీ ఛాలెంజ్ గుర్తుపెట్టుకుంటా!",
-     "kind": "reaction",
-     "tts": "సరే, నీ ఛాలెంజ్ గుర్తుపెట్టుకుంటా!",
-     "intent": "playful_remark",
-     "act": {
-      "expr": "curious"
-     }
-    },
-    {
      "speaker": "arjun",
      "tone": "happy",
-     "text": "అనుకున్నాను గానీ… దగ్గరికి వచ్చినట్టే ఉంది!",
+     "text": "విషయం అర్థమైంది… కానీ తల మాత్రం వినట్లేదు!",
      "kind": "reaction",
-     "tts": "అనుకున్నాను గానీ… దగ్గరికి వచ్చినట్టే ఉంది!",
+     "tts": "విషయం అర్థమైంది… కానీ తల మాత్రం వినట్లేదు!",
      "intent": "playful_remark",
      "act": {
-      "expr": "happy"
+      "expr": "smile",
+      "gesture": "duck"
      }
     }
    ],
@@ -1551,16 +1147,15 @@
          ]
         }
        },
-       "screen": "clean+popcorn",
        "changes": [
         {
          "t": 0.0,
          "chars": {
-          "arjun": {
+          "meera": {
            "expr": "smile",
            "gesture": "idle"
           },
-          "meera": {
+          "arjun": {
            "gesture": "idle",
            "expr": "listening"
           }
@@ -1572,104 +1167,16 @@
        "line": 0,
        "at": 0.0
       },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces."
      },
      {
       "id": "v2",
-      "intent": "reaction",
+      "intent": "two_friend",
       "medium": "character_scene",
       "recipe": "character",
       "character": {
        "world": "cinema_seats",
-       "shot": "reaction",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "subject": "meera",
-       "screen": "clean+popcorn",
-       "push": true,
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "meera": {
-           "expr": "curious",
-           "gesture": "idle"
-          },
-          "arjun": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 1,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v3",
-      "intent": "establishing",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "establishing",
-       "chars": {
-        "arjun": {
-         "wear": [
-          "3d_glasses"
-         ]
-        },
-        "meera": {
-         "wear": [
-          "3d_glasses"
-         ]
-        }
-       },
-       "screen": "clean+popcorn",
-       "changes": [
-        {
-         "t": 0.0,
-         "chars": {
-          "arjun": {
-           "expr": "happy",
-           "gesture": "idle"
-          },
-          "meera": {
-           "gesture": "nod",
-           "expr": "listening"
-          }
-         }
-        }
-       ]
-      },
-      "start": {
-       "line": 2,
-       "at": 0.0
-      },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
-     },
-     {
-      "id": "v4",
-      "intent": "reaction",
-      "medium": "character_scene",
-      "recipe": "character",
-      "character": {
-       "world": "cinema_seats",
-       "shot": "reaction",
+       "shot": "two_shot",
        "chars": {
         "arjun": {
          "wear": [
@@ -1684,16 +1191,13 @@
          ]
         }
        },
-       "subject": "arjun",
-       "screen": "clean+popcorn",
-       "push": true,
        "changes": [
         {
          "t": 0.0,
          "chars": {
           "arjun": {
-           "expr": "happy",
-           "gesture": "idle"
+           "expr": "smile",
+           "gesture": "duck"
           },
           "meera": {
            "gesture": "nod",
@@ -1704,10 +1208,10 @@
        ]
       },
       "start": {
-       "line": 2,
-       "at": 0.45
+       "line": 1,
+       "at": 0.0
       },
-      "description": "Same seated friends, glasses remain worn; the screen image is an illustration of perceived depth, not a physical object entering the room."
+      "description": "Same cinema, same seats and glasses. Keep subtitles clear of faces."
      }
     ]
    }
@@ -1731,25 +1235,9 @@
    "trail": []
   },
   {
-   "scene": "sc01",
-   "visual": "v3",
-   "intent": "reaction",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
-   "scene": "sc01",
-   "visual": "v4",
-   "intent": "two_friend",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
    "scene": "sc02",
    "visual": "v1",
-   "intent": "two_friend",
+   "intent": "reaction",
    "medium": "character_scene",
    "recipe": "character",
    "trail": []
@@ -1757,31 +1245,7 @@
   {
    "scene": "sc02",
    "visual": "v2",
-   "intent": "closeup",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
-   "scene": "sc02",
-   "visual": "v3",
-   "intent": "animated_illustration",
-   "medium": "animated_demo",
-   "recipe": "demo",
-   "trail": []
-  },
-  {
-   "scene": "sc02",
-   "visual": "v4",
    "intent": "two_friend",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
-   "scene": "sc02",
-   "visual": "v5",
-   "intent": "reaction",
    "medium": "character_scene",
    "recipe": "character",
    "trail": []
@@ -1803,14 +1267,6 @@
    "trail": []
   },
   {
-   "scene": "sc03",
-   "visual": "v3",
-   "intent": "reaction",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
    "scene": "sc04",
    "visual": "v1",
    "intent": "two_friend",
@@ -1824,28 +1280,12 @@
    "intent": "animated_illustration",
    "medium": "animated_demo",
    "recipe": "demo",
-   "trail": []
-  },
-  {
-   "scene": "sc04",
-   "visual": "v3",
-   "intent": "reaction",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
-   "scene": "sc04",
-   "visual": "v4",
-   "intent": "closeup",
-   "medium": "character_scene",
-   "recipe": "character",
    "trail": []
   },
   {
    "scene": "sc05",
    "visual": "v1",
-   "intent": "closeup",
+   "intent": "two_friend",
    "medium": "character_scene",
    "recipe": "character",
    "trail": []
@@ -1853,9 +1293,9 @@
   {
    "scene": "sc05",
    "visual": "v2",
-   "intent": "two_friend",
-   "medium": "character_scene",
-   "recipe": "character",
+   "intent": "animated_illustration",
+   "medium": "animated_demo",
+   "recipe": "demo",
    "trail": []
   },
   {
@@ -1869,23 +1309,7 @@
   {
    "scene": "sc06",
    "visual": "v2",
-   "intent": "reaction",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
-   "scene": "sc06",
-   "visual": "v3",
-   "intent": "establishing",
-   "medium": "character_scene",
-   "recipe": "character",
-   "trail": []
-  },
-  {
-   "scene": "sc06",
-   "visual": "v4",
-   "intent": "reaction",
+   "intent": "two_friend",
    "medium": "character_scene",
    "recipe": "character",
    "trail": []
@@ -1898,7 +1322,7 @@
  },
  "metadata": {
   "title": "త్రీడీ సినిమాలో బొమ్మ మన దగ్గరికి వచ్చినట్టు ఎందుకు కనిపిస్తుంది?",
-  "summary": "సినిమా చూస్తూ తల వంచిన అర్జున్‌కు, మీరా రెండు కళ్ల చూపు మరియు పోలరైజ్డ్ త్రీడీ అద్దాల పని వివరిస్తుంది.",
+  "summary": "Popcorn దగ్గరికి వచ్చినట్టు ఎందుకు కనిపించిందన్న ప్రశ్నకు, రెండు కళ్ల చూపు మరియు పోలరైజ్డ్ అద్దాల పని ద్వారా సమాధానం; చివరలో చిన్న నవ్వు.",
   "disclaimer": "వికీపీడియా (Depth perception, Polarized 3D system, Stereopsis, Stereoscopy) ఆధారంగా సరళంగా వివరించిన వీడియో. అర్జున్ మరియు మీరా కల్పిత, సొంతంగా గీసిన యానిమేషన్ పాత్రలు; 'దృష్టాంతం' అని ఉన్న దృశ్యాలు పునర్నిర్మాణాలు, నిజమైన ఫుటేజ్ కాదు.\nSimplified explainer based on Wikipedia (Depth perception, Polarized 3D system, Stereopsis, Stereoscopy). Arjun and Meera are fictional, original animated characters; scenes marked 'Illustration' are re-enactments, not footage.",
   "category": "Education",
   "audience": "Not made for kids",
@@ -1935,10 +1359,10 @@
  "environments": {
   "cinema": "v1"
  },
- "story_revision": "three_d_friends_te_v4",
+ "story_revision": "three_d_friends_te_v5",
  "localization": {},
  "review": [
-  "Telugu v4 wording and pronunciation require human review"
+  "New v5 Telugu dialogue and pronunciation require review"
  ],
  "script_review_status": "pending"
 }

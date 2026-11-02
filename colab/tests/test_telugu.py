@@ -57,13 +57,25 @@ class TargetTests(unittest.TestCase):
         visual['character']['chars']['arjun']['hold'] = 'popcorn'
         with self.assertRaises(ValueError): colab_budget.validate_v4_continuity(broken)
 
+    def test_diagrams_remain_visible_during_explanations(self):
+        plan = json.loads((ROOT / 'colab/plans/three_d_friends_te_v3_storybook_plan.json').read_text())
+        shots = {s['shot_id']: s for s in plan['shots']}
+        for sid, template, claim in [('sc03', 'eye_views', 'c_f2'), ('sc04', 'projector_glasses', 'c_f4')]:
+            shot = shots[sid]
+            line = next(i for i, turn in enumerate(shot['lines']) if claim in turn.get('claims', []))
+            for fraction in (0.0, 0.5, 0.99):
+                active = [v for v in shot['story']['visuals']
+                          if (v['start']['line'], v['start']['at']) <= (line, fraction)][-1]
+                self.assertEqual(active['recipe'], 'demo')
+                self.assertEqual(active['demo']['template'], template)
+
     def test_revised_dialogue_matches_source(self):
         plan = json.loads((ROOT / 'colab/plans/three_d_friends_te_v3_storybook_plan.json').read_text())
-        source = json.loads((ROOT / 'colab/stories/three_d_friends_te_v4/story.json').read_text())
-        self.assertEqual(plan['story_revision'], 'three_d_friends_te_v4')
+        source = json.loads((ROOT / 'colab/stories/three_d_friends_te_v5/story.json').read_text())
+        self.assertEqual(plan['story_revision'], 'three_d_friends_te_v5')
         self.assertEqual([[l['text'] for l in sh['lines']] for sh in plan['shots']],
                          [[t['text'] for t in sc['turns']] for sc in source['scenes']])
-        self.assertEqual(plan['project'], 'three_d_friends_te_v4_cinematic')
+        self.assertEqual(plan['project'], 'three_d_friends_te_v5_cinematic')
         self.assertEqual(plan['script_review_status'], 'pending')
 
     def test_offline_cached_audio_render(self):

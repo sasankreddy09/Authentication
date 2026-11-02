@@ -19,3 +19,7 @@ Read `docs/GOOGLE_COLAB.md` in the repository for the Drive folder tree and firs
 ### Current script revision: v4
 
 The notebook now embeds `colab/stories/three_d_friends_te_v4/story.json` via its updated plan. Default output is `MyDrive/ai-video/three_d_friends_te_v4_cinematic/`. Only cinema/v1 is required; the earlier lobby instruction applies to v3. The new script stays in the cinema, uses original Telugu humor, and selects CPU-generated curiosity music. Review the new dialogue/audio before sharing; previous script approvals do not apply.
+
+### Current script revision: v5 (retention edit)
+
+The notebook now uses the v5 story and writes to `MyDrive/ai-video/three_d_friends_te_v5_cinematic/`. The main question opens the video; the eye and glasses diagrams remain visible through their explanations; the one-eye qualification follows the mechanism; a two-line joke closes the video. This supersedes the v4 output-path note above. Character packs, cinema background and local Parler requirements remain the same. Actual speech duration, naturalness and audience retention still need verification.

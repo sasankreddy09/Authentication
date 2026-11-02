@@ -46,7 +46,7 @@ def validate_target(plan):
 
 def validate_v4_continuity(plan):
     """Deterministic constraints for this specific seated-cinema script, not general semantic proof."""
-    if plan.get('story_revision') != 'three_d_friends_te_v4':
+    if plan.get('story_revision') not in ('three_d_friends_te_v4', 'three_d_friends_te_v5'):
         return
     claims = {c['id'] for c in plan.get('claims', [])}
     for shot in plan['shots']:

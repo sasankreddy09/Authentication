@@ -1,7 +1,7 @@
 # ==== 1. Settings (you can edit these) ====
 NOTEBOOK_VERSION = "Telugu 3D cinematic characters — Colab Free preset v1"
 print("Notebook version:", NOTEBOOK_VERSION)
-PROJECT = "three_d_friends_te_v4_cinematic"
+PROJECT = "three_d_friends_te_v5_cinematic"
 DRIVE_ROOT  = "/content/drive/MyDrive/ai-video"
 VOICE       = "am_michael"                    # only used to test the voice model; each character's voice is in the plan
 SPEED_SCALE = 1.0                            # multiplies every line's speed (0.95 = a bit slower overall)
