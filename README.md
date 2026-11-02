@@ -1,62 +1,40 @@
-# Dashboard Application
+# Telugu video automation
 
-## Next.js + Supabase Authentication Dashboard
+A Colab video pipeline with reusable Arjun/Meera character artwork, narration-driven animation, Telugu subtitles, music and FFmpeg rendering. The former Next.js/Supabase website has been removed from this branch; its history remains in Git.
 
-A modern dashboard application built using **Next.js App Router** and **Supabase Authentication**, focused on clean UI, secure auth handling, user personalization, and client-side caching.
+**Start here:** [Google Colab and Drive setup](docs/GOOGLE_COLAB.md) · [Current architecture](docs/02_ARCHITECTURE.md) · [Evolution](docs/history/EVOLUTION.md)
 
----
+The cinematic upgrade applies only to **How 3D movies work in Telugu**:
 
-## Overview
+[Open the updated video notebook in Colab](https://colab.research.google.com/github/sasankreddy09/Authentication/blob/feat/cinematic-storybook-characters-v2/colab/notebooks/colab_three_d_friends_te_v3_storybook.ipynb)
 
-This project implements a simple dashboard that authenticates users via Supabase, displays a personalized greeting, and allows users to securely log out.  
-It follows real-world development practices such as defensive programming, modular components, and predictable authentication flow.
+Prepare the approved character atlases first using the [Character Studio workflow](cinematic/README.md). The supplied pictures are design references; the repository does not yet contain approved cinematic artwork. The old procedural packs remain available for historical videos. Other notebooks were relocated without changing their contents.
 
----
-
-## Features
-
-- Secure authentication using Supabase
-- Personalized user greeting
-- Safe access to user metadata
-- Fallback name handling
-- Client-side caching with localStorage
-- Logout functionality with redirect
-- Clean and responsive UI using CSS Modules
-
----
-
-## Tech Stack
-
-- **Frontend:** Next.js (App Router), React
-- **Authentication:** Supabase Auth
-- **Styling:** CSS Modules
-- **Routing:** Next.js Navigation
-- **State Management:** React Hooks
-- **Storage:** Browser localStorage
-
----
----
-
-## Setup & Installation
-
-### Clone the repository
-```bash
-git clone <repository-url>
-cd dashboard-app
-Install dependencies
-bash
-Copy code
-npm install
-Run the development server
-bash
-Copy code
-npm run dev
-Environment Variables
-Create a .env.local file in the root directory:
-
-env
-Copy code
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```text
+colab/
+  build_telugu.py          # builds only the upgraded Telugu video
+  build.py                 # general builder for legacy plans
+  engine/lib/              # editable Python engine, recovered from notebooks
+  engine/cells/            # existing general builder templates
+  targets/three_d_telugu/  # current target's editable cell sources
+  notebooks/              # self-contained Colab notebooks
+  plans/                   # per-video JSON inputs
+  stories/                 # stories and grounding records
+  assets/                  # characters, environments, historical packs
+  reports/                 # historical previews and QC evidence
+cinematic/                 # character design/import/review tooling and CPU tests
+docs/                      # current guides, architecture, historical research and prompts
+.github/workflows/         # CPU validation; no upload or deployment automation
 ```
 
+Generate the notebook after editing its source, then run the checks:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python colab/build_telugu.py
+python colab/build_telugu.py --check
+python -m unittest discover -s cinematic/tests -v
+python -m unittest discover -s colab/tests -v
+```
+
+FFmpeg and ffprobe must be on PATH for render tests. Tests use synthetic textures and cached synthetic audio, not approved character artwork. A real T4 run, visual comparison to the supplied references and Telugu listening review are still needed. Generation does not automatically publish to YouTube or publish a ChatGPT environment.
