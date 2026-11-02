@@ -94,8 +94,25 @@ def load_flux(revision, log=print):
                                                                components_to_quantize=["text_encoder"])
     except Exception as e:
         raise RuntimeError("4-bit text encoder unavailable; fix the Studio dependencies before loading weights") from e
-    pipe = Flux2KleinPipeline.from_pretrained(FLUX_MODEL, revision=revision, torch_dtype=dtype, **kw)
-    pipe.enable_model_cpu_offload()
+    # CPU offload lowers VRAM use but requires enough host RAM for model components.
+    # Record a pre-load resource snapshot; a kernel kill may bypass Python exceptions.
+    try:
+        import psutil
+        ram_free = psutil.virtual_memory().available / 2 ** 30
+        vram_free = torch.cuda.mem_get_info()[0] / 2 ** 30
+        log(f"Before FLUX load: free host RAM {ram_free:.2f} GiB, free VRAM {vram_free:.2f} GiB")
+        if ram_free < 4:
+            raise MemoryError(f"Only {ram_free:.2f} GiB free host RAM; restart or release other models before FLUX")
+        if vram_free < 4:
+            raise MemoryError(f"Only {vram_free:.2f} GiB free VRAM; restart or release other models before FLUX")
+    except ImportError:
+        log("psutil unavailable: host-memory preflight not measured")
+    try:
+        pipe = Flux2KleinPipeline.from_pretrained(FLUX_MODEL, revision=revision, torch_dtype=dtype, **kw)
+        pipe.enable_model_cpu_offload()
+    except Exception as exc:
+        raise RuntimeError(f"FLUX loading failed ({type(exc).__name__}): {exc}. "
+                           "Check torchao/diffusers compatibility and Colab RAM/VRAM.") from exc
     log(f"FLUX.2 klein 4B loaded ({dtype}, {rep})")
     return pipe, dtype
 
