@@ -131,6 +131,8 @@ def contact_sheet(items, out, cols=4, cell=384):
 def remove_background(images, revision, device="cuda"):
     """BiRefNet (MIT, pinned) → RGBA images. The mask is a proposal: the cut-out step lets a person fix it."""
     import torch
+    import numpy as np
+    from PIL import ImageFilter
     from torchvision import transforms
     from transformers import AutoModelForImageSegmentation
     m = AutoModelForImageSegmentation.from_pretrained(SEG_MODEL, revision=revision, trust_remote_code=True)
@@ -142,10 +144,26 @@ def remove_background(images, revision, device="cuda"):
         for im in images:
             x = tf(im.convert("RGB")).unsqueeze(0).to(device)
             pred = m(x)[-1].sigmoid().cpu()[0, 0]
-            mask = transforms.ToPILImage()(pred).resize(im.size)
-            r = im.convert("RGBA")
-            r.putalpha(mask)
-            out.append(r)
+            # Shrink the predicted matte slightly before a soft edge. This removes
+            # the bright pixels of the studio backdrop that BiRefNet often retains.
+            mask = transforms.ToPILImage()(pred).resize(im.size, Image.Resampling.BILINEAR)
+            mask = mask.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.7))
+            rgb = np.asarray(im.convert("RGB"), dtype=np.float32)
+            alpha = np.asarray(mask, dtype=np.float32) / 255.0
+            # Unmix the estimated uniform backdrop on semitransparent edges.
+            # Use image corners only: no generated foreground pixel is modified
+            # except partially transparent cutout boundaries.
+            corners = np.concatenate((rgb[:8, :8].reshape(-1, 3),
+                                      rgb[:8, -8:].reshape(-1, 3),
+                                      rgb[-8:, :8].reshape(-1, 3),
+                                      rgb[-8:, -8:].reshape(-1, 3)))
+            backdrop = np.median(corners, axis=0)
+            edge = (alpha > 0.02) & (alpha < 0.98)
+            safe_alpha = np.maximum(alpha[edge, None], 0.08)
+            rgb[edge] = np.clip((rgb[edge] - (1 - alpha[edge, None]) * backdrop)
+                                / safe_alpha, 0, 255)
+            rgba = np.dstack((np.uint8(np.round(rgb)), np.uint8(np.round(alpha * 255))))
+            out.append(Image.fromarray(rgba, "RGBA"))
     del m
     torch.cuda.empty_cache()
     return out
