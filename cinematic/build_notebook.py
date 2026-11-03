@@ -18,6 +18,13 @@ Girl reference: auburn ponytail, teal tie, cream floral shirt. Older hoodie/butt
 Approval flags default to True at your request; visual review is recorded as skipped. Required files are still checked. GPU inference and visual quality remain unverified until you run it.
 Keep new candidate folders for changed inputs; approved assets are immutable.
 
+### Facial patch validation and actual pack preview
+This revision uses a new facefix candidate and pack version; existing malformed packs are not repaired in place.
+Facial edits must match master dimensions and pass a surrounding-pixel alignment threshold before import.
+The threshold is a conservative heuristic, not a guarantee of correct eyes or anatomy. Rejected edits must
+be regenerated in a new candidate; do not lower the threshold merely to pass. Prompts now explicitly preserve
+irises, pupils and full-body framing. A CPU imported-pack preview is included before final pack approval.
+
 ### Rear-view correction
 Arjun now has an explicit short-hair/no-ponytail instruction; Meera has one high auburn ponytail
 with a teal tie. Rear generation uses each character's own master and portrait. The production
@@ -54,14 +61,14 @@ from google.colab import drive
 drive.mount('/content/drive')
 ROOT = Path('/content/drive/MyDrive/ai-video')
 ASSETS = ROOT / '_assets'
-STUDIO = ASSETS / 'studio/reference-v2-rearfix-01'
+STUDIO = ASSETS / 'studio/reference-v2-facefix-01'
 STUDIO.mkdir(parents=True, exist_ok=True)
 REFERENCES = {'arjun': str(ROOT / 'references/arjun.png'), 'meera': str(ROOT / 'references/meera.png')}
 REVIEWER = 'User-authorized; visual review skipped'
 DESIGN_APPROVED = True
 ANIMATION_APPROVED = True
 PACK_APPROVED = True
-NEW_VERSION = 'cinematic-v2'
+NEW_VERSION = 'cinematic-v2-facefix-01'
 ''' + '\n' + (ROOT / 'cinematic/runtime_support.py').read_text() + '''
 if 'runtime_diagnostics' in globals():
     runtime_diagnostics.stop()
@@ -304,13 +311,25 @@ for cid in REFERENCES:
     SA.import_atlas(src, ASSETS, cid, NEW_VERSION, spec, prov)
 print('Render production previews with preview.py, inspect every pose/expression, then approve below.')
 ''')
+    add("""## Render the actual imported pack
+This CPU preview composites the actual expression, blink and mouth patches and displays every pose.
+It is silent rig animation, not AI-generated walking. Patch crops are overlays, not standalone portraits.
+A preview file does not establish visual correctness.
+""", "markdown")
+    add((ROOT / 'cinematic/pack_preview.py').read_text() + '\n' + '''
+from IPython.display import Video, display
+for cid in REFERENCES:
+    movie = render_pack_preview(ASSETS / 'characters' / cid / NEW_VERSION)
+    print(cid, movie)
+    display(Video(str(movie), embed=True))
+''')
     add('''# A person must review the actual imported pack and its rendered animation.
 if not PACK_APPROVED or not REVIEWER.strip(): raise RuntimeError('Final pack approval pending')
 for cid in REFERENCES:
     vdir = ASSETS / 'characters' / cid / NEW_VERSION
     if not (vdir / 'previews/animation.mp4').is_file():
         raise RuntimeError('Render the imported pack preview first')
-    print(cid, SB.approve(vdir, REVIEWER, 'Reviewed reference comparison and rendered animation'))
+    print(cid, SB.approve(vdir, REVIEWER, 'User-authorized; visual review skipped; generated rig preview exists'))
 print('Next: bind approved versions and build a new video notebook with cinematic/deliver.py.')
 ''')
     nb = {"nbformat": 4, "nbformat_minor": 5, "metadata": {

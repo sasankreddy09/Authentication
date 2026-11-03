@@ -292,13 +292,15 @@ def estimate_head(cutout):
     return cx, float(top), float(f1), [float(cols.min()), float(f0), float(cols.max()), float(f1)]
 
 
-def align_patch(master, edited, box, search=8):
+def align_patch(master, edited, box, search=8, max_surround_diff=25):
     """Cut `box` (+ margin) out of an EDITED image as a feathered patch for the master, after finding the small shift
     (± search px) that best aligns the edit with the master around the box (edits can drift a few pixels)."""
     import numpy as np
     from PIL import ImageFilter
     m = np.asarray(master.convert("RGB")).astype(np.float32)
-    e = np.asarray(edited.convert("RGB").resize(master.size, Image.LANCZOS)).astype(np.float32)
+    if edited.size != master.size:
+        raise ValueError("Facial edit changed canvas size; regenerate with master dimensions")
+    e = np.asarray(edited.convert("RGB")).astype(np.float32)
     x0, y0, x1, y1 = [int(round(v)) for v in box]
     if not (0 <= x0 < x1 <= master.width and 0 <= y0 < y1 <= master.height):
         raise ValueError("facial patch box outside master canvas; fix the atlas spec")
@@ -322,6 +324,8 @@ def align_patch(master, edited, box, search=8):
                 bd, best = d, (dx, dy)
     if bd is None:
         raise ValueError("no valid facial alignment candidate; review the edited frame")
+    if bd > max_surround_diff:
+        raise ValueError(f"Facial edit framing/appearance drift: surround error {bd:.1f} exceeds {max_surround_diff}. Regenerate this edit; do not import it.")
     dx, dy = best
     patch = Image.fromarray(e[y0 + dy:y1 + dy, x0 + dx:x1 + dx].astype(np.uint8)).convert("RGBA")
     mask = Image.new("L", patch.size, 0)
@@ -339,7 +343,7 @@ def align_patch(master, edited, box, search=8):
 _KEEP = (" Preserve the exact same character: face, skin tone, eye colour, hairstyle, accessories, outfit, body "
          "proportions, lighting, art style, camera distance and plain light warm-grey background. Full body, head to "
          "shoes, nothing cropped. Do not redesign the character.")
-_FACE = (" Change ONLY the face as described; keep everything else in the image identical: pose, body, hands, "
+_FACE = (" Keep the full-body framing and eye positions unchanged. Both open eyes must retain their brown irises and dark pupils; never blank white eyes. Change ONLY the face as described; keep everything else in the image identical: pose, body, hands, "
          "clothes, hair, framing, lighting.")
 ATLAS_JOBS = [
     # ---- the 13 storybook poses (nod uses the listen image; the head nod is motion)
