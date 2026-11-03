@@ -80,7 +80,7 @@ runtime_diagnostics.note('installation: removing unused optional torchao')
 subprocess.run([sys.executable, '-m', 'pip', 'uninstall', '-y', 'torchao'], check=True)
 packages = ['diffusers>=0.36,<0.42', 'transformers>=4.57,<6', 'accelerate>=1.2,<2',
             'bitsandbytes>=0.45,<1', 'safetensors', 'Pillow', 'psutil',
-            'pydantic>=2.7,<3', 'einops', 'timm']
+            'pydantic>=2.7,<3', 'einops', 'timm', 'kornia>=0.7,<0.9']
 runtime_diagnostics.note('installation: resolving binary wheels with Colab constraints')
 # Binary-only avoids large source builds. Dependency conflicts stop explicitly;
 # do not remove constraints or replace Colab torch to force installation.
