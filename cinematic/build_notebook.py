@@ -119,7 +119,8 @@ POC = STUDIO / 'poc'
 runtime_diagnostics.note('generation: importing torch and constructing lazy generator')
 gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL], log=runtime_diagnostics.note)
 try:
-    results = studio_run.run_poc(gen, POC, characters=POC_CHARACTERS, style_refs={k: [v] for k,v in REFERENCES.items()})
+    results = studio_run.run_poc(gen, POC, characters=POC_CHARACTERS, style_refs={k: [v] for k,v in REFERENCES.items()},
+                                 log=runtime_diagnostics.note)
 finally:
     gen.unload()
     runtime_diagnostics.note('generation finished; weights released')

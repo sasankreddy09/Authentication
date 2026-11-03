@@ -151,12 +151,15 @@ def host_ram_gb():
         return None
 
 
-def run_job(gen, out_png, prompt, refs, size, seed, meta_extra, log=print):
+def run_job(gen, out_png, prompt, refs, size, seed, meta_extra, log=print, raise_on_error=False):
     """One image, once. Returns "made" | "skipped" | "waiting" | "failed"; raises QuotaExhausted."""
     out_png = Path(out_png)
     side = out_png.with_suffix(".json")
-    if any(not Path(r).is_file() for r in refs):
-        raise FileNotFoundError("Missing conditioning reference; no text-only fallback is allowed")
+    missing = [str(Path(r)) for r in refs if not Path(r).is_file()]
+    if missing:
+        raise FileNotFoundError(f"Cannot generate {out_png}: missing conditioning reference(s): "
+                                + ", ".join(missing)
+                                + ". Run the prerequisite image job first; check its original error.")
     request = {"prompt": prompt, "reference_sha256": [sha(r) for r in refs], "size": list(size),
                "seed": seed, "revision": gen.revision, "backend": gen.name, "steps": STEPS, "guidance": GUIDANCE}
     request_key = hashlib.sha256(json.dumps(request, sort_keys=True).encode()).hexdigest()
@@ -174,6 +177,9 @@ def run_job(gen, out_png, prompt, refs, size, seed, meta_extra, log=print):
         raise
     except Exception as e:
         log(f"{out_png.stem}: FAILED after {time.time() - t0:.1f}s — {type(e).__name__}: {str(e)[:300]}")
+        if raise_on_error:
+            raise RuntimeError(f"Generation stopped at {out_png}: {type(e).__name__}: {e}. "
+                               "Dependent images have not been attempted; fix this error and rerun.") from e
         return "failed"
     tmp = out_png.with_name(out_png.stem + ".partial.png")
     im.save(tmp)
@@ -205,7 +211,7 @@ def run_poc(gen, out, characters=("arjun", "meera"), steps=("portrait", "full_bo
             refs = [out / cid / f"{ref}.png"] if ref else list((style_refs or {}).get(cid, []))
             prompt = pb(cid) + (REF_NOTE if (not ref and refs) else "")
             status[f"{cid}/{name}"] = run_job(gen, out / cid / f"{name}.png", prompt, refs, size, seed,
-                                              {"character": cid, "image": name, "stage": "proof_of_concept"}, log)
+                                              {"character": cid, "image": name, "stage": "proof_of_concept"}, log, raise_on_error=True)
     return status
 
 
