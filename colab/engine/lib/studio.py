@@ -97,8 +97,9 @@ def load_flux(revision, log=print):
     except Exception as e:
         raise RuntimeError("4-bit transformer/text encoder unavailable; fix the Studio dependencies before loading weights") from e
     pipe = Flux2KleinPipeline.from_pretrained(FLUX_MODEL, revision=revision, torch_dtype=dtype, low_cpu_mem_usage=True, **kw)
-    pipe.enable_vae_tiling()
-    pipe.enable_vae_slicing()
+    # Flux2Klein exposes memory controls on AutoencoderKLFlux2, not the pipeline.
+    pipe.vae.enable_tiling()
+    pipe.vae.enable_slicing()
     pipe.enable_model_cpu_offload()
     log(f"FLUX.2 klein 4B loaded ({dtype}, {rep})")
     return pipe, dtype
