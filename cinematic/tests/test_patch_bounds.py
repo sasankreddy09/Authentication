@@ -28,3 +28,23 @@ class PatchBoundsTests(unittest.TestCase):
             info = json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-of','json',str(output)]))
             self.assertEqual(info['streams'][0]['codec_name'], 'h264')
             self.assertGreater(int(info['streams'][0]['nb_frames']),36)
+
+    def test_expression_not_stacked_with_independent_patches(self):
+        import numpy as np
+        import storybook_atlas as SA
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = fixture(Path(tmp), 'arjun', approved=False)
+            painter = SA.AtlasPainter(SA.AtlasCharacter(folder), .17)
+            expression = painter._pose_image('idle', {'expr': 'surprised'})
+            combined = painter._pose_image('idle', {'expr': 'surprised', 'blink': True,
+                                                   'speaking': True, 'viseme': 'wide'})
+            self.assertTrue(np.array_equal(np.asarray(expression), np.asarray(combined)))
+
+    def test_diagnostics_do_not_replace_preview(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = fixture(Path(tmp), 'arjun', approved=False)
+            normal = render_pack_preview(folder, fps=6)
+            original = normal.read_bytes()
+            diagnostic = render_pack_preview(folder, fps=6, diagnostics=True)
+            self.assertEqual(diagnostic.name, 'diagnostics.mp4')
+            self.assertEqual(normal.read_bytes(), original)

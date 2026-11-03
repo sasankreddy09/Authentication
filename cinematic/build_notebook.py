@@ -312,8 +312,11 @@ for cid in REFERENCES:
 print('Render production previews with preview.py, inspect every pose/expression, then approve below.')
 ''')
     add("""## Render the actual imported pack
-This CPU preview composites the actual expression, blink and mouth patches and displays every pose.
-It is silent rig animation, not AI-generated walking. Patch crops are overlays, not standalone portraits.
+The default CPU preview holds the imported idle pose with subtle breathing, no silent speech or random props.
+Unverified blink patches are disabled by default. This is limited cutout motion, not AI-generated walking.
+For isolated labeled tests of facial patches and poses, call render_pack_preview(folder, diagnostics=True).
+That creates diagnostics.mp4 separately; it is a test catalogue, not a story or approval evidence.
+Whole-face expression patches no longer stack with independently generated mouth/blink patches.
 A preview file does not establish visual correctness.
 """, "markdown")
     add((ROOT / 'cinematic/pack_preview.py').read_text() + '\n' + '''

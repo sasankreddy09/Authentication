@@ -2,10 +2,13 @@
 from pathlib import Path
 import subprocess
 import tempfile
-from PIL import Image
+import math
+from PIL import Image, ImageDraw
 
 
-def render_pack_preview(vdir, fps=24):
+def render_pack_preview(vdir, fps=24, diagnostics=False, use_blink=False):
+    if not isinstance(fps, int) or fps <= 0:
+        raise ValueError("fps must be a positive integer")
     import storybook as SB
     import storybook_atlas as SA
     vdir = Path(vdir)
@@ -27,16 +30,25 @@ def render_pack_preview(vdir, fps=24):
                 '-s','640x360','-r',str(fps),'-i','pipe:0','-an','-c:v','libx264',
                 '-threads','2','-pix_fmt','yuv420p','-movflags','+faststart',str(movie)], stdin=subprocess.PIPE, stderr=err)
             try:
-                # First six seconds exercise facial animation; remaining shots exercise poses.
-                for i in range((6 + len(poses))*fps):
-                    t = i/fps
-                    pid = anchor if t < 6 else poses[min(int(t)-6, len(poses)-1)]
-                    face = {'blink': i % fps < 3, 'speaking': t < 6,
-                            'viseme': mouths[(i//6)%len(mouths)] if mouths else 'rest',
-                            'expr': expressions[int(t)%len(expressions)] if expressions else 'neutral'}
-                    frame = Image.new('RGBA',(640,360),(35,38,45,255))
-                    painter.draw(frame, (230,10), pid, face)
-                    proc.stdin.write(frame.convert('RGB').tobytes())
+                # Stable idle by default. A separately named catalogue is explicitly diagnostic.
+                shots = [(anchor, {}, 'Idle: no speech; gentle breathing')]
+                if diagnostics:
+                    shots += [(anchor, {'expr': e}, 'Expression: ' + e) for e in expressions]
+                    shots += [(anchor, {'speaking': True, 'viseme': m}, 'Mouth test (silent): ' + m) for m in mouths]
+                    shots += [(anchor, {'blink': True}, 'Blink patch test')]
+                    shots += [(p, {}, 'Pose test: ' + p) for p in poses]
+                seconds = 2 if diagnostics else 8
+                for pid, face, label in shots:
+                    for i in range(seconds * fps):
+                        t = i / fps
+                        state = dict(face)
+                        if not diagnostics and use_blink:
+                            state['blink'] = 2.0 <= t % 3.5 < 2.15
+                        frame = Image.new('RGBA',(640,360),(35,38,45,255))
+                        painter.draw(frame, (230,10), pid, state,
+                                     motion=(0.0, 0.003*math.sin(2*math.pi*t/4)))
+                        ImageDraw.Draw(frame).text((12,335), label, fill='white')
+                        proc.stdin.write(frame.convert('RGB').tobytes())
                 proc.stdin.close()
                 if proc.wait(timeout=120):
                     err.seek(0)
@@ -45,5 +57,6 @@ def render_pack_preview(vdir, fps=24):
                 if proc.poll() is None: proc.kill()
                 proc.wait()
                 if not proc.stdin.closed: proc.stdin.close()
-        movie.replace(output / 'animation.mp4')
-    return output / 'animation.mp4'
+        destination = output / ('diagnostics.mp4' if diagnostics else 'animation.mp4')
+        movie.replace(destination)
+    return destination

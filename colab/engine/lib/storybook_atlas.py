@@ -132,17 +132,28 @@ class AtlasPainter:
         # Until per-pose facial registration has been explicitly reviewed, fail closed.
         if (F and pid == F.get("anchor_pose") and P.get("face")
                 and P.get("view", "front") == "front"):
-            # order: expression (whole face) → blink (eyes) → worn items (eyes) → mouth shape (mouth)
-            expr = face.get("expr")
-            if expr and expr in F.get("expressions", {}):
-                patches.append(F["expressions"][expr])
+            # Whole-face edits were generated independently of mouth/blink edits.
+            # They are mutually exclusive unless jointly authored patches exist.
             wearing = [w for w in face.get("wear", ()) if w in F.get("wear", {})]
-            if face.get("blink") and F.get("blink") and not wearing:     # (behind dark glasses a blink is invisible)
-                patches.append(F["blink"])
-            patches += [F["wear"][w] for w in wearing]
-            mouth = MOUTH_OF_VISEME.get(face.get("viseme") or "rest")
-            if face.get("speaking") and mouth and mouth in F.get("visemes", {}):
-                patches.append(F["visemes"][mouth])
+            expr = face.get("expr")
+            expression = F.get("expressions", {}).get(expr)
+            if expression and not wearing:
+                patches.append(expression)
+            else:
+                if face.get("blink") and F.get("blink") and not wearing:
+                    patches.append(F["blink"])
+                patches += [F["wear"][w] for w in wearing]
+                mouth = MOUTH_OF_VISEME.get(face.get("viseme") or "rest")
+                if face.get("speaking") and mouth and mouth in F.get("visemes", {}):
+                    # Mouth and eye patches may coexist only when their declared boxes do not overlap.
+                    ent = F["visemes"][mouth]
+                    def bounds(entry):
+                        return entry.get("box", F["box"]) if isinstance(entry, dict) else F["box"]
+                    x0, y0, x1, y1 = bounds(ent)
+                    overlaps = any(max(x0, bounds(p)[0]) < min(x1, bounds(p)[2]) and
+                                   max(y0, bounds(p)[1]) < min(y1, bounds(p)[3]) for p in patches)
+                    if not overlaps:
+                        patches.append(ent)
         if not patches:
             return im
         key = ("composed", pid, json.dumps(patches, sort_keys=True))

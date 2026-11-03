@@ -219,3 +219,27 @@ which dependency versions are eligible without forcing installation:
 https://pip.pypa.io/en/stable/user_guide/#constraints-files
 The official Colab FAQ returned HTTP 403 in this development environment and could
 not be consulted live. No claim of a platform-specific root cause follows from it.
+
+## Uploaded preview investigation
+
+The supplied 22-second H.264 clip (640x360, 24 fps, 528 frames) matches the former
+preview helper: six seconds of independent expression/mouth/blink cycling followed
+by one second per atlas pose. This intentionally enumerated assets but was not labeled
+as a catalogue. It produced unexplained prop changes and silent mouth movement.
+Pose-dependent head estimates also change scale; generated pose proportions are not
+registered geometry. Contact-sheet inspection confirmed these transitions.
+
+Default pack previews now hold one idle pose for eight seconds with subtle breathing;
+no speech and no unverified blink overlay. This avoids pose-scale jumps rather than
+claiming to repair independent pose geometry. Optional `use_blink=True` requires a
+usable blink patch. `diagnostics=True` creates a separate labeled diagnostics.mp4,
+with one effect at a time, and leaves animation.mp4 intact. Neither file demonstrates
+natural locomotion. Whole-face expressions are exclusive with independent facial
+patches; eye and mouth patches cannot stack when their declared boxes overlap.
+
+Pillow's alpha compositing applies supplied pixels; it does not register faces or
+resolve semantic conflicts: https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.alpha_composite
+Review of the local renderer confirms that explicit registration/selection is the
+application's responsibility. Tests cover expression exclusivity, preview encoding,
+and preservation of the default movie when rendering diagnostics. Actual user atlas
+files were not supplied, so corrected rendering of that precise pack remains untested.
