@@ -21,7 +21,7 @@ class ASRDeviceTests(unittest.TestCase):
         modules = {'torch': torch, 'ctranslate2': ct, 'faster_whisper': types.SimpleNamespace(WhisperModel=factory)}
         ns = dict(_asr=None, _asr_failed=False, ASR_ON_GPU=False, ASR_DEVICE=mode,
                   BUDGET=MagicMock(), hf_files=lambda *args: '/cached/model', CPU_THREADS=2,
-                  DEVICE_REPORT={}, preload_cuda_libs=MagicMock(), log=MagicMock(), log_exc=MagicMock())
+                  sys=sys, DEVICE_REPORT={}, preload_cuda_libs=MagicMock(), log=MagicMock(), log_exc=MagicMock())
         exec(compile(ast.Module(body=[function], type_ignores=[]),str(path),'exec'),ns)
         return ns, modules, factory
 
@@ -48,6 +48,8 @@ class ASRDeviceTests(unittest.TestCase):
 
     def test_forced_gpu_does_not_silently_use_cpu(self):
         ns, mods, factory = self.setup_asr(free_gb=.5,mode='cuda')
-        with patch.dict(sys.modules,mods): self.assertIsNone(ns['get_asr']())
+        with patch.dict(sys.modules,mods):
+            with self.assertRaisesRegex(RuntimeError, 'GPU speech check required'):
+                ns['get_asr']()
         factory.assert_not_called()
         self.assertTrue(ns['_asr_failed'])

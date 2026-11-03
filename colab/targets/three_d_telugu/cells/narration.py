@@ -161,6 +161,8 @@ def get_asr():
             log_exc('speech check unavailable; report remains unverified')
             _asr_failed = True
             ASR_ON_GPU = False
+            if globals().get('ASR_DEVICE', 'auto') == 'cuda':
+                raise RuntimeError('GPU speech check required but unavailable; see the original error above.') from sys.exc_info()[1]
     return _asr
 
 def listen(path):
@@ -190,6 +192,8 @@ def listen(path):
     except Exception as e:
         log_exc("speech check failed")
         _asr_failed = True
+        if globals().get('ASR_DEVICE', 'auto') == 'cuda':
+            raise RuntimeError('GPU speech transcription failed; check is not verified.') from e
         print("Speech check failed, continuing without it:", repr(e)[:200])
         return None, None
 
