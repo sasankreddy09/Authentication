@@ -149,7 +149,8 @@ def remove_background(images, revision, device="cuda"):
         out = []
         with torch.no_grad():
             for im in images:
-                x = tf(im.convert("RGB")).unsqueeze(0).to(device)
+                x = tf(im.convert("RGB")).unsqueeze(0).to(
+                    device=device, dtype=next(m.parameters()).dtype)
                 pred = m(x)[-1].sigmoid().cpu()[0, 0]
                 # Shrink the predicted matte slightly before a soft edge. This removes
                 # the bright pixels of the studio backdrop that BiRefNet often retains.
