@@ -23,3 +23,20 @@ The notebook now embeds `colab/stories/three_d_friends_te_v4/story.json` via its
 ### Current script revision: v5 (retention edit)
 
 The notebook now uses the v5 story and writes to `MyDrive/ai-video/three_d_friends_te_v5_cinematic/`. The main question opens the video; the eye and glasses diagrams remain visible through their explanations; the one-eye qualification follows the mechanism; a two-line joke closes the video. This supersedes the v4 output-path note above. Character packs, cinema background and local Parler requirements remain the same. Actual speech duration, naturalness and audience retention still need verification.
+
+
+Speech-check interpretation: Telugu scores are normalized character/code-mix
+recognizer disagreement, not measured percentages of wrongly pronounced words.
+The recognizer model now follows ASR_MODEL / ASR_MODEL_MULTI. `small` remains the
+low-memory default; `large-v3-turbo` is available for a stronger diagnostic but
+requires more GPU memory and is not guaranteed accurate on a particular clip.
+Whisper documents language-dependent performance:
+https://github.com/openai/whisper#available-models-and-languages
+
+ASR_RETRY_TELUGU defaults to False: a high ASR mismatch alone flags a line instead
+of generating successive takes to optimize against potentially incorrect transcripts.
+This does not waive QC or change thresholds. Signal-based retakes remain separate.
+New takes save expected text, TTS input, heard transcript, score and device under
+narration/speech_checks. Existing cached audio/scores are retained; their presence
+is not evidence that a new model rechecked them. Listen to a flagged WAV and compare
+the transcript before attributing disagreement to either the TTS or recognizer.

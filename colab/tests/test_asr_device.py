@@ -20,6 +20,7 @@ class ASRDeviceTests(unittest.TestCase):
         if failure: factory.side_effect = [RuntimeError('CUDA init failed'), object()]
         modules = {'torch': torch, 'ctranslate2': ct, 'faster_whisper': types.SimpleNamespace(WhisperModel=factory)}
         ns = dict(_asr=None, _asr_failed=False, ASR_ON_GPU=False, ASR_DEVICE=mode,
+                  LANGUAGE='te', ASR_MODEL='small.en', ASR_MODEL_MULTI='small', WHISPER_REPOS={},
                   BUDGET=MagicMock(), hf_files=lambda *args: '/cached/model', CPU_THREADS=2,
                   sys=sys, DEVICE_REPORT={}, preload_cuda_libs=MagicMock(), log=MagicMock(), log_exc=MagicMock())
         exec(compile(ast.Module(body=[function], type_ignores=[]),str(path),'exec'),ns)
@@ -53,3 +54,12 @@ class ASRDeviceTests(unittest.TestCase):
                 ns['get_asr']()
         factory.assert_not_called()
         self.assertTrue(ns['_asr_failed'])
+
+    def test_honors_configured_multilingual_model(self):
+        ns, mods, factory = self.setup_asr(free_gb=5)
+        ns['ASR_MODEL_MULTI'] = 'large-v3-turbo'
+        ns['WHISPER_REPOS'] = {'large-v3-turbo': 'test/turbo'}
+        ns['hf_files'] = MagicMock(return_value='/cached/turbo')
+        with patch.dict(sys.modules,mods): ns['get_asr']()
+        self.assertEqual(ns['hf_files'].call_args.args[0], 'test/turbo')
+        self.assertIn('large-v3-turbo',ns['DEVICE_REPORT']['speech check (Whisper)'])

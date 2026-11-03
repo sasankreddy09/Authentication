@@ -25,7 +25,8 @@ VOICE_BENCH = False                          # True: neutral vs expressive narra
 MAX_VOICE_TAKES_NORMAL = 1                   # takes per ordinary line (a retry still happens on a technical failure)
 MAX_VOICE_TAKES_HERO = 1
                                              # or Parler (Kokoro is deterministic: one take), both kept for A/B
-ASR_MODEL_MULTI = "small"
+ASR_RETRY_TELUGU = False                    # ASR disagreement alone is not proof of bad pronunciation
+ASR_MODEL_MULTI = "small"                   # optionally large-v3-turbo for a separate stronger check
 SPEECH_RETRY_OTHER = 0.35                    # non-English: re-make a line if > 35 % of its LETTERS are heard wrong
                                              # (unverified starting point: Whisper's Telugu is weak; see the log values)
 PARLER_SEC_PER_CHAR = (0.025, 0.25)          # Telugu voice: a take outside this length per letter is cut off/rambling

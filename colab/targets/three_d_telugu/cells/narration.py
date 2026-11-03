@@ -126,13 +126,18 @@ def get_asr():
             if requested not in ('auto', 'cuda', 'cpu'):
                 raise ValueError('ASR_DEVICE must be auto, cuda or cpu')
             start = time.monotonic()
-            src = str(hf_files('Systran/faster-whisper-small', 'small multilingual speech check'))
+            chosen_model = ASR_MODEL_MULTI if LANGUAGE != 'en' and ASR_MODEL.endswith('.en') else ASR_MODEL
+            repos = dict(WHISPER_REPOS, small='Systran/faster-whisper-small')
+            if chosen_model not in repos:
+                raise ValueError(f'Unsupported speech-check model: {chosen_model}')
+            src = str(hf_files(repos[chosen_model], f'{chosen_model} speech check'))
             reason = 'CPU explicitly selected'
             use_cuda = False
             if requested != 'cpu':
                 if torch.cuda.is_available() and ctranslate2.get_cuda_device_count() > 0:
                     free_gb = torch.cuda.mem_get_info()[0] / 2**30
-                    use_cuda = free_gb >= globals().get('ASR_MIN_FREE_GB', 2.0)
+                    required_gb = max(globals().get('ASR_MIN_FREE_GB', 2.0), 4.0 if chosen_model == 'large-v3-turbo' else 2.0)
+                    use_cuda = free_gb >= required_gb
                     reason = f'only {free_gb:.2f} GiB GPU memory free; reserving room for TTS'
                 else:
                     reason = 'CUDA unavailable to PyTorch or CTranslate2'
@@ -145,7 +150,7 @@ def get_asr():
                     compute = 'int8_float16' if 'int8_float16' in supported else 'float16'
                     _asr = WhisperModel(src, device='cuda', compute_type=compute, num_workers=1)
                     ASR_ON_GPU = True
-                    DEVICE_REPORT['speech check (Whisper)'] = f'GPU (small multilingual, {compute})'
+                    DEVICE_REPORT['speech check (Whisper)'] = f'GPU ({chosen_model}, {compute})'
                 except Exception as error:
                     if requested == 'cuda':
                         raise
@@ -155,7 +160,7 @@ def get_asr():
                 log('Speech check falling back to CPU: ' + reason)
                 _asr = WhisperModel(src, device='cpu', compute_type='int8', cpu_threads=CPU_THREADS)
                 ASR_ON_GPU = False
-                DEVICE_REPORT['speech check (Whisper)'] = 'CPU (small multilingual, int8): ' + reason
+                DEVICE_REPORT['speech check (Whisper)'] = f'CPU ({chosen_model}, int8): ' + reason
             log(f"Speech check ready: {DEVICE_REPORT['speech check (Whisper)']}; load/download {time.monotonic()-start:.1f}s")
         except Exception:
             log_exc('speech check unavailable; report remains unverified')
@@ -1185,8 +1190,11 @@ for shot in SHOTS:
             assert not missing, f"voices not in this voice model: {missing} (available: {get_tts().get_voices()})"
             _voices_checked = True
         best = None
+        attempt_limit = MAX_TTS_ATTEMPTS
+        if LANGUAGE == 'te' and not globals().get('ASR_RETRY_TELUGU', False):
+            attempt_limit = 1
         # Kokoro gives the same audio for the same input, so retries change the speed slightly
-        for attempt, sp in enumerate([want["speed"], round(want["speed"] - 0.05, 3), round(want["speed"] + 0.04, 3)][:MAX_TTS_ATTEMPTS]):
+        for attempt, sp in enumerate([want["speed"], round(want["speed"] - 0.05, 3), round(want["speed"] + 0.04, 3)][:attempt_limit]):
             BUDGET.check("next speech take")
             wav, sr = speak(want["text"], sp, want["voice"], attempt=attempt, instruct=want.get("instruct", ""))
             assert sr == SR, sr
@@ -1196,9 +1204,20 @@ for shot in SHOTS:
             err = None if heard is None else speech_error([l["text"], want["text"]], heard)
             if best is None or (err is not None and err < best["err"]):
                 best = {"err": err if err is not None else 0.0, "tmp": tmp, "words": words, "speed": sp, "heard": heard}
+            # Save the actual recognizer evidence even on the last attempt.
+            log(f"{l['id']} expected: {l['text']!r} | TTS input: {want['text']!r} | heard: {heard!r}")
+            evidence_dir = PROJ / 'narration' / 'speech_checks'
+            evidence_dir.mkdir(parents=True, exist_ok=True)
+            (evidence_dir / f"{l['id']}-take{attempt}.json").write_text(json.dumps({
+                'expected': l['text'], 'tts_input': want['text'], 'heard': heard,
+                'score': err, 'metric': 'normalized character disagreement' if LANGUAGE != 'en' else 'normalized ASR disagreement',
+                'model': ASR_MODEL, 'device': DEVICE_REPORT.get('speech check (Whisper)'),
+                'interpretation': 'Recognizer disagreement is not verified pronunciation error.'
+            }, ensure_ascii=False, indent=2))
             if err is None or err <= RETAKE_AT:
                 break
-            print(f"  {l['id']} ({who}): speech check heard {err:.0%} wrong words, trying again")
+            if attempt + 1 < attempt_limit:
+                print(f"  {l['id']} ({who}): ASR disagreement {err:.0%}; trying another take")
             log(f"    heard: {heard!r} | expected: {l['text']!r}", "WARN")
         ff("-i", best["tmp"], "-af", want["fx"], "-ar", SR, "-ac", 1, out)      # character voice + tone
         d_ = DIRECTIONS.get(l["id"])
@@ -1227,6 +1246,8 @@ for shot in SHOTS:
         takes = [{"take": 1, "err": best["err"] if best["heard"] is not None else None,
                   "fails": sum(x["status"] == "FAIL" for x in vq["checks"].values())}]
         n_takes = MAX_VOICE_TAKES_HERO if voice_direction.is_hero(l, shot, d_) else MAX_VOICE_TAKES_NORMAL
+        if LANGUAGE == 'te' and not globals().get('ASR_RETRY_TELUGU', False):
+            n_takes = 1
         if n_takes > 1 and get_asr() is not None and not ASR_ON_GPU:
             n_takes = 1                                   # each extra take costs a slow CPU speech check: skipped
             log(f"{l['id']}: speech check on CPU → no extra hero take")
@@ -1266,7 +1287,7 @@ for shot in SHOTS:
                 heard=best["heard"], words=best["words"], flagged=flagged)
         info = sf.info(str(out))
         print(f"  {l['id']} {who:<9} [{l['tone']}] {info.frames / info.samplerate:.1f}s"
-              + ("" if best["heard"] is None else f"  speech check {best['err']:.0%} wrong words")
+              + ("" if best["heard"] is None else f"  ASR disagreement {best['err']:.0%} (not verified pronunciation errors)")
               + ("  ⚠️ CHECK THIS LINE" if flagged else ""))
 # ---- the same narrator throughout? (ECAPA leave-one-out similarity; calibrated in tests/test_voice.py) ----
 if EXPRESSIVE:
