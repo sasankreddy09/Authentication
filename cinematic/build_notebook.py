@@ -15,8 +15,17 @@ def build():
 Run interactively in Colab. Upload the actual boy and girl images to the paths below.
 Boy reference: red jacket, yellow striped shirt, teal trousers. The overalls description conflicts with the image.
 Girl reference: auburn ponytail, teal tie, cream floral shirt. Older hoodie/butterfly defaults are superseded.
-This notebook stops for design and animation reviews. GPU inference and visual quality remain unverified until you run it.
+Approval flags default to True at your request; visual review is recorded as skipped. Required files are still checked. GPU inference and visual quality remain unverified until you run it.
 Keep new candidate folders for changed inputs; approved assets are immutable.
+
+### Rear-view correction
+Arjun now has an explicit short-hair/no-ponytail instruction; Meera has one high auburn ponytail
+with a teal tie. Rear generation uses each character's own master and portrait. The production
+rear atlas also uses the character-specific instructions. This is inferred unseen geometry,
+so prompts cannot guarantee perfect backs without an actual rear reference.
+The new `reference-v2-rearfix-01` folder preserves your old outputs. The image cell copies
+compatible completed non-rear images from `reference-v2-lowram-01` and generates fresh backs.
+Both characters now run sequentially by default. Existing memory/API/error-reporting fixes remain.
 
 ### Startup diagnostics and RAM recovery
 Code cells are labeled STEP 2 (installation), STEP 3 (CPU engine), STEP 4 (lightweight preflight).
@@ -34,7 +43,7 @@ The low-memory loader quantizes both the transformer and text encoder to NF4, lo
 for uncached jobs, and uses VAE tiling/slicing. CPU offload still uses host RAM; this is not a
 promise that every free Colab allocation can fit the model. If loading still exhausts RAM,
 use a High-RAM GPU runtime if available. Keep the last cell output to identify the failing stage.
-This version uses a new `reference-v2-lowram-01` candidate because quantization changed;
+This version uses a new `reference-v2-rearfix-01` candidate because rear-view conditioning changed;
 your previous Drive images remain untouched. For a video from already completed images only,
 set STUDIO to your old candidate and run Quick video demo directly after Drive settings.
 Do not rerun generation into that old candidate: its request fingerprints differ.
@@ -45,13 +54,13 @@ from google.colab import drive
 drive.mount('/content/drive')
 ROOT = Path('/content/drive/MyDrive/ai-video')
 ASSETS = ROOT / '_assets'
-STUDIO = ASSETS / 'studio/reference-v2-lowram-01'
+STUDIO = ASSETS / 'studio/reference-v2-rearfix-01'
 STUDIO.mkdir(parents=True, exist_ok=True)
 REFERENCES = {'arjun': str(ROOT / 'references/arjun.png'), 'meera': str(ROOT / 'references/meera.png')}
-REVIEWER = ''
-DESIGN_APPROVED = False
-ANIMATION_APPROVED = False
-PACK_APPROVED = False
+REVIEWER = 'User-authorized; visual review skipped'
+DESIGN_APPROVED = True
+ANIMATION_APPROVED = True
+PACK_APPROVED = True
 NEW_VERSION = 'cinematic-v2'
 ''' + '\n' + (ROOT / 'cinematic/runtime_support.py').read_text() + '''
 if 'runtime_diagnostics' in globals():
@@ -113,9 +122,23 @@ for model in (studio.FLUX_MODEL, studio.SEG_MODEL):
 runtime_diagnostics.note('preflight complete; next cell is the first model-loading stage')
 ''')
     add('''# Small PoC only. Process one character at a time to bound work per run.
-# Change this to ['meera'] and rerun after Arjun finishes (or use both).
-POC_CHARACTERS = ['arjun']
+# Both characters run sequentially so Meera is not accidentally omitted.
+POC_CHARACTERS = ['arjun', 'meera']
 POC = STUDIO / 'poc'
+# Reuse completed compatible non-rear images; never copy old approvals or rear views.
+PREVIOUS_POC = ASSETS / 'studio/reference-v2-lowram-01/poc'
+for cid in POC_CHARACTERS:
+    for name in ('portrait', 'full_body_master', 'expression_surprise', 'view_three_quarter'):
+        old = PREVIOUS_POC / cid / (name + '.png')
+        old_meta = old.with_suffix('.json')
+        new = POC / cid / old.name
+        if old.is_file() and old_meta.is_file() and not new.exists() and not new.with_suffix('.json').exists():
+            metadata = json.loads(old_meta.read_text())
+            if metadata.get('sha256') == CW.sha(old) and metadata.get('backend') == studio_run.LocalGen.name:
+                new.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(old, new)
+                shutil.copy2(old_meta, new.with_suffix('.json'))
+# run_poc verifies request fingerprints of copied images before accepting cache hits.
 runtime_diagnostics.note('generation: importing torch and constructing lazy generator')
 gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL], log=runtime_diagnostics.note)
 try:
@@ -186,6 +209,10 @@ if DOWNLOAD_DEMO:
 ''')
     add('''# STOP: review faces, clothing, hair, shared style, full-body anatomy and alternate-view identity.
 import shutil
+missing_masters = [str(POC / cid / 'full_body_master.png') for cid in REFERENCES
+                   if not (POC / cid / 'full_body_master.png').is_file()]
+if missing_masters:
+    raise RuntimeError('Run the image cell for BOTH characters first. Missing: ' + ', '.join(missing_masters))
 if not DESIGN_APPROVED or not REVIEWER.strip():
     raise RuntimeError('Human design approval is pending. Inspect the comparison before setting the controls.')
 for cid in REFERENCES:

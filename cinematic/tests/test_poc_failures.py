@@ -40,3 +40,24 @@ class PocFailureTests(unittest.TestCase):
                                    [missing], (32, 32), 1, {})
             self.assertIn(str(missing), str(caught.exception))
             self.assertEqual(gen.calls, 0)
+
+
+class RearViewTests(unittest.TestCase):
+    def test_character_specific_hair(self):
+        self.assertIn("NO ponytail", studio_run.back_prompt("arjun"))
+        self.assertIn("ONE HIGH PONYTAIL", studio_run.back_prompt("meera"))
+        self.assertNotIn("ponytail or hood", studio_run.back_prompt("arjun"))
+
+    def test_rear_references_stay_with_same_character(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            ref = root / 'reference.png'
+            Image.new('RGB', (8, 8)).save(ref)
+            for cid in ('arjun', 'meera'):
+                with patch.object(studio_run, 'run_job', return_value='made') as run:
+                    studio_run.run_poc(FailingGenerator(), root, characters=(cid,),
+                                       steps=('view_back',), style_refs={cid: [ref]})
+                args = run.call_args.args
+                self.assertEqual(args[3], [root / cid / 'full_body_master.png', root / cid / 'portrait.png'])
+                self.assertEqual(args[2], studio_run.back_prompt(cid))

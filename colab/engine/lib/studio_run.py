@@ -42,10 +42,29 @@ VIEW = ("Using the reference image as the identity reference, show the exact sam
         "three-quarter view, turned slightly to the viewer's right, full body head to shoes, plain light warm-grey "
         "background. Preserve the same face, hairstyle, clothing, colour palette, body proportions and accessories, "
         "and the same sculpted 3D-style look and lighting. Do not introduce a different face or hairstyle.")
-BACK = ("Using the full-body reference, show the exact same character directly from behind, "
-        "head and torso facing away, no face or eyes visible, arms relaxed, full body including shoes. "
-        "Preserve hair colour and silhouette, ponytail or hood, outfit colours, proportions, lighting "
-        "and plain warm-grey background. Infer only unseen rear clothing details; no mirrored front view.")
+BACK = ("Create one full-body rear view of ONE character, camera directly behind at the same height and "
+        "distance as the full-body master. Head, shoulders, hips and both feet face away; face and eyes are "
+        "not visible. Show the back surfaces of the existing outfit, not a mirrored front. Arms relaxed, "
+        "both hands and shoes visible, same proportions, warm-grey studio backdrop and lighting. "
+        "Reference 1 controls full-body proportions and outfit; any additional reference controls identity "
+        "and hair only. Do not copy a portrait crop or create a collage. ")
+BACK_DETAILS = {
+    "arjun": ("Arjun is the boy with SHORT tousled medium-brown hair: short tapered hair at the nape, "
+              "ears visible from behind. NO ponytail, bun, braid, hair tie or long hair. "
+              "Red jacket, hood resting flat between shoulders with pale blue lining, teal cuffed trousers "
+              "and red sneakers. No zipper, face or T-shirt front drawn on the back of the jacket."),
+    "meera": ("Meera is the girl with long AUBURN hair gathered into ONE HIGH PONYTAIL, secured at the "
+              "upper back of the head by a TEAL HAIR TIE. Show the ponytail attachment and one coherent "
+              "tail falling down her back; not a short haircut, loose untied hair, twin tails or a braid. "
+              "Pale cream short-sleeved floral shirt, not a hoodie or red jacket. Preserve the exact lower "
+              "outfit and shoes from the full-body master. Hair naturally occludes part of the shirt.")
+}
+
+
+def back_prompt(cid):
+    return BACK + BACK_DETAILS[cid]
+
+
 REF_NOTE = " The supplied image is the character identity reference. Preserve its face, hairstyle and wardrobe; use dimensional cinematic rendering, not flat outlines."
 # proof of concept (claude.md 5.1–5.2): name, prompt builder, own reference job (identity), size, seed
 POC_JOBS = [
@@ -53,7 +72,7 @@ POC_JOBS = [
     ("full_body_master", lambda c: FULL + DESIGN[c] + " " + STYLE, "portrait", (640, 832), 21),
     ("expression_surprise", lambda c: EXPR, "portrait", (640, 640), 31),
     ("view_three_quarter", lambda c: VIEW, "full_body_master", (640, 832), 41),
-    ("view_back", lambda c: BACK, "full_body_master", (640, 832), 51),
+    ("view_back", back_prompt, "full_body_master", (640, 832), 51),
 ]
 
 
@@ -209,6 +228,9 @@ def run_poc(gen, out, characters=("arjun", "meera"), steps=("portrait", "full_bo
             if name not in steps:
                 continue
             refs = [out / cid / f"{ref}.png"] if ref else list((style_refs or {}).get(cid, []))
+            if name == "view_back":
+                # The identity portrait supplements the master, without mixing characters.
+                refs.append(out / cid / "portrait.png")
             prompt = pb(cid) + (REF_NOTE if (not ref and refs) else "")
             status[f"{cid}/{name}"] = run_job(gen, out / cid / f"{name}.png", prompt, refs, size, seed,
                                               {"character": cid, "image": name, "stage": "proof_of_concept"}, log, raise_on_error=True)
@@ -231,6 +253,12 @@ def run_atlas(gen, studio_dir, cid, size=(768, 1024), seed=2000, only=None, log=
             continue
         if only and job not in only:
             continue
-        status[job] = run_job(gen, d / f"{job}.png", prompt, [master], size, seed,
+        refs = [master]
+        if kind == "view" and extra.get("view") == "back":
+            prompt = back_prompt(cid)
+            rear = Path(studio_dir) / "poc" / cid / "view_back.png"
+            if rear.is_file():
+                refs.append(rear)
+        status[job] = run_job(gen, d / f"{job}.png", prompt, refs, size, seed,
                               {"character": cid, "image": job, "stage": "atlas", "kind": kind, "variant": extra}, log)
     return status
