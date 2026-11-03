@@ -6,6 +6,8 @@ DRIVE_ROOT  = "/content/drive/MyDrive/ai-video"
 VOICE       = "am_michael"                    # only used to test the voice model; each character's voice is in the plan
 SPEED_SCALE = 1.0                            # multiplies every line's speed (0.95 = a bit slower overall)
 WER_RETRY   = 0.15                           # re-make a line if the speech check finds >15% wrong words
+ASR_DEVICE = "auto"                         # auto: prefer CUDA when >=2 GiB is free; cpu/cuda overrides
+ASR_MIN_FREE_GB = 2.0                       # reserve room for TTS; measured availability, not GPU name
 ASR_MODEL   = "small.en"                     # speech-check / subtitle-timing model
 EXPRESSIVE  = True                           # scene-aware delivery: each line gets a direction from the story
 VOICE_PROFILE = "science_explainer"          # science_explainer | beginner_education | cinematic_documentary |

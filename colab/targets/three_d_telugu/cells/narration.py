@@ -112,26 +112,62 @@ def preload_cuda_libs():
     return done
 
 def get_asr():
-    # Keep VRAM available for Parler float32 on a T4. This small model is only a diagnostic.
     global _asr, _asr_failed, ASR_ON_GPU
     if _asr_failed:
         return None
     if _asr is None:
         BUDGET.check('speech check')
         try:
+            import time
+            import torch
+            import ctranslate2
             from faster_whisper import WhisperModel
+            requested = globals().get('ASR_DEVICE', 'auto')
+            if requested not in ('auto', 'cuda', 'cpu'):
+                raise ValueError('ASR_DEVICE must be auto, cuda or cpu')
+            start = time.monotonic()
             src = str(hf_files('Systran/faster-whisper-small', 'small multilingual speech check'))
-            _asr = WhisperModel(src, device='cpu', compute_type='int8', cpu_threads=CPU_THREADS)
-            DEVICE_REPORT['speech check (Whisper)'] = 'CPU (small multilingual, int8)'
-            print('Speech check: CPU int8; listen to Telugu pronunciation before sharing.')
+            reason = 'CPU explicitly selected'
+            use_cuda = False
+            if requested != 'cpu':
+                if torch.cuda.is_available() and ctranslate2.get_cuda_device_count() > 0:
+                    free_gb = torch.cuda.mem_get_info()[0] / 2**30
+                    use_cuda = free_gb >= globals().get('ASR_MIN_FREE_GB', 2.0)
+                    reason = f'only {free_gb:.2f} GiB GPU memory free; reserving room for TTS'
+                else:
+                    reason = 'CUDA unavailable to PyTorch or CTranslate2'
+                if requested == 'cuda' and not use_cuda:
+                    raise RuntimeError('GPU speech check requested but ' + reason)
+            if use_cuda:
+                try:
+                    preload_cuda_libs()
+                    supported = ctranslate2.get_supported_compute_types('cuda')
+                    compute = 'int8_float16' if 'int8_float16' in supported else 'float16'
+                    _asr = WhisperModel(src, device='cuda', compute_type=compute, num_workers=1)
+                    ASR_ON_GPU = True
+                    DEVICE_REPORT['speech check (Whisper)'] = f'GPU (small multilingual, {compute})'
+                except Exception as error:
+                    if requested == 'cuda':
+                        raise
+                    reason = f'GPU initialization failed: {type(error).__name__}: {error}'
+                    log(reason)
+            if _asr is None:
+                log('Speech check falling back to CPU: ' + reason)
+                _asr = WhisperModel(src, device='cpu', compute_type='int8', cpu_threads=CPU_THREADS)
+                ASR_ON_GPU = False
+                DEVICE_REPORT['speech check (Whisper)'] = 'CPU (small multilingual, int8): ' + reason
+            log(f"Speech check ready: {DEVICE_REPORT['speech check (Whisper)']}; load/download {time.monotonic()-start:.1f}s")
         except Exception:
             log_exc('speech check unavailable; report remains unverified')
             _asr_failed = True
+            ASR_ON_GPU = False
     return _asr
 
 def listen(path):
     """Transcribe a file -> (text, [[word, start, end], ...]) or (None, None)."""
     global _asr_failed
+    import time
+    started = time.monotonic()
     asr = get_asr()
     if asr is None:
         return None, None
@@ -145,6 +181,11 @@ def listen(path):
         segs, _ = asr.transcribe(audio, language=LANGUAGE, word_timestamps=True, beam_size=5,
                                  initial_prompt=globals().get("ASR_PROMPT") or None)
         words = [[w.word.strip(), round(w.start, 3), round(w.end, 3)] for seg in segs for w in (seg.words or [])]
+        elapsed = time.monotonic() - started
+        duration = len(audio) / 16000
+        log(f"Speech check {Path(path).name}: {'GPU' if ASR_ON_GPU else 'CPU'}, "
+            f"{duration:.1f}s audio checked in {elapsed:.1f}s (includes load if first call)")
+        p16.unlink(missing_ok=True)
         return " ".join(w[0] for w in words), words
     except Exception as e:
         log_exc("speech check failed")

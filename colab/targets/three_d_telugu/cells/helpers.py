@@ -361,7 +361,7 @@ def preflight():
             except Exception:
                 log_exc("Parler access check failed")
     if rep["gpu"] and not rep["native_bf16"]:
-        rep["notes"] = "T4-class GPU: Parler uses float32 for encoder stability; speech checks run on CPU int8"
+        rep["notes"] = "T4-class GPU: Parler uses float32 for encoder stability; speech checks prefer GPU when free VRAM permits, otherwise CPU int8"
     if rep["disk_free_gb"] < 20:
         rep["warnings"].append(f"only {rep['disk_free_gb']} GB disk free")
     if not rep["gpu"]:
