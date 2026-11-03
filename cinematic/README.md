@@ -185,3 +185,37 @@ is reduced by quantization, not by the character count. Matching jobs resume.
 If loading still exceeds available host RAM, use a High-RAM GPU allocation if available.
 For already generated images, skip model cells and run the CPU video demo against
 the original candidate path.
+
+## Early-cell runtime disconnect investigation
+
+Cell numbers vary when Colab counts the title; code cells now identify installation,
+engine unpacking and lightweight preflight explicitly. Earlier setup launched a
+second Python process importing the whole Diffusers/Transformers/bitsandbytes stack.
+Preflight also used `hasattr(diffusers, 'Flux2KleinPipeline')`, which resolves a lazy
+pipeline import rather than checking metadata. Both early imports are removed.
+The old installer said it preserved torch but did not constrain transitive dependencies;
+it now preserves installed torch, torchvision, torchaudio, NumPy, NVIDIA distributions
+and Triton with pip constraints, and accepts binary wheels only. A resolver conflict
+is reported rather than replacing the native stack.
+
+These are confirmed code paths, not a confirmed explanation of the user's VM death.
+The allocated Colab runtime and its termination logs are unavailable here. A killed
+kernel, platform eviction, native crash and browser disconnect cannot be distinguished
+from the reported symptom alone. Startup writes timestamped stage/memory snapshots
+(including available host memory and cgroup counters when exposed) every five seconds
+to `MyDrive/ai-video/_diagnostics/cinematic-v2/runtime-*.jsonl`. The final sample can be
+missing on abrupt termination; absence of an OOM counter does not rule out OOM.
+Send the latest log and the last cell output after a recurrence. Logs contain package
+metadata/stages/memory, not credentials or image contents. Colab UI restart instructions
+are manual; the notebook does not kill or restart its own kernel.
+
+Validation: execute the generated engine cell in a fresh Python process with imports
+of torch/Diffusers/Transformers/bitsandbytes explicitly forbidden; test lightweight
+preflight, durable diagnostics and native-version constraints. This validates startup
+isolation, not Colab CUDA compatibility or model memory limits.
+
+Research: pip's official constraints documentation explains that constraints limit
+which dependency versions are eligible without forcing installation:
+https://pip.pypa.io/en/stable/user_guide/#constraints-files
+The official Colab FAQ returned HTTP 403 in this development environment and could
+not be consulted live. No claim of a platform-specific root cause follows from it.

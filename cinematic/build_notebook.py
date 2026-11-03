@@ -18,6 +18,16 @@ Girl reference: auburn ponytail, teal tie, cream floral shirt. Older hoodie/butt
 This notebook stops for design and animation reviews. GPU inference and visual quality remain unverified until you run it.
 Keep new candidate folders for changed inputs; approved assets are immutable.
 
+### Startup diagnostics and RAM recovery
+Code cells are labeled STEP 2 (installation), STEP 3 (CPU engine), STEP 4 (lightweight preflight).
+None of these loads image-model weights. Persistent stage/memory logs start in the Drive cell under
+`MyDrive/ai-video/_diagnostics/cinematic-v2/`. After a disconnect, keep the latest JSONL log.
+It records stages and memory samples, not reference pixels or tokens. A last log entry alone does
+not prove OOM: abrupt platform eviction, a native crash or lost connectivity can look similar.
+Installation preserves the allocated Colab torch/torchvision/torchaudio/NumPy/CUDA versions and
+uses binary wheels only. A dependency conflict is reported rather than replacing that stack.
+The old subprocess import probe and preflight lazy-pipeline import have been removed.
+
 ### RAM recovery
 Start with **Runtime > Disconnect and delete runtime**, reconnect to a T4 GPU, then run setup.
 The low-memory loader quantizes both the transformer and text encoder to NF4, loads weights only
@@ -43,62 +53,76 @@ DESIGN_APPROVED = False
 ANIMATION_APPROVED = False
 PACK_APPROVED = False
 NEW_VERSION = 'cinematic-v2'
+''' + '\n' + (ROOT / 'cinematic/runtime_support.py').read_text() + '''
+if 'runtime_diagnostics' in globals():
+    runtime_diagnostics.stop()
+runtime_diagnostics = RuntimeDiagnostics(ROOT / '_diagnostics/cinematic-v2')
+print('Persistent diagnostics:', runtime_diagnostics.path)
 ''')
-    add('''# Install only the image-stage dependencies; do not replace Colab's torch.
-# GPU compatibility must be measured on the allocated runtime.
-import subprocess, sys, importlib.util
-# This workflow uses bitsandbytes, not torchao. An incompatible preinstalled
-# torchao can break Diffusers' optional LoRA imports (missing FqnToConfig).
-restart_needed = any(name in sys.modules for name in ('diffusers', 'transformers', 'torchao'))
+    add('''# STEP 2: installation only; no model imports or weights are loaded here.
+# On a fresh runtime run this once. Never modify packages under a loaded model.
+if any(name in sys.modules for name in ('diffusers', 'transformers', 'torchao', 'torch')):
+    raise RuntimeError('Restart the session before installation; model libraries are already loaded.')
+runtime_diagnostics.note('installation: collecting installed package versions')
+print(installed_versions())
+constraints = Path('/content/cinematic-colab-constraints.txt')
+print('Preserving Colab packages:', write_constraints(constraints))
+runtime_diagnostics.note('installation: removing unused optional torchao')
 subprocess.run([sys.executable, '-m', 'pip', 'uninstall', '-y', 'torchao'], check=True)
 packages = ['diffusers>=0.36,<0.42', 'transformers>=4.57,<6', 'accelerate>=1.2,<2',
-            'bitsandbytes>=0.45,<1', 'safetensors', 'Pillow', 'numpy', 'psutil', 'pydantic>=2.7,<3', 'einops', 'timm']
-subprocess.run([sys.executable, '-m', 'pip', 'install', *packages], check=True)
-import shutil
+            'bitsandbytes>=0.45,<1', 'safetensors', 'Pillow', 'psutil',
+            'pydantic>=2.7,<3', 'einops', 'timm']
+runtime_diagnostics.note('installation: resolving binary wheels with Colab constraints')
+# Binary-only avoids large source builds. Dependency conflicts stop explicitly;
+# do not remove constraints or replace Colab torch to force installation.
+subprocess.run([sys.executable, '-m', 'pip', 'install', '--only-binary=:all:',
+                '--upgrade-strategy', 'only-if-needed', '--constraint', str(constraints),
+                *packages], check=True)
 if not shutil.which('ffmpeg'):
+    runtime_diagnostics.note('installation: ffmpeg')
     subprocess.run(['apt-get', 'update', '-qq'], check=True)
     subprocess.run(['apt-get', 'install', '-y', '-qq', 'ffmpeg'], check=True)
-# Test the real lazy imports in a clean process, before downloading any weights.
-subprocess.run([sys.executable, '-c',
-    'from diffusers import Flux2KleinPipeline, PipelineQuantizationConfig; '
-    'import bitsandbytes; print("Image pipeline imports passed")'], check=True)
-if restart_needed:
-    print('Setup complete. Use Runtime > Restart session, then rerun from the Drive cell. '
-          'Previously imported packages are cached in this session.')
-else:
-    print('Setup complete. Continue to the engine and preflight cells.')
+# Metadata lookup does not import native libraries or duplicate the model stack.
+print(installed_versions())
+runtime_diagnostics.note('installation complete; no image pipeline imported')
 ''')
-    add('''# Existing engine, with character-only overlays. No repository checkout needed.
+    add('''# STEP 3: unpack Python source and import CPU utilities only.
+runtime_diagnostics.note('engine: unpacking source files')
 import json, sys, os
 WORK = Path('/content/cinematic-engine-v2'); WORK.mkdir(exist_ok=True)
 MODULES = json.loads(''' + repr(json.dumps(sources(studio=True))) + ''')
 for name, source in MODULES.items():
     (WORK / name).write_text(source)
+del MODULES, source
+runtime_diagnostics.note('engine: importing CPU utilities')
 sys.path.insert(0, str(WORK))
 os.environ['STORYBOOK_ASSETS'] = str(ASSETS)
 import cinematic_workflow as CW, studio, studio_run, registry, storybook as SB, storybook_atlas as SA
 from PIL import Image
+runtime_diagnostics.note('engine ready; no model weights loaded')
 ''')
-    add('''report = CW.preflight(REFERENCES, STUDIO / 'preflight.json')
+    add('''# STEP 4: metadata and nvidia-smi only; no torch/Diffusers import.
+runtime_diagnostics.note('preflight: checking reference images and GPU metadata')
+report = lightweight_preflight(REFERENCES, STUDIO / 'preflight.json')
 print(report)
 if not report.get('gpu'):
     raise RuntimeError('Select an allocated T4 GPU; generation has not run.')
 for model in (studio.FLUX_MODEL, studio.SEG_MODEL):
     ok, why = registry.model_ok(model, strict=True)
     if not ok: raise RuntimeError(why)
-import diffusers
-if not hasattr(diffusers, 'Flux2KleinPipeline'):
-    raise RuntimeError('Installed Diffusers lacks Flux2KleinPipeline; see cinematic/README.md.')
+runtime_diagnostics.note('preflight complete; next cell is the first model-loading stage')
 ''')
     add('''# Small PoC only. Process one character at a time to bound work per run.
 # Change this to ['meera'] and rerun after Arjun finishes (or use both).
 POC_CHARACTERS = ['arjun']
 POC = STUDIO / 'poc'
-gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
+runtime_diagnostics.note('generation: importing torch and constructing lazy generator')
+gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL], log=runtime_diagnostics.note)
 try:
     results = studio_run.run_poc(gen, POC, characters=POC_CHARACTERS, style_refs={k: [v] for k,v in REFERENCES.items()})
 finally:
     gen.unload()
+    runtime_diagnostics.note('generation finished; weights released')
 print(results)
 if any(v not in ('made', 'skipped') for v in results.values()):
     raise RuntimeError('Some PoC jobs failed; review logs before continuing.')
@@ -176,7 +200,8 @@ for cid in REFERENCES:
     add('''# Minimal animation assets first; no full pose library yet.
 PROTOTYPE_JOBS = {'point_front', 'blink', 'mouth_closed', 'mouth_small', 'mouth_wide',
                   'mouth_round', 'mouth_teeth', 'mouth_smile_talk', 'expr_surprised'}
-gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
+runtime_diagnostics.note('generation: importing torch and constructing lazy generator')
+gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL], log=runtime_diagnostics.note)
 try:
     for cid in REFERENCES:
         master = STUDIO / cid / 'atlas/idle_front.png'
@@ -188,6 +213,7 @@ try:
                 if status not in ('made', 'skipped'): raise RuntimeError(name + ': ' + status)
 finally:
     gen.unload()
+    runtime_diagnostics.note('generation finished; weights released')
 ''')
     add('''# Segmentation is separate from image generation. Manually prepared RGBA cut-outs are accepted.
 for cid in REFERENCES:
@@ -217,7 +243,8 @@ for cid in REFERENCES:
     CW.record_review(STUDIO / cid / 'animation_approval.json', [master, ANIMATION_VIDEO],
                      'animation', REVIEWER, True)
 # New output names already made at prototype dimensions/seeds must retain identical requests.
-gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL])
+runtime_diagnostics.note('generation: importing torch and constructing lazy generator')
+gen = studio_run.LocalGen(registry.REVISIONS[studio.FLUX_MODEL], log=runtime_diagnostics.note)
 try:
     for cid in REFERENCES:
         remaining = [j[0] for j in studio.ATLAS_JOBS if j[0] not in PROTOTYPE_JOBS]
@@ -225,6 +252,7 @@ try:
         if any(v not in ('made','skipped') for v in result.values()): raise RuntimeError(result)
 finally:
     gen.unload()
+    runtime_diagnostics.note('generation finished; weights released')
 ''')
     add('''# Finish cut-outs and prepare reviewed source specs. Reusing a candidate keeps completed images.
 for cid in REFERENCES:

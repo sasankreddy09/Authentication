@@ -105,6 +105,7 @@ class LocalGen:
         import studio
         self.free_cache()
         t0 = time.time()
+        self.log("model loading: importing Diffusers and loading FLUX weights")
         self.pipe, self.dtype = studio.load_flux(self.revision, self.log)
         self.load_s = round(time.time() - t0, 1)
         self.log(f"model load: {self.load_s}s ({self.dtype}); transformer + text encoder NF4")
